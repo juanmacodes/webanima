@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  wordpress:
+    image: wordpress:6.5.3-php8.2-fpm
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_DEBUG', true );
+        define( 'WP_ENVIRONMENT_TYPE', getenv('WP_ENVIRONMENT_TYPE') ?: 'staging' );
+        define( 'WP_HOME', getenv('WP_HOME') );
+        define( 'WP_SITEURL', getenv('WP_SITEURL') );
+        define( 'WP_CACHE', true );
+    volumes:
+      - ./:/var/www/html/wp-content
+      - wp-config:/var/www/html/wp-config
+    networks:
+      - web
+
+  nginx:
+    image: nginx:1.25-alpine
+    depends_on:
+      - wordpress
+    ports:
+      - "8080:80"
+    volumes:
+      - ./infrastructure/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www/html/wp-content
+      - wp-config:/var/www/html/wp-config
+      - certs:/etc/letsencrypt/live/anima.localhost
+    networks:
+      - web
+
+  db:
+    image: mariadb:11.3
+    env_file:
+      - .env
+    environment:
+      MARIADB_DATABASE: ${WORDPRESS_DB_NAME}
+      MARIADB_USER: ${WORDPRESS_DB_USER}
+      MARIADB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${WORDPRESS_DB_ROOT_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - web
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "8025:8025"
+    networks:
+      - web
+
+volumes:
+  db-data:
+  wp-config:
+  certs:
+
+networks:
+  web:
+    driver: bridge
