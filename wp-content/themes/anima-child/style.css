@@ -9,7 +9,7 @@ Version: 0.1.0
 Text Domain: anima-child
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 html {
   font-size: 16px;
@@ -18,12 +18,65 @@ html {
 
 body {
   font-family: 'Inter', 'Inter var', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: #0b0f17;
+  background: #05070c;
   color: #eaf0ff;
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::before {
+  background: radial-gradient(circle at 18% 10%, rgba(102, 247, 255, 0.16) 0%, transparent 55%),
+    radial-gradient(circle at 82% 12%, rgba(255, 126, 234, 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 15% 80%, rgba(130, 255, 138, 0.12) 0%, transparent 65%);
+  opacity: 0.9;
+}
+
+body::after {
+  background-image: linear-gradient(rgba(102, 247, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 247, 255, 0.04) 1px, transparent 1px);
+  background-size: 140px 140px;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  z-index: -3;
 }
 
 body.anima-dark {
-  background-color: #0b0f17;
+  background-color: #05070c;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -0.015em;
+  color: #f5f7ff;
+}
+
+.site-header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+body.is-low-spec::before {
+  opacity: 0.45;
+}
+
+body.is-low-spec::after {
+  opacity: 0.25;
 }
