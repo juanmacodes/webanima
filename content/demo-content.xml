@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+    <title>Anima</title>
+    <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+    <language>es</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <wp:base_site_url>https://anima.localhost</wp:base_site_url>
+    <wp:base_blog_url>https://anima.localhost</wp:base_blog_url>
+
+    <wp:author>
+        <wp:author_login>anima</wp:author_login>
+        <wp:author_email>team@anima.world</wp:author_email>
+        <wp:author_display_name><![CDATA[Equipo Anima]]></wp:author_display_name>
+        <wp:author_first_name><![CDATA[Equipo]]></wp:author_first_name>
+        <wp:author_last_name><![CDATA[Anima]]></wp:author_last_name>
+    </wp:author>
+
+    <item>
+        <title>Portal Holográfico para Metaversos</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>project</wp:post_type>
+        <wp:post_date>2024-05-01 12:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>portal-holografico</wp:post_name>
+        <content:encoded><![CDATA[<p>Experiencia inmersiva con renderizado WebGL y streaming volumétrico.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[Experiencia inmersiva WebGL.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Orbital Labs]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_date</wp:meta_key>
+            <wp:meta_value><![CDATA[Mayo 2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_services</wp:meta_key>
+            <wp:meta_value><![CDATA[Metaverso, Streaming volumétrico]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[+140% engagement, 2.3M sesiones]]></wp:meta_value>
+        </wp:postmeta>
+        <category domain="stack" nicename="threejs"><![CDATA[Three.js]]></category>
+        <category domain="stack" nicename="webrtc"><![CDATA[WebRTC]]></category>
+    </item>
+
+    <item>
+        <title>Gemelo Digital Ciudad Anima</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>project</wp:post_type>
+        <wp:post_date>2024-04-01 10:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>gemelo-digital-ciudad</wp:post_name>
+        <content:encoded><![CDATA[<p>Gemelo digital urbano con sensores IoT y dashboards en tiempo real.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[IoT + gemelo digital.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Ciudad Futura]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_date</wp:meta_key>
+            <wp:meta_value><![CDATA[Abril 2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_services</wp:meta_key>
+            <wp:meta_value><![CDATA[IoT, Visualización 3D, Analítica]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[-22% consumo energético, +18% movilidad]]></wp:meta_value>
+        </wp:postmeta>
+        <category domain="stack" nicename="iot"><![CDATA[IoT]]></category>
+        <category domain="stack" nicename="aws"><![CDATA[AWS]]></category>
+    </item>
+
+    <item>
+        <title>AI Studio para marcas visionarias</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>project</wp:post_type>
+        <wp:post_date>2024-03-15 09:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>ai-studio</wp:post_name>
+        <content:encoded><![CDATA[<p>Plataforma de co-creación asistida por IA con pipelines meshopt y render real-time.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[IA creativa en tiempo real.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Neon Collective]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_date</wp:meta_key>
+            <wp:meta_value><![CDATA[Marzo 2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_services</wp:meta_key>
+            <wp:meta_value><![CDATA[Inteligencia artificial, Pipelines meshopt]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[98% satisfacción creativa]]></wp:meta_value>
+        </wp:postmeta>
+        <category domain="stack" nicename="ai"><![CDATA[Inteligencia Artificial]]></category>
+        <category domain="stack" nicename="meshopt"><![CDATA[meshopt]]></category>
+    </item>
+
+    <item>
+        <title>Diseño conversacional para mundos virtuales</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_date>2024-03-10 09:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>diseno-conversacional</wp:post_name>
+        <content:encoded><![CDATA[<p>Cómo diseñar experiencias conversacionales dentro de entornos inmersivos.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[Conversaciones en XR.]]></excerpt:encoded>
+        <category domain="category" nicename="innovacion"><![CDATA[Innovación]]></category>
+    </item>
+
+    <item>
+        <title>KPIs para medir mundos 3D</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_date>2024-02-05 09:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>kpis-mundos-3d</wp:post_name>
+        <content:encoded><![CDATA[<p>Guía para medir engagement, retención y conversión en experiencias 3D.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[Métricas para 3D.]]></excerpt:encoded>
+        <category domain="category" nicename="datos"><![CDATA[Datos]]></category>
+    </item>
+
+    <item>
+        <title>Workflow WebP + AVIF para equipos distribuidos</title>
+        <dc:creator>anima</dc:creator>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_date>2024-01-12 09:00:00</wp:post_date>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>workflow-imagenes-nextgen</wp:post_name>
+        <content:encoded><![CDATA[<p>Implementa un pipeline híbrido de optimización de imágenes con WebP y AVIF.</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[Pipeline WebP/AVIF.]]></excerpt:encoded>
+        <category domain="category" nicename="rendimiento"><![CDATA[Rendimiento]]></category>
+    </item>
+</channel>
+</rss>

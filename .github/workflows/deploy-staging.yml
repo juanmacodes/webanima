@@ -1,0 +1,30 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    name: Sync wp-content to staging
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP
+        env:
+          SFTP_HOST: ${{ secrets.STAGING_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.STAGING_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.STAGING_SFTP_PASS }}
+          SFTP_PATH: ${{ secrets.STAGING_SFTP_PATH }}
+        run: |
+          lftp -f "set ssl:verify-certificate no; open -u $SFTP_USER,$SFTP_PASS $SFTP_HOST; mirror -R -e wp-content $SFTP_PATH/wp-content"
+
+      - name: Warm cache
+        if: ${{ secrets.STAGING_WP_CLI != '' }}
+        run: |
+          ssh ${{ secrets.STAGING_WP_CLI }} "wp cache flush && wp cron event run --due-now"

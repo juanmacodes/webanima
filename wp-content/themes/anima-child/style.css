@@ -1,0 +1,18 @@
+/*
+Theme Name: Anima Child
+Theme URI: https://anima.world
+Description: Tema hijo futurista y oscuro basado en Twenty Twenty-Four para el universo Anima.
+Author: Equipo Anima
+Author URI: https://anima.world
+Template: twentytwentyfour
+Version: 0.1.0
+Text Domain: anima-child
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', 'Inter var', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #0b0f17;
+  color: #eaf0ff;
+}
