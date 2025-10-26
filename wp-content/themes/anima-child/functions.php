@@ -19,4 +19,21 @@ add_action( 'after_setup_theme', function () {
     );
 } );
 
+add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
+    if ( isset( $args->theme_location ) && 'primary' === $args->theme_location ) {
+        $contact_page = get_page_by_path( 'contacto' );
+        $fallback_id  = (int) get_option( 'page_for_posts' );
+        $contact_url  = $contact_page ? get_permalink( $contact_page ) : ( $fallback_id ? get_permalink( $fallback_id ) : home_url( '#contacto' ) );
+
+        $cta = sprintf(
+            '<li class="menu-item menu-item--cta"><a href="%1$s">%2$s</a></li>',
+            esc_url( $contact_url ),
+            esc_html__( 'Solicitar demo', 'anima-child' )
+        );
+        $items .= $cta;
+    }
+
+    return $items;
+}, 10, 2 );
+
 require_once get_stylesheet_directory() . '/inc/template-tags.php';

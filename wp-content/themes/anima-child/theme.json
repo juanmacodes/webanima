@@ -11,14 +11,29 @@
           "color": "#0b0f17"
         },
         {
+          "name": "Superficie",
+          "slug": "surface",
+          "color": "#121827"
+        },
+        {
           "name": "Texto",
           "slug": "foreground",
           "color": "#eaf0ff"
         },
         {
+          "name": "Texto secundario",
+          "slug": "muted",
+          "color": "#a8b3cc"
+        },
+        {
           "name": "Acento",
           "slug": "accent",
           "color": "#7df9ff"
+        },
+        {
+          "name": "Morado",
+          "slug": "accent-alt",
+          "color": "#8b5cf6"
         }
       ],
       "gradients": [
@@ -31,7 +46,12 @@
     },
     "spacing": {
       "blockGap": "1.75rem",
-      "units": ["px", "rem", "%", "vw", "vh"]
+      "units": ["px", "rem", "%", "vw", "vh"],
+      "spacingScale": {
+        "steps": 0,
+        "mediumStep": 1.5,
+        "unit": "rem"
+      }
     },
     "typography": {
       "fontFamilies": [
@@ -72,10 +92,17 @@
           "size": "3.75rem",
           "name": "XXL"
         }
-      ]
+      ],
+      "fluid": true,
+      "dropCap": false
     },
     "border": {
       "radius": 16
+    },
+    "layout": {
+      "contentSize": "720px",
+      "wideSize": "1160px",
+      "allowEditing": false
     }
   },
   "styles": {
@@ -97,7 +124,16 @@
       "heading": {
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--inter)",
-          "fontWeight": "600"
+          "fontWeight": "700",
+          "lineHeight": "1.15"
+        }
+      },
+      "link": {
+        "typography": {
+          "fontWeight": "500"
+        },
+        "color": {
+          "text": "var(--wp--preset--color--accent)"
         }
       }
     },
@@ -113,6 +149,22 @@
       "core/group": {
         "border": {
           "radius": "16px"
+        }
+      },
+      "core/site-title": {
+        "typography": {
+          "textTransform": "uppercase",
+          "letterSpacing": "0.12em"
+        }
+      },
+      "core/heading": {
+        "typography": {
+          "fontWeight": "700"
+        },
+        "spacing": {
+          "margin": {
+            "bottom": "1rem"
+          }
         }
       }
     }
