@@ -4,17 +4,19 @@
 <main class="wp-block-group alignfull anima-main"><!-- wp:cover {"overlayColor":"background","isUserOverlayColor":true,"dimRatio":60,"minHeight":360,"align":"full","className":"anima-page-hero","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem"}},"border":{"radius":"0px"}}} -->
 <div class="wp-block-cover alignfull anima-page-hero" style="padding-top:5rem;padding-bottom:5rem;border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1rem"}}} -->
 <div class="wp-block-group anima-container"><!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"clamp(3rem,6vw,4.5rem)","lineHeight":"1.05"}}} -->
-<h1 style="font-size:clamp(3rem,6vw,4.5rem);line-height:1.05">Radar Anima</h1>
+<h1 style="font-size:clamp(3rem,6vw,4.5rem);line-height:1.05">Historias</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"muted","style":{"typography":{"fontSize":"1.15rem"}}} -->
-<p class="has-muted-color has-text-color" style="font-size:1.15rem">Historias, hallazgos tecnológicos y procesos detrás de escena.</p>
+<p class="has-muted-color has-text-color" style="font-size:1.15rem">Pipeline, procesos y aprendizajes detrás de avatares y mundos inmersivos.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"className":"anima-container","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"},"blockGap":"3rem"}}} -->
-<div class="wp-block-group anima-container" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:query {"queryId":1,"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date"},"displayLayout":{"type":"flex","columns":3}} -->
+<!-- wp:group {"className":"anima-container","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"}}}} -->
+<div class="wp-block-group anima-container" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"2.5rem","left":"2.5rem"}}}} -->
+<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column {"width":"68%","style":{"spacing":{"blockGap":"3rem"}}} -->
+<div class="wp-block-column" style="flex-basis:68%"><!-- wp:query {"queryId":1,"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date"},"displayLayout":{"type":"flex","columns":2}} -->
 <div class="wp-block-query"><!-- wp:post-template -->
 <!-- wp:group {"className":"anima-article-card","layout":{"type":"constrained"},"style":{"border":{"radius":"24px"},"spacing":{"padding":{"top":"1.8rem","right":"1.8rem","bottom":"1.8rem","left":"1.8rem"}},"background":{"color":"#10192d"},"shadow":"var(--anima-shadow-soft)"}} -->
 <div class="wp-block-group anima-article-card" style="border-radius:24px;padding-top:1.8rem;padding-right:1.8rem;padding-bottom:1.8rem;padding-left:1.8rem;background-color:#10192d;box-shadow:var(--anima-shadow-soft)"><!-- wp:post-featured-image {"style":{"border":{"radius":"18px"},"spacing":{"margin":{"bottom":"1.5rem"}}}} /-->
@@ -29,15 +31,48 @@
 <!-- /wp:group -->
 <!-- /wp:post-template -->
 
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>No hay historias publicadas todavía.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
 <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
 <!-- wp:query-pagination-previous /-->
 
 <!-- wp:query-pagination-numbers /-->
 
 <!-- wp:query-pagination-next /-->
-<!-- /wp:query-pagination -->
-</div>
+<!-- /wp:query-pagination --></div>
 <!-- /wp:query --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"32%","style":{"spacing":{"blockGap":"2rem"}}} -->
+<div class="wp-block-column" style="flex-basis:32%"><!-- wp:group {"className":"anima-sidebar","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1.5rem"}}} -->
+<div class="wp-block-group anima-sidebar" style="gap:1.5rem"><!-- wp:search {"label":"Buscar","showLabel":false,"buttonText":"Buscar","buttonPosition":"button-inside"} /-->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0.75rem"}}} -->
+<div class="wp-block-group" style="gap:0.75rem"><!-- wp:heading {"level":3} -->
+<h3>Categorías clave</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list {"className":"is-style-none"} -->
+<ul class="is-style-none"><li><a href="/categoria/avatares">Avatares</a></li><li><a href="/categoria/produccion-virtual">Producción Virtual</a></li><li><a href="/categoria/ia-aplicada">IA aplicada</a></li><li><a href="/categoria/eventos">Eventos</a></li></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"0.75rem"}}} -->
+<div class="wp-block-group" style="gap:0.75rem"><!-- wp:heading {"level":3} -->
+<h3>Recursos recomendados</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li><a href="/servicios">Descubre nuestros servicios</a></li><li><a href="/anima-world">Visita Anima World</a></li><li><a href="/contacto">Solicitar demo</a></li></ul>
+<!-- /wp:list --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
 <!-- /wp:group --></main>
 <!-- /wp:group -->
 

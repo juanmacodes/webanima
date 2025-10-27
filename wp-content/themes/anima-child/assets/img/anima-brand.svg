@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Anima Brand Orb</title>
+  <desc id="desc">Símbolo circular degradado de la marca Anima Avatar Agency</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#7df9ff" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#5d7bff" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#10172b" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7df9ff" />
+      <stop offset="50%" stop-color="#9c6bff" />
+      <stop offset="100%" stop-color="#2ed6ff" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="72" fill="#05070d" />
+  <circle cx="128" cy="128" r="92" fill="url(#glow)" />
+  <path d="M128 56c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72c0-6.5-.9-12.8-2.6-18.8l-27.6 15.6c.1 1 .2 2 .2 3.1 0 23.2-18.8 42-42 42s-42-18.8-42-42 18.8-42 42-42c11.4 0 21.8 4.5 29.5 11.9l29.2-16.5C160.5 64 145 56 128 56z" fill="none" stroke="url(#ring)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

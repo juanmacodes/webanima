@@ -1,117 +1,73 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","align":"full","className":"anima-main"} -->
-<main class="wp-block-group alignfull anima-main"><!-- wp:cover {"gradient":"hero-plasma","isUserOverlayColor":true,"minHeight":420,"align":"full","className":"anima-page-hero","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem"}},"border":{"radius":"0px"}}} -->
-<div class="wp-block-cover alignfull anima-page-hero" style="padding-top:5rem;padding-bottom:5rem;border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim has-background-gradient has-hero-plasma-gradient-background"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1.2rem"}}} -->
-<div class="wp-block-group anima-container"><!-- wp:heading {"textAlign":"left","level":1,"style":{"typography":{"fontSize":"clamp(3.4rem,6vw,4.8rem)","lineHeight":"1.05"}}} -->
-<h1 class="has-text-align-left" style="font-size:clamp(3.4rem,6vw,4.8rem);line-height:1.05">Laboratorio vivo de experiencias inmersivas</h1>
+<main class="wp-block-group alignfull anima-main"><!-- wp:cover {"overlayColor":"background","dimRatio":60,"isUserOverlayColor":true,"minHeight":420,"align":"full","className":"anima-page-hero","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem"}},"border":{"radius":"0px"}}} -->
+<div class="wp-block-cover alignfull anima-page-hero" style="padding-top:5rem;padding-bottom:5rem;border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1.2rem"}}} -->
+<div class="wp-block-group anima-container"><!-- wp:paragraph {"className":"anima-section__eyebrow"} -->
+<p class="anima-section__eyebrow">Proyectos</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"left","level":1,"style":{"typography":{"fontSize":"clamp(3.4rem,6vw,4.8rem)","lineHeight":"1.05"}}} -->
+<h1 class="has-text-align-left" style="font-size:clamp(3.4rem,6vw,4.8rem);line-height:1.05">Portafolio vivo de experiencias inmersivas</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"muted","style":{"typography":{"fontSize":"1.2rem"}}} -->
-<p class="has-muted-color has-text-color" style="font-size:1.2rem">Proyectos seleccionados que combinan arte, tecnología y narrativa sensorial para activar comunidades.</p>
+<p class="has-muted-color has-text-color" style="font-size:1.2rem">Selecciona un proyecto para explorar objetivos, KPIs y tecnologías utilizadas.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"className":"anima-container","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"},"blockGap":"3.5rem"}}} -->
-<div class="wp-block-group anima-container" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"2.5rem","left":"2.5rem"}}}} -->
-<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1400&q=80","dimRatio":40,"overlayColor":"background","style":{"border":{"radius":"28px"},"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"shadow":"var(--anima-shadow-soft)"}} -->
-<div class="wp-block-cover" style="border-radius:28px;padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem;box-shadow:var(--anima-shadow-soft)"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-40 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3} -->
-<h3>Atlas Fluido</h3>
-<!-- /wp:heading -->
+<!-- wp:group {"className":"anima-container","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"},"blockGap":"3rem"}}} -->
+<div class="wp-block-group anima-container" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:query {"queryId":10,"query":{"perPage":9,"pages":0,"offset":0,"postType":"project","order":"desc","orderBy":"date"},"displayLayout":{"type":"masonry","columns":3}} -->
+<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:group {"className":"anima-project-card","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1rem"},"border":{"radius":"24px"},"background":{"color":"#10192d"},"shadow":"var(--anima-shadow-soft)"}} -->
+<div class="wp-block-group anima-project-card" style="border-radius:24px;background-color:#10192d;box-shadow:var(--anima-shadow-soft);gap:1rem"><!-- wp:post-featured-image {"style":{"border":{"radius":"20px"},"spacing":{"margin":{"bottom":"1.2rem"}}}} /-->
 
-<!-- wp:paragraph -->
-<p>Instalación de data painting que convierte flujos migratorios en paisajes interactivos. La intensidad lumínica responde al movimiento del público.</p>
-<!-- /wp:paragraph -->
+<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontSize":"1.45rem"}}} /-->
 
-<!-- wp:paragraph {"textColor":"accent"} -->
-<p class="has-accent-color has-text-color">Bienal de Arte Digital · 2023</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column -->
+<!-- wp:post-excerpt {"moreText":"","style":{"typography":{"fontSize":"1rem"}},"textColor":"muted"} /-->
 
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80","dimRatio":40,"overlayColor":"background","style":{"border":{"radius":"28px"},"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"shadow":"var(--anima-shadow-soft)"}} -->
-<div class="wp-block-cover" style="border-radius:28px;padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem;box-shadow:var(--anima-shadow-soft)"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-40 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3} -->
-<h3>Jardín de Resonancias</h3>
-<!-- /wp:heading -->
+<!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"0.75rem"}}} -->
+<div class="wp-block-group" style="gap:0.75rem"><!-- wp:post-terms {"term":"stack","textAlign":"left","className":"anima-project-card__stack"} /-->
 
-<!-- wp:paragraph -->
-<p>Pabellón interactivo donde cada visitante activa un paisaje sonoro único mediante ondas cerebrales captadas con wearables.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"textColor":"accent"} -->
-<p class="has-accent-color has-text-color">Expo World Next · 2024</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:columns {"isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"2.5rem","left":"2.5rem"}}}} -->
-<div class="wp-block-columns is-not-stacked-on-mobile"><!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80","dimRatio":40,"overlayColor":"background","style":{"border":{"radius":"28px"},"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"shadow":"var(--anima-shadow-soft)"}} -->
-<div class="wp-block-cover" style="border-radius:28px;padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem;box-shadow:var(--anima-shadow-soft)"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-40 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3} -->
-<h3>Constelación Delta</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Showroom modular que mezcla holografía, robots lumínicos y narrativas de voz sintética para lanzar una nueva línea de movilidad.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"textColor":"accent"} -->
-<p class="has-accent-color has-text-color">Marca Automotriz Aurora</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column -->
-
-<!-- wp:column -->
-<div class="wp-block-column"><!-- wp:cover {"url":"https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1400&q=80","dimRatio":40,"overlayColor":"background","style":{"border":{"radius":"28px"},"spacing":{"padding":{"top":"2.5rem","right":"2.5rem","bottom":"2.5rem","left":"2.5rem"}},"shadow":"var(--anima-shadow-soft)"}} -->
-<div class="wp-block-cover" style="border-radius:28px;padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem;box-shadow:var(--anima-shadow-soft)"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-40 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3} -->
-<h3>Ceremonia Mareas</h3>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p>Experiencia de bienestar inmersivo con biofeedback de respiración y proyecciones acuáticas que responden al ritmo colectivo.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"textColor":"accent"} -->
-<p class="has-accent-color has-text-color">Resort Tidal · Riviera Maya</p>
-<!-- /wp:paragraph --></div></div>
-<!-- /wp:cover --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
-
-<!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"2.2rem"}}} -->
-<h2 style="font-size:2.2rem">Cómo medimos el impacto</h2>
-<!-- /wp:heading -->
-
-<!-- wp:list -->
-<ul><li>KPIs sensoriales: niveles de inmersión, emociones predominantes y puntos de atención.</li><li>Analítica espacial en vivo para optimizar recorridos y flujos.</li><li>Reportes accionables en 72 horas con clips, mapas de calor y recomendaciones.</li></ul>
-<!-- /wp:list -->
-
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline","textColor":"accent","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"left":"2rem","right":"2rem","top":"0.8rem","bottom":"0.8rem"}}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-accent-color has-text-color wp-element-button" href="#contacto" style="border-radius:999px;border-width:1px;padding-top:0.8rem;padding-right:2rem;padding-bottom:0.8rem;padding-left:2rem">Solicitar dossier completo</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<!-- wp:post-date {"textColor":"muted","style":{"typography":{"fontSize":"0.85rem","textTransform":"uppercase","letterSpacing":"0.08em"}}} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
+<!-- /wp:post-template -->
 
-<!-- wp:group {"className":"anima-section alignfull","backgroundColor":"surface","style":{"spacing":{"padding":{"top":"5rem","bottom":"5rem"}}}} -->
-<div class="wp-block-group anima-section alignfull has-surface-background-color has-background" id="contacto" style="padding-top:5rem;padding-bottom:5rem"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"2.5rem"}}} -->
-<div class="wp-block-group anima-container"><!-- wp:heading {"textAlign":"left","level":2,"style":{"typography":{"fontSize":"2.5rem"}}} -->
-<h2 class="has-text-align-left" style="font-size:2.5rem">¿Listo para activar tu próximo universo de marca?</h2>
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Aún no hay proyectos publicados. Añade los primeros desde el panel de WordPress.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"anima-section alignfull","backgroundColor":"surface","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"}}}} -->
+<div class="wp-block-group anima-section alignfull has-surface-background-color has-background" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"2rem"}}} -->
+<div class="wp-block-group anima-container"><!-- wp:heading {"level":2,"textAlign":"center"} -->
+<h2 class="has-text-align-center">¿Quieres un proyecto similar para tu marca?</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>Agenda una sesión de descubrimiento de 45 minutos con nuestro equipo creativo. Revisaremos objetivos, públicos y tecnologías sugeridas.</p>
+<!-- wp:paragraph {"align":"center","textColor":"muted"} -->
+<p class="has-text-align-center has-muted-color has-text-color">Cuéntanos tus objetivos y co-creamos un roadmap a medida con KPIs claros desde el día uno.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons -->
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"blockGap":"1rem"}}} -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"accent","textColor":"surface","style":{"border":{"radius":"999px"},"spacing":{"padding":{"left":"2.4rem","right":"2.4rem","top":"0.9rem","bottom":"0.9rem"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-surface-color has-accent-background-color has-text-color has-background wp-element-button" href="mailto:hola@anima.world" style="border-radius:999px;padding-top:0.9rem;padding-right:2.4rem;padding-bottom:0.9rem;padding-left:2.4rem">Agendar discovery</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-surface-color has-accent-background-color has-text-color has-background wp-element-button" href="/contacto" style="border-radius:999px;padding-top:0.9rem;padding-right:2.4rem;padding-bottom:0.9rem;padding-left:2.4rem">Cuéntanos tu idea</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline","textColor":"accent","style":{"border":{"radius":"999px","width":"1px"},"spacing":{"padding":{"left":"2.2rem","right":"2.2rem","top":"0.85rem","bottom":"0.85rem"}}}} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-accent-color has-text-color wp-element-button" href="/servicios" style="border-radius:999px;border-width:1px;padding-top:0.85rem;padding-right:2.2rem;padding-bottom:0.85rem;padding-left:2.2rem">Solicitar demo</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
