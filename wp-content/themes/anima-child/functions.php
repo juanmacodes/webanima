@@ -5,6 +5,10 @@
 
 define( 'ANIMA_CHILD_VERSION', '0.1.0' );
 
+function anima_child_brand_asset_url() {
+    return apply_filters( 'anima_child_brand_asset_url', get_stylesheet_directory_uri() . '/assets/img/anima-brand.svg' );
+}
+
 add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'anima-child', get_stylesheet_uri(), [ 'twentytwentyfour-style' ], ANIMA_CHILD_VERSION );
     wp_enqueue_style( 'anima-child-theme', get_stylesheet_directory_uri() . '/assets/css/theme.css', [ 'anima-child' ], ANIMA_CHILD_VERSION );
@@ -37,3 +41,19 @@ add_filter( 'wp_nav_menu_items', function ( $items, $args ) {
 }, 10, 2 );
 
 require_once get_stylesheet_directory() . '/inc/template-tags.php';
+
+add_action( 'wp_head', function () {
+    $brand_asset = anima_child_brand_asset_url();
+
+    if ( $brand_asset ) {
+        if ( ! has_site_icon() ) {
+            printf( '<link rel="icon" href="%1$s" sizes="any" type="image/svg+xml" />' . "\n", esc_url( $brand_asset ) );
+            printf( '<link rel="apple-touch-icon" href="%1$s" />' . "\n", esc_url( $brand_asset ) );
+        }
+
+        if ( ! has_action( 'wpseo_head' ) ) {
+            printf( '<meta property="og:image" content="%1$s" />' . "\n", esc_url( $brand_asset ) );
+            printf( '<meta name="twitter:image" content="%1$s" />' . "\n", esc_url( $brand_asset ) );
+        }
+    }
+}, 20 );

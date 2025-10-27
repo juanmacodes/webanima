@@ -1,0 +1,47 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"full","className":"anima-main"} -->
+<main class="wp-block-group alignfull anima-main"><!-- wp:cover {"overlayColor":"background","dimRatio":60,"isUserOverlayColor":true,"minHeight":360,"align":"full","className":"anima-page-hero","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"}},"border":{"radius":"0px"}}} -->
+<div class="wp-block-cover alignfull anima-page-hero" style="padding-top:4.5rem;padding-bottom:4.5rem;border-radius:0px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim has-background-color has-background"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"anima-container","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1.2rem"}}} -->
+<div class="wp-block-group anima-container"><!-- wp:heading {"level":1,"style":{"typography":{"fontSize":"clamp(3.2rem,5.5vw,4.6rem)","lineHeight":"1.05"}}} -->
+<h1 style="font-size:clamp(3.2rem,5.5vw,4.6rem);line-height:1.05">Proyectos</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"textColor":"muted"} -->
+<p class="has-muted-color has-text-color">Explora casos reales de avatares, mundos 3D y experiencias inmersivas.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"className":"anima-container","style":{"spacing":{"padding":{"top":"4.5rem","bottom":"4.5rem"},"blockGap":"3rem"}}} -->
+<div class="wp-block-group anima-container" style="padding-top:4.5rem;padding-bottom:4.5rem"><!-- wp:query {"queryId":11,"query":{"perPage":9,"pages":0,"offset":0,"postType":"project","order":"desc","orderBy":"date"},"displayLayout":{"type":"grid","columns":3}} -->
+<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:group {"className":"anima-project-card","layout":{"type":"constrained"},"style":{"spacing":{"blockGap":"1rem"},"border":{"radius":"24px"},"background":{"color":"#10192d"},"shadow":"var(--anima-shadow-soft)"}} -->
+<div class="wp-block-group anima-project-card" style="border-radius:24px;background-color:#10192d;box-shadow:var(--anima-shadow-soft);gap:1rem"><!-- wp:post-featured-image {"style":{"border":{"radius":"18px"}}} /-->
+
+<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontSize":"1.4rem"}}} /-->
+
+<!-- wp:post-excerpt {"moreText":"","style":{"typography":{"fontSize":"1rem"}},"textColor":"muted"} /-->
+
+<!-- wp:post-date {"textColor":"muted","style":{"typography":{"fontSize":"0.85rem","letterSpacing":"0.08em","textTransform":"uppercase"}}} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>No hay proyectos publicados aún.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
