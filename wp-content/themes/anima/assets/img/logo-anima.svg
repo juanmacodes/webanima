@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Anima</title>
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#7df9ff" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="24" fill="#0b0f17" />
+  <path d="M60 18L96 102H84L74 80H46L36 102H24L60 18ZM50 68H70L60 44L50 68Z" fill="url(#g)" />
+</svg>

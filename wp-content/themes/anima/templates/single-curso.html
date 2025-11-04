@@ -1,0 +1,49 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained","contentSize":"1000px"}} -->
+<main class="wp-block-group">
+    <!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"overlayColor":"surface","minHeight":60,"minHeightUnit":"vh"} -->
+    <div class="wp-block-cover" style="min-height:60vh"><span aria-hidden="true" class="wp-block-cover__background has-surface-background-color has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"720px"}} -->
+    <div class="wp-block-group"><!-- wp:post-title {"textAlign":"center","fontSize":"xxl"} /-->
+    <!-- wp:shortcode -->[anima_course_ficha]<!-- /wp:shortcode --></div>
+    <!-- /wp:group --></div></div>
+    <!-- /wp:cover -->
+
+    <!-- wp:group {"layout":{"type":"constrained","contentSize":"720px"},"style":{"spacing":{"padding":{"top":"2rem","bottom":"2rem"}}}} -->
+    <div class="wp-block-group" style="padding-top:2rem;padding-bottom:2rem"><!-- wp:paragraph {"fontSize":"lg"} -->
+    <p class="has-lg-font-size"><!-- wp:shortcode -->[anima_meta key="anima_resumen"]<!-- /wp:shortcode --></p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Temario</h3>
+    <!-- /wp:heading -->
+    <!-- wp:shortcode -->[anima_course_curriculum]<!-- /wp:shortcode -->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Contenido completo</h3>
+    <!-- /wp:heading -->
+    <!-- wp:post-content /-->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Instructores</h3>
+    <!-- /wp:heading -->
+    <!-- wp:shortcode -->[anima_course_instructors]<!-- /wp:shortcode -->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Próximas fechas</h3>
+    <!-- /wp:heading -->
+    <!-- wp:shortcode -->[anima_course_dates]<!-- /wp:shortcode -->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Testimonios</h3>
+    <!-- /wp:heading -->
+    <!-- wp:pattern {"slug":"anima/testimonial-3"} /-->
+
+    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"2rem"}}}} -->
+    <div class="wp-block-buttons" style="margin-top:2rem"><!-- wp:button -->
+    <div class="wp-block-button"><a class="wp-block-button__link" href="/contacto/?asunto=curso">Inscribirme</a></div>
+    <!-- /wp:button --></div>
+    <!-- /wp:buttons --></div>
+    <!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

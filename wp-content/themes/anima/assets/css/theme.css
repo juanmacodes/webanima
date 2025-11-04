@@ -1,0 +1,331 @@
+:root {
+    color-scheme: dark;
+    --anima-bg: #0b0f17;
+    --anima-surface: #121827;
+    --anima-text: #eaf0ff;
+    --anima-accent: #7df9ff;
+    --anima-violet: #8b5cf6;
+    --anima-muted: #475569;
+    --anima-radius: 16px;
+}
+
+body {
+    margin: 0;
+    background: var(--anima-bg);
+    color: var(--anima-text);
+}
+
+.wp-site-blocks {
+    min-height: 100vh;
+    background: var(--anima-bg);
+}
+
+header.wp-block-template-part {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    background: rgba(18, 24, 39, 0.85);
+    border-bottom: 1px solid rgba(125, 249, 255, 0.08);
+}
+
+.anima-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.anima-header-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.anima-header-logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.anima-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.anima-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+}
+
+.anima-nav a {
+    color: var(--anima-text);
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.anima-nav a:hover,
+.anima-nav a:focus {
+    background: rgba(125, 249, 255, 0.15);
+    outline: none;
+}
+
+.anima-nav__cta a {
+    background: linear-gradient(135deg, var(--anima-accent), var(--anima-violet));
+    color: var(--anima-bg);
+    font-weight: 600;
+}
+
+.anima-footer {
+    background: var(--anima-surface);
+    padding: 3rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(125, 249, 255, 0.08);
+}
+
+.anima-footer__inner {
+    display: grid;
+    gap: 2rem;
+}
+
+.anima-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.anima-footer__links a {
+    color: var(--anima-muted);
+    text-decoration: none;
+}
+
+.anima-footer__links a:hover,
+.anima-footer__links a:focus {
+    color: var(--anima-accent);
+}
+
+.anima-world-embed {
+    position: relative;
+    background: var(--anima-surface);
+    border-radius: var(--anima-radius);
+    padding: 1rem;
+    box-shadow: var(--anima-shadow, 0 20px 40px rgba(0,0,0,0.25));
+}
+
+.anima-world-canvas {
+    width: 100%;
+    min-height: 420px;
+    border-radius: var(--anima-radius);
+    overflow: hidden;
+}
+
+.anima-world-fallback {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.anima-waitlist {
+    display: grid;
+    gap: 1rem;
+    background: var(--anima-surface);
+    padding: 2rem;
+    border-radius: var(--anima-radius);
+}
+
+.anima-waitlist__field label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.anima-waitlist__field input,
+.anima-waitlist__field select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(125, 249, 255, 0.15);
+    background: rgba(11, 15, 23, 0.8);
+    color: var(--anima-text);
+}
+
+.anima-waitlist__field--checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.anima-waitlist__actions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.anima-waitlist__feedback {
+    min-height: 1.2rem;
+    color: var(--anima-accent);
+}
+
+.anima-app-badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.anima-app-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    background: rgba(125, 249, 255, 0.1);
+    color: var(--anima-text);
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.anima-app-badge:hover {
+    background: rgba(125, 249, 255, 0.25);
+}
+
+.anima-cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: rgba(18, 24, 39, 0.95);
+    color: var(--anima-text);
+    padding: 1.5rem;
+    border-radius: var(--anima-radius);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    width: min(360px, calc(100% - 2rem));
+}
+
+.anima-cookie-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.wp-block-button__link--ghost {
+    background: transparent !important;
+    border: 1px solid rgba(125, 249, 255, 0.4);
+}
+
+@media (max-width: 960px) {
+    .anima-header-inner {
+        flex-wrap: wrap;
+    }
+    .anima-nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
+
+.anima-gallery {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.anima-gallery__item {
+    border-radius: var(--anima-radius);
+}
+
+.anima-instructors {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.anima-instructor {
+    display: flex;
+    gap: 1rem;
+    background: rgba(18, 24, 39, 0.7);
+    padding: 1.25rem;
+    border-radius: var(--anima-radius);
+    align-items: flex-start;
+}
+
+.anima-instructors__avatar {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+}
+
+.anima-curriculum details {
+    background: rgba(18, 24, 39, 0.8);
+    border-radius: var(--anima-radius);
+    margin-bottom: 0.75rem;
+    padding: 1rem 1.25rem;
+}
+
+.anima-curriculum summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.anima-curriculum ul {
+    margin-top: 0.75rem;
+}
+
+.anima-course-ficha {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+}
+
+.anima-course-ficha dt {
+    font-weight: 600;
+}
+
+.anima-course-dates {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.anima-course-dates li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(125, 249, 255, 0.1);
+}
+
+.anima-taxonomy-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.anima-taxonomy-links a {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(125, 249, 255, 0.1);
+    text-decoration: none;
+    color: var(--anima-text);
+}
+
+.anima-taxonomy-links a:hover {
+    background: rgba(125, 249, 255, 0.25);
+}
+
+.anima-kpis {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.anima-kpis li {
+    background: rgba(18, 24, 39, 0.75);
+    padding: 1rem 1.25rem;
+    border-radius: var(--anima-radius);
+}
