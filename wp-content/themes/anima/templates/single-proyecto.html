@@ -1,0 +1,33 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained","contentSize":"1000px"}} -->
+<main class="wp-block-group">
+    <!-- wp:cover {"useFeaturedImage":true,"dimRatio":40,"overlayColor":"surface","minHeight":60,"minHeightUnit":"vh"} -->
+    <div class="wp-block-cover" style="min-height:60vh"><span aria-hidden="true" class="wp-block-cover__background has-surface-background-color has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"720px"}} -->
+    <div class="wp-block-group"><!-- wp:post-title {"textAlign":"center","fontSize":"xxl"} /-->
+    <!-- wp:post-terms {"term":"servicio","textAlign":"center"} /--></div>
+    <!-- /wp:group --></div></div>
+    <!-- /wp:cover -->
+
+    <!-- wp:group {"layout":{"type":"constrained","contentSize":"720px"},"style":{"spacing":{"padding":{"top":"2rem","bottom":"2rem"}}}} -->
+    <div class="wp-block-group" style="padding-top:2rem;padding-bottom:2rem"><!-- wp:table -->
+    <figure class="wp-block-table"><table><tbody><tr><td><strong>Cliente</strong></td><td><!-- wp:shortcode -->[anima_meta key="anima_cliente"]<!-- /wp:shortcode --></td></tr><tr><td><strong>Año</strong></td><td><!-- wp:shortcode -->[anima_meta key="anima_anio"]<!-- /wp:shortcode --></td></tr><tr><td><strong>Servicios</strong></td><td><!-- wp:post-terms {"term":"servicio"} /--></td></tr><tr><td><strong>Stack</strong></td><td><!-- wp:shortcode -->[anima_meta key="anima_stack"]<!-- /wp:shortcode --></td></tr></tbody></table></figure>
+    <!-- /wp:table -->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">KPIs</h3>
+    <!-- /wp:heading -->
+
+    <!-- wp:shortcode -->[anima_kpis]<!-- /wp:shortcode --></div>
+    <!-- /wp:group -->
+
+    <!-- wp:post-content /-->
+
+    <!-- wp:heading {"level":3,"fontSize":"xl"} -->
+    <h3 class="has-xl-font-size">Galería</h3>
+    <!-- /wp:heading -->
+    <!-- wp:shortcode -->[anima_gallery]<!-- /wp:shortcode -->
+
+    <!-- wp:pattern {"slug":"anima/cta-full"} /-->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

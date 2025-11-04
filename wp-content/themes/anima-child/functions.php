@@ -10,7 +10,7 @@ function anima_child_brand_asset_url() {
 }
 
 add_action( 'wp_enqueue_scripts', function () {
-    wp_enqueue_style( 'anima-child', get_stylesheet_uri(), [ 'twentytwentyfour-style' ], ANIMA_CHILD_VERSION );
+    wp_enqueue_style( 'anima-child', get_stylesheet_uri(), [ 'anima-style' ], ANIMA_CHILD_VERSION );
     wp_enqueue_style( 'anima-child-theme', get_stylesheet_directory_uri() . '/assets/css/theme.css', [ 'anima-child' ], ANIMA_CHILD_VERSION );
     wp_enqueue_script( 'anima-child-effects', get_stylesheet_directory_uri() . '/assets/js/effects.js', [ 'jquery' ], ANIMA_CHILD_VERSION, true );
 }, 20 );
