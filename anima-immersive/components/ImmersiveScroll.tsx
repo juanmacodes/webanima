@@ -16,8 +16,6 @@ type Props = {
 const ImmersiveScroll: React.FC<Props> = ({ chapters, className }) => {
   return (
     <section className={className ?? ''}>
-      {/* Render muy básico para evitar fallos de build.
-         Sustituye por tu lógica real de “scroll inmersivo”. */}
       <div className="mx-auto max-w-5xl space-y-12 px-6 py-20">
         {chapters.map((ch) => (
           <article key={ch.id} className="rounded-2xl border border-white/10 bg-background/40 p-8">
