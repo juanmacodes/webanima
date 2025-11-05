@@ -3,11 +3,13 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
-// Importa el default del componente cliente, sin .then(...)
-const ExperienceCanvas = dynamic(() => import('../../components/Experience'), {
-  ssr: false,
-  loading: () => <div className="h-full w-full bg-black/20" />,
-});
+const ExperienceCanvas = dynamic(
+  () => import('../../components/Experience').then((m) => m.default),
+  {
+    ssr: false,
+    loading: () => <div className="h-full w-full bg-black/20" />,
+  }
+);
 
 export const metadata: Metadata = {
   title: 'Cabinas holográficas',
