@@ -29,7 +29,7 @@ export default function StreamingPage() {
       <SharedSection
         eyebrow="Streaming volumétrico"
         headline="Escenarios volumétricos en vivo"
-        description="Produce conciertos, keynotes y shows multicámara con captura volumétrica y distribución global optimizada."
+        description="Produce conciertos, keynotes y shows multi cámara con captura volumétrica y distribución global optimizada."
         cta={
           <>
             <a className="button-primary" href="/proyectos">Casos de éxito</a>
@@ -39,9 +39,9 @@ export default function StreamingPage() {
       >
         <div className="card">
           <p className="text-sm text-foreground/70">
-            Cámaras volumétricas, overlays generados por IA, métricas en vivo y comandos OSC para escenarios híbridos.
+            Diseña flujos de cámaras, mezcla interactiva y overlays generados
+            por IA. Integra métricas en vivo y comandos OSC para escenarios híbridos.
           </p>
-
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
@@ -49,7 +49,6 @@ export default function StreamingPage() {
                   id: 'analytics',
                   title: 'Live analytics',
                   description: 'KPIs volumétricos en tiempo real conectados a CRM.',
-                  position: [1.2, 1.4, -0.8],
                   actionLabel: 'Dashboard',
                   href: '/proyectos'
                 }
