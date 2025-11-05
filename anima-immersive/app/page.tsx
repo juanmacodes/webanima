@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { ImmersiveScroll, Chapter } from '../components/ImmersiveScroll';
+import ImmersiveScroll, { type Chapter } from '../components/ImmersiveScroll';
 
 const CHAPTERS: Chapter[] = [
   {
