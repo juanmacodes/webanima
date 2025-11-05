@@ -2,147 +2,540 @@
 <rss version="2.0"
     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:wp="http://wordpress.org/export/1.2/"
->
+    xmlns:wp="http://wordpress.org/export/1.2/">
 <channel>
-    <title>Anima</title>
-    <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+    <title>Anima Avatar Agency</title>
+    <link>https://animaavataragency.com/</link>
+    <description>Experiencias creativas con streaming, hologramas, IA y VR.</description>
+    <pubDate>Wed, 05 Nov 2025 12:00:00 +0000</pubDate>
     <language>es</language>
     <wp:wxr_version>1.2</wp:wxr_version>
-    <wp:base_site_url>https://anima.localhost</wp:base_site_url>
-    <wp:base_blog_url>https://anima.localhost</wp:base_blog_url>
+    <wp:base_site_url>https://animaavataragency.com</wp:base_site_url>
+    <wp:base_blog_url>https://animaavataragency.com</wp:base_blog_url>
 
     <wp:author>
-        <wp:author_login>anima</wp:author_login>
-        <wp:author_email>team@anima.world</wp:author_email>
+        <wp:author_id>1</wp:author_id>
+        <wp:author_login><![CDATA[admin]]></wp:author_login>
+        <wp:author_email>equipo@animaavataragency.com</wp:author_email>
         <wp:author_display_name><![CDATA[Equipo Anima]]></wp:author_display_name>
         <wp:author_first_name><![CDATA[Equipo]]></wp:author_first_name>
         <wp:author_last_name><![CDATA[Anima]]></wp:author_last_name>
     </wp:author>
 
+    <!-- Página: Inicio -->
     <item>
-        <title>Portal Holográfico para Metaversos</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-05-01 12:00:00</wp:post_date>
+        <title>Inicio</title>
+        <link>https://animaavataragency.com/inicio/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>1</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
+        <wp:post_type>page</wp:post_type>
         <wp:post_status>publish</wp:post_status>
-        <wp:post_name>portal-holografico</wp:post_name>
-        <content:encoded><![CDATA[<p>Experiencia inmersiva con renderizado WebGL y streaming volumétrico.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Experiencia inmersiva WebGL.]]></excerpt:encoded>
+        <wp:post_name>inicio</wp:post_name>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:is_sticky>0</wp:is_sticky>
+        <content:encoded><![CDATA[
+<p>Bienvenidos a <strong>Anima Avatar Agency</strong>, tu aliado en experiencias digitales innovadoras.<br />
+Fusionamos arte y tecnología para crear vivencias impactantes en <em>streaming</em>, hologramas, inteligencia artificial y realidad virtual.</p>
+<p><strong>Conócenos</strong> y descubre cómo podemos transformar tus ideas en experiencias inolvidables. <a href="#servicios">Ver servicios</a>.</p>
+<p><img src="https://via.placeholder.com/1600x700.png?text=Anima+Avatar+Agency" alt="Avatar animado" class="hero-image" /></p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Agencia creativa especializada en experiencias XR, IA y streaming.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Servicios -->
+    <item>
+        <title>Servicios</title>
+        <link>https://animaavataragency.com/servicios/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>2</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>servicios</wp:post_name>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <content:encoded><![CDATA[
+<p>Explora nuestros servicios innovadores:</p>
+<ul>
+<li><strong>Streaming en Vivo</strong>: Transmisiones profesionales de eventos y webinars con calidad HD.</li>
+<li><strong>Hologramas Interactivos</strong>: Cabinas holográficas para experiencias tridimensionales inolvidables.</li>
+<li><strong>Inteligencia Artificial</strong>: Soluciones de IA, asistentes virtuales y automatización creativa.</li>
+<li><strong>Realidad Virtual</strong>: Desarrollo de entornos VR para formación, marketing y entretenimiento.</li>
+</ul>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Servicios innovadores: streaming, hologramas, IA y VR.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Streaming -->
+    <item>
+        <title>Streaming</title>
+        <link>https://animaavataragency.com/streaming/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>3</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>streaming</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Diseñamos experiencias de streaming inmersivo con producción multicámara, overlays interactivos y analítica en tiempo real.</p>
+<p>Nuestro equipo gestiona la preproducción, realización y distribución a plataformas globales con latencia ultrabaja.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Producción y ejecución de streaming profesional.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Holográficos -->
+    <item>
+        <title>Holográficos</title>
+        <link>https://animaavataragency.com/holograficos/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>4</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>holograficos</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Creamos instalaciones holográficas que combinan volumetría, sensores y guionización interactiva para eventos y showrooms.</p>
+<p>Integramos hardware especializado, servidores de render y controladores personalizados para una experiencia impecable.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Instalaciones holográficas inmersivas.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: IA -->
+    <item>
+        <title>IA</title>
+        <link>https://animaavataragency.com/ia/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>5</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>ia</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Desarrollamos asistentes virtuales, automatizaciones creativas y flujos inteligentes que potencian tus campañas.</p>
+<p>Con modelos personalizados, datasets curados y dashboards interpretables, llevamos la IA a tus experiencias digitales.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Soluciones de inteligencia artificial aplicadas a marketing y experiencias.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: VR -->
+    <item>
+        <title>VR</title>
+        <link>https://animaavataragency.com/vr/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>6</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>vr</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Construimos experiencias de realidad virtual a medida: onboarding gamificado, formación técnica y activaciones inmersivas.</p>
+<p>Nuestro enfoque cubre concepto, desarrollo, QA multi-dispositivo y despliegue administrado.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Entornos VR para formación, marketing y entretenimiento.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Anima World -->
+    <item>
+        <title>Anima World</title>
+        <link>https://animaavataragency.com/anima-world/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>7</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>anima-world</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Explora nuestro hub inmersivo Anima World, un espacio virtual donde mostramos laboratorios XR, estudios IA y workshops híbridos.</p>
+<p>Accede a demos, librerías de assets y experimentos colaborativos listos para personalizar.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Hub inmersivo con demos XR e IA.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Cursos -->
+    <item>
+        <title>Cursos</title>
+        <link>https://animaavataragency.com/cursos/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>8</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>cursos</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Descubre nuestro catálogo de cursos para profesionales que buscan dominar XR, IA aplicada y producción inmersiva.</p>
+<p>Todos los programas combinan sesiones prácticas, mentoría y acceso a recursos exclusivos.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Formación especializada para experiencias inmersivas.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Proyectos -->
+    <item>
+        <title>Proyectos</title>
+        <link>https://animaavataragency.com/proyectos/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>9</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>proyectos</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Revisa algunos de nuestros proyectos recientes y conoce cómo ayudamos a marcas visionarias a construir experiencias memorables.</p>
+<p>Cada caso incluye métricas clave, tecnologías empleadas y aprendizajes listos para aplicar en tu iniciativa.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Casos de éxito en streaming, IA, hologramas y VR.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Blog -->
+    <item>
+        <title>Blog</title>
+        <link>https://animaavataragency.com/blog/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>10</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>blog</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Insights, guías y tendencias sobre producción inmersiva, IA creativa y estrategias híbridas para marcas.</p>
+<p>Suscríbete a nuestra newsletter para recibir actualizaciones semanales.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Novedades y tendencias del universo Anima.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Página: Contacto -->
+    <item>
+        <title>Contacto</title>
+        <link>https://animaavataragency.com/contacto/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>11</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>contacto</wp:post_name>
+        <content:encoded><![CDATA[
+<p>¿Listo para imaginar tu próximo proyecto? Escríbenos a <a href="mailto:hola@animaavataragency.com">hola@animaavataragency.com</a> o completa el formulario para un diagnóstico personalizado.</p>
+<p>También puedes agendar una demo virtual en Anima World.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Pon en marcha tu próxima experiencia creativa.]]></excerpt:encoded>
+        <wp:postmeta>
+            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Entrada de Blog 1 -->
+    <item>
+        <title>Tecnologías de Streaming en 2025</title>
+        <link>https://animaavataragency.com/blog/tecnologias-streaming-2025/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>12</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>tecnologias-streaming-2025</wp:post_name>
+        <content:encoded><![CDATA[
+<p>El mundo del streaming evoluciona rápidamente. En 2025 veremos plataformas más interactivas, menor latencia y nuevas oportunidades para eventos híbridos.</p>
+<p>En Anima incorporamos estas tendencias con producción multicámara, capas interactivas y analítica avanzada para medir engagement en vivo.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Tendencias en plataformas de streaming y experiencias híbridas.]]></excerpt:encoded>
+    </item>
+
+    <!-- Entrada de Blog 2 -->
+    <item>
+        <title>Realidad Virtual: Tendencias para empresas</title>
+        <link>https://animaavataragency.com/blog/realidad-virtual-tendencias-empresas/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>13</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>realidad-virtual-tendencias-empresas</wp:post_name>
+        <content:encoded><![CDATA[
+<p>La realidad virtual se consolida como herramienta empresarial para capacitación, marketing inmersivo y colaboración distribuida.</p>
+<p>Compartimos casos de uso donde la VR aporta valor tangible y recomendaciones para integrarla en tu organización.</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Cómo la VR transforma la capacitación y el marketing corporativo.]]></excerpt:encoded>
+    </item>
+
+    <!-- Curso 1 -->
+    <item>
+        <title>Curso Básico de Realidad Virtual</title>
+        <link>https://animaavataragency.com/curso/curso-basico-de-realidad-virtual/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>14</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>curso</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>curso-basico-de-realidad-virtual</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Domina los fundamentos de la realidad virtual, conoce los principales dispositivos y crea tu primera experiencia inmersiva.</p>
+<p><strong>Duración:</strong> 10 horas (online en directo)<br />
+<strong>Precio:</strong> 200&nbsp;€</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Fundamentos de VR para principiantes.]]></excerpt:encoded>
+        <category domain="nivel" nicename="inicial"><![CDATA[Inicial]]></category>
+        <category domain="modalidad" nicename="directo"><![CDATA[Directo]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_duration_hours</wp:meta_key>
+            <wp:meta_value><![CDATA[10]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_price</wp:meta_key>
+            <wp:meta_value><![CDATA[200]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_requirements</wp:meta_key>
+            <wp:meta_value><![CDATA[<p>No se requieren conocimientos previos, solo curiosidad por la VR.</p>]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_syllabus</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"title";s:16:"Introducción XR";s:7:"lessons";a:2:{i:0;s:18:"Panorama tecnológico";i:1;s:20:"Dispositivos y flujos";}}i:1;a:2:{s:5:"title";s:23:"Taller práctico VR";s:7:"lessons";a:2:{i:0;s:24:"Diseño de experiencias";i:1;s:19:"Publicación del demo";}}}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_instructors</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;a:3:{s:4:"name";s:13:"Laura Méndez";s:3:"bio";s:81:"Productora XR con 8 años de experiencia en formación inmersiva para empresas.";s:10:"avatar_url";s:52:"https://via.placeholder.com/200.png?text=Laura+Mendez";}}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_upcoming_dates</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;s:19:"2026-01-15T18:00:00";i:1;s:19:"2026-03-12T18:00:00";}]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Curso 2 -->
+    <item>
+        <title>Curso Avanzado de IA Aplicada</title>
+        <link>https://animaavataragency.com/curso/curso-avanzado-de-ia-aplicada/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>15</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>curso</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>curso-avanzado-de-ia-aplicada</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Curso intensivo orientado a profesionales que quieren implementar IA en casos reales de marketing, data analytics y automatización.</p>
+<p><strong>Duración:</strong> 20 horas (formato blended)<br />
+<strong>Precio:</strong> 500&nbsp;€</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Técnicas avanzadas de IA para proyectos reales.]]></excerpt:encoded>
+        <category domain="nivel" nicename="avanzado"><![CDATA[Avanzado]]></category>
+        <category domain="modalidad" nicename="blended"><![CDATA[Blended]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_duration_hours</wp:meta_key>
+            <wp:meta_value><![CDATA[20]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_price</wp:meta_key>
+            <wp:meta_value><![CDATA[500]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_requirements</wp:meta_key>
+            <wp:meta_value><![CDATA[<p>Conocimientos intermedios de analítica de datos o programación.</p>]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_syllabus</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"title";s:21:"Fundamentos avanzados";s:7:"lessons";a:2:{i:0;s:21:"Arquitecturas modernas";i:1;s:26:"Evaluación y métricas éticas";}}i:1;a:2:{s:5:"title";s:24:"Implementación aplicada";s:7:"lessons";a:2:{i:0;s:27:"Pipelines de datos reales";i:1;s:24:"Despliegue y monitoreo";}}}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_instructors</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:3:{s:4:"name";s:13:"Diego Álvarez";s:3:"bio";s:82:"Lead scientist especializado en modelos generativos y automatización creativa.";s:10:"avatar_url";s:50:"https://via.placeholder.com/200.png?text=Diego+AI";}i:1;a:3:{s:4:"name";s:14:"Sofía Moreira";s:3:"bio";s:88:"Estratega digital que integra IA en campañas para empresas internacionales.";s:10:"avatar_url";s:52:"https://via.placeholder.com/200.png?text=Sofia+IA";}}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_upcoming_dates</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:19:"2026-02-20T17:00:00";}]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Proyecto 1 -->
+    <item>
+        <title>Proyecto Plataforma de Streaming</title>
+        <link>https://animaavataragency.com/proyecto/proyecto-plataforma-streaming/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>16</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_status>publish</wp:post_status>
+        <wp:post_name>proyecto-plataforma-streaming</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Implementación de una plataforma de streaming en vivo para conferencias internacionales, con producción multicámara, traducción simultánea y overlays interactivos.</p>
+<p><strong>Cliente:</strong> GlobalStream<br />
+<strong>Año:</strong> 2024</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Plataforma de streaming en vivo para eventos globales.]]></excerpt:encoded>
+        <category domain="servicio" nicename="streaming"><![CDATA[Streaming]]></category>
         <wp:postmeta>
             <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Orbital Labs]]></wp:meta_value>
+            <wp:meta_value><![CDATA[GlobalStream]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Mayo 2024]]></wp:meta_value>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[Metaverso, Streaming volumétrico]]></wp:meta_value>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;s:7:"WebRTC";i:1;s:6:"AWS IVS";}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[+140% engagement, 2.3M sesiones]]></wp:meta_value>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:26:"Audiencia concurrente máxima";s:5:"value";s:8:"85.000";}i:1;a:2:{s:5:"label";s:18:"Tasa de retención";s:5:"value";s:6:"92%";}}]]></wp:meta_value>
         </wp:postmeta>
-        <category domain="stack" nicename="threejs"><![CDATA[Three.js]]></category>
-        <category domain="stack" nicename="webrtc"><![CDATA[WebRTC]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://player.vimeo.com/video/123456789]]></wp:meta_value>
+        </wp:postmeta>
     </item>
 
+    <!-- Proyecto 2 -->
     <item>
-        <title>Gemelo Digital Ciudad Anima</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-04-01 10:00:00</wp:post_date>
+        <title>Proyecto Holograma Interactivo</title>
+        <link>https://animaavataragency.com/proyecto/proyecto-holograma-interactivo/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>17</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>proyecto</wp:post_type>
         <wp:post_status>publish</wp:post_status>
-        <wp:post_name>gemelo-digital-ciudad</wp:post_name>
-        <content:encoded><![CDATA[<p>Gemelo digital urbano con sensores IoT y dashboards en tiempo real.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[IoT + gemelo digital.]]></excerpt:encoded>
+        <wp:post_name>proyecto-holograma-interactivo</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Instalación de una cabina holográfica interactiva para feria tecnológica con respuesta en tiempo real impulsada por IA conversacional.</p>
+<p><strong>Cliente:</strong> Tech Expo Inc.<br />
+<strong>Año:</strong> 2023</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Cabina holográfica interactiva para ferias tecnológicas.]]></excerpt:encoded>
+        <category domain="servicio" nicename="holograficos"><![CDATA[Holográficos]]></category>
         <wp:postmeta>
             <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Ciudad Futura]]></wp:meta_value>
+            <wp:meta_value><![CDATA[Tech Expo Inc.]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Abril 2024]]></wp:meta_value>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2023]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[IoT, Visualización 3D, Analítica]]></wp:meta_value>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;s:12:"Volumetricos";i:1;s:2:"AI";}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[-22% consumo energético, +18% movilidad]]></wp:meta_value>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:18:"Personas impactadas";s:5:"value";s:6:"12.500";}i:1;a:2:{s:5:"label";s:19:"Tiempo medio de uso";s:5:"value";s:9:"4.5 minutos";}}]]></wp:meta_value>
         </wp:postmeta>
-        <category domain="stack" nicename="iot"><![CDATA[IoT]]></category>
-        <category domain="stack" nicename="aws"><![CDATA[AWS]]></category>
     </item>
 
+    <!-- Proyecto 3 -->
     <item>
-        <title>AI Studio para marcas visionarias</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-03-15 09:00:00</wp:post_date>
+        <title>Proyecto Asistente Virtual IA</title>
+        <link>https://animaavataragency.com/proyecto/proyecto-asistente-virtual-ia/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>18</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>proyecto</wp:post_type>
         <wp:post_status>publish</wp:post_status>
-        <wp:post_name>ai-studio</wp:post_name>
-        <content:encoded><![CDATA[<p>Plataforma de co-creación asistida por IA con pipelines meshopt y render real-time.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[IA creativa en tiempo real.]]></excerpt:encoded>
+        <wp:post_name>proyecto-asistente-virtual-ia</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Desarrollo de un asistente virtual inteligente para la web de una empresa financiera con orquestación omnicanal.</p>
+<p><strong>Cliente:</strong> FinTech Solutions<br />
+<strong>Año:</strong> 2025</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Chatbot inteligente para web corporativa financiera.]]></excerpt:encoded>
+        <category domain="servicio" nicename="ia"><![CDATA[IA]]></category>
         <wp:postmeta>
             <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Neon Collective]]></wp:meta_value>
+            <wp:meta_value><![CDATA[FinTech Solutions]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Marzo 2024]]></wp:meta_value>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2025]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[Inteligencia artificial, Pipelines meshopt]]></wp:meta_value>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;s:9:"OpenAI API";i:1;s:6:"NextJS";}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[98% satisfacción creativa]]></wp:meta_value>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:27:"Reducción de tickets manuales";s:5:"value";s:6:"-45%";}i:1;a:2:{s:5:"label";s:23:"Satisfacción de usuarios";s:5:"value";s:5:"4.7/5";}}]]></wp:meta_value>
         </wp:postmeta>
-        <category domain="stack" nicename="ai"><![CDATA[Inteligencia Artificial]]></category>
-        <category domain="stack" nicename="meshopt"><![CDATA[meshopt]]></category>
     </item>
 
+    <!-- Proyecto 4 -->
     <item>
-        <title>Diseño conversacional para mundos virtuales</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-03-10 09:00:00</wp:post_date>
+        <title>Proyecto Plataforma VR</title>
+        <link>https://animaavataragency.com/proyecto/proyecto-plataforma-vr/</link>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <wp:post_id>19</wp:post_id>
+        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:post_type>proyecto</wp:post_type>
         <wp:post_status>publish</wp:post_status>
-        <wp:post_name>diseno-conversacional</wp:post_name>
-        <content:encoded><![CDATA[<p>Cómo diseñar experiencias conversacionales dentro de entornos inmersivos.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Conversaciones en XR.]]></excerpt:encoded>
-        <category domain="category" nicename="innovacion"><![CDATA[Innovación]]></category>
-    </item>
-
-    <item>
-        <title>KPIs para medir mundos 3D</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-02-05 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>kpis-mundos-3d</wp:post_name>
-        <content:encoded><![CDATA[<p>Guía para medir engagement, retención y conversión en experiencias 3D.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Métricas para 3D.]]></excerpt:encoded>
-        <category domain="category" nicename="datos"><![CDATA[Datos]]></category>
-    </item>
-
-    <item>
-        <title>Workflow WebP + AVIF para equipos distribuidos</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-01-12 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>workflow-imagenes-nextgen</wp:post_name>
-        <content:encoded><![CDATA[<p>Implementa un pipeline híbrido de optimización de imágenes con WebP y AVIF.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Pipeline WebP/AVIF.]]></excerpt:encoded>
-        <category domain="category" nicename="rendimiento"><![CDATA[Rendimiento]]></category>
+        <wp:post_name>proyecto-plataforma-vr</wp:post_name>
+        <content:encoded><![CDATA[
+<p>Creación de un entorno VR multiusuario para capacitación en seguridad laboral con seguimiento de progreso y analítica.</p>
+<p><strong>Cliente:</strong> SafeWork Co.<br />
+<strong>Año:</strong> 2024</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Entorno VR multiusuario para formación en seguridad.]]></excerpt:encoded>
+        <category domain="servicio" nicename="vr"><![CDATA[VR]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[SafeWork Co.]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;s:6:"Unity3D";i:1;s:11:"Photon Cloud";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:26:"Reducción de incidentes";s:5:"value";s:5:"-30%";}i:1;a:2:{s:5:"label";s:25:"Usuarios certificados";s:5:"value";s:4:"950";}}]]></wp:meta_value>
+        </wp:postmeta>
     </item>
 </channel>
 </rss>
