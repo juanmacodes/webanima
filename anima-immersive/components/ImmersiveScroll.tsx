@@ -1,15 +1,31 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
+
+export type Hotspot = {
+  id: string;
+  /** Posiciones opcionales si las usas para anclar algo en 2D/3D */
+  x?: number;
+  y?: number;
+};
 
 export type Chapter = {
   id: string;
   title: string;
-  /** etiqueta pequeña encima del título (opcional) */
+  /** Etiqueta pequeña opcional */
   eyebrow?: string;
-  /** texto descriptivo (opcional) */
+  /** Texto descriptivo opcional */
   description?: string;
-  /** contenido adicional renderizable (opcional) */
+
+  /** CTA opcionales */
+  ctaLabel?: string;
+  ctaHref?: string;
+
+  /** Punto interactivo opcional */
+  hotspot?: Hotspot;
+
+  /** Contenido adicional opcional */
   content?: React.ReactNode;
 };
 
@@ -26,6 +42,7 @@ const ImmersiveScroll: React.FC<Props> = ({ chapters, className }) => {
           <article
             key={ch.id}
             className="rounded-2xl border border-white/10 bg-background/40 p-8"
+            data-hotspot-id={ch.hotspot?.id}
           >
             {ch.eyebrow ? (
               <span className="text-xs uppercase tracking-[0.3em] text-secondary">
@@ -41,6 +58,14 @@ const ImmersiveScroll: React.FC<Props> = ({ chapters, className }) => {
 
             {ch.content ? (
               <div className="prose prose-invert mt-4">{ch.content}</div>
+            ) : null}
+
+            {ch.ctaHref && ch.ctaLabel ? (
+              <div className="mt-6">
+                <Link href={ch.ctaHref} className="button-primary">
+                  {ch.ctaLabel}
+                </Link>
+              </div>
             ) : null}
           </article>
         ))}
