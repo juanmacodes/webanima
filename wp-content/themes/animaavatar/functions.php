@@ -1,80 +1,124 @@
 <?php
 /**
- * functions.php - Configuraciones y funciones principales del tema animaavatar
+ * Funciones principales del tema animaavatar.
  */
 
-if ( ! function_exists( 'anima_setup_theme' ) ) {
-    function anima_setup_theme() {
-        // Soporte básico de WordPress
-        add_theme_support( 'title-tag' );                  // Manejo dinámico del <title>
-        add_theme_support( 'post-thumbnails' );            // Imágenes destacadas en posts y CPT
-        add_theme_support( 'custom-logo' );                // Soporte para logo personalizado
-        add_theme_support( 'menus' );                      // Soporte para menús de navegación
-        add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption' ) ); // HTML5 markup
-        add_theme_support( 'dark-mode' );                  // *Placeholder:* soporte para modo oscuro (personalizado via CSS)
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
-        // Soporte para WooCommerce (tienda)
+if ( ! function_exists( 'animaavatar_theme_setup' ) ) {
+    function animaavatar_theme_setup() {
+        add_theme_support( 'title-tag' );
+        add_theme_support( 'automatic-feed-links' );
+        add_theme_support( 'post-thumbnails' );
+        set_post_thumbnail_size( 1280, 720, true );
+        add_theme_support( 'custom-logo', array(
+            'height'      => 120,
+            'width'       => 120,
+            'flex-height' => true,
+            'flex-width'  => true,
+        ) );
+        add_theme_support( 'html5', array( 'search-form', 'comment-list', 'comment-form', 'gallery', 'caption', 'style', 'script' ) );
+        add_theme_support( 'align-wide' );
+        add_theme_support( 'responsive-embeds' );
+        add_theme_support( 'customize-selective-refresh-widgets' );
+        add_theme_support( 'editor-styles' );
+
+        // Compatibilidad con constructores y plugins clave.
+        add_theme_support( 'elementor-pro/theme-builder' );
         add_theme_support( 'woocommerce' );
-        // Soporte para características de galería de productos WooCommerce:
         add_theme_support( 'wc-product-gallery-zoom' );
         add_theme_support( 'wc-product-gallery-lightbox' );
         add_theme_support( 'wc-product-gallery-slider' );
+        add_theme_support( 'buddypress-use-nouveau-template-pack' );
 
-        // Registrar ubicaciones de menú
         register_nav_menus( array(
             'main-menu'   => __( 'Menú principal', 'animaavatar' ),
-            //'footer-menu' => __( 'Menú footer', 'animaavatar' ), // opción de menú secundario
+            'footer-menu' => __( 'Menú del pie de página', 'animaavatar' ),
         ) );
 
-        // Soporte para Elementor – asegura que las secciones de Elementor puedan ser de ancho completo
-        // (Elementor automáticamente añade clases, pero podemos declarar soporte explícito si es requerido).
-        //add_theme_support( 'elementor' ); // Elementor normalmente no requiere un add_theme_support explícito
+        add_editor_style( 'style.css' );
     }
 }
-add_action( 'after_setup_theme', 'anima_setup_theme' );
+add_action( 'after_setup_theme', 'animaavatar_theme_setup' );
 
-// Encolar estilos y scripts del tema
-function anima_enqueue_assets() {
-    // CSS principal del tema (style.css) - ya se enlaza automáticamente, pero reiteramos en cola por claridad:
-    wp_enqueue_style( 'anima-style', get_stylesheet_uri(), array(), '1.0', 'all' );
+if ( ! function_exists( 'animaavatar_asset_version' ) ) {
+    function animaavatar_asset_version( $relative_path ) {
+        $path = get_template_directory() . '/' . ltrim( $relative_path, '/' );
 
-    // Encolar biblioteca Swiper.js (slider) desde CDN con defer (placeholder: se puede empaquetar localmente si se prefiere)
-    wp_enqueue_style( 'anima-swiper-css', 'https://unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8.0' );
-    wp_enqueue_script( 'anima-swiper-js', 'https://unpkg.com/swiper@8/swiper-bundle.min.js', array(), '8.0', true );
-    // Marcar el script de Swiper para que cargue con defer
-    wp_script_add_data( 'anima-swiper-js', 'defer', true );
+        if ( file_exists( $path ) ) {
+            return filemtime( $path );
+        }
 
-    // Script JS principal del tema
-    wp_enqueue_script( 'anima-main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true );
-    // Marcar el script principal con defer
-    wp_script_add_data( 'anima-main-js', 'defer', true );
+        return wp_get_theme()->get( 'Version' );
+    }
 }
-add_action( 'wp_enqueue_scripts', 'anima_enqueue_assets' );
 
-// Pre-cargar tipografía personalizada en la cabecera (placeholder: ruta a fuente local o Google Fonts)
-function anima_preload_fonts() {
-    // Ejemplo de preloading de una fuente local "CustomFont.woff2" ubicada en /assets/fonts/
-    ?>
-    <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/fonts/CustomFont.woff2" as="font" type="font/woff2" crossorigin>
-    <?php
-}
-add_action( 'wp_head', 'anima_preload_fonts' );
+if ( ! function_exists( 'animaavatar_enqueue_assets' ) ) {
+    function animaavatar_enqueue_assets() {
+        $theme_version = wp_get_theme()->get( 'Version' );
 
-// WooCommerce: integrar wrappers de contenido para ajustar al tema
-function anima_woocommerce_wrapper_start() {
-    echo '<main id="main" class="site-main container">';  // abre contenedor principal acorde al tema
+        wp_enqueue_style( 'animaavatar-swiper', 'https://cdn.jsdelivr.net/npm/swiper@9.4.1/swiper-bundle.min.css', array(), '9.4.1' );
+        wp_enqueue_style( 'animaavatar-style', get_stylesheet_uri(), array( 'animaavatar-swiper' ), $theme_version );
+
+        wp_enqueue_script( 'animaavatar-swiper', 'https://cdn.jsdelivr.net/npm/swiper@9.4.1/swiper-bundle.min.js', array(), '9.4.1', true );
+        wp_script_add_data( 'animaavatar-swiper', 'defer', true );
+
+        wp_enqueue_script( 'animaavatar-main', get_template_directory_uri() . '/assets/js/main.js', array(), animaavatar_asset_version( 'assets/js/main.js' ), true );
+        wp_script_add_data( 'animaavatar-main', 'defer', true );
+    }
 }
-function anima_woocommerce_wrapper_end() {
+add_action( 'wp_enqueue_scripts', 'animaavatar_enqueue_assets' );
+
+if ( ! function_exists( 'animaavatar_preload_fonts' ) ) {
+    function animaavatar_preload_fonts() {
+        ?>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/files/inter-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <?php
+    }
+}
+add_action( 'wp_head', 'animaavatar_preload_fonts', 1 );
+
+if ( ! function_exists( 'animaavatar_register_elementor_locations' ) ) {
+    function animaavatar_register_elementor_locations( $elementor_theme_manager ) {
+        if ( method_exists( $elementor_theme_manager, 'register_all_core_location' ) ) {
+            $elementor_theme_manager->register_all_core_location();
+        }
+    }
+}
+add_action( 'elementor/theme/register_locations', 'animaavatar_register_elementor_locations' );
+
+function animaavatar_woocommerce_wrapper_start() {
+    echo '<main id="main-content" class="site-main container">';
+}
+
+function animaavatar_woocommerce_wrapper_end() {
     echo '</main>';
 }
-// Eliminar wrappers por defecto de WooCommerce
+
 add_action( 'after_setup_theme', function() {
     remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
     remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-});
-add_action( 'woocommerce_before_main_content', 'anima_woocommerce_wrapper_start', 10 );
-add_action( 'woocommerce_after_main_content', 'anima_woocommerce_wrapper_end', 10 );
+} );
+add_action( 'woocommerce_before_main_content', 'animaavatar_woocommerce_wrapper_start', 10 );
+add_action( 'woocommerce_after_main_content', 'animaavatar_woocommerce_wrapper_end', 10 );
 
-// TODO: Integración futura con BuddyPress o wpDiscuz (ejemplo: soporte de plantillas o hooks de actividad/comentarios)
-// (No se implementa aquí porque depende de la instalación de esos plugins, pero se deja preparado)
-// TODO: Integración futura con WPGraphQL (por ejemplo, exponiendo datos del tema si fuese necesario en entorno headless)
+// Preparación para futuras integraciones con BuddyPress.
+add_action( 'bp_after_setup_theme', function() {
+    add_theme_support( 'buddypress-use-nouveau-template-pack' );
+} );
+
+if ( ! function_exists( 'animaavatar_fallback_menu' ) ) {
+    function animaavatar_fallback_menu() {
+        echo '<ul class="menu menu--fallback reset-list">';
+        wp_list_pages( array(
+            'title_li' => '',
+            'depth'    => 1,
+        ) );
+        echo '</ul>';
+    }
+}

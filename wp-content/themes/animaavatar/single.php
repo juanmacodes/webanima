@@ -1,78 +1,92 @@
 <?php get_header(); ?>
 
-<main id="main" class="site-main container">
-<?php if ( have_posts() ) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <h1><?php the_title(); ?></h1>
+<main id="main-content" class="site-main container" role="main">
+<?php if ( have_posts() ) :
+    while ( have_posts() ) :
+        the_post();
+        ?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class( 'entry entry--single' ); ?>>
+            <header class="entry-header">
+                <h1 class="entry-title"><?php the_title(); ?></h1>
 
-        <?php if ( get_post_type() == 'post' ) : ?>
-            <!-- Meta info para entradas de blog -->
-            <div class="post-meta">
-                <span class="author">Por <?php the_author(); ?></span> |
-                <span class="date"><?php the_time( get_option('date_format') ); ?></span> |
-                <span class="categories"><?php the_category(', '); ?></span>
-            </div>
-        <?php else : ?>
-            <!-- Meta info para Custom Post Types (curso, avatar, proyecto, experiencia) -->
-            <div class="cpt-meta">
-                <?php 
-                // Mostrar taxonomías relevantes si existen
-                $taxonomies = array('nivel', 'tecnologia', 'modalidad');
-                foreach( $taxonomies as $tax ) {
-                    if ( taxonomy_exists($tax) && has_term('', $tax) ) {
-                        echo '<div class="tax-' . esc_attr($tax) . '">';
-                        echo '<strong>' . esc_html( ucfirst($tax) ) . ':</strong> ';
-                        echo get_the_term_list( get_the_ID(), $tax, '', ', ', '' );
-                        echo '</div>';
-                    }
-                }
-                ?>
-                <?php 
-                // Mostrar campos personalizados (meta) si existen
-                $fields = array(
-                    'anima_instructores' => 'Instructores',
-                    'anima_duracion'    => 'Duración',
-                    'anima_dificultad'  => 'Dificultad',
-                    'anima_kpis'        => 'KPIs',
-                    'anima_url_demo'    => 'Demo URL'
-                );
-                echo '<ul class="cpt-fields">';
-                foreach( $fields as $meta_key => $label ) {
-                    $value = get_post_meta( get_the_ID(), $meta_key, true );
-                    if ( !empty($value) ) {
-                        // Si es URL de demo, mostrar como enlace
-                        if ( $meta_key == 'anima_url_demo' ) {
-                            echo '<li><strong>' . esc_html($label) . ':</strong> <a href="' . esc_url($value) . '" target="_blank" rel="noopener">' . esc_html($value) . '</a></li>';
-                        } else {
-                            echo '<li><strong>' . esc_html($label) . ':</strong> ' . esc_html($value) . '</li>';
+                <?php if ( 'post' === get_post_type() ) : ?>
+                    <ul class="entry-meta reset-list">
+                        <li class="entry-meta__item"><?php printf( esc_html__( 'Por %s', 'animaavatar' ), esc_html( get_the_author() ) ); ?></li>
+                        <li class="entry-meta__item"><?php echo esc_html( get_the_date() ); ?></li>
+                        <li class="entry-meta__item"><?php the_category( ', ' ); ?></li>
+                    </ul>
+                <?php else : ?>
+                    <div class="entry-meta entry-meta--cpt">
+                        <?php
+                        $taxonomies = array( 'nivel', 'tecnologia', 'modalidad' );
+                        foreach ( $taxonomies as $tax ) {
+                            if ( taxonomy_exists( $tax ) && has_term( '', $tax ) ) {
+                                echo '<p class="entry-meta__taxonomy"><strong>' . esc_html( ucfirst( $tax ) ) . ':</strong> ' . wp_kses_post( get_the_term_list( get_the_ID(), $tax, '', ', ', '' ) ) . '</p>';
+                            }
                         }
-                    }
+
+                        $fields = array(
+                            'anima_instructores' => __( 'Instructores', 'animaavatar' ),
+                            'anima_duracion'    => __( 'Duración', 'animaavatar' ),
+                            'anima_dificultad'  => __( 'Dificultad', 'animaavatar' ),
+                            'anima_kpis'        => __( 'KPIs', 'animaavatar' ),
+                            'anima_url_demo'    => __( 'Demo', 'animaavatar' ),
+                        );
+
+                        echo '<dl class="entry-meta__details">';
+                        foreach ( $fields as $meta_key => $label ) {
+                            $value = get_post_meta( get_the_ID(), $meta_key, true );
+
+                            if ( empty( $value ) ) {
+                                continue;
+                            }
+
+                            echo '<div class="entry-meta__detail">';
+                            echo '<dt>' . esc_html( $label ) . '</dt>';
+                            if ( 'anima_url_demo' === $meta_key ) {
+                                echo '<dd><a href="' . esc_url( $value ) . '" target="_blank" rel="noopener">' . esc_html( $value ) . '</a></dd>';
+                            } else {
+                                echo '<dd>' . esc_html( $value ) . '</dd>';
+                            }
+                            echo '</div>';
+                        }
+                        echo '</dl>';
+                        ?>
+                    </div>
+                <?php endif; ?>
+            </header>
+
+            <div class="entry-content">
+                <?php
+                if ( has_post_thumbnail() ) {
+                    the_post_thumbnail( 'large', array( 'loading' => 'lazy', 'class' => 'entry-featured-image' ) );
                 }
-                echo '</ul>';
+
+                the_content();
+
+                wp_link_pages( array(
+                    'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Páginas de la entrada', 'animaavatar' ) . '">',
+                    'after'  => '</nav>',
+                ) );
                 ?>
             </div>
-        <?php endif; ?>
 
-        <div class="entry-content">
-            <?php the_content(); ?>
-        </div>
+            <footer class="entry-footer">
+                <?php the_post_navigation( array(
+                    'prev_text' => '<span class="nav-label">&larr; ' . esc_html__( 'Anterior', 'animaavatar' ) . '</span><span class="nav-title">%title</span>',
+                    'next_text' => '<span class="nav-label">' . esc_html__( 'Siguiente', 'animaavatar' ) . ' &rarr;</span><span class="nav-title">%title</span>',
+                ) ); ?>
+            </footer>
 
+            <?php
+            if ( comments_open() || get_comments_number() ) {
+                comments_template();
+            }
+            ?>
+        </article>
         <?php
-        // Enlaces de navegación a siguiente/anterior post (para posts de blog o CPT que estén en algún orden cronológico)
-        the_post_navigation( array(
-            'prev_text' => '&larr; %title',
-            'next_text' => '%title &rarr;',
-        ) );
-        ?>
-
-        <?php 
-        // Si los comentarios están abiertos o hay comentarios, cargar la plantilla de comentarios
-        if ( comments_open() || get_comments_number() ) {
-            comments_template();
-        }
-        ?>
-    </article>
-<?php endif; ?>
+    endwhile;
+endif; ?>
 </main>
 
 <?php get_footer(); ?>
