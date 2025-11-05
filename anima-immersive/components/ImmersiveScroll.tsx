@@ -1,3 +1,4 @@
+// components/ImmersiveScroll.tsx
 'use client';
 
 import Link from 'next/link';
@@ -5,27 +6,27 @@ import React from 'react';
 
 export type Hotspot = {
   id: string;
-  /** Posiciones opcionales si las usas para anclar algo en 2D/3D */
-  x?: number;
-  y?: number;
+  title?: string;
+  description?: string;
+  /** posición 3D opcional [x, y, z] */
+  position?: [number, number, number];
+  actionLabel?: string;
+  href?: string;
 };
 
 export type Chapter = {
   id: string;
   title: string;
-  /** Etiqueta pequeña opcional */
   eyebrow?: string;
-  /** Texto descriptivo opcional */
   description?: string;
 
   /** CTA opcionales */
   ctaLabel?: string;
   ctaHref?: string;
 
-  /** Punto interactivo opcional */
+  /** Hotspot opcional */
   hotspot?: Hotspot;
 
-  /** Contenido adicional opcional */
   content?: React.ReactNode;
 };
 
@@ -45,26 +46,44 @@ const ImmersiveScroll: React.FC<Props> = ({ chapters, className }) => {
             data-hotspot-id={ch.hotspot?.id}
           >
             {ch.eyebrow ? (
-              <span className="text-xs uppercase tracking-[0.3em] text-secondary">
-                {ch.eyebrow}
-              </span>
+              <span className="text-xs uppercase tracking-[0.3em] text-secondary">{ch.eyebrow}</span>
             ) : null}
 
             <h2 className="mt-2 text-2xl font-semibold">{ch.title}</h2>
 
-            {ch.description ? (
-              <p className="mt-3 text-foreground/70">{ch.description}</p>
+            {ch.description ? <p className="mt-3 text-foreground/70">{ch.description}</p> : null}
+
+            {ch.content ? <div className="prose prose-invert mt-4">{ch.content}</div> : null}
+
+            {(ch.ctaHref && ch.ctaLabel) || ch.hotspot ? (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                {ch.ctaHref && ch.ctaLabel ? (
+                  <Link href={ch.ctaHref} className="button-primary">
+                    {ch.ctaLabel}
+                  </Link>
+                ) : null}
+
+                {ch.hotspot && ch.hotspot.href && (
+                  <Link href={ch.hotspot.href} className="button-secondary">
+                    {ch.hotspot.actionLabel ?? 'Ver más'}
+                  </Link>
+                )}
+              </div>
             ) : null}
 
-            {ch.content ? (
-              <div className="prose prose-invert mt-4">{ch.content}</div>
-            ) : null}
-
-            {ch.ctaHref && ch.ctaLabel ? (
-              <div className="mt-6">
-                <Link href={ch.ctaHref} className="button-primary">
-                  {ch.ctaLabel}
-                </Link>
+            {ch.hotspot?.title || ch.hotspot?.description ? (
+              <div className="mt-3 text-sm text-foreground/60">
+                {ch.hotspot?.title && <strong>{ch.hotspot.title}</strong>}
+                {ch.hotspot?.description && (
+                  <p className="mt-1">
+                    {ch.hotspot.description}
+                    {ch.hotspot?.position && (
+                      <span className="ml-2 opacity-70">
+                        ({ch.hotspot.position.join(', ')})
+                      </span>
+                    )}
+                  </p>
+                )}
               </div>
             ) : null}
           </article>
