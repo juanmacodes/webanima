@@ -16,3 +16,4 @@ define( 'ANIMA_CORE_PATH', plugin_dir_path( __FILE__ ) );
 require_once ANIMA_CORE_PATH . 'includes/cpt.php';
 require_once ANIMA_CORE_PATH . 'includes/meta.php';
 require_once ANIMA_CORE_PATH . 'includes/rest.php';
+require_once ANIMA_CORE_PATH . 'includes/admin-demo-importer.php';
