@@ -3,16 +3,16 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
-// Carga cliente, sin SSR (evita errores de prerender).
-const ExperienceCanvas = dynamic(
-  () => import('../../components/Experience').then((m) => m.Experience),
-  { ssr: false }
-);
+// Importa el default del componente cliente, sin .then(...)
+const ExperienceCanvas = dynamic(() => import('../../components/Experience'), {
+  ssr: false,
+  loading: () => <div className="h-full w-full bg-black/20" />,
+});
 
 export const metadata: Metadata = {
   title: 'Cabinas holográficas',
   description:
-    'Alquila cabinas holográficas y proyectores volumétricos para eventos, retail y activaciones con avatares en tiempo real.'
+    'Alquila cabinas holográficas y proyectores volumétricos para eventos, retail y activaciones con avatares en tiempo real.',
 };
 
 const PRODUCT_JSONLD = {
@@ -26,8 +26,8 @@ const PRODUCT_JSONLD = {
     priceCurrency: 'EUR',
     lowPrice: '1200',
     highPrice: '8900',
-    availability: 'https://schema.org/InStock'
-  }
+    availability: 'https://schema.org/InStock',
+  },
 };
 
 export default function HolograficosPage() {
@@ -49,16 +49,17 @@ export default function HolograficosPage() {
             Ofrecemos distintos tamaños, flight-case, sensores y opciones de
             interacción. Integración con Unreal, web y redes sociales.
           </p>
+
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
                 {
                   id: 'setup',
                   title: 'Montaje rápido',
-                  description: '2 técnicos · &lt; 90 min',
+                  description: '2 técnicos · < 90 min',
                   actionLabel: 'Detalles',
-                  href: '/proyectos'
-                }
+                  href: '/proyectos',
+                },
               ]}
             />
           </div>
