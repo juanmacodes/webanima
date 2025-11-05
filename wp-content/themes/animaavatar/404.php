@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-<main id="main" class="site-main container">
-    <section class="error-404">
-        <h1>404 - Página no encontrada</h1>
-        <p>Lo sentimos, no podemos encontrar la página que buscas.</p>
-        <p><a href="<?php echo esc_url( home_url('/') ); ?>" class="btn">Volver al inicio</a></p>
-        <p>O intenta buscar lo que necesitas:</p>
-        <?php get_search_form(); // muestra el formulario de búsqueda ?>
+<main id="main-content" class="site-main container" role="main">
+    <section class="error-404" aria-labelledby="error-title">
+        <h1 id="error-title"><?php esc_html_e( '404 - Página no encontrada', 'animaavatar' ); ?></h1>
+        <p><?php esc_html_e( 'Lo sentimos, no podemos encontrar la página que buscas.', 'animaavatar' ); ?></p>
+        <p><a class="cta-3d" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Volver al inicio', 'animaavatar' ); ?></a></p>
+        <p><?php esc_html_e( 'O intenta buscar lo que necesitas:', 'animaavatar' ); ?></p>
+        <?php get_search_form(); ?>
     </section>
 </main>
 

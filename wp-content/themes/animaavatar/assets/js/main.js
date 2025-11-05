@@ -1,42 +1,72 @@
 // assets/js/main.js
 
-// Esperar a que el DOM esté listo (por seguridad, aunque con defer debería ejecutarse al final)
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    const primaryNav = document.getElementById('primary-navigation');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-    // 1. Inicializar slider Swiper (si la librería está cargada)
-    if (typeof Swiper !== 'undefined') {
-        new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: { delay: 5000 },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+    if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+            primaryNav.classList.toggle('is-active', !isExpanded);
+        });
+
+        primaryNav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                primaryNav.classList.remove('is-active');
+            });
         });
     }
 
-    // 2. Animaciones al hacer scroll: IntersectionObserver para elementos con .animate-on-scroll
-    const animateElems = document.querySelectorAll('.animate-on-scroll');
-    if ( 'IntersectionObserver' in window && animateElems.length > 0 ) {
-        let observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
+    const translate = (text, domain) => {
+        if (window.wp && window.wp.i18n && typeof window.wp.i18n.__ === 'function') {
+            return window.wp.i18n.__(text, domain);
+        }
+        return text;
+    };
+
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.hero-slider', {
+            loop: true,
+            speed: 700,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            a11y: {
+                enabled: true,
+                prevSlideMessage: translate('Slide anterior', 'animaavatar'),
+                nextSlideMessage: translate('Slide siguiente', 'animaavatar'),
+            },
+        });
+    }
+
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    if ('IntersectionObserver' in window && animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // dejar de observar una vez animado
+                    obs.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
-        animateElems.forEach(el => observer.observe(el));
+
+        animatedElements.forEach((element) => observer.observe(element));
     } else {
-        // Fallback: si el navegador no soporta IntersectionObserver, mostrar todo directamente
-        animateElems.forEach(el => el.classList.add('visible'));
+        animatedElements.forEach((element) => element.classList.add('visible'));
     }
-
-    // 3. (Opcional) Toggle Dark Mode - placeholder si se quisiera un botón para modo oscuro
-    const toggleBtn = document.getElementById('dark-mode-toggle');
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            // Se podría guardar preferencia en localStorage para persistir entre visitas
-        });
-    }
-
 });
