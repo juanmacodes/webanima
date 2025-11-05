@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "bash bin/fetch_assets.sh"
+    "postinstall": "bash bin/fetch_assets.sh || true"
   },
   "dependencies": {
     "@react-three/drei": "^9.88.6",
