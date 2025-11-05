@@ -3,9 +3,10 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
-const ExperienceCanvas = dynamic(() => import('../../components/Experience').then((mod) => mod.Experience), {
-  ssr: false
-});
+const ExperienceCanvas = dynamic(
+  () => import('../../components/Experience').then((m) => m.Experience),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: 'Streaming volumétrico',
@@ -18,10 +19,7 @@ const SERVICE_JSONLD = {
   '@type': 'Service',
   name: 'Streaming volumétrico',
   serviceType: 'Live volumetric streaming',
-  provider: {
-    '@type': 'Organization',
-    name: 'Anima Avatar Agency'
-  },
+  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' },
   areaServed: 'Global'
 };
 
@@ -31,23 +29,19 @@ export default function StreamingPage() {
       <SharedSection
         eyebrow="Streaming volumétrico"
         headline="Escenarios volumétricos en vivo"
-        description="Produce conciertos, keynotes y shows multi cámara con captura volumétrica y distribución global optimizada para cualquier dispositivo."
+        description="Produce conciertos, keynotes y shows multicámara con captura volumétrica y distribución global optimizada."
         cta={
           <>
-            <a className="button-primary" href="/proyectos">
-              Casos de éxito
-            </a>
-            <a className="button-ghost" href="/app/anima-live">
-              Conoce Anima Live
-            </a>
+            <a className="button-primary" href="/proyectos">Casos de éxito</a>
+            <a className="button-ghost" href="/app/anima-live">Conoce Anima Live</a>
           </>
         }
       >
         <div className="card">
           <p className="text-sm text-foreground/70">
-            Diseña flujos de cámaras volumétricas, mezcla interactiva y overlays generados por IA. Integra métricas en vivo y
-            comandos OSC para escenarios híbridos.
+            Cámaras volumétricas, overlays generados por IA, métricas en vivo y comandos OSC para escenarios híbridos.
           </p>
+
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
@@ -64,7 +58,12 @@ export default function StreamingPage() {
           </div>
         </div>
       </SharedSection>
-      <Script id="streaming-service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+
+      <Script
+        id="streaming-service-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+      />
     </main>
   );
 }
