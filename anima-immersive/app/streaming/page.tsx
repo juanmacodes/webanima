@@ -4,14 +4,17 @@ import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
 const ExperienceCanvas = dynamic(
-  () => import('../../components/Experience').then((m) => m.Experience),
-  { ssr: false }
+  () => import('../../components/Experience').then((m) => m.default),
+  {
+    ssr: false,
+    loading: () => <div className="h-full w-full bg-black/20" />,
+  }
 );
 
 export const metadata: Metadata = {
   title: 'Streaming volumétrico',
   description:
-    'Producción y distribución de streaming volumétrico en tiempo real con métricas interactivas y monetización integrada.'
+    'Producción y distribución de streaming volumétrico en tiempo real con métricas interactivas y monetización integrada.',
 };
 
 const SERVICE_JSONLD = {
@@ -20,7 +23,7 @@ const SERVICE_JSONLD = {
   name: 'Streaming volumétrico',
   serviceType: 'Live volumetric streaming',
   provider: { '@type': 'Organization', name: 'Anima Avatar Agency' },
-  areaServed: 'Global'
+  areaServed: 'Global',
 };
 
 export default function StreamingPage() {
@@ -42,6 +45,7 @@ export default function StreamingPage() {
             Diseña flujos de cámaras, mezcla interactiva y overlays generados
             por IA. Integra métricas en vivo y comandos OSC para escenarios híbridos.
           </p>
+
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
@@ -50,8 +54,8 @@ export default function StreamingPage() {
                   title: 'Live analytics',
                   description: 'KPIs volumétricos en tiempo real conectados a CRM.',
                   actionLabel: 'Dashboard',
-                  href: '/proyectos'
-                }
+                  href: '/proyectos',
+                },
               ]}
             />
           </div>
