@@ -43,7 +43,7 @@ export default function WorldPage() {
             <div className="flex h-full items-center justify-center text-sm text-foreground/60">Cargando mundo...</div>
           }
         >
-          {/* @ts-expect-error Async Server Component */}
+        
           <WorldCanvas />
         </Suspense>
       </div>
