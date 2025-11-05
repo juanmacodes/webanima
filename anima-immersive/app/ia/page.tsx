@@ -3,9 +3,10 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
-const ExperienceCanvas = dynamic(() => import('../../components/Experience').then((mod) => mod.Experience), {
-  ssr: false
-});
+const ExperienceCanvas = dynamic(
+  () => import('../../components/Experience').then((m) => m.Experience),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: 'Inteligencia artificial inmersiva',
@@ -18,10 +19,7 @@ const SERVICE_JSONLD = {
   '@type': 'Service',
   name: 'Experiencias con inteligencia artificial',
   serviceType: 'AI driven immersive design',
-  provider: {
-    '@type': 'Organization',
-    name: 'Anima Avatar Agency'
-  }
+  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' }
 };
 
 export default function IAPage() {
@@ -33,19 +31,16 @@ export default function IAPage() {
         description="Orquesta pipelines de IA generativa, simulaciones de agentes y asistentes volumétricos conectados a tus APIs."
         cta={
           <>
-            <a className="button-primary" href="/historias">
-              Leer historias
-            </a>
-            <a className="button-ghost" href="/cursos">
-              Cursos de IA inmersiva
-            </a>
+            <a className="button-primary" href="/historias">Leer historias</a>
+            <a className="button-ghost" href="/cursos">Cursos de IA inmersiva</a>
           </>
         }
       >
         <div className="card">
           <p className="text-sm text-foreground/70">
-            Combina modelos de lenguaje, visión y audio con controladores físicos. Diseña NPCs con personalidad, experimentos de
-            I+D y experiencias autogeneradas basadas en contexto.
+            Combina modelos de lenguaje, visión y audio con controladores
+            físicos. Diseña NPCs con personalidad, I+D y experiencias
+            autogeneradas basadas en contexto.
           </p>
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
@@ -54,7 +49,6 @@ export default function IAPage() {
                   id: 'agents',
                   title: 'AI Agents',
                   description: 'Agentes autónomos con memoria y control de escena.',
-                  position: [0.8, 1.4, 1],
                   actionLabel: 'Ver flujo',
                   href: '/cursos'
                 }
@@ -63,7 +57,12 @@ export default function IAPage() {
           </div>
         </div>
       </SharedSection>
-      <Script id="ia-service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+
+      <Script
+        id="ia-service-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+      />
     </main>
   );
 }
