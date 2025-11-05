@@ -1,0 +1,46 @@
+<?php
+namespace Anima\Engine;
+
+use Anima\Engine\Admin\OptionsPage;
+use Anima\Engine\Api\RestApi;
+use Anima\Engine\Metaboxes\RegisterMetaboxes;
+use Anima\Engine\PostTypes\RegisterPostTypes;
+use Anima\Engine\Services\CacheInvalidator;
+use Anima\Engine\Services\ServiceInterface;
+use Anima\Engine\Shortcodes\Shortcodes;
+use Anima\Engine\Taxonomies\RegisterTaxonomies;
+
+/**
+ * Clase principal del plugin.
+ */
+class Plugin {
+    /**
+     * Lista de servicios registrados.
+     *
+     * @var array<int, ServiceInterface>
+     */
+    protected array $services = [];
+
+    /**
+     * Inicializa el plugin.
+     */
+    public function init(): void {
+        $this->services = [
+            new RegisterPostTypes(),
+            new RegisterTaxonomies(),
+            new RegisterMetaboxes(),
+            new Shortcodes(),
+            new RestApi(),
+            new OptionsPage(),
+            new CacheInvalidator(),
+        ];
+
+        foreach ( $this->services as $service ) {
+            if ( $service instanceof ServiceInterface ) {
+                $service->register();
+            }
+        }
+
+        do_action( 'anima_engine_initialized', $this );
+    }
+}

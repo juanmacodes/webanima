@@ -1,124 +1,164 @@
 <?php
 /**
- * Funciones principales del tema animaavatar.
+ * Funciones del tema Anima Avatar
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+define( 'ANIMAAVATAR_VERSION', '1.0.0' );
+
+action_hook_setup();
+
+/**
+ * Configura soportes del tema.
+ */
+function action_hook_setup() {
+    add_action( 'after_setup_theme', 'animaavatar_setup' );
+    add_action( 'after_setup_theme', 'animaavatar_content_width', 0 );
+    add_action( 'wp_enqueue_scripts', 'animaavatar_enqueue_assets' );
+    add_action( 'wp_head', 'animaavatar_preload_fonts', 1 );
+    add_action( 'wp_head', 'animaavatar_print_critical_css', 5 );
+    add_filter( 'nav_menu_link_attributes', 'animaavatar_aria_current', 10, 3 );
 }
 
-if ( ! function_exists( 'animaavatar_theme_setup' ) ) {
-    function animaavatar_theme_setup() {
-        add_theme_support( 'title-tag' );
-        add_theme_support( 'automatic-feed-links' );
-        add_theme_support( 'post-thumbnails' );
-        set_post_thumbnail_size( 1280, 720, true );
-        add_theme_support( 'custom-logo', array(
-            'height'      => 120,
-            'width'       => 120,
-            'flex-height' => true,
-            'flex-width'  => true,
-        ) );
-        add_theme_support( 'html5', array( 'search-form', 'comment-list', 'comment-form', 'gallery', 'caption', 'style', 'script' ) );
-        add_theme_support( 'align-wide' );
-        add_theme_support( 'responsive-embeds' );
-        add_theme_support( 'customize-selective-refresh-widgets' );
-        add_theme_support( 'editor-styles' );
+/**
+ * Inicializa opciones básicas del tema.
+ */
+function animaavatar_setup() {
+    load_theme_textdomain( 'animaavatar', get_template_directory() . '/languages' );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'custom-logo', [
+        'height'      => 120,
+        'width'       => 320,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ] );
+    add_theme_support( 'html5', [
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+        'style',
+        'script',
+    ] );
+    add_theme_support( 'woocommerce' );
 
-        // Compatibilidad con constructores y plugins clave.
-        add_theme_support( 'elementor-pro/theme-builder' );
-        add_theme_support( 'woocommerce' );
-        add_theme_support( 'wc-product-gallery-zoom' );
-        add_theme_support( 'wc-product-gallery-lightbox' );
-        add_theme_support( 'wc-product-gallery-slider' );
-        add_theme_support( 'buddypress-use-nouveau-template-pack' );
+    register_nav_menus( [
+        'main-menu' => __( 'Menú principal', 'animaavatar' ),
+    ] );
+}
 
-        register_nav_menus( array(
-            'main-menu'   => __( 'Menú principal', 'animaavatar' ),
-            'footer-menu' => __( 'Menú del pie de página', 'animaavatar' ),
-        ) );
+/**
+ * Define el ancho de contenido para embeds.
+ */
+function animaavatar_content_width() {
+    $GLOBALS['content_width'] = apply_filters( 'animaavatar_content_width', 800 );
+}
 
-        add_editor_style( 'style.css' );
+/**
+ * Encola estilos y scripts del tema.
+ */
+function animaavatar_enqueue_assets() {
+    $theme = wp_get_theme();
+
+    wp_enqueue_style(
+        'animaavatar-fonts',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rajdhani:wght@500;700&display=swap',
+        [],
+        null
+    );
+
+    wp_enqueue_style(
+        'animaavatar-utilities',
+        get_template_directory_uri() . '/assets/css/utilities.css',
+        [],
+        ANIMAAVATAR_VERSION
+    );
+
+    wp_enqueue_style(
+        'animaavatar-style',
+        get_stylesheet_uri(),
+        [ 'animaavatar-utilities' ],
+        $theme->get( 'Version' )
+    );
+
+    if ( is_front_page() ) {
+        wp_enqueue_style(
+            'swiper',
+            'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css',
+            [],
+            '9.4.1'
+        );
+
+        wp_enqueue_script(
+            'swiper',
+            'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js',
+            [],
+            '9.4.1',
+            true
+        );
+        wp_script_add_data( 'swiper', 'defer', true );
     }
+
+    wp_enqueue_script(
+        'animaavatar-main',
+        get_template_directory_uri() . '/assets/js/main.js',
+        [],
+        ANIMAAVATAR_VERSION,
+        true
+    );
+
+    wp_script_add_data( 'animaavatar-main', 'defer', true );
 }
-add_action( 'after_setup_theme', 'animaavatar_theme_setup' );
 
-if ( ! function_exists( 'animaavatar_asset_version' ) ) {
-    function animaavatar_asset_version( $relative_path ) {
-        $path = get_template_directory() . '/' . ltrim( $relative_path, '/' );
+/**
+ * Preload de fuentes críticas.
+ */
+function animaavatar_preload_fonts() {
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/rajdhani/v17/LDI2apCSOBgSBmjxlS8.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrKc4bCk9G2T-j.woff2" />
+    <?php
+}
 
-        if ( file_exists( $path ) ) {
-            return filemtime( $path );
-        }
+/**
+ * CSS crítico mínimo para evitar FOUC.
+ */
+function animaavatar_print_critical_css() {
+    ?>
+    <style>
+        body {background:#050510;color:#f5f7ff;margin:0;font-family:'Inter','Segoe UI',sans-serif;}
+        .site-header {position:sticky;top:0;backdrop-filter:blur(12px);}
+        a:focus-visible {outline:3px solid #2fd4ff;outline-offset:4px;}
+    </style>
+    <?php
+}
 
-        return wp_get_theme()->get( 'Version' );
+/**
+ * Añade aria-current al enlace activo.
+ */
+function animaavatar_aria_current( $atts, $item, $args ) {
+    if ( isset( $args->theme_location ) && 'main-menu' === $args->theme_location && in_array( 'current-menu-item', $item->classes, true ) ) {
+        $atts['aria-current'] = 'page';
     }
+
+    return $atts;
 }
 
-if ( ! function_exists( 'animaavatar_enqueue_assets' ) ) {
-    function animaavatar_enqueue_assets() {
-        $theme_version = wp_get_theme()->get( 'Version' );
 
-        wp_enqueue_style( 'animaavatar-swiper', 'https://cdn.jsdelivr.net/npm/swiper@9.4.1/swiper-bundle.min.css', array(), '9.4.1' );
-        wp_enqueue_style( 'animaavatar-style', get_stylesheet_uri(), array( 'animaavatar-swiper' ), $theme_version );
-
-        wp_enqueue_script( 'animaavatar-swiper', 'https://cdn.jsdelivr.net/npm/swiper@9.4.1/swiper-bundle.min.js', array(), '9.4.1', true );
-        wp_script_add_data( 'animaavatar-swiper', 'defer', true );
-
-        wp_enqueue_script( 'animaavatar-main', get_template_directory_uri() . '/assets/js/main.js', array(), animaavatar_asset_version( 'assets/js/main.js' ), true );
-        wp_script_add_data( 'animaavatar-main', 'defer', true );
-    }
-}
-add_action( 'wp_enqueue_scripts', 'animaavatar_enqueue_assets' );
-
-if ( ! function_exists( 'animaavatar_preload_fonts' ) ) {
-    function animaavatar_preload_fonts() {
-        ?>
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk/files/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/inter/files/inter-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-        <?php
-    }
-}
-add_action( 'wp_head', 'animaavatar_preload_fonts', 1 );
-
-if ( ! function_exists( 'animaavatar_register_elementor_locations' ) ) {
-    function animaavatar_register_elementor_locations( $elementor_theme_manager ) {
-        if ( method_exists( $elementor_theme_manager, 'register_all_core_location' ) ) {
-            $elementor_theme_manager->register_all_core_location();
-        }
-    }
-}
-add_action( 'elementor/theme/register_locations', 'animaavatar_register_elementor_locations' );
-
-function animaavatar_woocommerce_wrapper_start() {
-    echo '<main id="main-content" class="site-main container">';
-}
-
-function animaavatar_woocommerce_wrapper_end() {
-    echo '</main>';
-}
-
-add_action( 'after_setup_theme', function() {
-    remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-    remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-} );
-add_action( 'woocommerce_before_main_content', 'animaavatar_woocommerce_wrapper_start', 10 );
-add_action( 'woocommerce_after_main_content', 'animaavatar_woocommerce_wrapper_end', 10 );
-
-// Preparación para futuras integraciones con BuddyPress.
-add_action( 'bp_after_setup_theme', function() {
-    add_theme_support( 'buddypress-use-nouveau-template-pack' );
-} );
-
-if ( ! function_exists( 'animaavatar_fallback_menu' ) ) {
-    function animaavatar_fallback_menu() {
-        echo '<ul class="menu menu--fallback reset-list">';
-        wp_list_pages( array(
+if ( ! function_exists( 'animaavatar_default_menu' ) ) {
+    /**
+     * Menú por defecto cuando no hay menú asignado.
+     */
+    function animaavatar_default_menu() {
+        echo '<ul id="primary-menu" class="primary-menu">';
+        wp_list_pages( [
             'title_li' => '',
-            'depth'    => 1,
-        ) );
+        ] );
         echo '</ul>';
     }
 }
+
