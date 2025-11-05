@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true
-  }
+  // aquí tus otras opciones (images, etc) si las tienes
 };
 
 export default nextConfig;
