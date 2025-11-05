@@ -1,6 +1,13 @@
+// app/page.tsx
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import ImmersiveScroll, { type Chapter } from '../components/ImmersiveScroll';
+
+export const metadata: Metadata = {
+  title: 'Experiencias inmersivas que cuentan historias',
+  description:
+    'Anima Immersive une streaming volumétrico, hologramas, IA y VR en una narrativa cinemática controlada por scroll.',
+};
 
 const CHAPTERS: Chapter[] = [
   {
@@ -17,8 +24,8 @@ const CHAPTERS: Chapter[] = [
       description: 'Panel en vivo para productores y artistas con métricas volumétricas.',
       position: [2, 1.5, -1],
       actionLabel: 'Ver flujo',
-      href: '/streaming'
-    }
+      href: '/streaming',
+    },
   },
   {
     id: 'holographics',
@@ -34,8 +41,8 @@ const CHAPTERS: Chapter[] = [
       description: 'Configura hotspots físicos y flujos de compra conectados con CRM.',
       position: [-1.5, 1.2, 1.5],
       actionLabel: 'Abrir demo',
-      href: '/holograficos'
-    }
+      href: '/holograficos',
+    },
   },
   {
     id: 'ia',
@@ -51,8 +58,8 @@ const CHAPTERS: Chapter[] = [
       description: 'Orquesta modelos de lenguaje, visión y audio desde un mismo canvas.',
       position: [0, 2, 0],
       actionLabel: 'Ver casos',
-      href: '/ia'
-    }
+      href: '/ia',
+    },
   },
   {
     id: 'vr',
@@ -68,16 +75,10 @@ const CHAPTERS: Chapter[] = [
       description: 'Escenario multiusuario con spatial audio y sincronización de avatares.',
       position: [-2, 1.8, -2],
       actionLabel: 'Entrar al stage',
-      href: '/vr'
-    }
-  }
+      href: '/vr',
+    },
+  },
 ];
-
-export const metadata: Metadata = {
-  title: 'Experiencias inmersivas que cuentan historias',
-  description:
-    'Anima Immersive une streaming volumétrico, hologramas, IA y VR en una narrativa cinemática controlada por scroll.'
-};
 
 const SERVICE_JSONLD = {
   '@context': 'https://schema.org',
@@ -85,17 +86,21 @@ const SERVICE_JSONLD = {
   name: 'Producción de experiencias inmersivas',
   provider: {
     '@type': 'Organization',
-    name: 'Anima Avatar Agency'
+    name: 'Anima Avatar Agency',
   },
   areaServed: 'Global',
-  serviceType: ['Streaming volumétrico', 'Hologramas', 'Inteligencia artificial', 'Realidad virtual']
+  serviceType: ['Streaming volumétrico', 'Hologramas', 'Inteligencia artificial', 'Realidad virtual'],
 };
 
 export default function Page() {
   return (
     <main className="relative min-h-screen">
       <ImmersiveScroll chapters={CHAPTERS} />
-      <Script id="service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+      <Script
+        id="service-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+      />
     </main>
   );
 }
