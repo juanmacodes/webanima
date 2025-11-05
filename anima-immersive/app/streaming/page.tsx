@@ -1,72 +1,32 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Script from 'next/script';
-import { SharedSection } from '../../components/SharedSection';
-
-const ExperienceCanvas = dynamic(
-  () => import('../../components/Experience').then((m) => m.default),
-  {
-    ssr: false,
-    loading: () => <div className="h-full w-full bg-black/20" />,
-  }
-);
 
 export const metadata: Metadata = {
-  title: 'Streaming volumétrico',
+  title: 'Streaming de Avatares',
   description:
-    'Producción y distribución de streaming volumétrico en tiempo real con métricas interactivas y monetización integrada.',
+    'Avatares en vivo para Twitch/TikTok/YouTube con lip-sync y eventos.',
 };
 
-const SERVICE_JSONLD = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Streaming volumétrico',
-  serviceType: 'Live volumetric streaming',
-  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' },
-  areaServed: 'Global',
-};
+const ExperienceCanvas = dynamic(() => import('../../components/Experience'), {
+  ssr: false,
+  loading: () => <div className="h-[60vh] w-full bg-black/20" />,
+});
 
 export default function StreamingPage() {
   return (
-    <main className="pt-32">
-      <SharedSection
-        eyebrow="Streaming volumétrico"
-        headline="Escenarios volumétricos en vivo"
-        description="Produce conciertos, keynotes y shows multi cámara con captura volumétrica y distribución global optimizada."
-        cta={
-          <>
-            <a className="button-primary" href="/proyectos">Casos de éxito</a>
-            <a className="button-ghost" href="/app/anima-live">Conoce Anima Live</a>
-          </>
-        }
-      >
-        <div className="card">
-          <p className="text-sm text-foreground/70">
-            Diseña flujos de cámaras, mezcla interactiva y overlays generados
-            por IA. Integra métricas en vivo y comandos OSC para escenarios híbridos.
+    <main className="pt-28">
+      <section className="mx-auto w-full max-w-5xl px-6">
+        <header className="text-center">
+          <h1 className="text-4xl font-semibold md:text-6xl">Streaming de Avatares</h1>
+          <p className="mt-4 text-base text-foreground/70">
+            Render del canvas sólo en cliente (Next dynamic import).
           </p>
+        </header>
 
-          <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
-            <ExperienceCanvas
-              hotspots={[
-                {
-                  id: 'analytics',
-                  title: 'Live analytics',
-                  description: 'KPIs volumétricos en tiempo real conectados a CRM.',
-                  actionLabel: 'Dashboard',
-                  href: '/proyectos',
-                },
-              ]}
-            />
-          </div>
+        <div className="mt-10">
+          <ExperienceCanvas />
         </div>
-      </SharedSection>
-
-      <Script
-        id="streaming-service-jsonld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
-      />
+      </section>
     </main>
   );
 }
