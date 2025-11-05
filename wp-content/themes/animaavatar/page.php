@@ -1,28 +1,22 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Plantilla para páginas
+ *
+ * @package AnimaAvatar
+ */
 
-<main id="main-content" class="site-main container" role="main">
-<?php if ( have_posts() ) :
-    while ( have_posts() ) :
-        the_post();
-        ?>
-        <article id="page-<?php the_ID(); ?>" <?php post_class( 'page-entry' ); ?>>
-            <header class="page-header">
-                <h1 class="page-title"><?php the_title(); ?></h1>
-            </header>
-            <div class="page-content">
-                <?php the_content(); ?>
-                <?php wp_link_pages( array(
-                    'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Páginas de la entrada', 'animaavatar' ) . '">',
-                    'after'  => '</nav>',
-                ) ); ?>
-            </div>
-        </article>
-        <?php
-        if ( comments_open() || get_comments_number() ) {
-            comments_template();
-        }
-    endwhile;
-endif; ?>
-</main>
-
-<?php get_footer(); ?>
+global $post;
+get_header();
+?>
+<section class="section container">
+    <article id="post-<?php the_ID(); ?>" <?php post_class( 'card animate-on-scroll' ); ?>>
+        <header>
+            <h1 class="section__title"><?php the_title(); ?></h1>
+        </header>
+        <div class="entry-content">
+            <?php the_content(); ?>
+        </div>
+    </article>
+</section>
+<?php
+get_footer();

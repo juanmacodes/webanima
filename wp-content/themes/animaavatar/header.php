@@ -1,23 +1,24 @@
 <?php
 /**
- * Cabecera del tema: define la estructura semántica del encabezado y navegación principal.
+ * Cabecera del tema
+ *
+ * @package AnimaAvatar
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php wp_head(); ?>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php wp_head(); ?>
 </head>
-<body <?php body_class( 'theme-animaavatar' ); ?>>
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a class="skip-link screen-reader-text" href="#main-content"><?php esc_html_e( 'Saltar al contenido principal', 'animaavatar' ); ?></a>
-
+<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Saltar al contenido', 'animaavatar' ); ?></a>
 <header class="site-header" role="banner">
-    <div class="container header-inner">
+    <div class="container flex flex-between">
         <div class="site-branding">
-            <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
-                <?php the_custom_logo(); ?>
+            <?php if ( has_custom_logo() ) : ?>
+                <div class="logo"><?php the_custom_logo(); ?></div>
             <?php else : ?>
                 <a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <?php bloginfo( 'name' ); ?>
@@ -25,22 +26,28 @@
                 <p class="site-description"><?php bloginfo( 'description' ); ?></p>
             <?php endif; ?>
         </div>
-
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
-            <span class="menu-toggle__icon" aria-hidden="true"></span>
-            <span class="menu-toggle__label"><?php esc_html_e( 'Menú', 'animaavatar' ); ?></span>
-        </button>
-
-        <nav id="primary-navigation" class="main-nav" aria-label="<?php esc_attr_e( 'Menú principal', 'animaavatar' ); ?>">
+        <nav class="site-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Menú principal', 'animaavatar' ); ?>">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">
+                <span class="screen-reader-text"><?php esc_html_e( 'Abrir menú', 'animaavatar' ); ?></span>
+                &#9776;
+            </button>
             <?php
-            wp_nav_menu( array(
+            wp_nav_menu( [
                 'theme_location' => 'main-menu',
-                'container'      => false,
-                'menu_class'     => 'menu menu--primary reset-list',
-                'fallback_cb'    => 'animaavatar_fallback_menu',
-                'depth'          => 2,
-            ) );
+                'menu_id'        => 'primary-menu',
+                'menu_class'     => 'primary-menu',
+                'container'      => 'div',
+                'container_class'=> 'primary-menu-container',
+                'container_id'   => 'primary-menu-container',
+                'fallback_cb'    => 'animaavatar_default_menu',
+            ] );
             ?>
         </nav>
+        <div class="header-cta">
+            <a class="button" href="<?php echo esc_url( home_url( '/experiencia-inmersiva' ) ); ?>">
+                <?php esc_html_e( 'Experiencia 3D', 'animaavatar' ); ?>
+            </a>
+        </div>
     </div>
 </header>
+<main id="content" class="site-main" role="main">

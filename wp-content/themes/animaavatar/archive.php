@@ -1,49 +1,43 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Plantilla para archivos
+ *
+ * @package AnimaAvatar
+ */
 
-<main id="main-content" class="site-main container" role="main">
-    <header class="archive-header">
-        <h1 class="archive-title"><?php the_archive_title(); ?></h1>
-        <?php
-        $archive_description = get_the_archive_description();
-        if ( $archive_description ) :
-            ?>
-            <div class="archive-description"><?php echo wp_kses_post( wpautop( $archive_description ) ); ?></div>
+global $post;
+get_header();
+?>
+<section class="section container">
+    <header class="section__header">
+        <h1 class="section__title"><?php the_archive_title(); ?></h1>
+        <?php if ( get_the_archive_description() ) : ?>
+            <p class="muted"><?php echo wp_kses_post( get_the_archive_description() ); ?></p>
         <?php endif; ?>
     </header>
-
     <?php if ( have_posts() ) : ?>
-        <div class="archive-posts">
-            <?php
-            while ( have_posts() ) :
-                the_post();
-                ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-card animate-on-scroll' ); ?>>
-                    <div class="archive-card__media">
-                        <?php if ( has_post_thumbnail() ) : ?>
-                            <a href="<?php the_permalink(); ?>">
-                                <?php the_post_thumbnail( 'medium_large', array( 'loading' => 'lazy' ) ); ?>
-                            </a>
-                        <?php endif; ?>
-                    </div>
-                    <div class="archive-card__body">
-                        <h2 class="archive-card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                        <p class="archive-card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt() ? get_the_excerpt() : get_the_content(), 25, '…' ) ); ?></p>
-                        <a class="archive-card__link" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Leer más', 'animaavatar' ); ?></a>
-                    </div>
+        <div class="post-grid animate-on-scroll">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <article id="post-<?php the_ID(); ?>" <?php post_class( 'card' ); ?>>
+                    <header>
+                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    </header>
+                    <p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 25 ) ); ?></p>
+                    <a class="button" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Leer más', 'animaavatar' ); ?></a>
                 </article>
-                <?php
-            endwhile;
-            ?>
+            <?php endwhile; ?>
         </div>
-
-        <?php the_posts_pagination( array(
-            'prev_text' => esc_html__( 'Entradas anteriores', 'animaavatar' ),
-            'next_text' => esc_html__( 'Entradas siguientes', 'animaavatar' ),
-            'mid_size'  => 1,
-        ) ); ?>
+        <nav class="pagination" aria-label="<?php esc_attr_e( 'Paginación de archivos', 'animaavatar' ); ?>">
+            <?php
+            the_posts_pagination( [
+                'prev_text' => esc_html__( 'Anterior', 'animaavatar' ),
+                'next_text' => esc_html__( 'Siguiente', 'animaavatar' ),
+            ] );
+            ?>
+        </nav>
     <?php else : ?>
-        <p><?php esc_html_e( 'No hay entradas disponibles en esta sección.', 'animaavatar' ); ?></p>
+        <p><?php esc_html_e( 'No encontramos publicaciones en este archivo.', 'animaavatar' ); ?></p>
     <?php endif; ?>
-</main>
-
-<?php get_footer(); ?>
+</section>
+<?php
+get_footer();
