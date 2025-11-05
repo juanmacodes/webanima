@@ -4,14 +4,17 @@ import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
 const ExperienceCanvas = dynamic(
-  () => import('../../components/Experience').then((m) => m.Experience),
-  { ssr: false }
+  () => import('../../components/Experience').then((m) => m.default),
+  {
+    ssr: false,
+    loading: () => <div className="h-full w-full bg-black/20" />,
+  }
 );
 
 export const metadata: Metadata = {
   title: 'Inteligencia artificial inmersiva',
   description:
-    'Diseña clones digitales, asistentes multimodales y mundos generados por IA conectados a datos en tiempo real.'
+    'Diseña clones digitales, asistentes multimodales y mundos generados por IA conectados a datos en tiempo real.',
 };
 
 const SERVICE_JSONLD = {
@@ -19,7 +22,7 @@ const SERVICE_JSONLD = {
   '@type': 'Service',
   name: 'Experiencias con inteligencia artificial',
   serviceType: 'AI driven immersive design',
-  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' }
+  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' },
 };
 
 export default function IAPage() {
@@ -42,6 +45,7 @@ export default function IAPage() {
             físicos. Diseña NPCs con personalidad, I+D y experiencias
             autogeneradas basadas en contexto.
           </p>
+
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
@@ -50,8 +54,8 @@ export default function IAPage() {
                   title: 'AI Agents',
                   description: 'Agentes autónomos con memoria y control de escena.',
                   actionLabel: 'Ver flujo',
-                  href: '/cursos'
-                }
+                  href: '/cursos',
+                },
               ]}
             />
           </div>
