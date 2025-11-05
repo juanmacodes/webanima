@@ -3,24 +3,31 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
+// Carga cliente, sin SSR (evita errores de prerender).
 const ExperienceCanvas = dynamic(
   () => import('../../components/Experience').then((m) => m.Experience),
   { ssr: false }
 );
 
 export const metadata: Metadata = {
-  title: 'Cabinas y escenarios holográficos',
+  title: 'Cabinas holográficas',
   description:
-    'Instalaciones holográficas para eventos, retail y museografía. Avatares en vivo, tele-presencia y contenidos volumétricos.'
+    'Alquila cabinas holográficas y proyectores volumétricos para eventos, retail y activaciones con avatares en tiempo real.'
 };
 
-const SERVICE_JSONLD = {
+const PRODUCT_JSONLD = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Cabinas holográficas',
-  serviceType: 'Holographic booth / Holostage',
-  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' },
-  areaServed: 'EU • LATAM'
+  '@type': 'Product',
+  name: 'Cabina holográfica',
+  brand: { '@type': 'Organization', name: 'Anima Avatar Agency' },
+  category: 'EventRental',
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'EUR',
+    lowPrice: '1200',
+    highPrice: '8900',
+    availability: 'https://schema.org/InStock'
+  }
 };
 
 export default function HolograficosPage() {
@@ -28,30 +35,28 @@ export default function HolograficosPage() {
     <main className="pt-32">
       <SharedSection
         eyebrow="Holográficos"
-        headline="Cabinas y holostages listos para tu evento"
-        description="Tele-presencia, keynotes y activaciones retail con avatares en tiempo real. Producción llave en mano."
+        headline="Cabinas holográficas listas para eventos"
+        description="Despliegue rápido, control remoto y contenidos interactivos. Compatible con avatares y streaming volumétrico."
         cta={
           <>
-            <a className="button-primary" href="/proyectos">Ver montajes</a>
-            <a className="button-ghost" href="/contacto">Pedir demo</a>
+            <a className="button-primary" href="/contacto">Solicitar presupuesto</a>
+            <a className="button-ghost" href="/proyectos">Ver proyectos</a>
           </>
         }
       >
         <div className="card">
           <p className="text-sm text-foreground/70">
-            Cabinas plug-and-play, integración con Unreal/Unity, control por OSC/MIDI y gráficos en vivo sincronizados con
-            CRM/analytics.
+            Ofrecemos distintos tamaños, flight-case, sensores y opciones de
+            interacción. Integración con Unreal, web y redes sociales.
           </p>
-
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
                 {
-                  id: 'booth',
-                  title: 'Holo-booth',
-                  description: 'Cabina 2×3 m con set de cámara y key inteligente.',
-                  position: [1.1, 1.2, -1.0],
-                  actionLabel: 'Ficha técnica',
+                  id: 'setup',
+                  title: 'Montaje rápido',
+                  description: '2 técnicos · &lt; 90 min',
+                  actionLabel: 'Detalles',
                   href: '/proyectos'
                 }
               ]}
@@ -61,9 +66,9 @@ export default function HolograficosPage() {
       </SharedSection>
 
       <Script
-        id="holographic-service-jsonld"
+        id="holo-product-jsonld"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_JSONLD) }}
       />
     </main>
   );
