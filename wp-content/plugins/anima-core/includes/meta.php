@@ -1,6 +1,11 @@
 <?php
 
-function anima_core_meta_fields() {
+/**
+ * Return the list of editable meta fields for the project CPT.
+ *
+ * @return array<string, string>
+ */
+function anima_core_meta_fields(): array {
     return [
         'client'   => __( 'Cliente', 'anima-core' ),
         'date'     => __( 'Fecha', 'anima-core' ),
@@ -9,18 +14,30 @@ function anima_core_meta_fields() {
     ];
 }
 
-add_action( 'add_meta_boxes', function () {
-    add_meta_box(
-        'anima-project-details',
-        __( 'Detalles del proyecto', 'anima-core' ),
-        'anima_core_render_meta_box',
-        'project',
-        'normal',
-        'default'
-    );
-} );
+add_action(
+    'add_meta_boxes',
+    static function ( string $post_type ): void {
+        if ( 'project' !== $post_type ) {
+            return;
+        }
 
-function anima_core_render_meta_box( $post ) {
+        add_meta_box(
+            'anima-project-details',
+            __( 'Detalles del proyecto', 'anima-core' ),
+            'anima_core_render_meta_box',
+            'project',
+            'normal',
+            'default'
+        );
+    },
+    10,
+    1
+);
+
+/**
+ * Render the project meta box.
+ */
+function anima_core_render_meta_box( \WP_Post $post ): void {
     wp_nonce_field( 'anima_core_save_meta', 'anima_core_nonce' );
     echo '<div class="anima-core-meta">';
     foreach ( anima_core_meta_fields() as $key => $label ) {
@@ -35,22 +52,35 @@ function anima_core_render_meta_box( $post ) {
     echo '</div>';
 }
 
-add_action( 'save_post_project', function ( $post_id ) {
-    if ( ! isset( $_POST['anima_core_nonce'] ) || ! wp_verify_nonce( $_POST['anima_core_nonce'], 'anima_core_save_meta' ) ) {
-        return;
-    }
+add_action(
+    'save_post_project',
+    static function ( int $post_id ): void {
+        if ( ! isset( $_POST['anima_core_nonce'] ) ) {
+            return;
+        }
 
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-        return;
-    }
+        $nonce = sanitize_text_field( wp_unslash( $_POST['anima_core_nonce'] ) );
 
-    if ( ! current_user_can( 'edit_post', $post_id ) ) {
-        return;
-    }
+        if ( ! wp_verify_nonce( $nonce, 'anima_core_save_meta' ) ) {
+            return;
+        }
 
-    foreach ( anima_core_meta_fields() as $key => $label ) {
-        if ( isset( $_POST[ "anima_{$key}" ] ) ) {
-            update_post_meta( $post_id, "anima_{$key}", sanitize_text_field( wp_unslash( $_POST[ "anima_{$key}" ] ) ) );
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+            return;
+        }
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+
+        foreach ( anima_core_meta_fields() as $key => $label ) {
+            if ( isset( $_POST[ "anima_{$key}" ] ) ) {
+                update_post_meta(
+                    $post_id,
+                    "anima_{$key}",
+                    sanitize_text_field( wp_unslash( $_POST[ "anima_{$key}" ] ) )
+                );
+            }
         }
     }
-} );
+);
