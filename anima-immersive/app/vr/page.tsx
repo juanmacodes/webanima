@@ -3,9 +3,10 @@ import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { SharedSection } from '../../components/SharedSection';
 
-const ExperienceCanvas = dynamic(() => import('../../components/Experience').then((mod) => mod.Experience), {
-  ssr: false
-});
+const ExperienceCanvas = dynamic(
+  () => import('../../components/Experience').then((m) => m.Experience),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: 'Realidad virtual multiusuario',
@@ -17,10 +18,7 @@ const SERVICE_JSONLD = {
   '@type': 'Service',
   name: 'Producción de VR multiusuario',
   serviceType: 'Multiuser VR production',
-  provider: {
-    '@type': 'Organization',
-    name: 'Anima Avatar Agency'
-  }
+  provider: { '@type': 'Organization', name: 'Anima Avatar Agency' }
 };
 
 export default function VRPage() {
@@ -29,23 +27,19 @@ export default function VRPage() {
       <SharedSection
         eyebrow="Realidad virtual"
         headline="Shows y training VR sincronizados"
-        description="Escenarios multiusuario con audio espacial, interacción háptica y monitoreo en vivo para eventos, onboarding y training."
+        description="Espacios multiusuario con audio espacial, interacción háptica y monitoreo en vivo para eventos, onboarding y training."
         cta={
           <>
-            <a className="button-primary" href="/proyectos">
-              Casos VR
-            </a>
-            <a className="button-ghost" href="/world">
-              Explorar World
-            </a>
+            <a className="button-primary" href="/proyectos">Casos VR</a>
+            <a className="button-ghost" href="/world">Explorar World</a>
           </>
         }
       >
         <div className="card">
           <p className="text-sm text-foreground/70">
-            Monta cross-play entre VR, desktop y mobile con servidores de estado sincronizados. Integra networking WebRTC,
-            Spatial Audio y analítica en vivo para medir engagement.
+            Cross-play entre VR, desktop y mobile con servidores de estado sincronizados (WebRTC, Spatial Audio y KPIs de engagement).
           </p>
+
           <div className="mt-6 h-64 overflow-hidden rounded-3xl border border-white/10">
             <ExperienceCanvas
               hotspots={[
@@ -62,7 +56,12 @@ export default function VRPage() {
           </div>
         </div>
       </SharedSection>
-      <Script id="vr-service-jsonld" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+
+      <Script
+        id="vr-service-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }}
+      />
     </main>
   );
 }
