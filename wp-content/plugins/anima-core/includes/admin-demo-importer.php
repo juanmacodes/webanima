@@ -10,15 +10,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Anima_Core_Demo_Importer {
 
     /**
-     * Import demo content from the bundled XML file.
+     * Import demo content from the bundled XML file or a provided path.
      *
+     * @param string|null $import_file Optional absolute path to the XML file to import.
      * @return array<string, mixed> Result array with success flag and stats.
      */
-    public function import(): array {
-        $import_file = apply_filters(
-            'anima_core_demo_import_file',
-            trailingslashit( dirname( WP_CONTENT_DIR ) ) . 'content/demo-content.xml'
-        );
+    public function import( ?string $import_file = null ): array {
+        if ( null === $import_file ) {
+            $import_file = apply_filters(
+                'anima_core_demo_import_file',
+                trailingslashit( dirname( WP_CONTENT_DIR ) ) . 'content/demo-content.xml'
+            );
+        }
 
         if ( ! $import_file || ! file_exists( $import_file ) ) {
             return [
@@ -240,12 +243,63 @@ add_action( 'admin_menu', function () {
                 check_admin_referer( 'anima_demo_import' );
 
                 $importer = new Anima_Core_Demo_Importer();
-                $result   = $importer->import();
+                $file     = null;
+
+                if ( isset( $_FILES['anima_demo_xml'] ) && ! empty( $_FILES['anima_demo_xml']['name'] ) ) {
+                    $upload      = wp_unslash( $_FILES['anima_demo_xml'] );
+                    $upload_code = isset( $upload['error'] ) ? (int) $upload['error'] : UPLOAD_ERR_NO_FILE;
+
+                    if ( UPLOAD_ERR_OK !== $upload_code ) {
+                        switch ( $upload_code ) {
+                            case UPLOAD_ERR_INI_SIZE:
+                            case UPLOAD_ERR_FORM_SIZE:
+                                $message = __( 'El archivo seleccionado excede el tamaño permitido.', 'anima-core' );
+                                break;
+                            case UPLOAD_ERR_PARTIAL:
+                                $message = __( 'La subida del archivo XML no se completó.', 'anima-core' );
+                                break;
+                            default:
+                                $message = __( 'No se pudo subir el archivo XML seleccionado.', 'anima-core' );
+                                break;
+                        }
+
+                        $result = [
+                            'success' => false,
+                            'message' => $message,
+                            'skipped' => [],
+                            'errors'  => [],
+                        ];
+                    } elseif ( empty( $upload['tmp_name'] ) || ! is_uploaded_file( $upload['tmp_name'] ) ) {
+                        $result = [
+                            'success' => false,
+                            'message' => __( 'El archivo XML subido no es válido.', 'anima-core' ),
+                            'skipped' => [],
+                            'errors'  => [],
+                        ];
+                    } else {
+                        $checked = wp_check_filetype_and_ext( $upload['tmp_name'], $upload['name'], [ 'xml' => 'text/xml' ] );
+
+                        if ( empty( $checked['ext'] ) || 'xml' !== $checked['ext'] ) {
+                            $result = [
+                                'success' => false,
+                                'message' => __( 'El archivo seleccionado debe ser un XML de exportación de WordPress.', 'anima-core' ),
+                                'skipped' => [],
+                                'errors'  => [],
+                            ];
+                        } else {
+                            $file = $upload['tmp_name'];
+                        }
+                    }
+                }
+
+                if ( null === $result ) {
+                    $result = $importer->import( $file );
+                }
             }
             ?>
             <div class="wrap">
                 <h1><?php esc_html_e( 'Importar contenido demo de Anima', 'anima-core' ); ?></h1>
-                <p><?php esc_html_e( 'Esta herramienta importa proyectos, entradas y taxonomías de ejemplo incluidos en content/demo-content.xml.', 'anima-core' ); ?></p>
+                <p><?php esc_html_e( 'Esta herramienta importa proyectos, entradas y taxonomías de ejemplo. Puedes usar el archivo incluido en content/demo-content.xml o subir tu propio XML de exportación.', 'anima-core' ); ?></p>
                 <?php if ( is_array( $result ) ) : ?>
                     <div class="notice notice-<?php echo esc_attr( $result['success'] ? 'success' : 'error' ); ?>"><p><?php echo esc_html( $result['message'] ); ?></p></div>
                     <?php if ( ! empty( $result['skipped'] ) ) : ?>
@@ -265,8 +319,17 @@ add_action( 'admin_menu', function () {
                         </ul>
                     <?php endif; ?>
                 <?php endif; ?>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <?php wp_nonce_field( 'anima_demo_import' ); ?>
+                    <table class="form-table" role="presentation">
+                        <tr>
+                            <th scope="row"><label for="anima_demo_xml"><?php esc_html_e( 'Archivo XML', 'anima-core' ); ?></label></th>
+                            <td>
+                                <input type="file" id="anima_demo_xml" name="anima_demo_xml" accept=".xml" />
+                                <p class="description"><?php esc_html_e( 'Selecciona un archivo XML exportado desde WordPress para importar su contenido.', 'anima-core' ); ?></p>
+                            </td>
+                        </tr>
+                    </table>
                     <p class="submit">
                         <button type="submit" class="button button-primary" name="anima_demo_import" value="1">
                             <?php esc_html_e( 'Importar contenido demo', 'anima-core' ); ?>
