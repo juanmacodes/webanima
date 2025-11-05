@@ -1,42 +1,30 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 
-/**
- * Componente interno con el contenido del lienzo 3D.
- * (Separarlo ayuda a que el wrapper pueda manejar Suspense/fallbacks fácilmente)
- */
-function ExperienceImpl() {
-  return (
-    <Canvas className="h-full w-full">
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[1, 2, 3]} intensity={1} />
-      <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="hotpink" />
-      </mesh>
-      <OrbitControls />
-    </Canvas>
-  );
+// Si tienes tu escena real, métela aquí dentro del <Suspense>
+function ExperienceInner() {
+  // ...tu escena three.js (meshes, models, etc.)
+  return null;
 }
 
-/**
- * Export default – imprescindible para que dynamic() sin .then(m => m.algo) funcione
- */
-export default function Experience() {
+/** Componente cliente que pinta el Canvas */
+export function Experience() {
   return (
-    <div className="relative h-[60vh] w-full overflow-hidden rounded-2xl">
-      <Suspense
-        fallback={
-          <div className="flex h-full w-full items-center justify-center text-sm text-foreground/60">
-            Cargando escena 3D…
-          </div>
-        }
-      >
-        <ExperienceImpl />
-      </Suspense>
+    <div className="relative h-[70vh] w-full">
+      <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+        <color attach="background" args={['#030307']} />
+        <ambientLight intensity={0.7} />
+        <Suspense fallback={null}>
+          <ExperienceInner />
+        </Suspense>
+        <OrbitControls enableZoom={false} />
+      </Canvas>
     </div>
   );
 }
+
+// exportamos también como default para quien importe por defecto
+export default Experience;
