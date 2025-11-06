@@ -1,6 +1,7 @@
 <?php
 namespace Anima\Engine\Shortcodes;
 
+use Anima\Engine\Models\Avatar as AvatarModel;
 use Anima\Engine\Services\ServiceInterface;
 
 use const MINUTE_IN_SECONDS;
@@ -14,6 +15,7 @@ use function esc_html__;
 use function esc_url;
 use function esc_url_raw;
 use function get_option;
+use function get_current_user_id;
 use function get_query_var;
 use function get_the_excerpt;
 use function get_the_post_thumbnail;
@@ -32,6 +34,7 @@ use function wp_script_add_data;
 use function wp_register_script;
 use function wp_enqueue_script;
 use function wp_trim_words;
+use function is_user_logged_in;
 use function wp_unslash;
 use function wp_json_encode;
 use function wp_parse_args;
@@ -48,6 +51,11 @@ class Shortcodes implements ServiceInterface {
     protected array $options = [];
 
     /**
+     * Modelo reutilizado para recuperar avatares.
+     */
+    protected ?AvatarModel $avatarModel = null;
+
+    /**
      * {@inheritDoc}
      */
     public function register(): void {
@@ -57,6 +65,7 @@ class Shortcodes implements ServiceInterface {
 
         if ( $this->is_feature_enabled( 'enable_model_viewer' ) ) {
             add_shortcode( 'anima_model', [ $this, 'render_model' ] );
+            add_shortcode( 'anima_user_avatar', [ $this, 'render_user_avatar' ] );
             add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
         }
     }
@@ -349,6 +358,99 @@ class Shortcodes implements ServiceInterface {
          * Permite modificar el marcado final del visor 3D.
          */
         return apply_filters( 'anima_engine_model_viewer_markup', $html, $atts, $config );
+    }
+
+    /**
+     * Renderiza el avatar del usuario autenticado.
+     */
+    public function render_user_avatar( array $atts = [] ): string {
+        if ( ! $this->is_feature_enabled( 'enable_model_viewer' ) ) {
+            return '';
+        }
+
+        if ( ! is_user_logged_in() ) {
+            return '<p>' . esc_html__( 'Debes iniciar sesión para ver tu avatar.', 'anima-engine' ) . '</p>';
+        }
+
+        $user_id = get_current_user_id();
+        if ( $user_id <= 0 ) {
+            return '';
+        }
+
+        $avatar = $this->get_avatar_model()->getByUserId( $user_id );
+
+        if ( empty( $avatar ) || empty( $avatar['glb_url'] ) ) {
+            return '<p>' . esc_html__( 'Aún no has configurado tu avatar.', 'anima-engine' ) . '</p>';
+        }
+
+        wp_enqueue_script( 'anima-model-viewer' );
+        wp_enqueue_script( 'anima-model-viewer-enhancements' );
+
+        $atts = shortcode_atts(
+            [
+                'alt'             => __( 'Mi avatar 3D', 'anima-engine' ),
+                'auto_rotate'     => 'true',
+                'camera_controls' => 'true',
+                'shadow_intensity'=> '0.5',
+                'exposure'        => '1',
+                'class'           => 'anima-user-avatar',
+            ],
+            $atts,
+            'anima_user_avatar'
+        );
+
+        $bool_attrs = [ 'auto_rotate', 'camera_controls' ];
+        foreach ( $bool_attrs as $attr ) {
+            $atts[ $attr ] = filter_var( $atts[ $attr ], \FILTER_VALIDATE_BOOLEAN ) ? 'true' : 'false';
+        }
+
+        $glb    = esc_url( (string) $avatar['glb_url'] );
+        $poster = empty( $avatar['poster_url'] ) ? '' : esc_url( (string) $avatar['poster_url'] );
+
+        $attributes = [
+            'src'              => $glb,
+            'alt'              => esc_attr( $atts['alt'] ),
+            'auto-rotate'      => esc_attr( $atts['auto_rotate'] ),
+            'camera-controls'  => esc_attr( $atts['camera_controls'] ),
+            'shadow-intensity' => esc_attr( $atts['shadow_intensity'] ),
+            'exposure'         => esc_attr( $atts['exposure'] ),
+            'loading'          => 'lazy',
+            'ar'               => 'true',
+            'ar-modes'         => 'scene-viewer quick-look webxr',
+        ];
+
+        if ( $poster ) {
+            $attributes['poster'] = $poster;
+        }
+
+        $attributes = apply_filters( 'anima_engine_user_avatar_attributes', $attributes, $avatar, $atts );
+
+        $additional_classes = array_filter(
+            array_map( 'sanitize_html_class', preg_split( '/\s+/', (string) $atts['class'] ) ?: [] )
+        );
+
+        $classes = array_merge( [ 'anima-model-viewer__element' ], $additional_classes );
+
+        $html  = '<model-viewer';
+        foreach ( $attributes as $name => $value ) {
+            $html .= ' ' . esc_attr( $name ) . '="' . esc_attr( $value ) . '"';
+        }
+        $html .= ' class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+        $html .= '>';
+        $html .= '</model-viewer>';
+
+        return apply_filters( 'anima_engine_user_avatar_markup', $html, $avatar, $atts );
+    }
+
+    /**
+     * Obtiene el modelo reutilizable para los avatares.
+     */
+    protected function get_avatar_model(): AvatarModel {
+        if ( null === $this->avatarModel ) {
+            $this->avatarModel = new AvatarModel();
+        }
+
+        return $this->avatarModel;
     }
 
     /**
