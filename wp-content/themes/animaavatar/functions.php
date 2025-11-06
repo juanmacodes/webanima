@@ -316,3 +316,52 @@ if ( ! function_exists( 'animaavatar_default_menu' ) ) {
     }
 }
 
+add_action( 'comment_form_after_fields', 'animaavatar_render_privacy_consent_field' );
+add_action( 'comment_form_logged_in_after', 'animaavatar_render_privacy_consent_field' );
+
+/**
+ * Devuelve la etiqueta con el enlace a la política de privacidad.
+ */
+function animaavatar_get_privacy_consent_label(): string {
+    $privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_policy_url() : '';
+
+    if ( $privacy_url ) {
+        $link  = sprintf(
+            '<a href="%1$s" target="_blank" rel="noreferrer noopener">%2$s</a>',
+            esc_url( $privacy_url ),
+            esc_html__( 'política de privacidad', 'animaavatar' )
+        );
+        $label = sprintf( __( 'He leído y acepto la %s.', 'animaavatar' ), $link );
+    } else {
+        $label = __( 'Consiento el tratamiento de mis datos personales.', 'animaavatar' );
+    }
+
+    /**
+     * Permite personalizar la etiqueta del consentimiento.
+     */
+    return apply_filters( 'animaavatar_privacy_consent_label', $label, $privacy_url );
+}
+
+/**
+ * Genera el marcado del checkbox de consentimiento.
+ */
+function animaavatar_get_privacy_consent_field_markup(): string {
+    $label  = animaavatar_get_privacy_consent_label();
+    $markup = sprintf(
+        '<label class="anima-form-consent"><input type="checkbox" name="anima_privacy_consent" value="1" required /> %s</label>',
+        wp_kses_post( $label )
+    );
+
+    /**
+     * Permite modificar el HTML del checkbox antes de imprimirse.
+     */
+    return apply_filters( 'animaavatar_privacy_consent_field_markup', $markup, $label );
+}
+
+/**
+ * Imprime el checkbox de consentimiento en formularios compatibles.
+ */
+function animaavatar_render_privacy_consent_field(): void {
+    echo '<p class="comment-form-privacy">' . animaavatar_get_privacy_consent_field_markup() . '</p>';
+}
+

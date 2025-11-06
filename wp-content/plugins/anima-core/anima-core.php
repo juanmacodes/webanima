@@ -20,6 +20,8 @@ require_once ANIMA_CORE_PATH . 'includes/meta-fields.php';
 require_once ANIMA_CORE_PATH . 'includes/shortcodes.php';
 require_once ANIMA_CORE_PATH . 'includes/rest-api.php';
 require_once ANIMA_CORE_PATH . 'includes/integrations.php';
+require_once ANIMA_CORE_PATH . 'includes/settings.php';
+require_once ANIMA_CORE_PATH . 'includes/security.php';
 
 /**
  * Inicializa todas las funcionalidades principales del plugin.
@@ -35,3 +37,5 @@ add_action( 'init', 'anima_bootstrap' );
 add_action( 'rest_api_init', 'anima_register_rest_routes' );
 add_action( 'graphql_register_types', 'anima_register_graphql_hooks' );
 add_action( 'bp_include', 'anima_register_buddypress_hooks' );
+add_action( 'init', 'anima_register_contact_settings' );
+add_action( 'after_setup_theme', 'anima_register_security_headers' );

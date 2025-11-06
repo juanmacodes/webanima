@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function anima_register_shortcodes() {
     add_shortcode( 'anima_cursos', 'anima_render_featured_courses' );
+    add_shortcode( 'anima_curso_progreso', 'anima_render_course_progress' );
 }
 
 function anima_render_featured_courses( $atts ) {
@@ -84,6 +85,35 @@ function anima_render_featured_courses( $atts ) {
         endwhile;
         wp_reset_postdata();
         ?>
+    </div>
+    <?php
+
+    return ob_get_clean();
+}
+
+function anima_render_course_progress( $atts ) {
+    $atts = shortcode_atts(
+        array(
+            'valor'    => '',
+            'progress' => '',
+        ),
+        $atts,
+        'anima_curso_progreso'
+    );
+
+    $raw_value = '' !== $atts['valor'] ? $atts['valor'] : $atts['progress'];
+    $progress  = is_numeric( $raw_value ) ? floatval( $raw_value ) : 0;
+    $progress  = max( 0, min( 100, $progress ) );
+
+    $progress = apply_filters( 'anima_curso_progress_value', $progress, $atts );
+
+    $percentage = number_format_i18n( $progress, 0 );
+
+    ob_start();
+    ?>
+    <div class="anima-curso-progreso" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<?php echo esc_attr( $percentage ); ?>">
+        <div class="anima-curso-progreso__barra" style="width: <?php echo esc_attr( $percentage ); ?>%;"></div>
+        <span class="anima-curso-progreso__etiqueta"><?php echo esc_html( sprintf( __( '%s%% completado', 'anima-core' ), $percentage ) ); ?></span>
     </div>
     <?php
 
