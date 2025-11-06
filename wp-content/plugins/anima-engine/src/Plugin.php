@@ -15,6 +15,7 @@ use Anima\Engine\Services\ServiceInterface;
 use Anima\Engine\Seo\SchemaService;
 use Anima\Engine\Shortcodes\Shortcodes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
+use Anima\Engine\Config\Settings;
 
 /**
  * Clase principal del plugin.
@@ -44,6 +45,7 @@ class Plugin {
             new CacheManager(),
             new Orders(),
             new SubscriptionService(),
+            new Settings(),
             new SeedCommand(),
         ];
 

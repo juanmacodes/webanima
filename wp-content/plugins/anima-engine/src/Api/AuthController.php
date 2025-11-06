@@ -11,8 +11,6 @@ use const MINUTE_IN_SECONDS;
 use function __;
 use function add_filter;
 use function apply_filters;
-use function delete_transient;
-use function get_transient;
 use function home_url;
 use function is_scalar;
 use function in_array;
@@ -21,18 +19,14 @@ use function is_array;
 use function register_rest_route;
 use function rest_ensure_response;
 use function sanitize_text_field;
-use function set_transient;
 use function wp_authenticate;
 use function wp_set_current_user;
 use function wp_unslash;
-use function untrailingslashit;
 
 /**
  * Controlador responsable de la autenticación JWT.
  */
 class AuthController {
-    protected const RATE_LIMIT_PREFIX = 'anima_engine_auth_rate_';
-
     protected JwtManager $jwt;
 
     /**
@@ -105,14 +99,10 @@ class AuthController {
      * Procesa el endpoint de login.
      */
     public function handle_login( WP_REST_Request $request ) {
-        $rate_key = $this->build_rate_limit_key( $request );
-        $hits     = (int) get_transient( $rate_key );
-
-        if ( $hits >= 5 ) {
-            return new WP_Error( 'anima_engine_auth_rate_limited', __( 'Demasiados intentos. Inténtalo nuevamente en unos minutos.', 'anima-engine' ), [ 'status' => 429 ] );
+        $check = RateLimiter::check( $request, 'auth_login', 5, MINUTE_IN_SECONDS );
+        if ( is_wp_error( $check ) ) {
+            return $check;
         }
-
-        set_transient( $rate_key, $hits + 1, MINUTE_IN_SECONDS );
 
         $username = sanitize_text_field( wp_unslash( (string) ( $request->get_param( 'username' ) ?? '' ) ) );
         $password = (string) ( $request->get_param( 'password' ) ?? '' );
@@ -145,7 +135,7 @@ class AuthController {
             return $refresh_token;
         }
 
-        delete_transient( $rate_key );
+        RateLimiter::reset( $request, 'auth_login' );
 
         return rest_ensure_response(
             [
@@ -164,6 +154,11 @@ class AuthController {
      * Endpoint para refrescar tokens.
      */
     public function handle_refresh( WP_REST_Request $request ) {
+        $check = RateLimiter::check( $request, 'auth_refresh', 10, MINUTE_IN_SECONDS * 5 );
+        if ( is_wp_error( $check ) ) {
+            return $check;
+        }
+
         $refresh_token = sanitize_text_field( $request->get_param( 'refresh_token' ) ?? '' );
         if ( '' === $refresh_token ) {
             return new WP_Error( 'anima_engine_missing_refresh', __( 'Debes enviar un token de refresco válido.', 'anima-engine' ), [ 'status' => 400 ] );
@@ -178,6 +173,8 @@ class AuthController {
             return $result;
         }
 
+        RateLimiter::reset( $request, 'auth_refresh' );
+
         return rest_ensure_response(
             [
                 'access_token'  => $result['access_token'],
@@ -190,6 +187,11 @@ class AuthController {
      * Endpoint para cerrar sesión.
      */
     public function handle_logout( WP_REST_Request $request ) {
+        $check = RateLimiter::check( $request, 'auth_logout', 20, MINUTE_IN_SECONDS * 5 );
+        if ( is_wp_error( $check ) ) {
+            return $check;
+        }
+
         $refresh_token = sanitize_text_field( $request->get_param( 'refresh_token' ) ?? '' );
         if ( '' === $refresh_token ) {
             return new WP_Error( 'anima_engine_missing_refresh', __( 'Debes enviar un token de refresco válido.', 'anima-engine' ), [ 'status' => 400 ] );
@@ -198,6 +200,8 @@ class AuthController {
         if ( $this->jwt->has_secret() ) {
             $this->jwt->revoke_refresh_token( $refresh_token );
         }
+
+        RateLimiter::reset( $request, 'auth_logout' );
 
         return rest_ensure_response( [ 'ok' => true ] );
     }
@@ -249,20 +253,6 @@ class AuthController {
      */
     protected function is_auth_route( string $route ): bool {
         return str_starts_with( $route, '/anima/v' . ANIMA_ENGINE_API_VERSION . '/auth' );
-    }
-
-    /**
-     * Construye la llave de rate-limit según la IP.
-     */
-    protected function build_rate_limit_key( WP_REST_Request $request ): string {
-        $ip = 'anon';
-        if ( isset( $_SERVER['REMOTE_ADDR'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-            $ip = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        }
-
-        $ip = apply_filters( 'anima_engine_auth_rate_limit_ip', $ip, $request );
-
-        return self::RATE_LIMIT_PREFIX . md5( $ip );
     }
 
     /**

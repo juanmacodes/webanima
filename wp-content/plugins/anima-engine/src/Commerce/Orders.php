@@ -12,6 +12,7 @@ use function add_action;
 use function function_exists;
 use function bin2hex;
 use function current_time;
+use function do_action;
 use function wc_get_order;
 use function wc_get_orders;
 use function wp_generate_password;
@@ -137,6 +138,10 @@ class Orders implements ServiceInterface
             if ($this->grant_entitlement($userId, $asset, (int) $order->get_id())) {
                 $granted++;
             }
+        }
+
+        if ($granted > 0) {
+            do_action('anima_engine_entitlements_changed', $userId);
         }
 
         return $granted;
