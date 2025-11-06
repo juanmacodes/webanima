@@ -1,327 +1,1522 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:wp="http://wordpress.org/export/1.2/">
 <channel>
-    <title>Anima Avatar Agency</title>
-    <link>https://animaavataragency.com/</link>
-    <description>Experiencias creativas con streaming, hologramas, IA y VR.</description>
-    <pubDate>Wed, 05 Nov 2025 12:00:00 +0000</pubDate>
-    <language>es</language>
+    <title>Anima Avatar Studio</title>
+    <link>https://animaavatarstudio.com/</link>
+    <description>Experiencias inmersivas con avatares, IA y XR.</description>
+    <language>es-ES</language>
     <wp:wxr_version>1.2</wp:wxr_version>
-    <wp:base_site_url>https://animaavataragency.com</wp:base_site_url>
-    <wp:base_blog_url>https://animaavataragency.com</wp:base_blog_url>
-
+    <wp:base_site_url>https://animaavatarstudio.com</wp:base_site_url>
+    <wp:base_blog_url>https://animaavatarstudio.com</wp:base_blog_url>
     <wp:author>
         <wp:author_id>1</wp:author_id>
-        <wp:author_login><![CDATA[admin]]></wp:author_login>
-        <wp:author_email>equipo@animaavataragency.com</wp:author_email>
-        <wp:author_display_name><![CDATA[Equipo Anima]]></wp:author_display_name>
-        <wp:author_first_name><![CDATA[Equipo]]></wp:author_first_name>
-        <wp:author_last_name><![CDATA[Anima]]></wp:author_last_name>
+        <wp:author_login><![CDATA[animaadmin]]></wp:author_login>
+        <wp:author_email><![CDATA[demo@animaavatarstudio.com]]></wp:author_email>
+        <wp:author_display_name><![CDATA[Anima Admin]]></wp:author_display_name>
+        <wp:author_first_name><![CDATA[Anima]]></wp:author_first_name>
+        <wp:author_last_name><![CDATA[Admin]]></wp:author_last_name>
     </wp:author>
 
-    <!-- Página: Inicio -->
+    <generator>https://wordpress.org/?v=6.4</generator>
+
+    <wp:term>
+        <wp:term_id>901</wp:term_id>
+        <wp:term_taxonomy>nav_menu</wp:term_taxonomy>
+        <wp:term_slug>menu-principal</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Menú Principal]]></wp:term_name>
+    </wp:term>
+
+    <wp:term>
+        <wp:term_id>1001</wp:term_id>
+        <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+        <wp:term_slug>unreal</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Unreal]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1002</wp:term_id>
+        <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+        <wp:term_slug>unity</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Unity]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1003</wp:term_id>
+        <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+        <wp:term_slug>webgl</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[WebGL]]></wp:term_name>
+    </wp:term>
+
+    <wp:term>
+        <wp:term_id>1101</wp:term_id>
+        <wp:term_taxonomy>servicio</wp:term_taxonomy>
+        <wp:term_slug>streaming</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Streaming]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1102</wp:term_id>
+        <wp:term_taxonomy>servicio</wp:term_taxonomy>
+        <wp:term_slug>holograficos</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Holográficos]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1103</wp:term_id>
+        <wp:term_taxonomy>servicio</wp:term_taxonomy>
+        <wp:term_slug>ia</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[IA]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1104</wp:term_id>
+        <wp:term_taxonomy>servicio</wp:term_taxonomy>
+        <wp:term_slug>vr</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[VR]]></wp:term_name>
+    </wp:term>
+
+    <wp:term>
+        <wp:term_id>1201</wp:term_id>
+        <wp:term_taxonomy>nivel</wp:term_taxonomy>
+        <wp:term_slug>inicial</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Inicial]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1202</wp:term_id>
+        <wp:term_taxonomy>nivel</wp:term_taxonomy>
+        <wp:term_slug>intermedio</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Intermedio]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1203</wp:term_id>
+        <wp:term_taxonomy>nivel</wp:term_taxonomy>
+        <wp:term_slug>avanzado</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Avanzado]]></wp:term_name>
+    </wp:term>
+
+    <wp:term>
+        <wp:term_id>1301</wp:term_id>
+        <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+        <wp:term_slug>directo</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Directo]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1302</wp:term_id>
+        <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+        <wp:term_slug>blended</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Blended]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+        <wp:term_id>1303</wp:term_id>
+        <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+        <wp:term_slug>grabado</wp:term_slug>
+        <wp:term_parent></wp:term_parent>
+        <wp:term_name><![CDATA[Grabado]]></wp:term_name>
+    </wp:term>
+
+    <wp:category>
+        <wp:term_id>2001</wp:term_id>
+        <wp:category_nicename>tendencias</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Tendencias]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>2002</wp:term_id>
+        <wp:category_nicename>eventos</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Eventos]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>2003</wp:term_id>
+        <wp:category_nicename>ia</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[IA]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>2004</wp:term_id>
+        <wp:category_nicename>tecnica</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Técnica]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>2005</wp:term_id>
+        <wp:category_nicename>marketing</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Marketing]]></wp:cat_name>
+    </wp:category>
+
+    <!-- Pages -->
     <item>
         <title>Inicio</title>
-        <link>https://animaavataragency.com/inicio/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>1</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>inicio</wp:post_name>
-        <wp:post_parent>0</wp:post_parent>
-        <wp:menu_order>0</wp:menu_order>
+        <link>https://animaavatarstudio.com/inicio</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=101</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<div class="hero">
+    <p class="eyebrow">LABORATORIO INMERSIVO</p>
+    <h1>Diseñamos avatares que brillan en cualquier realidad</h1>
+    <p>Tecnología XR, IA conversacional y entornos WebXR para experiencias memorables en streaming, hologramas y VR.</p>
+    <p>
+        <a class="btn btn-primary" href="/contacto">Agenda una demo</a>
+        <a class="btn btn-outline" href="/experiencia-inmersiva">Explora la experiencia 3D</a>
+    </p>
+</div>
+<div class="model-viewer-wrapper">
+<model-viewer src="https://assets.readyplayer.me/Example.glb"
+    alt="Avatar Anima" camera-controls auto-rotate ar ar-modes="scene-viewer quick-look webxr"
+    exposure="1.0" shadow-intensity="1" reveal="interaction" loading="lazy"
+    style="width:100%;height:520px;border-radius:20px;background:radial-gradient(1200px 400px at 60% 20%, rgba(0,255,255,.12), transparent);"></model-viewer>
+</div>
+<section>
+    <h2>Experiencias recientes</h2>
+    <div class="cards-grid">
+        <article>
+            <img src="https://picsum.photos/640/360?random=41" alt="Demo Streaming" />
+            <p>Producción virtual para congreso híbrido con avatars hosts y métricas en tiempo real.</p>
+            <a href="/proyectos" class="btn-link">Ver caso</a>
+        </article>
+        <article>
+            <img src="https://picsum.photos/640/360?random=42" alt="Demo IA" />
+            <p>Asistente conversacional con voz natural guiando una visita comercial a través de WebXR.</p>
+            <a href="/proyectos" class="btn-link">Ver caso</a>
+        </article>
+        <article>
+            <img src="https://picsum.photos/640/360?random=43" alt="Demo Hologramas" />
+            <p>Holograma volumétrico para keynote inmersiva con integración de datos en directo.</p>
+            <a href="/proyectos" class="btn-link">Ver caso</a>
+        </article>
+    </div>
+</section>
+<section>
+    <h2>Servicios</h2>
+    <div class="services-grid">
+        <div class="service-card"><h3>Avatares 3D para streaming</h3><p>Presentadores virtuales para live shopping y webinars.</p></div>
+        <div class="service-card"><h3>Asistentes con IA</h3><p>Personajes conversacionales multicanal con voz natural.</p></div>
+        <div class="service-card"><h3>Avatares holográficos</h3><p>Escenarios volumétricos y hologramas con captura en vivo.</p></div>
+        <div class="service-card"><h3>Avatares VR / WebXR</h3><p>Aulas interactivas y mundos inmersivos accesibles desde navegador.</p></div>
+    </div>
+</section>
+<section>
+    <h2>Cursos destacados</h2>
+    <div class="courses-list">
+        <article><h3>Laboratorio de Avatares para Live</h3><p>Duración: 8h · Modalidad: Directo</p></article>
+        <article><h3>XR Storytelling</h3><p>Duración: 6h · Modalidad: Grabado</p></article>
+        <article><h3>Integraciones IA + WebXR</h3><p>Duración: 12h · Modalidad: Blended</p></article>
+    </div>
+    <p><a href="/cursos" class="btn-secondary">Ver todos</a></p>
+</section>
+<section class="cta-final">
+    <h3>¿Listx para el salto inmersivo?</h3>
+    <p><a class="btn btn-primary" href="/contacto">Hablar con Anima</a></p>
+</section>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>101</wp:post_id>
+        <wp:post_date>2024-04-01 10:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:00:00</wp:post_date_gmt>
         <wp:comment_status>closed</wp:comment_status>
         <wp:ping_status>closed</wp:ping_status>
-        <wp:is_sticky>0</wp:is_sticky>
-        <content:encoded><![CDATA[
-<p>Bienvenidos a <strong>Anima Avatar Agency</strong>, tu aliado en experiencias digitales innovadoras.<br />
-Fusionamos arte y tecnología para crear vivencias impactantes en <em>streaming</em>, hologramas, inteligencia artificial y realidad virtual.</p>
-<p><strong>Conócenos</strong> y descubre cómo podemos transformar tus ideas en experiencias inolvidables. <a href="#servicios">Ver servicios</a>.</p>
-<p><img src="https://via.placeholder.com/1600x700.png?text=Anima+Avatar+Agency" alt="Avatar animado" class="hero-image" /></p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Agencia creativa especializada en experiencias XR, IA y streaming.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Servicios -->
-    <item>
-        <title>Servicios</title>
-        <link>https://animaavataragency.com/servicios/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>2</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>servicios</wp:post_name>
+        <wp:post_name>inicio</wp:post_name>
+        <wp:status>publish</wp:status>
         <wp:post_parent>0</wp:post_parent>
         <wp:menu_order>0</wp:menu_order>
-        <content:encoded><![CDATA[
-<p>Explora nuestros servicios innovadores:</p>
-<ul>
-<li><strong>Streaming en Vivo</strong>: Transmisiones profesionales de eventos y webinars con calidad HD.</li>
-<li><strong>Hologramas Interactivos</strong>: Cabinas holográficas para experiencias tridimensionales inolvidables.</li>
-<li><strong>Inteligencia Artificial</strong>: Soluciones de IA, asistentes virtuales y automatización creativa.</li>
-<li><strong>Realidad Virtual</strong>: Desarrollo de entornos VR para formación, marketing y entretenimiento.</li>
-</ul>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Servicios innovadores: streaming, hologramas, IA y VR.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Streaming -->
-    <item>
-        <title>Streaming</title>
-        <link>https://animaavataragency.com/streaming/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>3</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
         <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>streaming</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Diseñamos experiencias de streaming inmersivo con producción multicámara, overlays interactivos y analítica en tiempo real.</p>
-<p>Nuestro equipo gestiona la preproducción, realización y distribución a plataformas globales con latencia ultrabaja.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Producción y ejecución de streaming profesional.]]></excerpt:encoded>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
             <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1001</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Página: Holográficos -->
     <item>
-        <title>Holográficos</title>
-        <link>https://animaavataragency.com/holograficos/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>4</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_date_gmt>2025-11-05 12:00:00</wp:post_date_gmt>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>holograficos</wp:post_name>
+        <title>Servicios</title>
+        <link>https://animaavatarstudio.com/servicios</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=102</guid>
+        <description></description>
         <content:encoded><![CDATA[
-<p>Creamos instalaciones holográficas que combinan volumetría, sensores y guionización interactiva para eventos y showrooms.</p>
-<p>Integramos hardware especializado, servidores de render y controladores personalizados para una experiencia impecable.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Instalaciones holográficas inmersivas.]]></excerpt:encoded>
+<p>Diseñamos y producimos experiencias digitales para formación, marketing y live.</p>
+<section>
+    <h2>Avatares 3D para streaming</h2>
+    <ul>
+        <li>Presentadores virtuales listos para platós virtuales.</li>
+        <li>Integración con OTT, webinars y traducción simultánea.</li>
+        <li>Casos: lanzamiento de producto híbrido, feria tecnológica streaming.</li>
+    </ul>
+</section>
+<section>
+    <h2>Asistentes con IA</h2>
+    <ul>
+        <li>Conocimiento de marca centralizado y escalable.</li>
+        <li>Experiencias multicanal con voz natural y TTS neural.</li>
+        <li>Casos: showroom conversacional, onboarding digital humano.</li>
+    </ul>
+</section>
+<section>
+    <h2>Avatares holográficos</h2>
+    <ul>
+        <li>Cabinas volumétricas para eventos itinerantes.</li>
+        <li>Escenarios XR con sensores de movimiento en vivo.</li>
+        <li>Casos: keynote inmersiva, holograma para retail.</li>
+    </ul>
+</section>
+<section>
+    <h2>Avatares VR / WebXR</h2>
+    <ul>
+        <li>Aulas multiusuario con streaming de datos.</li>
+        <li>Showrooms interactivos con analytics.</li>
+        <li>Casos: campus virtual, training remoto con VR.</li>
+    </ul>
+</section>
+<p><a href="/contacto" class="btn-primary">Cuéntanos tu proyecto</a></p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>102</wp:post_id>
+        <wp:post_date>2024-04-01 10:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>servicios</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
             <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1002</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Página: IA -->
     <item>
-        <title>IA</title>
-        <link>https://animaavataragency.com/ia/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>5</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>ia</wp:post_name>
+        <title>Avatares</title>
+        <link>https://animaavatarstudio.com/avatares</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=103</guid>
+        <description></description>
         <content:encoded><![CDATA[
-<p>Desarrollamos asistentes virtuales, automatizaciones creativas y flujos inteligentes que potencian tus campañas.</p>
-<p>Con modelos personalizados, datasets curados y dashboards interpretables, llevamos la IA a tus experiencias digitales.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Soluciones de inteligencia artificial aplicadas a marketing y experiencias.]]></excerpt:encoded>
+<p>Avatares listos para escena, con rig facial, lipsync y blendshapes.</p>
+<p>[anima_gallery type="avatar" limit="12"]</p>
+<p><strong>Filtra por tecnología:</strong> Unreal, Unity, WebGL.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>103</wp:post_id>
+        <wp:post_date>2024-04-01 10:15:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:15:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatares</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
             <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1003</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Página: VR -->
-    <item>
-        <title>VR</title>
-        <link>https://animaavataragency.com/vr/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>6</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>vr</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Construimos experiencias de realidad virtual a medida: onboarding gamificado, formación técnica y activaciones inmersivas.</p>
-<p>Nuestro enfoque cubre concepto, desarrollo, QA multi-dispositivo y despliegue administrado.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Entornos VR para formación, marketing y entretenimiento.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Anima World -->
-    <item>
-        <title>Anima World</title>
-        <link>https://animaavataragency.com/anima-world/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>7</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>anima-world</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Explora nuestro hub inmersivo Anima World, un espacio virtual donde mostramos laboratorios XR, estudios IA y workshops híbridos.</p>
-<p>Accede a demos, librerías de assets y experimentos colaborativos listos para personalizar.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Hub inmersivo con demos XR e IA.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Cursos -->
-    <item>
-        <title>Cursos</title>
-        <link>https://animaavataragency.com/cursos/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>8</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>cursos</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Descubre nuestro catálogo de cursos para profesionales que buscan dominar XR, IA aplicada y producción inmersiva.</p>
-<p>Todos los programas combinan sesiones prácticas, mentoría y acceso a recursos exclusivos.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Formación especializada para experiencias inmersivas.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Proyectos -->
     <item>
         <title>Proyectos</title>
-        <link>https://animaavataragency.com/proyectos/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>9</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
+        <link>https://animaavatarstudio.com/proyectos</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=104</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<p>Casos reales en streaming, VR, IA y hologramas.</p>
+<p>Descubre cómo marcas globales están adoptando avatares y humanos digitales para mejorar la retención, escalar la formación y generar nuevas fuentes de ingresos. Cada proyecto integra herramientas de análisis, motores gráficos en tiempo real y workflows de producción diseñados para despliegues rápidos.</p>
+<p>Desde platós virtuales hasta experiencias WebXR inmersivas, combinamos pipelines fotogramétricos, texturas optimizadas y sistemas de IA conversacional para ofrecer resultados medibles.</p>
+<p>¿Quieres ver una demo adaptada a tu industria? Nuestro equipo puede preparar un recorrido guiado con tus datos y branding.</p>
+<p><a href="/contacto" class="btn-primary">Pide una demo</a></p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>104</wp:post_id>
+        <wp:post_date>2024-04-01 10:20:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:20:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
         <wp:post_name>proyectos</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Revisa algunos de nuestros proyectos recientes y conoce cómo ayudamos a marcas visionarias a construir experiencias memorables.</p>
-<p>Cada caso incluye métricas clave, tecnologías empleadas y aprendizajes listos para aplicar en tu iniciativa.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Casos de éxito en streaming, IA, hologramas y VR.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
-            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
-        </wp:postmeta>
-    </item>
-
-    <!-- Página: Blog -->
-    <item>
-        <title>Blog</title>
-        <link>https://animaavataragency.com/blog/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>10</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
         <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>blog</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Insights, guías y tendencias sobre producción inmersiva, IA creativa y estrategias híbridas para marcas.</p>
-<p>Suscríbete a nuestra newsletter para recibir actualizaciones semanales.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Novedades y tendencias del universo Anima.]]></excerpt:encoded>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
             <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1004</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Página: Contacto -->
+    <item>
+        <title>Cursos</title>
+        <link>https://animaavatarstudio.com/cursos</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=105</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<p>Aprendizaje práctico y plantillas listas para producción.</p>
+<section>
+    <h2>Catálogo rápido</h2>
+    <ul>
+        <li><strong>Básico de VR</strong> — 10h — Directo — 200 €</li>
+        <li><strong>IA aplicada a Media</strong> — 20h — Blended — 500 €</li>
+        <li><strong>Producción XR en Realtime</strong> — 16h — Grabado — 350 €</li>
+    </ul>
+</section>
+<section class="faq">
+    <h2>FAQ</h2>
+    <div class="faq-item"><h3>¿Necesito experiencia previa?</h3><p>Nuestros programas incluyen módulos introductorios para ponerte al día en motores gráficos y flujos XR.</p></div>
+    <div class="faq-item"><h3>¿Los cursos incluyen plantillas?</h3><p>Sí, recibirás plantillas personalizables para Unreal, Unity y WebXR.</p></div>
+    <div class="faq-item"><h3>¿Ofrecen mentorías?</h3><p>Cada cohorte tiene mentorías grupales y 1:1 según la modalidad.</p></div>
+    <div class="faq-item"><h3>¿Qué pasa tras completar el curso?</h3><p>Obtendrás certificación Anima y acceso a nuestra comunidad de proyectos XR.</p></div>
+</section>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>105</wp:post_id>
+        <wp:post_date>2024-04-01 10:25:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:25:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>cursos</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1005</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Anima Live</title>
+        <link>https://animaavatarstudio.com/anima-live</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=106</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<section class="hero">
+    <h1>Anima Live — Crea tu avatar en minutos</h1>
+    <p>App en Unreal para generar avatares listos para streaming y VR.</p>
+</section>
+<section>
+    <h2>Cómo funciona</h2>
+    <ol>
+        <li>Captura tu referencia o elige una plantilla hiperreal.</li>
+        <li>Personaliza animaciones, vestuario y voz con IA.</li>
+        <li>Exporta a tu plataforma favorita y activa métricas.</li>
+    </ol>
+</section>
+<section>
+    <h2>Características</h2>
+    <ul>
+        <li>Rig facial avanzado con lipsync automático.</li>
+        <li>Blendshapes optimizados para AR y VR.</li>
+        <li>Integración de chatbots de voz y streaming RTMP.</li>
+        <li>Sombras y reflejos en tiempo real.</li>
+        <li>Biblioteca de gestos y presets de iluminación.</li>
+        <li>Panel analítico con KPIs de engagement.</li>
+    </ul>
+</section>
+<section>
+    <h2>Exportadores</h2>
+    <p>GLB / FBX / USDZ</p>
+</section>
+<section>
+    <h2>Galería</h2>
+    <p>[anima_gallery type="avatar" limit="6"]</p>
+</section>
+<section>
+    <h2>Compatibilidad</h2>
+    <p>Compatible con Unreal Engine, Unity, WebXR, OBS y plataformas de eventos virtuales.</p>
+</section>
+<section class="cta">
+    <p><a href="/contacto" class="btn-primary">Solicitar acceso</a></p>
+</section>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>106</wp:post_id>
+        <wp:post_date>2024-04-01 10:30:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:30:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>anima-live</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1006</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Experiencia Inmersiva</title>
+        <link>https://animaavatarstudio.com/experiencia-inmersiva</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=107</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<p>Explora nuestra experiencia WebXR desde navegador o visor compatible. Se recomienda conexión estable y dispositivos con soporte WebXR actualizado.</p>
+<p>[anima_model src="https://assets.readyplayer.me/Example.glb" alt="Avatar demo" ar="true" auto_rotate="true" camera_controls="true" exposure="1.0" shadow_intensity="1" reveal="interaction" loading="lazy"]</p>
+<p>Si accedes desde móvil compatible, podrás activar el modo AR para visualizar al avatar en tu espacio.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>107</wp:post_id>
+        <wp:post_date>2024-04-01 10:35:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:35:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>experiencia-inmersiva</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1007</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Historias</title>
+        <link>https://animaavatarstudio.com/historias</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=108</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<p>Tendencias XR, IA y casos Anima.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>108</wp:post_id>
+        <wp:post_date>2024-04-01 10:40:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:40:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>historias</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1008</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
     <item>
         <title>Contacto</title>
-        <link>https://animaavataragency.com/contacto/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>11</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>contacto</wp:post_name>
+        <link>https://animaavatarstudio.com/contacto</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=109</guid>
+        <description></description>
         <content:encoded><![CDATA[
-<p>¿Listo para imaginar tu próximo proyecto? Escríbenos a <a href="mailto:hola@animaavataragency.com">hola@animaavataragency.com</a> o completa el formulario para un diagnóstico personalizado.</p>
-<p>También puedes agendar una demo virtual en Anima World.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Pon en marcha tu próxima experiencia creativa.]]></excerpt:encoded>
+<p>Comparte tu idea y te proponemos la mejor ruta inmersiva.</p>
+<form class="contacto">
+    <label>Nombre<input type="text" name="nombre" placeholder="Tu nombre" /></label>
+    <label>Email<input type="email" name="email" placeholder="tu@email.com" /></label>
+    <label>Mensaje<textarea name="mensaje" placeholder="Cuéntanos tu proyecto"></textarea></label>
+    <label class="consentimiento"><input type="checkbox" name="consentimiento" /> Acepto la política de privacidad y el uso de mis datos para contactar.</label>
+    <button type="submit">Enviar</button>
+</form>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>109</wp:post_id>
+        <wp:post_date>2024-04-01 10:45:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:45:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>contacto</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <wp:postmeta>
-            <wp:meta_key><![CDATA[_elementor_edit_mode]]></wp:meta_key>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
             <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1009</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Entrada de Blog 1 -->
     <item>
-        <title>Tecnologías de Streaming en 2025</title>
-        <link>https://animaavataragency.com/blog/tecnologias-streaming-2025/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>12</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>tecnologias-streaming-2025</wp:post_name>
+        <title>Política de privacidad</title>
+        <link>https://animaavatarstudio.com/privacidad</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?page_id=110</guid>
+        <description></description>
         <content:encoded><![CDATA[
-<p>El mundo del streaming evoluciona rápidamente. En 2025 veremos plataformas más interactivas, menor latencia y nuevas oportunidades para eventos híbridos.</p>
-<p>En Anima incorporamos estas tendencias con producción multicámara, capas interactivas y analítica avanzada para medir engagement en vivo.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Tendencias en plataformas de streaming y experiencias híbridas.]]></excerpt:encoded>
+<p>Esta política resume cómo Anima recoge, utiliza y protege los datos personales proporcionados a través de este sitio web. Solo empleamos la información para responder solicitudes y nunca la compartimos con terceros sin consentimiento previo. Puedes solicitar la modificación o eliminación de tus datos escribiendo a privacidad@animaavatarstudio.com.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>110</wp:post_id>
+        <wp:post_date>2024-04-01 10:50:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:50:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>privacidad</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+            <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1010</wp:meta_value>
+        </wp:postmeta>
     </item>
 
-    <!-- Entrada de Blog 2 -->
+    <!-- Blog Posts -->
     <item>
-        <title>Realidad Virtual: Tendencias para empresas</title>
-        <link>https://animaavataragency.com/blog/realidad-virtual-tendencias-empresas/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>13</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>realidad-virtual-tendencias-empresas</wp:post_name>
+        <title>Tendencias de avatares 3D</title>
+        <link>https://animaavatarstudio.com/historias/tendencias-avatares-3d</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=201</guid>
+        <description><![CDATA[Cómo evoluciona el diseño de avatares hiperrealistas.]]></description>
         <content:encoded><![CDATA[
-<p>La realidad virtual se consolida como herramienta empresarial para capacitación, marketing inmersivo y colaboración distribuida.</p>
-<p>Compartimos casos de uso donde la VR aporta valor tangible y recomendaciones para integrarla en tu organización.</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Cómo la VR transforma la capacitación y el marketing corporativo.]]></excerpt:encoded>
+<p>Los avatares 3D están adoptando técnicas de escaneo volumétrico y texturas optimizadas en KTX2 para rendir mejor en tiempo real. Las marcas utilizan humanos digitales para training, e-commerce y entretenimiento.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Cómo evoluciona el diseño de avatares hiperrealistas.]]></excerpt:encoded>
+        <wp:post_id>201</wp:post_id>
+        <wp:post_date>2024-04-02 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-02 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>tendencias-avatares-3d</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="tendencias"><![CDATA[Tendencias]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1011</wp:meta_value>
+        </wp:postmeta>
     </item>
 
-    <!-- Curso 1 -->
     <item>
-        <title>Curso Básico de Realidad Virtual</title>
-        <link>https://animaavataragency.com/curso/curso-basico-de-realidad-virtual/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>14</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
+        <title>Qué es un Digital Human</title>
+        <link>https://animaavatarstudio.com/historias/que-es-un-digital-human</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=202</guid>
+        <description><![CDATA[Definimos el concepto y sus aplicaciones prácticas.]]></description>
+        <content:encoded><![CDATA[
+<p>Un Digital Human combina captura facial, síntesis de voz y lógica de IA para representar una marca en múltiples canales. La clave está en la coherencia entre animación, tono y experiencia de usuario.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Definimos el concepto y sus aplicaciones prácticas.]]></excerpt:encoded>
+        <wp:post_id>202</wp:post_id>
+        <wp:post_date>2024-04-03 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-03 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>que-es-un-digital-human</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="tendencias"><![CDATA[Tendencias]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1012</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Claves para un evento XR</title>
+        <link>https://animaavatarstudio.com/historias/claves-evento-xr</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=203</guid>
+        <description><![CDATA[Checklist para eventos inmersivos de alto impacto.]]></description>
+        <content:encoded><![CDATA[
+<p>Planificar un evento XR implica seleccionar hardware compatible, asegurar ancho de banda dedicado y diseñar experiencias accesibles. Las métricas en tiempo real ayudan a optimizar cada iteración.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Checklist para eventos inmersivos de alto impacto.]]></excerpt:encoded>
+        <wp:post_id>203</wp:post_id>
+        <wp:post_date>2024-04-04 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-04 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>claves-evento-xr</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="eventos"><![CDATA[Eventos]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1013</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>IA conversacional con voz</title>
+        <link>https://animaavatarstudio.com/historias/ia-conversacional-voz</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=204</guid>
+        <description><![CDATA[Implementación de asistentes vocales en experiencias XR.]]></description>
+        <content:encoded><![CDATA[
+<p>La IA conversacional con voz permite que los avatares respondan de forma natural. Combinamos motores de TTS neural, NLP multilingüe y animación labial automática para lograr interacciones fluidas.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Implementación de asistentes vocales en experiencias XR.]]></excerpt:encoded>
+        <wp:post_id>204</wp:post_id>
+        <wp:post_date>2024-04-05 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-05 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>ia-conversacional-voz</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="ia"><![CDATA[IA]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1014</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Texturas KTX2 y DRACO</title>
+        <link>https://animaavatarstudio.com/historias/texturas-ktx2-draco</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=205</guid>
+        <description><![CDATA[Optimización de recursos para WebXR y streaming.]]></description>
+        <content:encoded><![CDATA[
+<p>Las texturas KTX2 y la compresión DRACO reducen el peso de escenas complejas manteniendo calidad visual. Implementarlas en pipelines de avatares acelera la carga y mejora la experiencia.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Optimización de recursos para WebXR y streaming.]]></excerpt:encoded>
+        <wp:post_id>205</wp:post_id>
+        <wp:post_date>2024-04-06 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-06 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>texturas-ktx2-draco</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="tecnica"><![CDATA[Técnica]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1015</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>WebXR para marketing</title>
+        <link>https://animaavatarstudio.com/historias/webxr-para-marketing</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=206</guid>
+        <description><![CDATA[Estrategias para campañas inmersivas en navegador.]]></description>
+        <content:encoded><![CDATA[
+<p>El marketing inmersivo con WebXR permite lanzar campañas interactivas accesibles desde cualquier dispositivo. Personalizamos escenas con datos de CRM para ofrecer recorridos únicos.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Estrategias para campañas inmersivas en navegador.]]></excerpt:encoded>
+        <wp:post_id>206</wp:post_id>
+        <wp:post_date>2024-04-07 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-07 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>webxr-para-marketing</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="category" nicename="marketing"><![CDATA[Marketing]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1016</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Slides -->
+    <item>
+        <title>Conoce a Nova</title>
+        <link>https://animaavatarstudio.com/?post_type=slide&amp;p=301</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=slide&amp;p=301</guid>
+        <description><![CDATA[Avatar hiperreal listo para directo]]></description>
+        <content:encoded><![CDATA[
+<model-viewer src="https://assets.readyplayer.me/Example.glb"
+    alt="Avatar Anima" camera-controls auto-rotate ar ar-modes="scene-viewer quick-look webxr"
+    exposure="1.0" shadow-intensity="1" reveal="interaction" loading="lazy"
+    style="width:100%;height:520px;border-radius:20px;background:radial-gradient(1200px 400px at 60% 20%, rgba(0,255,255,.12), transparent);"></model-viewer>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Avatar hiperreal listo para directo]]></excerpt:encoded>
+        <wp:post_id>301</wp:post_id>
+        <wp:post_date>2024-04-01 11:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>conoce-a-nova</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>slide</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>anima_slide_url</wp:meta_key>
+            <wp:meta_value><![CDATA[/experiencia-inmersiva]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1017</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Producción XR completa</title>
+        <link>https://animaavatarstudio.com/?post_type=slide&amp;p=302</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=slide&amp;p=302</guid>
+        <description><![CDATA[Pipeline inmersivo llave en mano]]></description>
+        <content:encoded><![CDATA[
+<p>Producimos experiencias XR de principio a fin, desde el concepto hasta la emisión.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Pipeline inmersivo llave en mano]]></excerpt:encoded>
+        <wp:post_id>302</wp:post_id>
+        <wp:post_date>2024-04-01 11:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>produccion-xr-completa</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>slide</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>anima_slide_url</wp:meta_key>
+            <wp:meta_value><![CDATA[/servicios]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1018</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Aprende con proyectos</title>
+        <link>https://animaavatarstudio.com/?post_type=slide&amp;p=303</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=slide&amp;p=303</guid>
+        <description><![CDATA[Capacitación XR profesional]]></description>
+        <content:encoded><![CDATA[
+<p>Descubre nuestros cursos prácticos con plantillas y mentoría especializada.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Capacitación XR profesional]]></excerpt:encoded>
+        <wp:post_id>303</wp:post_id>
+        <wp:post_date>2024-04-01 11:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>aprende-con-proyectos</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>slide</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:postmeta>
+            <wp:meta_key>anima_slide_url</wp:meta_key>
+            <wp:meta_value><![CDATA[/cursos]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1019</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Avatares -->
+    <item>
+        <title>Nova Stream</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=401</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=401</guid>
+        <description><![CDATA[Avatar holográfico con captura facial en vivo.]]></description>
+        <content:encoded><![CDATA[
+<p>Perfecto para platós virtuales y presentaciones en streaming.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Avatar holográfico con captura facial en vivo.]]></excerpt:encoded>
+        <wp:post_id>401</wp:post_id>
+        <wp:post_date>2024-04-01 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>nova-stream</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unreal"><![CDATA[Unreal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/nova-stream]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1020</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Lumen Host</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=402</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=402</guid>
+        <description><![CDATA[Anfitriona virtual para eventos con voz IA.]]></description>
+        <content:encoded><![CDATA[
+<p>Diseñada para sesiones en vivo con personalización de idiomas en segundos.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Anfitriona virtual para eventos con voz IA.]]></excerpt:encoded>
+        <wp:post_id>402</wp:post_id>
+        <wp:post_date>2024-04-01 12:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>lumen-host</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unity"><![CDATA[Unity]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/lumen-host]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1021</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Voxel Guide</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=403</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=403</guid>
+        <description><![CDATA[Guía inmersiva para tours WebXR.]]></description>
+        <content:encoded><![CDATA[
+<p>Optimizado para navegadores con compresión DRACO y texturas KTX2.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Guía inmersiva para tours WebXR.]]></excerpt:encoded>
+        <wp:post_id>403</wp:post_id>
+        <wp:post_date>2024-04-01 12:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>voxel-guide</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="webgl"><![CDATA[WebGL]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/voxel-guide]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1022</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Spectra Coach</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=404</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=404</guid>
+        <description><![CDATA[Entrenadora virtual para programas corporativos.]]></description>
+        <content:encoded><![CDATA[
+<p>Incluye animaciones gestuales y sincronización de presentaciones.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Entrenadora virtual para programas corporativos.]]></excerpt:encoded>
+        <wp:post_id>404</wp:post_id>
+        <wp:post_date>2024-04-01 12:15:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:15:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>spectra-coach</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unreal"><![CDATA[Unreal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/spectra-coach]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1023</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Pulse Analyst</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=405</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=405</guid>
+        <description><![CDATA[Avatar corporativo para dashboards interactivos.]]></description>
+        <content:encoded><![CDATA[
+<p>Interpreta datos con narrativa y gestos, ideal para comités ejecutivos.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Avatar corporativo para dashboards interactivos.]]></excerpt:encoded>
+        <wp:post_id>405</wp:post_id>
+        <wp:post_date>2024-04-01 12:20:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:20:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>pulse-analyst</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unity"><![CDATA[Unity]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/pulse-analyst]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1024</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Echo Performer</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=406</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=406</guid>
+        <description><![CDATA[Artista virtual para shows interactivos.]]></description>
+        <content:encoded><![CDATA[
+<p>Integra mocap en vivo y respuestas del público a través de IA.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Artista virtual para shows interactivos.]]></excerpt:encoded>
+        <wp:post_id>406</wp:post_id>
+        <wp:post_date>2024-04-01 12:25:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:25:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>echo-performer</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="webgl"><![CDATA[WebGL]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/echo-performer]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1025</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Aura Mentor</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=407</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=407</guid>
+        <description><![CDATA[Mentor virtual para academias XR.]]></description>
+        <content:encoded><![CDATA[
+<p>Genera itinerarios de aprendizaje personalizados y seguimiento por voz.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Mentor virtual para academias XR.]]></excerpt:encoded>
+        <wp:post_id>407</wp:post_id>
+        <wp:post_date>2024-04-01 12:30:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:30:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>aura-mentor</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unreal"><![CDATA[Unreal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/aura-mentor]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1026</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Flux Presenter</title>
+        <link>https://animaavatarstudio.com/?post_type=avatar&amp;p=408</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=avatar&amp;p=408</guid>
+        <description><![CDATA[Presentador volumétrico para ferias.]]></description>
+        <content:encoded><![CDATA[
+<p>Compatible con hologramas de tamaño real y streaming a pantallas LED.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Presentador volumétrico para ferias.]]></excerpt:encoded>
+        <wp:post_id>408</wp:post_id>
+        <wp:post_date>2024-04-01 12:35:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:35:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>flux-presenter</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>avatar</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="tecnologia" nicename="unity"><![CDATA[Unity]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/flux-presenter]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1027</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Proyectos -->
+    <item>
+        <title>Proyecto Streaming Nova</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=501</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=501</guid>
+        <description><![CDATA[Evento híbrido con presentadores digitales.]]></description>
+        <content:encoded><![CDATA[
+<p>Implementamos un plató virtual con avatares anfitriones para una conferencia global. Se integraron métricas de audiencia en vivo.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Evento híbrido con presentadores digitales.]]></excerpt:encoded>
+        <wp:post_id>501</wp:post_id>
+        <wp:post_date>2024-04-01 13:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-streaming-nova</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="streaming"><![CDATA[Streaming]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Nova Media]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Retención","value":"+32%"},{"label":"Visualizaciones","value":"45K"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1028,1011]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-streaming]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1028</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Proyecto Holográfico Halo</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=502</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=502</guid>
+        <description><![CDATA[Escenario holográfico para keynote.]]></description>
+        <content:encoded><![CDATA[
+<p>Diseñamos una cabina volumétrica itinerante con proyección holográfica y avatar anfitrión.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Escenario holográfico para keynote.]]></excerpt:encoded>
+        <wp:post_id>502</wp:post_id>
+        <wp:post_date>2024-04-01 13:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-holografico-halo</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="holograficos"><![CDATA[Holográficos]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Halo Events]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2023]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Asistencia","value":"+18%"},{"label":"Social Reach","value":"1.2M"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1029]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-holografico]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1029</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Proyecto IA Atlas</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=503</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=503</guid>
+        <description><![CDATA[Asistente con IA multilingüe para retail.]]></description>
+        <content:encoded><![CDATA[
+<p>Configuramos un avatar conversacional con conocimiento de marca y voz natural para tiendas phygital.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Asistente con IA multilingüe para retail.]]></excerpt:encoded>
+        <wp:post_id>503</wp:post_id>
+        <wp:post_date>2024-04-01 13:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-ia-atlas</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="ia"><![CDATA[IA]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Atlas Retail]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2025]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Conversaciones","value":"+65%"},{"label":"NPS","value":"4.6/5"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1030]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-ia]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1030</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Proyecto VR Campus</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=504</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=504</guid>
+        <description><![CDATA[Aula virtual multiusuario con avatares.]]></description>
+        <content:encoded><![CDATA[
+<p>Desarrollamos un campus VR con aulas colaborativas y seguimiento de métricas de aprendizaje.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Aula virtual multiusuario con avatares.]]></excerpt:encoded>
+        <wp:post_id>504</wp:post_id>
+        <wp:post_date>2024-04-01 13:15:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:15:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-vr-campus</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="vr"><![CDATA[VR]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Campus Global]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Participación","value":"92%"},{"label":"Satisfacción","value":"4.8/5"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1031]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-vr]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1031</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Proyecto Experiencia Retail</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=505</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=505</guid>
+        <description><![CDATA[Showroom WebXR para colecciones cápsula.]]></description>
+        <content:encoded><![CDATA[
+<p>Un showroom inmersivo con avatares estilistas que recomiendan productos en tiempo real.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Showroom WebXR para colecciones cápsula.]]></excerpt:encoded>
+        <wp:post_id>505</wp:post_id>
+        <wp:post_date>2024-04-01 13:20:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:20:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-experiencia-retail</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="vr"><![CDATA[VR]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[Retail Loop]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Ventas","value":"+24%"},{"label":"Tiempo en escena","value":"6m"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1032]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-retail]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1032</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Proyecto Datos Inmersivos</title>
+        <link>https://animaavatarstudio.com/?post_type=proyecto&amp;p=506</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=proyecto&amp;p=506</guid>
+        <description><![CDATA[Visualización XR para analítica corporativa.]]></description>
+        <content:encoded><![CDATA[
+<p>Desarrollamos paneles inmersivos para reportes financieros con avatares analistas.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Visualización XR para analítica corporativa.]]></excerpt:encoded>
+        <wp:post_id>506</wp:post_id>
+        <wp:post_date>2024-04-01 13:25:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:25:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-datos-inmersivos</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>proyecto</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="servicio" nicename="ia"><![CDATA[IA]]></category>
+        <wp:postmeta>
+            <wp:meta_key>anima_client</wp:meta_key>
+            <wp:meta_value><![CDATA[DataSphere]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_year</wp:meta_key>
+            <wp:meta_value><![CDATA[2023]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_stack</wp:meta_key>
+            <wp:meta_value><![CDATA[["Unreal","WebGL","KTX2"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_kpis</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"label":"Engagement","value":"+40%"},{"label":"ROI","value":"3.2x"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_gallery</wp:meta_key>
+            <wp:meta_value><![CDATA[[1033]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_video_url</wp:meta_key>
+            <wp:meta_value><![CDATA[https://example.com/videos/proyecto-datos]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1033</wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Cursos -->
+    <item>
+        <title>Básico de VR</title>
+        <link>https://animaavatarstudio.com/?post_type=curso&amp;p=601</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=curso&amp;p=601</guid>
+        <description><![CDATA[Curso inicial para crear experiencias VR.]]></description>
+        <content:encoded><![CDATA[
+<p>Aprende los fundamentos de producción VR y publica tu primer prototipo en una semana.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Curso inicial para crear experiencias VR.]]></excerpt:encoded>
+        <wp:post_id>601</wp:post_id>
+        <wp:post_date>2024-04-01 14:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>basico-de-vr</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
         <wp:post_type>curso</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>curso-basico-de-realidad-virtual</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Domina los fundamentos de la realidad virtual, conoce los principales dispositivos y crea tu primera experiencia inmersiva.</p>
-<p><strong>Duración:</strong> 10 horas (online en directo)<br />
-<strong>Precio:</strong> 200&nbsp;€</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Fundamentos de VR para principiantes.]]></excerpt:encoded>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
         <category domain="nivel" nicename="inicial"><![CDATA[Inicial]]></category>
         <category domain="modalidad" nicename="directo"><![CDATA[Directo]]></category>
         <wp:postmeta>
@@ -330,43 +1525,53 @@ Fusionamos arte y tecnología para crear vivencias impactantes en <em>streaming<
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_price</wp:meta_key>
-            <wp:meta_value><![CDATA[200]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_requirements</wp:meta_key>
-            <wp:meta_value><![CDATA[<p>No se requieren conocimientos previos, solo curiosidad por la VR.</p>]]></wp:meta_value>
+            <wp:meta_value><![CDATA[200.0]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_syllabus</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"title";s:16:"Introducción XR";s:7:"lessons";a:2:{i:0;s:18:"Panorama tecnológico";i:1;s:20:"Dispositivos y flujos";}}i:1;a:2:{s:5:"title";s:23:"Taller práctico VR";s:7:"lessons";a:2:{i:0;s:24:"Diseño de experiencias";i:1;s:19:"Publicación del demo";}}}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[{"modulos":[{"titulo":"Introducción a VR","lecciones":["Setup hardware","Buenas prácticas UX"]},{"titulo":"Producción","lecciones":["Unreal templates","Optimización"]}]}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_requirements</wp:meta_key>
+            <wp:meta_value><![CDATA[<ul><li>PC compatible con VR</li><li>Cuenta en Unreal Engine</li></ul>]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_instructors</wp:meta_key>
-            <wp:meta_value><![CDATA[a:1:{i:0;a:3:{s:4:"name";s:13:"Laura Méndez";s:3:"bio";s:81:"Productora XR con 8 años de experiencia en formación inmersiva para empresas.";s:10:"avatar_url";s:52:"https://via.placeholder.com/200.png?text=Laura+Mendez";}}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[[{"name":"Laura Viz","bio":"Productora XR senior","avatar_url":"https://picsum.photos/200/200?random=301"},{"name":"Diego Vox","bio":"Desarrollador Unreal","avatar_url":"https://picsum.photos/200/200?random=302"}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_upcoming_dates</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;s:19:"2026-01-15T18:00:00";i:1;s:19:"2026-03-12T18:00:00";}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[["2024-06-10","2024-09-02"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1034</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Curso 2 -->
     <item>
-        <title>Curso Avanzado de IA Aplicada</title>
-        <link>https://animaavataragency.com/curso/curso-avanzado-de-ia-aplicada/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>15</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>curso</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>curso-avanzado-de-ia-aplicada</wp:post_name>
+        <title>IA aplicada a Media</title>
+        <link>https://animaavatarstudio.com/?post_type=curso&amp;p=602</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=curso&amp;p=602</guid>
+        <description><![CDATA[Curso intermedio sobre IA para producción audiovisual.]]></description>
         <content:encoded><![CDATA[
-<p>Curso intensivo orientado a profesionales que quieren implementar IA en casos reales de marketing, data analytics y automatización.</p>
-<p><strong>Duración:</strong> 20 horas (formato blended)<br />
-<strong>Precio:</strong> 500&nbsp;€</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Técnicas avanzadas de IA para proyectos reales.]]></excerpt:encoded>
-        <category domain="nivel" nicename="avanzado"><![CDATA[Avanzado]]></category>
+<p>Combina IA generativa, síntesis de voz y automatizaciones para pipelines multimedia.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Curso intermedio sobre IA para producción audiovisual.]]></excerpt:encoded>
+        <wp:post_id>602</wp:post_id>
+        <wp:post_date>2024-04-01 14:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>ia-aplicada-a-media</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>curso</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nivel" nicename="intermedio"><![CDATA[Intermedio]]></category>
         <category domain="modalidad" nicename="blended"><![CDATA[Blended]]></category>
         <wp:postmeta>
             <wp:meta_key>anima_duration_hours</wp:meta_key>
@@ -374,168 +1579,1836 @@ Fusionamos arte y tecnología para crear vivencias impactantes en <em>streaming<
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_price</wp:meta_key>
-            <wp:meta_value><![CDATA[500]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_requirements</wp:meta_key>
-            <wp:meta_value><![CDATA[<p>Conocimientos intermedios de analítica de datos o programación.</p>]]></wp:meta_value>
+            <wp:meta_value><![CDATA[500.0]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_syllabus</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"title";s:21:"Fundamentos avanzados";s:7:"lessons";a:2:{i:0;s:21:"Arquitecturas modernas";i:1;s:26:"Evaluación y métricas éticas";}}i:1;a:2:{s:5:"title";s:24:"Implementación aplicada";s:7:"lessons";a:2:{i:0;s:27:"Pipelines de datos reales";i:1;s:24:"Despliegue y monitoreo";}}}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[{"modulos":[{"titulo":"Fundamentos de IA","lecciones":["Modelos generativos","Workflow ético"]},{"titulo":"Producción","lecciones":["Integraciones con avatares","Automatización" ]}]}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_requirements</wp:meta_key>
+            <wp:meta_value><![CDATA[<ul><li>Conocimientos básicos de edición</li><li>Cuenta en servicios de IA</li></ul>]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_instructors</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:3:{s:4:"name";s:13:"Diego Álvarez";s:3:"bio";s:82:"Lead scientist especializado en modelos generativos y automatización creativa.";s:10:"avatar_url";s:50:"https://via.placeholder.com/200.png?text=Diego+AI";}i:1;a:3:{s:4:"name";s:14:"Sofía Moreira";s:3:"bio";s:88:"Estratega digital que integra IA en campañas para empresas internacionales.";s:10:"avatar_url";s:52:"https://via.placeholder.com/200.png?text=Sofia+IA";}}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[[{"name":"Sara Wave","bio":"Especialista en IA creativa","avatar_url":"https://picsum.photos/200/200?random=303"},{"name":"Luis Render","bio":"Ingeniero de datos","avatar_url":"https://picsum.photos/200/200?random=304"}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
             <wp:meta_key>anima_upcoming_dates</wp:meta_key>
-            <wp:meta_value><![CDATA[a:1:{i:0;s:19:"2026-02-20T17:00:00";}]]></wp:meta_value>
+            <wp:meta_value><![CDATA[["2024-07-15","2024-10-07"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1035</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Proyecto 1 -->
     <item>
-        <title>Proyecto Plataforma de Streaming</title>
-        <link>https://animaavataragency.com/proyecto/proyecto-plataforma-streaming/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>16</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>proyecto</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>proyecto-plataforma-streaming</wp:post_name>
+        <title>Producción XR en Realtime</title>
+        <link>https://animaavatarstudio.com/?post_type=curso&amp;p=603</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?post_type=curso&amp;p=603</guid>
+        <description><![CDATA[Curso avanzado de pipelines XR en tiempo real.]]></description>
         <content:encoded><![CDATA[
-<p>Implementación de una plataforma de streaming en vivo para conferencias internacionales, con producción multicámara, traducción simultánea y overlays interactivos.</p>
-<p><strong>Cliente:</strong> GlobalStream<br />
-<strong>Año:</strong> 2024</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Plataforma de streaming en vivo para eventos globales.]]></excerpt:encoded>
-        <category domain="servicio" nicename="streaming"><![CDATA[Streaming]]></category>
+<p>Domina la producción XR con motores en tiempo real, integraciones de hardware y emisión multicámara.</p>
+]]></content:encoded>
+        <excerpt:encoded><![CDATA[Curso avanzado de pipelines XR en tiempo real.]]></excerpt:encoded>
+        <wp:post_id>603</wp:post_id>
+        <wp:post_date>2024-04-01 14:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>produccion-xr-en-realtime</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>curso</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nivel" nicename="avanzado"><![CDATA[Avanzado]]></category>
+        <category domain="modalidad" nicename="grabado"><![CDATA[Grabado]]></category>
         <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[GlobalStream]]></wp:meta_value>
+            <wp:meta_key>anima_duration_hours</wp:meta_key>
+            <wp:meta_value><![CDATA[16]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_year</wp:meta_key>
-            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+            <wp:meta_key>anima_price</wp:meta_key>
+            <wp:meta_value><![CDATA[350.0]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_stack</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;s:7:"WebRTC";i:1;s:6:"AWS IVS";}]]></wp:meta_value>
+            <wp:meta_key>anima_syllabus</wp:meta_key>
+            <wp:meta_value><![CDATA[{"modulos":[{"titulo":"Setup avanzado","lecciones":["Pipeline realtime","Networking XR"]},{"titulo":"Producción","lecciones":["Live compositing","Optimización hardware"]}]}]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:26:"Audiencia concurrente máxima";s:5:"value";s:8:"85.000";}i:1;a:2:{s:5:"label";s:18:"Tasa de retención";s:5:"value";s:6:"92%";}}]]></wp:meta_value>
+            <wp:meta_key>anima_requirements</wp:meta_key>
+            <wp:meta_value><![CDATA[<ul><li>Experiencia previa en motores 3D</li><li>Equipo con GPU dedicada</li></ul>]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_video_url</wp:meta_key>
-            <wp:meta_value><![CDATA[https://player.vimeo.com/video/123456789]]></wp:meta_value>
+            <wp:meta_key>anima_instructors</wp:meta_key>
+            <wp:meta_value><![CDATA[[{"name":"Camila Frame","bio":"Supervisora técnica XR","avatar_url":"https://picsum.photos/200/200?random=305"},{"name":"Javier Flux","bio":"Especialista en broadcast","avatar_url":"https://picsum.photos/200/200?random=306"}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>anima_upcoming_dates</wp:meta_key>
+            <wp:meta_value><![CDATA[["2024-08-19","2024-11-11"]]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_thumbnail_id</wp:meta_key>
+            <wp:meta_value>1036</wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Proyecto 2 -->
+    <!-- Menú -->
     <item>
-        <title>Proyecto Holograma Interactivo</title>
-        <link>https://animaavataragency.com/proyecto/proyecto-holograma-interactivo/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>17</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>proyecto</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>proyecto-holograma-interactivo</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Instalación de una cabina holográfica interactiva para feria tecnológica con respuesta en tiempo real impulsada por IA conversacional.</p>
-<p><strong>Cliente:</strong> Tech Expo Inc.<br />
-<strong>Año:</strong> 2023</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Cabina holográfica interactiva para ferias tecnológicas.]]></excerpt:encoded>
-        <category domain="servicio" nicename="holograficos"><![CDATA[Holográficos]]></category>
+        <title>Inicio</title>
+        <link>https://animaavatarstudio.com/?p=801</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=801</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>801</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-inicio</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>1</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
         <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Tech Expo Inc.]]></wp:meta_value>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_year</wp:meta_key>
-            <wp:meta_value><![CDATA[2023]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[101]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_stack</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;s:12:"Volumetricos";i:1;s:2:"AI";}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:18:"Personas impactadas";s:5:"value";s:6:"12.500";}i:1;a:2:{s:5:"label";s:19:"Tiempo medio de uso";s:5:"value";s:9:"4.5 minutos";}}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Proyecto 3 -->
     <item>
-        <title>Proyecto Asistente Virtual IA</title>
-        <link>https://animaavataragency.com/proyecto/proyecto-asistente-virtual-ia/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>18</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>proyecto</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>proyecto-asistente-virtual-ia</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Desarrollo de un asistente virtual inteligente para la web de una empresa financiera con orquestación omnicanal.</p>
-<p><strong>Cliente:</strong> FinTech Solutions<br />
-<strong>Año:</strong> 2025</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Chatbot inteligente para web corporativa financiera.]]></excerpt:encoded>
-        <category domain="servicio" nicename="ia"><![CDATA[IA]]></category>
+        <title>Servicios</title>
+        <link>https://animaavatarstudio.com/?p=802</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=802</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>802</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-servicios</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>2</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
         <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[FinTech Solutions]]></wp:meta_value>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_year</wp:meta_key>
-            <wp:meta_value><![CDATA[2025]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[102]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_stack</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;s:9:"OpenAI API";i:1;s:6:"NextJS";}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:27:"Reducción de tickets manuales";s:5:"value";s:6:"-45%";}i:1;a:2:{s:5:"label";s:23:"Satisfacción de usuarios";s:5:"value";s:5:"4.7/5";}}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
         </wp:postmeta>
     </item>
 
-    <!-- Proyecto 4 -->
     <item>
-        <title>Proyecto Plataforma VR</title>
-        <link>https://animaavataragency.com/proyecto/proyecto-plataforma-vr/</link>
-        <dc:creator><![CDATA[admin]]></dc:creator>
-        <wp:post_id>19</wp:post_id>
-        <wp:post_date>2025-11-05 12:00:00</wp:post_date>
-        <wp:post_type>proyecto</wp:post_type>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>proyecto-plataforma-vr</wp:post_name>
-        <content:encoded><![CDATA[
-<p>Creación de un entorno VR multiusuario para capacitación en seguridad laboral con seguimiento de progreso y analítica.</p>
-<p><strong>Cliente:</strong> SafeWork Co.<br />
-<strong>Año:</strong> 2024</p>
-        ]]></content:encoded>
-        <excerpt:encoded><![CDATA[Entorno VR multiusuario para formación en seguridad.]]></excerpt:encoded>
-        <category domain="servicio" nicename="vr"><![CDATA[VR]]></category>
+        <title>Avatares</title>
+        <link>https://animaavatarstudio.com/?p=803</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=803</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>803</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-avatares</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>3</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
         <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[SafeWork Co.]]></wp:meta_value>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_year</wp:meta_key>
-            <wp:meta_value><![CDATA[2024]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[103]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_stack</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;s:6:"Unity3D";i:1;s:11:"Photon Cloud";}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
         </wp:postmeta>
         <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[a:2:{i:0;a:2:{s:5:"label";s:26:"Reducción de incidentes";s:5:"value";s:5:"-30%";}i:1;a:2:{s:5:"label";s:25:"Usuarios certificados";s:5:"value";s:4:"950";}}]]></wp:meta_value>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
         </wp:postmeta>
     </item>
-</channel>
+
+    <item>
+        <title>Proyectos</title>
+        <link>https://animaavatarstudio.com/?p=804</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=804</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>804</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-proyectos</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>4</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[104]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Cursos</title>
+        <link>https://animaavatarstudio.com/?p=805</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=805</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>805</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-cursos</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>5</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[105]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Anima Live</title>
+        <link>https://animaavatarstudio.com/?p=806</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=806</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>806</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-anima-live</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>6</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[106]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Historias</title>
+        <link>https://animaavatarstudio.com/?p=807</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=807</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>807</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-historias</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>7</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[108]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Contacto</title>
+        <link>https://animaavatarstudio.com/?p=808</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=808</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>808</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-contacto</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>8</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[109]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>Experiencia Inmersiva</title>
+        <link>https://animaavatarstudio.com/?p=809</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://animaavatarstudio.com/?p=809</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>809</wp:post_id>
+        <wp:post_date>2024-04-01 15:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 13:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>menu-experiencia-inmersiva</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>9</wp:menu_order>
+        <wp:post_type>nav_menu_item</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <category domain="nav_menu" nicename="menu-principal"><![CDATA[Menú Principal]]></category>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_type</wp:meta_key>
+            <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object_id</wp:meta_key>
+            <wp:meta_value><![CDATA[107]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_object</wp:meta_key>
+            <wp:meta_value><![CDATA[page]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+            <wp:meta_value><![CDATA[0]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_target</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_classes</wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_xfn</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+        <wp:postmeta>
+            <wp:meta_key>_menu_item_url</wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <!-- Attachments -->
+    <item>
+        <title>imagen-inicio</title>
+        <link>https://picsum.photos/1600/900?random=11</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=11</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1001</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-inicio</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>101</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=11</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=11]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-servicios</title>
+        <link>https://picsum.photos/1600/900?random=12</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=12</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1002</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-servicios</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>102</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=12</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=12]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-avatares</title>
+        <link>https://picsum.photos/1600/900?random=13</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=13</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1003</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-avatares</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>103</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=13</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=13]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-proyectos</title>
+        <link>https://picsum.photos/1600/900?random=14</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=14</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1004</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-proyectos</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>104</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=14</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=14]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-cursos</title>
+        <link>https://picsum.photos/1600/900?random=15</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=15</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1005</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-cursos</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>105</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=15</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=15]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-anima-live</title>
+        <link>https://picsum.photos/1600/900?random=16</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=16</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1006</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-anima-live</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>106</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=16</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=16]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-experiencia</title>
+        <link>https://picsum.photos/1600/900?random=17</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=17</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1007</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-experiencia</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>107</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=17</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=17]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-historias</title>
+        <link>https://picsum.photos/1600/900?random=18</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=18</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1008</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-historias</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>108</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=18</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=18]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-contacto</title>
+        <link>https://picsum.photos/1600/900?random=19</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=19</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1009</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-contacto</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>109</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=19</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=19]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>imagen-privacidad</title>
+        <link>https://picsum.photos/1600/900?random=110</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=110</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1010</wp:post_id>
+        <wp:post_date>2024-04-01 09:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 07:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>imagen-privacidad</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>110</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=110</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=110]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>post-tendencias-avatares</title>
+        <link>https://picsum.photos/1200/800?random=201</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=201</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1011</wp:post_id>
+        <wp:post_date>2024-04-02 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-02 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-tendencias-avatares</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>201</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=201</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=201]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
+        <title>post-digital-human</title>
+        <link>https://picsum.photos/1200/800?random=202</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=202</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1012</wp:post_id>
+        <wp:post_date>2024-04-03 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-03 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-digital-human</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>202</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=202</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=202]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>post-evento-xr</title>
+        <link>https://picsum.photos/1200/800?random=203</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=203</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1013</wp:post_id>
+        <wp:post_date>2024-04-04 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-04 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-evento-xr</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>203</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=203</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=203]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>post-ia-voz</title>
+        <link>https://picsum.photos/1200/800?random=204</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=204</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1014</wp:post_id>
+        <wp:post_date>2024-04-05 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-05 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-ia-voz</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>204</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=204</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=204]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>post-texturas-ktx2-draco</title>
+        <link>https://picsum.photos/1200/800?random=205</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=205</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1015</wp:post_id>
+        <wp:post_date>2024-04-06 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-06 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-texturas-ktx2-draco</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>205</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=205</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=205]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>post-webxr-marketing</title>
+        <link>https://picsum.photos/1200/800?random=206</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/800?random=206</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1016</wp:post_id>
+        <wp:post_date>2024-04-07 08:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-07 06:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>post-webxr-marketing</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>206</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/800?random=206</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/800?random=206]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>slide-nova</title>
+        <link>https://picsum.photos/1600/900?random=103</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=103</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1017</wp:post_id>
+        <wp:post_date>2024-04-01 11:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>slide-nova</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>301</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=103</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=103]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
+        <title>slide-produccion</title>
+        <link>https://picsum.photos/1600/900?random=104</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=104</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1018</wp:post_id>
+        <wp:post_date>2024-04-01 11:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>slide-produccion</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>302</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=104</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=104]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>slide-cursos</title>
+        <link>https://picsum.photos/1600/900?random=105</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=105</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1019</wp:post_id>
+        <wp:post_date>2024-04-01 11:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 09:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>slide-cursos</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>303</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=105</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=105]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-nova-stream</title>
+        <link>https://picsum.photos/1200/1200?random=210</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=210</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1020</wp:post_id>
+        <wp:post_date>2024-04-01 12:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-nova-stream</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>401</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=210</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=210]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-lumen-host</title>
+        <link>https://picsum.photos/1200/1200?random=211</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=211</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1021</wp:post_id>
+        <wp:post_date>2024-04-01 12:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-lumen-host</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>402</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=211</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=211]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-voxel-guide</title>
+        <link>https://picsum.photos/1200/1200?random=212</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=212</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1022</wp:post_id>
+        <wp:post_date>2024-04-01 12:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-voxel-guide</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>403</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=212</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=212]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-spectra-coach</title>
+        <link>https://picsum.photos/1200/1200?random=213</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=213</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1023</wp:post_id>
+        <wp:post_date>2024-04-01 12:15:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:15:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-spectra-coach</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>404</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=213</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=213]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-pulse-analyst</title>
+        <link>https://picsum.photos/1200/1200?random=214</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=214</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1024</wp:post_id>
+        <wp:post_date>2024-04-01 12:20:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:20:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-pulse-analyst</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>405</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=214</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=214]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-echo-performer</title>
+        <link>https://picsum.photos/1200/1200?random=215</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=215</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1025</wp:post_id>
+        <wp:post_date>2024-04-01 12:25:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:25:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-echo-performer</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>406</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=215</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=215]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-aura-mentor</title>
+        <link>https://picsum.photos/1200/1200?random=216</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=216</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1026</wp:post_id>
+        <wp:post_date>2024-04-01 12:30:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:30:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-aura-mentor</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>407</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=216</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=216]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>avatar-flux-presenter</title>
+        <link>https://picsum.photos/1200/1200?random=217</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1200/1200?random=217</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1027</wp:post_id>
+        <wp:post_date>2024-04-01 12:35:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 10:35:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>avatar-flux-presenter</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>408</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1200/1200?random=217</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1200/1200?random=217]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>proyecto-streaming</title>
+        <link>https://picsum.photos/1600/900?random=220</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=220</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1028</wp:post_id>
+        <wp:post_date>2024-04-01 13:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-streaming</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>501</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=220</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=220]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
+        <title>proyecto-holografico</title>
+        <link>https://picsum.photos/1600/900?random=221</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=221</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1029</wp:post_id>
+        <wp:post_date>2024-04-01 13:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-holografico</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>502</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=221</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=221]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>proyecto-ia</title>
+        <link>https://picsum.photos/1600/900?random=222</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=222</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1030</wp:post_id>
+        <wp:post_date>2024-04-01 13:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-ia</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>503</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=222</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=222]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>proyecto-vr</title>
+        <link>https://picsum.photos/1600/900?random=223</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=223</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1031</wp:post_id>
+        <wp:post_date>2024-04-01 13:15:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:15:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-vr</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>504</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=223</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=223]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>proyecto-retail</title>
+        <link>https://picsum.photos/1600/900?random=224</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=224</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1032</wp:post_id>
+        <wp:post_date>2024-04-01 13:20:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:20:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-retail</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>505</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=224</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=224]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>proyecto-datos</title>
+        <link>https://picsum.photos/1600/900?random=225</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=225</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1033</wp:post_id>
+        <wp:post_date>2024-04-01 13:25:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 11:25:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>proyecto-datos</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>506</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=225</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=225]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>curso-basico-vr</title>
+        <link>https://picsum.photos/1600/900?random=230</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=230</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1034</wp:post_id>
+        <wp:post_date>2024-04-01 14:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>curso-basico-vr</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>601</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=230</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=230]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>curso-ia-media</title>
+        <link>https://picsum.photos/1600/900?random=231</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=231</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1035</wp:post_id>
+        <wp:post_date>2024-04-01 14:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>curso-ia-media</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>602</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=231</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=231]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>curso-produccion-xr</title>
+        <link>https://picsum.photos/1600/900?random=232</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/1600/900?random=232</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1036</wp:post_id>
+        <wp:post_date>2024-04-01 14:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>curso-produccion-xr</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>603</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/1600/900?random=232</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/1600/900?random=232]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>inicio-card-1</title>
+        <link>https://picsum.photos/640/360?random=41</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/640/360?random=41</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1037</wp:post_id>
+        <wp:post_date>2024-04-01 10:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>inicio-card-1</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>101</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/640/360?random=41</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/640/360?random=41]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+    <item>
+        <title>inicio-card-2</title>
+        <link>https://picsum.photos/640/360?random=42</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/640/360?random=42</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1038</wp:post_id>
+        <wp:post_date>2024-04-01 10:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>inicio-card-2</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>101</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/640/360?random=42</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/640/360?random=42]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>inicio-card-3</title>
+        <link>https://picsum.photos/640/360?random=43</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/640/360?random=43</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1039</wp:post_id>
+        <wp:post_date>2024-04-01 10:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 08:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>inicio-card-3</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>101</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/640/360?random=43</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/640/360?random=43]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-laura-viz</title>
+        <link>https://picsum.photos/200/200?random=301</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=301</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1040</wp:post_id>
+        <wp:post_date>2024-04-01 14:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-laura-viz</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>601</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=301</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=301]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-diego-vox</title>
+        <link>https://picsum.photos/200/200?random=302</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=302</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1041</wp:post_id>
+        <wp:post_date>2024-04-01 14:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-diego-vox</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>601</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=302</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=302]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-sara-wave</title>
+        <link>https://picsum.photos/200/200?random=303</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=303</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1042</wp:post_id>
+        <wp:post_date>2024-04-01 14:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-sara-wave</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>602</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=303</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=303]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-luis-render</title>
+        <link>https://picsum.photos/200/200?random=304</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=304</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1043</wp:post_id>
+        <wp:post_date>2024-04-01 14:05:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:05:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-luis-render</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>602</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=304</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=304]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-camila-frame</title>
+        <link>https://picsum.photos/200/200?random=305</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=305</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1044</wp:post_id>
+        <wp:post_date>2024-04-01 14:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-camila-frame</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>603</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=305</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=305]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    <item>
+        <title>instructor-javier-flux</title>
+        <link>https://picsum.photos/200/200?random=306</link>
+        <dc:creator><![CDATA[animaadmin]]></dc:creator>
+        <guid isPermaLink="false">https://picsum.photos/200/200?random=306</guid>
+        <description></description>
+        <content:encoded><![CDATA[]]></content:encoded>
+        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+        <wp:post_id>1045</wp:post_id>
+        <wp:post_date>2024-04-01 14:10:00</wp:post_date>
+        <wp:post_date_gmt>2024-04-01 12:10:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>instructor-javier-flux</wp:post_name>
+        <wp:status>inherit</wp:status>
+        <wp:post_parent>603</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>attachment</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+        <wp:attachment_url>https://picsum.photos/200/200?random=306</wp:attachment_url>
+        <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+        <wp:postmeta>
+            <wp:meta_key>_wp_attached_file</wp:meta_key>
+            <wp:meta_value><![CDATA[https://picsum.photos/200/200?random=306]]></wp:meta_value>
+        </wp:postmeta>
+    </item>
+
+    </channel>
 </rss>
