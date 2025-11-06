@@ -3,6 +3,7 @@ namespace Anima\Engine\Services;
 
 use function add_action;
 use function delete_transient;
+use function do_action;
 use function get_post_type;
 use function in_array;
 use function is_multisite;
@@ -50,6 +51,8 @@ class CacheInvalidator implements ServiceInterface {
      */
     protected function delete_transients_with_prefix( string $prefix ): void {
         global $wpdb;
+
+        do_action( 'anima_engine_cache_purge', $prefix );
 
         $like = $wpdb->esc_like( '_transient_' . $prefix ) . '%';
         $wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", $like ) );

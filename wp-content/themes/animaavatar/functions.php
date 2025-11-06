@@ -277,6 +277,31 @@ function animaavatar_render_mega_menu( $item_output, $item, $depth, $args ) {
     return ob_get_clean();
 }
 
+add_filter( 'upload_mimes', 'animaavatar_enable_modern_image_formats' );
+/**
+ * Permite subir imágenes WebP y AVIF.
+ */
+function animaavatar_enable_modern_image_formats( array $mimes ): array {
+    $mimes['webp'] = 'image/webp';
+    $mimes['avif'] = 'image/avif';
+
+    return $mimes;
+}
+
+add_filter( 'wp_get_attachment_image_attributes', 'animaavatar_default_lazy_loading', 10, 3 );
+/**
+ * Asegura que las imágenes utilicen lazy loading por defecto.
+ */
+function animaavatar_default_lazy_loading( array $attr, $attachment, string $size ): array { // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.wp_get_attachment_image_attributes
+    if ( empty( $attr['loading'] ) ) {
+        $attr['loading'] = 'lazy';
+    }
+
+    return $attr;
+}
+
+add_filter( 'wp_image_default_to_lazy', '__return_true' );
+
 
 if ( ! function_exists( 'animaavatar_default_menu' ) ) {
     /**
