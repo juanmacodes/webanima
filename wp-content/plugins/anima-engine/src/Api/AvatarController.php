@@ -5,6 +5,8 @@ use Anima\Engine\Models\Avatar as AvatarModel;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Server;
+use const MINUTE_IN_SECONDS;
+
 use function __;
 use function apply_filters;
 use function esc_url_raw;
@@ -120,6 +122,11 @@ class AvatarController {
      * Guarda o actualiza el avatar del usuario autenticado.
      */
     public function save_avatar( WP_REST_Request $request ) {
+        $check = RateLimiter::check( $request, 'avatar_save', 10, MINUTE_IN_SECONDS * 5 );
+        if ( is_wp_error( $check ) ) {
+            return $check;
+        }
+
         $user = $this->jwt->authenticate_request( $request );
         if ( is_wp_error( $user ) ) {
             return $user;
@@ -147,19 +154,28 @@ class AvatarController {
             return new WP_Error( 'anima_engine_avatar_save_failed', __( 'No se pudo guardar el avatar.', 'anima-engine' ), [ 'status' => 500 ] );
         }
 
-        return rest_ensure_response(
+        $response = rest_ensure_response(
             [
                 'glb_url'    => $glb_url,
                 'poster_url' => $poster_url,
                 'updated_at' => $timestamp,
             ]
         );
+
+        RateLimiter::reset( $request, 'avatar_save' );
+
+        return $response;
     }
 
     /**
      * Entrega una URL de subida para el avatar.
      */
     public function get_upload_url( WP_REST_Request $request ) {
+        $check = RateLimiter::check( $request, 'avatar_upload', 5, MINUTE_IN_SECONDS * 5 );
+        if ( is_wp_error( $check ) ) {
+            return $check;
+        }
+
         $user = $this->jwt->authenticate_request( $request );
         if ( is_wp_error( $user ) ) {
             return $user;
@@ -176,12 +192,16 @@ class AvatarController {
         if ( is_callable( $provider ) ) {
             $result = call_user_func( $provider, $filename, $mime, $user );
             if ( is_array( $result ) && isset( $result['upload_url'], $result['public_url'] ) ) {
-                return rest_ensure_response(
+                $response = rest_ensure_response(
                     [
                         'upload_url' => (string) $result['upload_url'],
                         'public_url' => (string) $result['public_url'],
                     ]
                 );
+
+                RateLimiter::reset( $request, 'avatar_upload' );
+
+                return $response;
             }
         }
 
@@ -190,12 +210,16 @@ class AvatarController {
             return $upload;
         }
 
-        return rest_ensure_response(
+        $response = rest_ensure_response(
             [
                 'upload_url' => $upload,
                 'public_url' => $upload,
             ]
         );
+
+        RateLimiter::reset( $request, 'avatar_upload' );
+
+        return $response;
     }
 
     /**

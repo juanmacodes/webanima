@@ -6,16 +6,22 @@ use WP_Error;
 use WP_REST_Request;
 use WP_REST_Server;
 
+use const MINUTE_IN_SECONDS;
+
 use function absint;
 use function array_map;
 use function ceil;
 use function __;
+use function get_option;
+use function get_transient;
 use function in_array;
 use function is_array;
 use function register_rest_route;
 use function rest_ensure_response;
 use function sanitize_text_field;
+use function set_transient;
 use function strtolower;
+use function wp_json_encode;
 
 /**
  * Controlador REST para exponer el catálogo de assets disponibles.
@@ -84,12 +90,22 @@ class CatalogController
             $perPage = 24;
         }
 
-        $result = $this->assets->getCatalog([
+        $queryArgs = [
             'type'     => '' !== $type ? $type : null,
             'search'   => '' !== $search ? $search : null,
             'page'     => max(1, $page),
             'per_page' => $perPage,
-        ]);
+        ];
+
+        $cacheKey = $this->build_cache_key($queryArgs);
+        if ($this->is_cache_enabled()) {
+            $cached = get_transient($cacheKey);
+            if (false !== $cached && is_array($cached)) {
+                return rest_ensure_response($cached);
+            }
+        }
+
+        $result = $this->assets->getCatalog($queryArgs);
 
         $total       = (int) ($result['total'] ?? 0);
         $items       = $result['items'] ?? [];
@@ -119,6 +135,30 @@ class CatalogController
             ],
         ];
 
+        if ($this->is_cache_enabled()) {
+            set_transient($cacheKey, $response, $this->get_cache_ttl());
+        }
+
         return rest_ensure_response($response);
+    }
+
+    protected function build_cache_key(array $args): string
+    {
+        return 'anima_engine_catalog_' . md5(wp_json_encode($args));
+    }
+
+    protected function is_cache_enabled(): bool
+    {
+        $options = get_option('anima_engine_options', []);
+        if (array_key_exists('cache_catalog', $options)) {
+            return (bool) $options['cache_catalog'];
+        }
+
+        return true;
+    }
+
+    protected function get_cache_ttl(): int
+    {
+        return MINUTE_IN_SECONDS * 5;
     }
 }

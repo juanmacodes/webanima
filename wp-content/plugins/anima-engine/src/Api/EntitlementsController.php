@@ -7,13 +7,19 @@ use WP_Error;
 use WP_REST_Request;
 use WP_REST_Server;
 
+use const MINUTE_IN_SECONDS;
+
 use function absint;
 use function array_map;
+use function delete_transient;
 use function current_user_can;
 use function function_exists;
+use function get_option;
+use function get_transient;
 use function is_array;
 use function register_rest_route;
 use function rest_ensure_response;
+use function set_transient;
 use function wc_get_order;
 use function __;
 
@@ -69,9 +75,25 @@ class EntitlementsController
      */
     public function list_entitlements(WP_REST_Request $request)
     {
+        $check = RateLimiter::check($request, 'entitlements_list', 12, MINUTE_IN_SECONDS * 2);
+        if ($check instanceof WP_Error) {
+            return $check;
+        }
+
         $user = $this->jwt->authenticate_request($request);
         if ($user instanceof WP_Error) {
             return $user;
+        }
+
+        $cacheKey = $this->build_cache_key((int) $user->ID);
+        if ($this->is_cache_enabled()) {
+            $cached = get_transient($cacheKey);
+            if (false !== $cached && is_array($cached)) {
+                $response = rest_ensure_response($cached);
+                RateLimiter::reset($request, 'entitlements_list');
+
+                return $response;
+            }
         }
 
         $records = $this->entitlements->getWithAssetsForUser((int) $user->ID);
@@ -89,7 +111,14 @@ class EntitlementsController
             is_array($records) ? $records : []
         );
 
-        return rest_ensure_response($items);
+        if ($this->is_cache_enabled()) {
+            set_transient($cacheKey, $items, $this->get_cache_ttl());
+        }
+
+        $response = rest_ensure_response($items);
+        RateLimiter::reset($request, 'entitlements_list');
+
+        return $response;
     }
 
     /**
@@ -97,6 +126,11 @@ class EntitlementsController
      */
     public function claim_entitlements(WP_REST_Request $request)
     {
+        $check = RateLimiter::check($request, 'entitlements_claim', 5, MINUTE_IN_SECONDS * 5);
+        if ($check instanceof WP_Error) {
+            return $check;
+        }
+
         $user = $this->jwt->authenticate_request($request);
         if ($user instanceof WP_Error) {
             return $user;
@@ -124,9 +158,37 @@ class EntitlementsController
             $granted = $this->orders->rescan_user_orders((int) $user->ID);
         }
 
-        return rest_ensure_response([
+        if ($granted > 0) {
+            delete_transient($this->build_cache_key((int) $user->ID));
+        }
+
+        $response = rest_ensure_response([
             'granted'  => (int) $granted,
             'order_id' => $orderId > 0 ? $orderId : null,
         ]);
+
+        RateLimiter::reset($request, 'entitlements_claim');
+
+        return $response;
+    }
+
+    protected function build_cache_key(int $userId): string
+    {
+        return 'anima_engine_entitlements_api_' . $userId;
+    }
+
+    protected function is_cache_enabled(): bool
+    {
+        $options = get_option('anima_engine_options', []);
+        if (array_key_exists('cache_entitlements', $options)) {
+            return (bool) $options['cache_entitlements'];
+        }
+
+        return true;
+    }
+
+    protected function get_cache_ttl(): int
+    {
+        return MINUTE_IN_SECONDS * 2;
     }
 }

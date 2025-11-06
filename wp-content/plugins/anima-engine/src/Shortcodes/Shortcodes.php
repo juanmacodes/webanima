@@ -4,9 +4,11 @@ namespace Anima\Engine\Shortcodes;
 use Anima\Engine\Models\Avatar as AvatarModel;
 use Anima\Engine\Models\Asset as AssetModel;
 use Anima\Engine\Models\Entitlement as EntitlementModel;
+use Anima\Engine\Commerce\SubscriptionManager;
 use Anima\Engine\Services\ServiceInterface;
 
 use const MINUTE_IN_SECONDS;
+use const FILTER_VALIDATE_BOOLEAN;
 use function __;
 use function absint;
 use function add_query_arg;
@@ -24,6 +26,7 @@ use function get_the_post_thumbnail;
 use function get_the_title;
 use function get_permalink;
 use function get_transient;
+use function get_post_status;
 use function post_type_exists;
 use function set_transient;
 use function shortcode_atts;
@@ -43,6 +46,13 @@ use function wp_unslash;
 use function sprintf;
 use function wp_json_encode;
 use function wp_parse_args;
+use function number_format_i18n;
+use function current_time;
+use function human_time_diff;
+use function home_url;
+use function function_exists;
+use function wc_get_account_endpoint_url;
+use function wp_login_url;
 
 /**
  * Gestión de shortcodes del plugin.
@@ -71,6 +81,11 @@ class Shortcodes implements ServiceInterface {
     protected ?EntitlementModel $entitlementModel = null;
 
     /**
+     * Gestor de suscripciones de usuario.
+     */
+    protected ?SubscriptionManager $subscriptionManager = null;
+
+    /**
      * {@inheritDoc}
      */
     public function register(): void {
@@ -79,6 +94,7 @@ class Shortcodes implements ServiceInterface {
         add_shortcode( 'anima_gallery', [ $this, 'render_gallery' ] );
         add_shortcode( 'anima_catalog', [ $this, 'render_catalog' ] );
         add_shortcode( 'anima_entitlements', [ $this, 'render_entitlements' ] );
+        add_shortcode( 'anima_subscription_status', [ $this, 'render_subscription_status' ] );
 
         if ( $this->is_feature_enabled( 'enable_model_viewer' ) ) {
             add_shortcode( 'anima_model', [ $this, 'render_model' ] );
@@ -93,43 +109,87 @@ class Shortcodes implements ServiceInterface {
     public function render_catalog( array $atts ): string {
         $atts = shortcode_atts(
             [
-                'type'  => 'skin',
-                'limit' => '12',
+                'type'   => 'all',
+                'limit'  => '12',
+                'search' => '',
+                'page'   => '1',
             ],
             $atts,
             'anima_catalog'
         );
 
-        $type  = sanitize_key( $atts['type'] );
-        $limit = max( 1, absint( $atts['limit'] ) );
+        $type       = sanitize_key( $atts['type'] );
+        $limit      = absint( $atts['limit'] );
+        $search     = sanitize_text_field( $atts['search'] );
+        $page_param = absint( $atts['page'] );
 
-        if ( ! in_array( $type, [ 'skin', 'environment' ], true ) ) {
-            return '<p>' . esc_html__( 'El tipo solicitado no está disponible.', 'anima-engine' ) . '</p>';
+        $requested_type = isset( $_GET['anima_type'] ) ? sanitize_key( wp_unslash( (string) $_GET['anima_type'] ) ) : '';
+        if ( '' !== $requested_type ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $type = $requested_type;
         }
+
+        $requested_search = isset( $_GET['anima_search'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['anima_search'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if ( '' !== $requested_search ) {
+            $search = $requested_search;
+        }
+
+        $page = $page_param > 0 ? $page_param : absint( isset( $_GET['anima_page'] ) ? wp_unslash( (string) $_GET['anima_page'] ) : 1 ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if ( $page <= 0 ) {
+            $page = 1;
+        }
+
+        if ( 'all' === $type ) {
+            $type = '';
+        }
+
+        if ( '' !== $type && ! in_array( $type, [ 'skin', 'environment' ], true ) ) {
+            $type = 'skin';
+        }
+
+        $per_page = $limit > 0 ? $limit : 12;
 
         if ( null === $this->assetModel ) {
             $this->assetModel = new AssetModel();
         }
 
-        $results = $this->assetModel->getCatalog(
-            [
-                'type'     => $type,
-                'per_page' => $limit,
-                'page'     => 1,
-            ]
-        );
+        $query_args = [
+            'type'     => '' !== $type ? $type : null,
+            'search'   => '' !== $search ? $search : null,
+            'page'     => $page,
+            'per_page' => $per_page,
+        ];
 
-        $items = $results['items'] ?? [];
-        if ( empty( $items ) ) {
-            return '<p>' . esc_html__( 'No hay assets disponibles por ahora.', 'anima-engine' ) . '</p>';
+        $cache_key = $this->build_cache_key( 'catalog_shortcode', $query_args );
+        $use_cache = $this->is_feature_enabled( 'cache_catalog', true );
+
+        if ( $use_cache ) {
+            $cached = $this->cache_get( $cache_key, 'catalog_shortcode' );
+            if ( false !== $cached && is_string( $cached ) ) {
+                return $cached;
+            }
         }
 
-        $output  = '<div class="anima-catalog-grid">';
+        $results = $this->assetModel->getCatalog( $query_args );
+        $items   = $results['items'] ?? [];
+        $total   = isset( $results['total'] ) ? (int) $results['total'] : 0;
+
+        if ( empty( $items ) ) {
+            $empty = '<p>' . esc_html__( 'No hay assets disponibles por ahora.', 'anima-engine' ) . '</p>';
+            if ( $use_cache ) {
+                $this->cache_set( $cache_key, $empty, MINUTE_IN_SECONDS * 5, 'catalog_shortcode' );
+            }
+
+            return $empty;
+        }
+
+        $output  = '<div class="anima-catalog">';
+        $output .= '<div class="anima-catalog-grid">';
+
         foreach ( $items as $item ) {
             $title     = esc_html( $item['title'] ?? '' );
             $media_url = esc_url( $item['media_url'] ?? '' );
             $price     = isset( $item['price'] ) ? (float) $item['price'] : 0.0;
-            $price_fmt = sprintf( '€ %0.2f', $price );
+            $price_fmt = $price > 0 ? sprintf( '€ %s', number_format_i18n( $price, 2 ) ) : esc_html__( 'Incluido con tu plan', 'anima-engine' );
 
             $output .= '<article class="anima-catalog-item">';
             if ( $media_url ) {
@@ -141,7 +201,21 @@ class Shortcodes implements ServiceInterface {
             $output .= '</div>';
             $output .= '</article>';
         }
+
         $output .= '</div>';
+
+        $total_pages = (int) ceil( $total / $per_page );
+        if ( $total_pages > 1 ) {
+            $output .= '<nav class="anima-catalog-pagination" aria-label="' . esc_attr__( 'Paginación del catálogo', 'anima-engine' ) . '">';
+            $output .= $this->render_pagination( $page, $total_pages );
+            $output .= '</nav>';
+        }
+
+        $output .= '</div>';
+
+        if ( $use_cache ) {
+            $this->cache_set( $cache_key, $output, MINUTE_IN_SECONDS * 5, 'catalog_shortcode' );
+        }
 
         return $output;
     }
@@ -159,6 +233,16 @@ class Shortcodes implements ServiceInterface {
         }
 
         $user_id = get_current_user_id();
+        $cache_key = 'anima_engine_entitlements_user_' . (int) $user_id;
+        $use_cache = $this->is_feature_enabled( 'cache_entitlements', true );
+
+        if ( $use_cache ) {
+            $cached = $this->cache_get( $cache_key, 'entitlements' );
+            if ( false !== $cached && is_string( $cached ) ) {
+                return $cached;
+            }
+        }
+
         $records = $this->entitlementModel->getWithAssetsForUser( (int) $user_id );
 
         if ( empty( $records ) ) {
@@ -182,7 +266,95 @@ class Shortcodes implements ServiceInterface {
         }
         $output .= '</ul>';
 
+        if ( $use_cache ) {
+            $this->cache_set( $cache_key, $output, MINUTE_IN_SECONDS * 2, 'entitlements' );
+        }
+
         return $output;
+    }
+
+    /**
+     * Muestra el estado actual de la suscripción del usuario.
+     */
+    public function render_subscription_status( array $atts = [] ): string {
+        $atts = shortcode_atts(
+            [
+                'show_plan' => 'true',
+            ],
+            $atts,
+            'anima_subscription_status'
+        );
+
+        if ( ! is_user_logged_in() ) {
+            $login_url = wp_login_url();
+
+            return '<p>' . sprintf(
+                esc_html__( 'Inicia sesión para revisar tu suscripción. %s', 'anima-engine' ),
+                '<a href="' . esc_url( $login_url ) . '">' . esc_html__( 'Acceder', 'anima-engine' ) . '</a>'
+            ) . '</p>';
+        }
+
+        $user_id  = get_current_user_id();
+        $status   = $this->get_subscription_manager()->getStatus( (int) $user_id );
+        $is_active = ! empty( $status['active'] );
+
+        $plan       = isset( $status['plan'] ) ? trim( (string) $status['plan'] ) : '';
+        $trial_ends = isset( $status['trial_ends_at'] ) ? (string) $status['trial_ends_at'] : '';
+        $trial_msg  = '';
+
+        if ( '' !== $trial_ends ) {
+            $trial_timestamp = strtotime( $trial_ends );
+            if ( $trial_timestamp && $trial_timestamp > current_time( 'timestamp' ) ) {
+                $trial_msg = sprintf(
+                    /* translators: %s: human readable time. */
+                    esc_html__( 'Tu periodo de prueba finaliza en %s.', 'anima-engine' ),
+                    human_time_diff( current_time( 'timestamp' ), $trial_timestamp )
+                );
+            } elseif ( $trial_timestamp ) {
+                $trial_msg = esc_html__( 'Tu periodo de prueba ha finalizado.', 'anima-engine' );
+            }
+        }
+
+        $summary = $is_active
+            ? esc_html__( 'Tu suscripción está activa. Puedes acceder a todos los assets disponibles.', 'anima-engine' )
+            : esc_html__( 'No tienes una suscripción activa. Actívala para desbloquear el catálogo completo.', 'anima-engine' );
+
+        $classes = [ 'anima-subscription-card' ];
+        $classes[] = $is_active ? 'anima-subscription-card--active' : 'anima-subscription-card--inactive';
+
+        $html  = '<div class="' . esc_attr( implode( ' ', $classes ) ) . '">';
+        $html .= '<h3>' . esc_html( $is_active ? __( 'Suscripción activa', 'anima-engine' ) : __( 'Suscripción inactiva', 'anima-engine' ) ) . '</h3>';
+        $html .= '<p class="anima-subscription-summary">' . esc_html( $summary ) . '</p>';
+
+        $show_plan = filter_var( $atts['show_plan'], FILTER_VALIDATE_BOOLEAN );
+        $meta_items = [];
+
+        if ( $show_plan && '' !== $plan ) {
+            $meta_items[] = sprintf( esc_html__( 'Plan: %s', 'anima-engine' ), $plan );
+        }
+
+        if ( '' !== $trial_msg ) {
+            $meta_items[] = $trial_msg;
+        }
+
+        if ( ! empty( $meta_items ) ) {
+            $html .= '<ul class="anima-subscription-meta">';
+            foreach ( $meta_items as $item ) {
+                $html .= '<li>' . esc_html( $item ) . '</li>';
+            }
+            $html .= '</ul>';
+        }
+
+        $cta_url   = $is_active ? $this->get_subscription_management_url() : $this->get_subscription_purchase_url();
+        $cta_label = $is_active ? esc_html__( 'Gestionar suscripción', 'anima-engine' ) : esc_html__( 'Activar suscripción', 'anima-engine' );
+
+        if ( $cta_url ) {
+            $html .= '<p class="anima-subscription-cta"><a class="button" href="' . esc_url( $cta_url ) . '">' . esc_html( $cta_label ) . '</a></p>';
+        }
+
+        $html .= '</div>';
+
+        return $html;
     }
 
     /**
@@ -569,6 +741,52 @@ class Shortcodes implements ServiceInterface {
     }
 
     /**
+     * Devuelve el gestor de suscripciones reutilizable.
+     */
+    protected function get_subscription_manager(): SubscriptionManager {
+        if ( null === $this->subscriptionManager ) {
+            $this->subscriptionManager = new SubscriptionManager();
+        }
+
+        return $this->subscriptionManager;
+    }
+
+    /**
+     * URL para gestionar la suscripción activa.
+     */
+    protected function get_subscription_management_url(): string {
+        if ( function_exists( 'wc_get_account_endpoint_url' ) ) {
+            $url = wc_get_account_endpoint_url( 'subscriptions' );
+            if ( $url ) {
+                return $url;
+            }
+        }
+
+        return home_url( '/mi-cuenta/' );
+    }
+
+    /**
+     * URL para comprar o renovar la suscripción.
+     */
+    protected function get_subscription_purchase_url(): string {
+        $options   = $this->get_options();
+        $product_id = isset( $options['subscription_product_id'] ) ? (int) $options['subscription_product_id'] : 0;
+
+        if ( $product_id <= 0 && isset( $options['live_product_id'] ) ) {
+            $product_id = (int) $options['live_product_id'];
+        }
+
+        if ( $product_id > 0 && get_post_status( $product_id ) ) {
+            $link = get_permalink( $product_id );
+            if ( $link ) {
+                return $link;
+            }
+        }
+
+        return home_url( '/tienda/' );
+    }
+
+    /**
      * Genera paginación para la galería.
      */
     protected function render_pagination( int $current_page, int $max_pages ): string {
@@ -591,6 +809,8 @@ class Shortcodes implements ServiceInterface {
                 'enable_slider'       => true,
                 'enable_model_viewer' => true,
                 'enable_cache'        => true,
+                'cache_catalog'       => true,
+                'cache_entitlements'  => true,
             ];
             $this->options = wp_parse_args( get_option( 'anima_engine_options', [] ), $defaults );
         }
