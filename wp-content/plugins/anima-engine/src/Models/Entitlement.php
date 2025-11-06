@@ -108,6 +108,47 @@ class Entitlement
     }
 
     /**
+     * Obtiene las licencias de un usuario incluyendo datos del asset.
+     */
+    public function getWithAssetsForUser(int $userId): array
+    {
+        $assets_table = $this->db->prefix . 'anima_assets';
+
+        $sql = $this->db->prepare(
+            "SELECT e.*, a.title, a.media_url, a.type FROM {$this->table} e LEFT JOIN {$assets_table} a ON e.asset_id = a.id WHERE e.user_id = %d ORDER BY e.created_at DESC",
+            $userId
+        );
+
+        $results = $this->db->get_results($sql, ARRAY_A);
+
+        return $results ?: [];
+    }
+
+    /**
+     * Busca una licencia por usuario y asset.
+     */
+    public function findForUserAsset(int $userId, int $assetId): ?array
+    {
+        $sql = $this->db->prepare(
+            "SELECT * FROM {$this->table} WHERE user_id = %d AND asset_id = %d LIMIT 1",
+            $userId,
+            $assetId
+        );
+
+        $row = $this->db->get_row($sql, ARRAY_A);
+
+        return $row ?: null;
+    }
+
+    /**
+     * Verifica si el usuario tiene licencia para un asset.
+     */
+    public function userHasEntitlement(int $userId, int $assetId): bool
+    {
+        return null !== $this->findForUserAsset($userId, $assetId);
+    }
+
+    /**
      * Actualiza una licencia existente.
      */
     public function update(int $id, array $data): bool

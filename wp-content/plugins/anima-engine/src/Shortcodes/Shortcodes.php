@@ -2,6 +2,8 @@
 namespace Anima\Engine\Shortcodes;
 
 use Anima\Engine\Models\Avatar as AvatarModel;
+use Anima\Engine\Models\Asset as AssetModel;
+use Anima\Engine\Models\Entitlement as EntitlementModel;
 use Anima\Engine\Services\ServiceInterface;
 
 use const MINUTE_IN_SECONDS;
@@ -26,7 +28,9 @@ use function post_type_exists;
 use function set_transient;
 use function shortcode_atts;
 use function sanitize_text_field;
+use function sanitize_key;
 use function sanitize_html_class;
+use function in_array;
 use function wp_kses_post;
 use function wp_list_pluck;
 use function wp_reset_postdata;
@@ -36,6 +40,7 @@ use function wp_enqueue_script;
 use function wp_trim_words;
 use function is_user_logged_in;
 use function wp_unslash;
+use function sprintf;
 use function wp_json_encode;
 use function wp_parse_args;
 
@@ -56,18 +61,128 @@ class Shortcodes implements ServiceInterface {
     protected ?AvatarModel $avatarModel = null;
 
     /**
+     * Modelo para acceder a los assets.
+     */
+    protected ?AssetModel $assetModel = null;
+
+    /**
+     * Modelo para consultar licencias de usuario.
+     */
+    protected ?EntitlementModel $entitlementModel = null;
+
+    /**
      * {@inheritDoc}
      */
     public function register(): void {
         $this->options = $this->get_options();
 
         add_shortcode( 'anima_gallery', [ $this, 'render_gallery' ] );
+        add_shortcode( 'anima_catalog', [ $this, 'render_catalog' ] );
+        add_shortcode( 'anima_entitlements', [ $this, 'render_entitlements' ] );
 
         if ( $this->is_feature_enabled( 'enable_model_viewer' ) ) {
             add_shortcode( 'anima_model', [ $this, 'render_model' ] );
             add_shortcode( 'anima_user_avatar', [ $this, 'render_user_avatar' ] );
             add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
         }
+    }
+
+    /**
+     * Renderiza un catálogo de assets personalizados.
+     */
+    public function render_catalog( array $atts ): string {
+        $atts = shortcode_atts(
+            [
+                'type'  => 'skin',
+                'limit' => '12',
+            ],
+            $atts,
+            'anima_catalog'
+        );
+
+        $type  = sanitize_key( $atts['type'] );
+        $limit = max( 1, absint( $atts['limit'] ) );
+
+        if ( ! in_array( $type, [ 'skin', 'environment' ], true ) ) {
+            return '<p>' . esc_html__( 'El tipo solicitado no está disponible.', 'anima-engine' ) . '</p>';
+        }
+
+        if ( null === $this->assetModel ) {
+            $this->assetModel = new AssetModel();
+        }
+
+        $results = $this->assetModel->getCatalog(
+            [
+                'type'     => $type,
+                'per_page' => $limit,
+                'page'     => 1,
+            ]
+        );
+
+        $items = $results['items'] ?? [];
+        if ( empty( $items ) ) {
+            return '<p>' . esc_html__( 'No hay assets disponibles por ahora.', 'anima-engine' ) . '</p>';
+        }
+
+        $output  = '<div class="anima-catalog-grid">';
+        foreach ( $items as $item ) {
+            $title     = esc_html( $item['title'] ?? '' );
+            $media_url = esc_url( $item['media_url'] ?? '' );
+            $price     = isset( $item['price'] ) ? (float) $item['price'] : 0.0;
+            $price_fmt = sprintf( '€ %0.2f', $price );
+
+            $output .= '<article class="anima-catalog-item">';
+            if ( $media_url ) {
+                $output .= '<figure class="anima-catalog-thumb"><img src="' . $media_url . '" alt="' . esc_attr( $title ) . '" loading="lazy" /></figure>';
+            }
+            $output .= '<div class="anima-catalog-body">';
+            $output .= '<h3 class="anima-catalog-title">' . $title . '</h3>';
+            $output .= '<p class="anima-catalog-price">' . esc_html( $price_fmt ) . '</p>';
+            $output .= '</div>';
+            $output .= '</article>';
+        }
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    /**
+     * Renderiza la lista de licencias del usuario.
+     */
+    public function render_entitlements(): string {
+        if ( ! is_user_logged_in() ) {
+            return '<p>' . esc_html__( 'Debes iniciar sesión para ver tus descargas disponibles.', 'anima-engine' ) . '</p>';
+        }
+
+        if ( null === $this->entitlementModel ) {
+            $this->entitlementModel = new EntitlementModel();
+        }
+
+        $user_id = get_current_user_id();
+        $records = $this->entitlementModel->getWithAssetsForUser( (int) $user_id );
+
+        if ( empty( $records ) ) {
+            return '<p>' . esc_html__( 'Todavía no tienes activos asignados.', 'anima-engine' ) . '</p>';
+        }
+
+        $output = '<ul class="anima-entitlements-list">';
+        foreach ( $records as $record ) {
+            $title     = esc_html( $record['title'] ?? '' );
+            $media_url = esc_url( $record['media_url'] ?? '' );
+            $type      = esc_html( $record['asset_type'] ?? '' );
+            $output   .= '<li class="anima-entitlement">';
+            $output   .= '<span class="anima-entitlement-title">' . $title . '</span>';
+            if ( $type ) {
+                $output .= ' <span class="anima-entitlement-type">(' . $type . ')</span>';
+            }
+            if ( $media_url ) {
+                $output .= ' <a href="' . $media_url . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Descargar', 'anima-engine' ) . '</a>';
+            }
+            $output .= '</li>';
+        }
+        $output .= '</ul>';
+
+        return $output;
     }
 
     /**
