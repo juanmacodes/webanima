@@ -45,11 +45,22 @@ use function sprintf;
  * Endpoints REST personalizados del plugin.
  */
 class RestApi implements ServiceInterface {
+    protected AuthController $authController;
+
+    protected AvatarController $avatarController;
+
+    public function __construct( ?AuthController $authController = null, ?AvatarController $avatarController = null ) {
+        $this->authController   = $authController ?? new AuthController();
+        $this->avatarController = $avatarController ?? new AvatarController();
+    }
+
     /**
      * {@inheritDoc}
      */
     public function register(): void {
         add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->authController, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->avatarController, 'register_routes' ] );
     }
 
     /**
