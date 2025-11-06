@@ -4,7 +4,14 @@ namespace Anima\Engine\Taxonomies;
 use Anima\Engine\Services\ServiceInterface;
 
 use function __;
+use function apply_filters;
+use function class_exists;
+use function preg_replace;
 use function sprintf;
+use function strtolower;
+use function str_replace;
+use function ucwords;
+use function remove_accents;
 
 /**
  * Registro de taxonomías personalizadas.
@@ -51,6 +58,8 @@ class RegisterTaxonomies implements ServiceInterface {
      * Registra las taxonomías.
      */
     public function register_taxonomies(): void {
+        $graphql_enabled = class_exists( '\\WPGraphQL' );
+
         foreach ( $this->taxonomies as $taxonomy => $settings ) {
             $labels = [
                 'name'              => $settings['plural'],
@@ -75,11 +84,24 @@ class RegisterTaxonomies implements ServiceInterface {
             ];
 
             if ( function_exists( 'register_taxonomy' ) ) {
-                $args['show_in_graphql']    = function_exists( 'register_graphql_object_type' );
-                $args['graphql_single_name'] = $settings['singular'];
-                $args['graphql_plural_name'] = $settings['plural'];
+                $args['show_in_graphql']     = $graphql_enabled;
+                $args['graphql_single_name'] = $this->format_graphql_name( $settings['singular'] );
+                $args['graphql_plural_name'] = $this->format_graphql_name( $settings['plural'] );
                 register_taxonomy( $taxonomy, $settings['objects'], apply_filters( 'anima_engine_register_taxonomy_args', $args, $taxonomy ) );
             }
         }
+    }
+
+    /**
+     * Convierte etiquetas a nombres válidos para GraphQL.
+     */
+    protected function format_graphql_name( string $name ): string {
+        $normalized = remove_accents( $name );
+        $normalized = strtolower( $normalized );
+        $normalized = preg_replace( '/[^a-z0-9\s]/', '', $normalized ) ?? '';
+        $normalized = ucwords( $normalized );
+        $normalized = str_replace( ' ', '', $normalized );
+
+        return $normalized ?: 'Taxonomy';
     }
 }

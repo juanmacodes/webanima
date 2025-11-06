@@ -4,7 +4,21 @@ namespace Anima\Engine\PostTypes;
 use Anima\Engine\Services\ServiceInterface;
 
 use function __;
+use function array_key_exists;
+use function class_exists;
+use function get_option;
+use function get_post_meta;
+use function is_object;
+use function method_exists;
+use function preg_replace;
+use function register_graphql_field;
 use function sprintf;
+use function strtolower;
+use function str_replace;
+use function ucwords;
+use function wp_parse_args;
+use function remove_accents;
+use function lcfirst;
 
 /**
  * Registro de tipos de contenido personalizados.
@@ -72,6 +86,10 @@ class RegisterPostTypes implements ServiceInterface {
      */
     public function register(): void {
         add_action( 'init', [ $this, 'register_post_types' ] );
+
+        if ( class_exists( '\\WPGraphQL' ) ) {
+            add_action( 'graphql_register_types', [ $this, 'register_graphql_fields' ] );
+        }
     }
 
     /**
@@ -79,6 +97,10 @@ class RegisterPostTypes implements ServiceInterface {
      */
     public function register_post_types(): void {
         foreach ( $this->post_types as $post_type => $settings ) {
+            if ( 'slide' === $post_type && ! $this->is_feature_enabled( 'enable_slider', true ) ) {
+                continue;
+            }
+
             $labels = [
                 'name'                     => $settings['plural'],
                 'singular_name'            => $settings['singular'],
@@ -103,6 +125,10 @@ class RegisterPostTypes implements ServiceInterface {
 
             $supports = $settings['args']['supports'] ?? [ 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions' ];
 
+            $graphql_enabled = class_exists( '\\WPGraphQL' );
+            $graphql_single  = $this->format_graphql_name( $settings['singular'] ?? $post_type );
+            $graphql_plural  = $this->format_graphql_name( $settings['plural'] ?? $post_type . 's' );
+
             $args = [
                 'labels'             => $labels,
                 'public'             => true,
@@ -121,11 +147,119 @@ class RegisterPostTypes implements ServiceInterface {
             ];
 
             if ( function_exists( 'register_post_type' ) ) {
-                $args['show_in_graphql']    = function_exists( 'register_graphql_object_type' );
-                $args['graphql_single_name'] = $settings['singular'];
-                $args['graphql_plural_name'] = $settings['plural'];
+                $args['show_in_graphql']     = $graphql_enabled;
+                $args['graphql_single_name'] = $graphql_single;
+                $args['graphql_plural_name'] = $graphql_plural;
                 register_post_type( $post_type, apply_filters( 'anima_engine_register_post_type_args', $args, $post_type ) );
             }
         }
+    }
+
+    /**
+     * Registra campos adicionales en WPGraphQL.
+     */
+    public function register_graphql_fields(): void {
+        if ( ! function_exists( 'register_graphql_field' ) ) {
+            return;
+        }
+
+        $meta_fields = [
+            'anima_instructores' => __( 'Instructores principales asociados.', 'anima-engine' ),
+            'anima_duracion'     => __( 'Duración estimada del contenido.', 'anima-engine' ),
+            'anima_dificultad'   => __( 'Nivel de dificultad o audiencia.', 'anima-engine' ),
+            'anima_kpis'         => __( 'KPIs o resultados destacados.', 'anima-engine' ),
+            'anima_url_demo'     => __( 'URL de demo o streaming vinculada.', 'anima-engine' ),
+        ];
+
+        if ( $this->is_feature_enabled( 'enable_slider', true ) ) {
+            $meta_fields['anima_slide_url'] = __( 'Enlace del botón del slide.', 'anima-engine' );
+        }
+
+        foreach ( $this->post_types as $post_type => $settings ) {
+            if ( 'slide' === $post_type && ! $this->is_feature_enabled( 'enable_slider', true ) ) {
+                continue;
+            }
+
+            $type_name = $this->format_graphql_name( $settings['singular'] ?? $post_type );
+
+            foreach ( $meta_fields as $meta_key => $description ) {
+                if ( 'slide' !== $post_type && 'anima_slide_url' === $meta_key ) {
+                    continue;
+                }
+
+                register_graphql_field(
+                    $type_name,
+                    $this->format_graphql_field_name( $meta_key ),
+                    [
+                        'type'        => 'String',
+                        'description' => $description,
+                        'resolve'     => static function ( $post ) use ( $meta_key ) {
+                            $post_id = 0;
+
+                            if ( is_object( $post ) ) {
+                                if ( isset( $post->ID ) ) {
+                                    $post_id = (int) $post->ID;
+                                } elseif ( isset( $post->databaseId ) ) {
+                                    $post_id = (int) $post->databaseId;
+                                } elseif ( method_exists( $post, 'source' ) && isset( $post->source->ID ) ) {
+                                    $post_id = (int) $post->source->ID;
+                                }
+                            }
+
+                            if ( $post_id <= 0 ) {
+                                return null;
+                            }
+
+                            $value = get_post_meta( $post_id, $meta_key, true );
+
+                            if ( '' === $value ) {
+                                return null;
+                            }
+
+                            return $value;
+                        },
+                    ]
+                );
+            }
+        }
+    }
+
+    /**
+     * Determina si una funcionalidad está habilitada.
+     */
+    protected function is_feature_enabled( string $flag, bool $default = true ): bool {
+        $options = wp_parse_args( get_option( 'anima_engine_options', [] ), [ $flag => $default ] );
+
+        if ( array_key_exists( $flag, $options ) ) {
+            return (bool) $options[ $flag ];
+        }
+
+        return $default;
+    }
+
+    /**
+     * Formatea nombres compatibles con GraphQL.
+     */
+    protected function format_graphql_name( string $name ): string {
+        $normalized = remove_accents( $name );
+        $normalized = strtolower( $normalized );
+        $normalized = preg_replace( '/[^a-z0-9\s]/', '', $normalized ) ?? '';
+        $normalized = ucwords( $normalized );
+        $normalized = str_replace( ' ', '', $normalized );
+
+        return $normalized ?: 'Content';
+    }
+
+    /**
+     * Convierte claves meta en nombres de campos GraphQL.
+     */
+    protected function format_graphql_field_name( string $meta_key ): string {
+        $normalized = remove_accents( str_replace( '_', ' ', $meta_key ) );
+        $normalized = strtolower( $normalized );
+        $normalized = preg_replace( '/[^a-z0-9\s]/', '', $normalized ) ?? '';
+        $normalized = ucwords( $normalized );
+        $normalized = str_replace( ' ', '', $normalized );
+
+        return lcfirst( $normalized ?: $meta_key );
     }
 }
