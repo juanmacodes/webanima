@@ -32,6 +32,8 @@ function anima_render_content_meta_box( $post ) {
 
     $instructores = get_post_meta( $post->ID, 'anima_instructores', true );
     $duracion     = get_post_meta( $post->ID, 'anima_duracion', true );
+    $nivel        = get_post_meta( $post->ID, 'anima_nivel', true );
+    $modalidad    = get_post_meta( $post->ID, 'anima_modalidad', true );
     $kpis         = get_post_meta( $post->ID, 'anima_kpis', true );
     $demo_url     = get_post_meta( $post->ID, 'anima_demo_url', true );
     $destacado    = get_post_meta( $post->ID, 'anima_destacado', true );
@@ -44,6 +46,16 @@ function anima_render_content_meta_box( $post ) {
         <label for="anima_duracion"><strong><?php esc_html_e( 'Duración', 'anima-core' ); ?></strong></label><br />
         <input type="text" id="anima_duracion" name="anima_duracion" value="<?php echo esc_attr( $duracion ); ?>" class="widefat" placeholder="<?php esc_attr_e( 'Ej: 6 semanas · 24 horas', 'anima-core' ); ?>" />
     </p>
+    <?php if ( 'curso' === $post->post_type ) : ?>
+        <p>
+            <label for="anima_nivel"><strong><?php esc_html_e( 'Nivel', 'anima-core' ); ?></strong></label><br />
+            <input type="text" id="anima_nivel" name="anima_nivel" value="<?php echo esc_attr( $nivel ); ?>" class="widefat" placeholder="<?php esc_attr_e( 'Ej: Principiante, Intermedio, Avanzado', 'anima-core' ); ?>" />
+        </p>
+        <p>
+            <label for="anima_modalidad"><strong><?php esc_html_e( 'Modalidad', 'anima-core' ); ?></strong></label><br />
+            <input type="text" id="anima_modalidad" name="anima_modalidad" value="<?php echo esc_attr( $modalidad ); ?>" class="widefat" placeholder="<?php esc_attr_e( 'Ej: Online en vivo, On-demand, Híbrido', 'anima-core' ); ?>" />
+        </p>
+    <?php endif; ?>
     <p>
         <label for="anima_kpis"><strong><?php esc_html_e( 'KPIs o logros', 'anima-core' ); ?></strong></label><br />
         <textarea id="anima_kpis" name="anima_kpis" class="widefat" rows="4" placeholder="<?php esc_attr_e( "Ej: 1200 estudiantes graduados\n95% satisfacción", 'anima-core' ); ?>"><?php echo esc_textarea( $kpis ); ?></textarea>
@@ -79,6 +91,8 @@ function anima_save_content_meta( $post_id ) {
         'anima_duracion'     => 'sanitize_text_field',
         'anima_kpis'         => 'anima_sanitize_multiline_text',
         'anima_demo_url'     => 'esc_url_raw',
+        'anima_nivel'        => 'sanitize_text_field',
+        'anima_modalidad'    => 'sanitize_text_field',
     );
 
     foreach ( $fields as $field => $sanitizer ) {
