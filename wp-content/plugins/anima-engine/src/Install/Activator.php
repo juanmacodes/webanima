@@ -5,6 +5,7 @@ use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
 
 use function array_key_exists;
+use function dbDelta;
 use function flush_rewrite_rules;
 use function get_page_by_path;
 use function get_posts;
@@ -28,6 +29,8 @@ class Activator {
      * Ejecuta la activación.
      */
     public function activate(): void {
+        $this->maybe_create_tables();
+
         ( new RegisterPostTypes() )->register_post_types();
         ( new RegisterTaxonomies() )->register_taxonomies();
 
@@ -38,6 +41,64 @@ class Activator {
         }
 
         flush_rewrite_rules();
+    }
+
+    /**
+     * Crea las tablas personalizadas necesarias.
+     */
+    protected function maybe_create_tables(): void {
+        global $wpdb;
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+        $charset_collate = $wpdb->get_charset_collate();
+
+        $entitlements_table = "CREATE TABLE {$wpdb->prefix}anima_entitlements (
+            id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+            user_id bigint(20) unsigned NOT NULL,
+            asset_id bigint(20) unsigned NOT NULL,
+            asset_type varchar(32) NOT NULL,
+            license_key varchar(64) NOT NULL,
+            source_order bigint(20) unsigned DEFAULT NULL,
+            expires_at datetime DEFAULT NULL,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY  (id),
+            KEY user_id (user_id),
+            KEY asset_type (asset_type)
+        ) {$charset_collate};";
+
+        $assets_table = "CREATE TABLE {$wpdb->prefix}anima_assets (
+            id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+            slug varchar(190) NOT NULL,
+            type varchar(32) NOT NULL,
+            title varchar(190) NOT NULL,
+            media_url text,
+            version varchar(32) DEFAULT '',
+            price decimal(10,2) DEFAULT 0,
+            active tinyint(1) DEFAULT 1,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY  (id),
+            UNIQUE KEY slug (slug),
+            KEY type (type),
+            KEY active (active)
+        ) {$charset_collate};";
+
+        $avatars_table = "CREATE TABLE {$wpdb->prefix}anima_avatars (
+            id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+            user_id bigint(20) unsigned NOT NULL,
+            glb_url text,
+            poster_url text,
+            updated_at datetime DEFAULT NULL,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY  (id),
+            UNIQUE KEY user_id (user_id)
+        ) {$charset_collate};";
+
+        dbDelta( $entitlements_table );
+        dbDelta( $assets_table );
+        dbDelta( $avatars_table );
+
+        update_option( 'anima_engine_db_version', ANIMA_ENGINE_DB_VERSION );
     }
 
     /**
