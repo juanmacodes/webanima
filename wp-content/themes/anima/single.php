@@ -5,6 +5,9 @@
 
 get_header();
 ?>
+<?php if ( function_exists( 'anima_breadcrumbs' ) ) : ?>
+  <?php anima_breadcrumbs(); ?>
+<?php endif; ?>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
   <article <?php post_class(); ?>>
     <h1 class="animate-on-scroll"><?php the_title(); ?></h1>

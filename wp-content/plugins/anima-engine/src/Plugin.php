@@ -8,6 +8,7 @@ use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Services\CacheInvalidator;
 use Anima\Engine\Services\ElementorTokens;
 use Anima\Engine\Services\ServiceInterface;
+use Anima\Engine\Seo\SchemaService;
 use Anima\Engine\Shortcodes\Shortcodes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
 
@@ -35,6 +36,7 @@ class Plugin {
             new OptionsPage(),
             new CacheInvalidator(),
             new ElementorTokens(),
+            new SchemaService(),
         ];
 
         foreach ( $this->services as $service ) {

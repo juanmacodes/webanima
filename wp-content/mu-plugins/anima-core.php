@@ -22,6 +22,7 @@ require_once ANIMA_CORE_PATH . '/clean.php';
 require_once ANIMA_CORE_PATH . '/cors.php';
 require_once ANIMA_CORE_PATH . '/cpts.php';
 require_once ANIMA_CORE_PATH . '/rest.php';
+require_once ANIMA_CORE_PATH . '/ecommerce.php';
 
 if ( function_exists( 'acf_add_local_field_group' ) ) {
 require_once ANIMA_CORE_PATH . '/acf.php';
