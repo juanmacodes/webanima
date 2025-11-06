@@ -65,6 +65,8 @@ class OptionsPage implements ServiceInterface {
         $clean['page_contact']         = isset( $options['page_contact'] ) ? sanitize_text_field( $options['page_contact'] ) : '';
         $clean['page_experience']      = isset( $options['page_experience'] ) ? sanitize_text_field( $options['page_experience'] ) : '';
         $clean['page_live']            = isset( $options['page_live'] ) ? sanitize_text_field( $options['page_live'] ) : '';
+        $clean['live_product_id']      = isset( $options['live_product_id'] ) ? (int) $options['live_product_id'] : 0;
+        $clean['webhook_secret']       = isset( $options['webhook_secret'] ) ? sanitize_text_field( $options['webhook_secret'] ) : '';
 
         return $clean;
     }
@@ -81,6 +83,8 @@ class OptionsPage implements ServiceInterface {
             'enable_schema'        => true,
             'recaptcha_site_key'   => '',
             'recaptcha_secret_key' => '',
+            'live_product_id'      => 0,
+            'webhook_secret'       => '',
         ];
         $options = wp_parse_args( $options, $defaults );
         ?>
@@ -153,6 +157,13 @@ class OptionsPage implements ServiceInterface {
                 <h2><?php esc_html_e( 'Integraciones', 'anima-engine' ); ?></h2>
                 <table class="form-table" role="presentation">
                     <tr>
+                        <th scope="row"><?php esc_html_e( 'Producto Anima Live', 'anima-engine' ); ?></th>
+                        <td>
+                            <input type="number" name="anima_engine_options[live_product_id]" value="<?php echo esc_attr( $options['live_product_id'] ?? 0 ); ?>" readonly />
+                            <p class="description"><?php esc_html_e( 'Identificador del producto de suscripción utilizado para activar accesos.', 'anima-engine' ); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
                         <th scope="row"><?php esc_html_e( 'reCAPTCHA site key', 'anima-engine' ); ?></th>
                         <td>
                             <input type="text" class="regular-text" name="anima_engine_options[recaptcha_site_key]" value="<?php echo esc_attr( $options['recaptcha_site_key'] ?? '' ); ?>" />
@@ -164,6 +175,13 @@ class OptionsPage implements ServiceInterface {
                         <td>
                             <input type="text" class="regular-text" name="anima_engine_options[recaptcha_secret_key]" value="<?php echo esc_attr( $options['recaptcha_secret_key'] ?? '' ); ?>" />
                             <p class="description"><?php esc_html_e( 'Clave privada para validar los tokens enviados desde la API.', 'anima-engine' ); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e( 'Secreto webhooks WooCommerce', 'anima-engine' ); ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="anima_engine_options[webhook_secret]" value="<?php echo esc_attr( $options['webhook_secret'] ?? '' ); ?>" />
+                            <p class="description"><?php esc_html_e( 'Si se establece, se validará la cabecera X-Anima-Signature mediante HMAC SHA256.', 'anima-engine' ); ?></p>
                         </td>
                     </tr>
                 </table>

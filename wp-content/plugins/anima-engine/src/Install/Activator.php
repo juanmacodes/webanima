@@ -5,13 +5,17 @@ use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
 
 use function array_key_exists;
+use function class_exists;
 use function dbDelta;
 use function flush_rewrite_rules;
 use function get_page_by_path;
+use function get_page_by_title;
+use function get_post_status;
 use function get_posts;
 use function get_option;
 use function home_url;
 use function is_wp_error;
+use function method_exists;
 use function sprintf;
 use function term_exists;
 use function update_option;
@@ -20,6 +24,7 @@ use function wp_insert_post;
 use function wp_insert_term;
 use function wp_strip_all_tags;
 use function wp_parse_args;
+use const OBJECT;
 
 /**
  * Rutinas de activación del plugin.
@@ -39,6 +44,8 @@ class Activator {
         if ( $this->is_feature_enabled( 'enable_slider', true ) ) {
             $this->maybe_create_slides();
         }
+
+        $this->maybe_create_subscription_product();
 
         flush_rewrite_rules();
     }
@@ -223,6 +230,63 @@ class Activator {
                 update_post_meta( $slide_id, 'anima_slide_url', home_url( '/contacto' ) );
                 update_post_meta( $slide_id, 'anima_slide_placeholder', sprintf( 'https://picsum.photos/1600/900?random=%d', $i ) );
             }
+        }
+    }
+
+    /**
+     * Crea el producto de suscripción base si es necesario.
+     */
+    protected function maybe_create_subscription_product(): void {
+        if ( ! class_exists( '\\WC_Product' ) ) {
+            return;
+        }
+
+        $options   = get_option( 'anima_engine_options', [] );
+        $product_id = isset( $options['live_product_id'] ) ? (int) $options['live_product_id'] : 0;
+
+        if ( $product_id > 0 && get_post_status( $product_id ) ) {
+            return;
+        }
+
+        $existing = get_page_by_title( 'Anima Live', OBJECT, 'product' );
+        if ( $existing ) {
+            $product_id = (int) $existing->ID;
+        } else {
+            $product = null;
+
+            if ( class_exists( '\\WC_Product_Subscription' ) ) {
+                $product = new \WC_Product_Subscription();
+                $product->set_regular_price( '5' );
+                $product->set_price( '5' );
+                $product->update_meta_data( '_subscription_period', 'month' );
+                $product->update_meta_data( '_subscription_period_interval', 1 );
+                $product->update_meta_data( '_subscription_trial_length', 7 );
+                $product->update_meta_data( '_subscription_trial_period', 'day' );
+                $product->update_meta_data( '_subscription_sign_up_fee', '0' );
+            } else {
+                $product = new \WC_Product_Simple();
+                $product->set_regular_price( '5' );
+                $product->set_price( '5' );
+            }
+
+            $product->set_name( 'Anima Live' );
+            $product->set_status( 'publish' );
+            $product->set_catalog_visibility( 'hidden' );
+            if ( method_exists( $product, 'set_virtual' ) ) {
+                $product->set_virtual( true );
+            }
+            if ( method_exists( $product, 'set_sold_individually' ) ) {
+                $product->set_sold_individually( true );
+            }
+            $product->set_description( 'Suscripción Anima Live con prueba gratuita de 7 días.' );
+            $product->save();
+
+            $product_id = $product->get_id();
+        }
+
+        if ( $product_id > 0 ) {
+            $options['live_product_id'] = $product_id;
+            update_option( 'anima_engine_options', $options );
         }
     }
 

@@ -138,6 +138,89 @@ class Asset
     }
 
     /**
+     * Recupera un listado paginado de assets activos para el catálogo.
+     *
+     * @param array{
+     *     type?: string|null,
+     *     search?: string|null,
+     *     page?: int,
+     *     per_page?: int,
+     *     active?: int|null
+     * } $args
+     */
+    public function getCatalog(array $args = []): array
+    {
+        $defaults = [
+            'type'     => null,
+            'search'   => null,
+            'page'     => 1,
+            'per_page' => 24,
+            'active'   => 1,
+        ];
+
+        $args   = array_merge($defaults, $args);
+        $page   = max(1, (int) $args['page']);
+        $limit  = max(1, (int) $args['per_page']);
+        $offset = ($page - 1) * $limit;
+
+        $where  = [];
+        $params = [];
+
+        if (null !== $args['type'] && '' !== $args['type']) {
+            $where[]  = 'type = %s';
+            $params[] = $args['type'];
+        }
+
+        if (null !== $args['active']) {
+            $where[]  = 'active = %d';
+            $params[] = (int) $args['active'];
+        }
+
+        if (null !== $args['search'] && '' !== $args['search']) {
+            $like      = '%' . $this->db->esc_like($args['search']) . '%';
+            $where[]   = '(title LIKE %s OR slug LIKE %s)';
+            $params[]  = $like;
+            $params[]  = $like;
+        }
+
+        $whereSql = '';
+        if (! empty($where)) {
+            $whereSql = ' WHERE ' . implode(' AND ', $where);
+        }
+
+        $countSql = "SELECT COUNT(*) FROM {$this->table}{$whereSql}";
+        $itemsSql = "SELECT id, slug, title, media_url, price, version FROM {$this->table}{$whereSql} ORDER BY created_at DESC LIMIT %d OFFSET %d";
+
+        $itemsParams = $params;
+        $itemsParams[] = $limit;
+        $itemsParams[] = $offset;
+
+        if (! empty($params)) {
+            $countSql = $this->db->prepare($countSql, $params);
+            $itemsSql = $this->db->prepare($itemsSql, $itemsParams);
+        } else {
+            $itemsSql = $this->db->prepare($itemsSql, $limit, $offset);
+        }
+
+        $total = (int) $this->db->get_var($countSql);
+        $items = $this->db->get_results($itemsSql, ARRAY_A);
+
+        if (! is_array($items)) {
+            $items = [];
+        }
+
+        foreach ($items as &$item) {
+            $item['price'] = isset($item['price']) ? (float) $item['price'] : 0.0;
+        }
+        unset($item);
+
+        return [
+            'items' => $items,
+            'total' => $total,
+        ];
+    }
+
+    /**
      * Actualiza un asset.
      */
     public function update(int $id, array $data): bool

@@ -6,6 +6,8 @@ use Anima\Engine\Api\RestApi;
 use Anima\Engine\Cache\CacheManager;
 use Anima\Engine\Metaboxes\RegisterMetaboxes;
 use Anima\Engine\PostTypes\RegisterPostTypes;
+use Anima\Engine\Commerce\Orders;
+use Anima\Engine\Commerce\SubscriptionService;
 use Anima\Engine\Services\CacheInvalidator;
 use Anima\Engine\Services\Cli\SeedCommand;
 use Anima\Engine\Services\ElementorTokens;
@@ -40,6 +42,8 @@ class Plugin {
             new ElementorTokens(),
             new SchemaService(),
             new CacheManager(),
+            new Orders(),
+            new SubscriptionService(),
             new SeedCommand(),
         ];
 

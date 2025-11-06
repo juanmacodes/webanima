@@ -49,9 +49,21 @@ class RestApi implements ServiceInterface {
 
     protected AvatarController $avatarController;
 
-    public function __construct( ?AuthController $authController = null, ?AvatarController $avatarController = null ) {
-        $this->authController   = $authController ?? new AuthController();
-        $this->avatarController = $avatarController ?? new AvatarController();
+    protected CatalogController $catalogController;
+
+    protected EntitlementsController $entitlementsController;
+
+    protected SubscriptionController $subscriptionController;
+
+    protected WebhooksController $webhooksController;
+
+    public function __construct( ?AuthController $authController = null, ?AvatarController $avatarController = null, ?CatalogController $catalogController = null, ?EntitlementsController $entitlementsController = null, ?SubscriptionController $subscriptionController = null, ?WebhooksController $webhooksController = null ) {
+        $this->authController         = $authController ?? new AuthController();
+        $this->avatarController       = $avatarController ?? new AvatarController();
+        $this->catalogController      = $catalogController ?? new CatalogController();
+        $this->entitlementsController = $entitlementsController ?? new EntitlementsController();
+        $this->subscriptionController = $subscriptionController ?? new SubscriptionController();
+        $this->webhooksController     = $webhooksController ?? new WebhooksController();
     }
 
     /**
@@ -61,6 +73,10 @@ class RestApi implements ServiceInterface {
         add_action( 'rest_api_init', [ $this, 'register_routes' ] );
         add_action( 'rest_api_init', [ $this->authController, 'register_routes' ] );
         add_action( 'rest_api_init', [ $this->avatarController, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->catalogController, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->entitlementsController, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->subscriptionController, 'register_routes' ] );
+        add_action( 'rest_api_init', [ $this->webhooksController, 'register_routes' ] );
     }
 
     /**
