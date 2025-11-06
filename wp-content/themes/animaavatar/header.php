@@ -31,17 +31,17 @@
                 <span class="screen-reader-text"><?php esc_html_e( 'Abrir menú', 'animaavatar' ); ?></span>
                 &#9776;
             </button>
-            <?php
-            wp_nav_menu( [
-                'theme_location' => 'main-menu',
-                'menu_id'        => 'primary-menu',
-                'menu_class'     => 'primary-menu',
-                'container'      => 'div',
-                'container_class'=> 'primary-menu-container',
-                'container_id'   => 'primary-menu-container',
-                'fallback_cb'    => 'animaavatar_default_menu',
-            ] );
-            ?>
+            <div id="primary-menu-container" class="primary-menu-container" aria-hidden="true">
+                <?php
+                wp_nav_menu( [
+                    'theme_location' => 'main-menu',
+                    'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'primary-menu',
+                    'container'      => false,
+                    'fallback_cb'    => 'animaavatar_default_menu',
+                ] );
+                ?>
+            </div>
         </nav>
         <div class="header-cta">
             <a class="button" href="<?php echo esc_url( home_url( '/experiencia-inmersiva' ) ); ?>">
