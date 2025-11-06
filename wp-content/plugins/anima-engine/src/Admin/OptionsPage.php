@@ -15,6 +15,7 @@ use function sanitize_text_field;
 use function settings_fields;
 use function submit_button;
 use function wp_nonce_field;
+use function wp_parse_args;
 
 /**
  * Página de opciones del plugin.
@@ -53,13 +54,17 @@ class OptionsPage implements ServiceInterface {
      */
     public function sanitize_options( array $options ): array {
         $clean = [];
-        $clean['enable_slider']       = isset( $options['enable_slider'] ) ? (bool) $options['enable_slider'] : false;
-        $clean['enable_model_viewer'] = isset( $options['enable_model_viewer'] ) ? (bool) $options['enable_model_viewer'] : false;
-        $clean['grid_width']          = isset( $options['grid_width'] ) ? (int) $options['grid_width'] : 3;
-        $clean['page_home']           = isset( $options['page_home'] ) ? sanitize_text_field( $options['page_home'] ) : '';
-        $clean['page_contact']        = isset( $options['page_contact'] ) ? sanitize_text_field( $options['page_contact'] ) : '';
-        $clean['page_experience']     = isset( $options['page_experience'] ) ? sanitize_text_field( $options['page_experience'] ) : '';
-        $clean['page_live']           = isset( $options['page_live'] ) ? sanitize_text_field( $options['page_live'] ) : '';
+        $clean['enable_slider']        = ! empty( $options['enable_slider'] );
+        $clean['enable_model_viewer']  = ! empty( $options['enable_model_viewer'] );
+        $clean['enable_cache']         = array_key_exists( 'enable_cache', $options ) ? (bool) $options['enable_cache'] : true;
+        $clean['enable_schema']        = array_key_exists( 'enable_schema', $options ) ? (bool) $options['enable_schema'] : true;
+        $clean['recaptcha_site_key']   = isset( $options['recaptcha_site_key'] ) ? sanitize_text_field( $options['recaptcha_site_key'] ) : '';
+        $clean['recaptcha_secret_key'] = isset( $options['recaptcha_secret_key'] ) ? sanitize_text_field( $options['recaptcha_secret_key'] ) : '';
+        $clean['grid_width']           = isset( $options['grid_width'] ) ? (int) $options['grid_width'] : 3;
+        $clean['page_home']            = isset( $options['page_home'] ) ? sanitize_text_field( $options['page_home'] ) : '';
+        $clean['page_contact']         = isset( $options['page_contact'] ) ? sanitize_text_field( $options['page_contact'] ) : '';
+        $clean['page_experience']      = isset( $options['page_experience'] ) ? sanitize_text_field( $options['page_experience'] ) : '';
+        $clean['page_live']            = isset( $options['page_live'] ) ? sanitize_text_field( $options['page_live'] ) : '';
 
         return $clean;
     }
@@ -69,6 +74,15 @@ class OptionsPage implements ServiceInterface {
      */
     public function render_page(): void {
         $options = get_option( 'anima_engine_options', [] );
+        $defaults = [
+            'enable_slider'        => true,
+            'enable_model_viewer'  => true,
+            'enable_cache'         => true,
+            'enable_schema'        => true,
+            'recaptcha_site_key'   => '',
+            'recaptcha_secret_key' => '',
+        ];
+        $options = wp_parse_args( $options, $defaults );
         ?>
         <div class="wrap">
             <h1><?php esc_html_e( 'Anima Engine — Configuración', 'anima-engine' ); ?></h1>
@@ -86,11 +100,29 @@ class OptionsPage implements ServiceInterface {
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><?php esc_html_e( 'Activar Model Viewer', 'anima-engine' ); ?></th>
+                        <th scope="row"><?php esc_html_e( 'Activar visor 3D / AR', 'anima-engine' ); ?></th>
                         <td>
                             <label>
                                 <input type="checkbox" name="anima_engine_options[enable_model_viewer]" value="1" <?php checked( ! empty( $options['enable_model_viewer'] ) ); ?> />
-                                <?php esc_html_e( 'Permite cargar el visor 3D en páginas personalizadas.', 'anima-engine' ); ?>
+                                <?php esc_html_e( 'Permite cargar el visor 3D/AR en páginas personalizadas.', 'anima-engine' ); ?>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e( 'Habilitar caché de consultas', 'anima-engine' ); ?></th>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="anima_engine_options[enable_cache]" value="1" <?php checked( ! empty( $options['enable_cache'] ) ); ?> />
+                                <?php esc_html_e( 'Usar transients para acelerar galerías y endpoints.', 'anima-engine' ); ?>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e( 'Activar esquema SEO', 'anima-engine' ); ?></th>
+                        <td>
+                            <label>
+                                <input type="checkbox" name="anima_engine_options[enable_schema]" value="1" <?php checked( ! empty( $options['enable_schema'] ) ); ?> />
+                                <?php esc_html_e( 'Inyectar marcado JSON-LD para organización, cursos y experiencias.', 'anima-engine' ); ?>
                             </label>
                         </td>
                     </tr>
@@ -116,6 +148,23 @@ class OptionsPage implements ServiceInterface {
                     <tr>
                         <th scope="row"><?php esc_html_e( 'Página Anima Live', 'anima-engine' ); ?></th>
                         <td><input type="text" name="anima_engine_options[page_live]" value="<?php echo esc_attr( $options['page_live'] ?? '' ); ?>" /></td>
+                    </tr>
+                </table>
+                <h2><?php esc_html_e( 'Integraciones', 'anima-engine' ); ?></h2>
+                <table class="form-table" role="presentation">
+                    <tr>
+                        <th scope="row"><?php esc_html_e( 'reCAPTCHA site key', 'anima-engine' ); ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="anima_engine_options[recaptcha_site_key]" value="<?php echo esc_attr( $options['recaptcha_site_key'] ?? '' ); ?>" />
+                            <p class="description"><?php esc_html_e( 'Clave pública para formularios protegidos con reCAPTCHA v3.', 'anima-engine' ); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><?php esc_html_e( 'reCAPTCHA secret key', 'anima-engine' ); ?></th>
+                        <td>
+                            <input type="text" class="regular-text" name="anima_engine_options[recaptcha_secret_key]" value="<?php echo esc_attr( $options['recaptcha_secret_key'] ?? '' ); ?>" />
+                            <p class="description"><?php esc_html_e( 'Clave privada para validar los tokens enviados desde la API.', 'anima-engine' ); ?></p>
+                        </td>
                     </tr>
                 </table>
                 <?php submit_button(); ?>

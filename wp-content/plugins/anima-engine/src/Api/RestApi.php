@@ -12,6 +12,7 @@ use const MINUTE_IN_SECONDS;
 use function __;
 use function absint;
 use function add_action;
+use function apply_filters;
 use function esc_url;
 use function get_option;
 use function get_the_excerpt;
@@ -22,12 +23,16 @@ use function get_the_title;
 use function get_transient;
 use function get_permalink;
 use function is_email;
+use function is_wp_error;
 use function register_rest_route;
 use function sanitize_email;
 use function sanitize_text_field;
 use function sanitize_textarea_field;
 use function set_transient;
 use function wp_mail;
+use function wp_remote_post;
+use function wp_remote_retrieve_body;
+use function wp_remote_retrieve_response_code;
 use function wp_reset_postdata;
 use function wp_trim_words;
 use function wp_unslash;
@@ -70,6 +75,10 @@ class RestApi implements ServiceInterface {
                     'consulta'=> [
                         'required' => true,
                         'sanitize_callback' => 'sanitize_textarea_field',
+                    ],
+                    'recaptcha_token' => [
+                        'required'          => false,
+                        'sanitize_callback' => 'sanitize_text_field',
                     ],
                 ],
             ]
@@ -114,7 +123,12 @@ class RestApi implements ServiceInterface {
             return new WP_Error( 'anima_engine_rate_limited', __( 'Has alcanzado el límite de envíos temporales. Inténtalo más tarde.', 'anima-engine' ), [ 'status' => 429 ] );
         }
 
-        set_transient( $limit_key, $hits + 1, MINUTE_IN_SECONDS * 10 );
+        $window = (int) apply_filters( 'anima_engine_contact_rate_limit_window', MINUTE_IN_SECONDS * 10, $request );
+        if ( $window <= 0 ) {
+            $window = MINUTE_IN_SECONDS * 10;
+        }
+
+        set_transient( $limit_key, $hits + 1, $window );
 
         return true;
     }
@@ -126,12 +140,24 @@ class RestApi implements ServiceInterface {
         $nombre   = sanitize_text_field( $request['nombre'] ?? '' );
         $email    = sanitize_email( $request['email'] ?? '' );
         $consulta = sanitize_textarea_field( $request['consulta'] ?? '' );
+        $token    = sanitize_text_field( $request->get_param( 'recaptcha_token' ) ?? '' );
 
         if ( empty( $nombre ) || empty( $consulta ) || ! is_email( $email ) ) {
             return new WP_REST_Response(
                 [ 'error' => __( 'Datos incompletos o correo inválido.', 'anima-engine' ) ],
                 400
             );
+        }
+
+        $options        = get_option( 'anima_engine_options', [] );
+        $recaptcha_key  = $options['recaptcha_secret_key'] ?? '';
+        if ( ! empty( $recaptcha_key ) ) {
+            if ( empty( $token ) || ! $this->verify_recaptcha( $token, $recaptcha_key ) ) {
+                return new WP_REST_Response(
+                    [ 'error' => __( 'No se pudo validar el reCAPTCHA. Inténtalo nuevamente.', 'anima-engine' ) ],
+                    400
+                );
+            }
         }
 
         $admin_email = get_option( 'admin_email' );
@@ -188,8 +214,9 @@ class RestApi implements ServiceInterface {
             ];
         }
 
-        $cache_key = 'anima_engine_rest_avatares_' . md5( wp_json_encode( $args ) );
-        $cached    = get_transient( $cache_key );
+        $cache_key    = 'anima_engine_rest_avatares_' . md5( wp_json_encode( $args ) );
+        $pre_cache    = apply_filters( 'anima_engine_cache_get', null, $cache_key, 'rest' );
+        $cached       = null !== $pre_cache ? $pre_cache : get_transient( $cache_key );
 
         if ( false === $cached ) {
             $query  = new \WP_Query( $args );
@@ -216,9 +243,40 @@ class RestApi implements ServiceInterface {
                 'page'       => $page,
             ];
 
-            set_transient( $cache_key, $cached, MINUTE_IN_SECONDS * 5 );
+            $handled = apply_filters( 'anima_engine_cache_set', false, $cache_key, $cached, MINUTE_IN_SECONDS * 5, 'rest' );
+            if ( true !== $handled ) {
+                set_transient( $cache_key, $cached, MINUTE_IN_SECONDS * 5 );
+            }
         }
 
         return new WP_REST_Response( $cached, 200 );
+    }
+
+    /**
+     * Valida un token de reCAPTCHA v3 con el servicio de Google.
+     */
+    protected function verify_recaptcha( string $token, string $secret ): bool {
+        $response = wp_remote_post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            [
+                'body' => [
+                    'secret'   => $secret,
+                    'response' => $token,
+                ],
+                'timeout' => 5,
+            ]
+        );
+
+        if ( is_wp_error( $response ) ) {
+            return false;
+        }
+
+        if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
+            return false;
+        }
+
+        $body = json_decode( wp_remote_retrieve_body( $response ), true );
+
+        return ! empty( $body['success'] );
     }
 }

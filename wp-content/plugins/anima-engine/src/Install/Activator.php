@@ -4,9 +4,11 @@ namespace Anima\Engine\Install;
 use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
 
+use function array_key_exists;
 use function flush_rewrite_rules;
 use function get_page_by_path;
 use function get_posts;
+use function get_option;
 use function home_url;
 use function is_wp_error;
 use function sprintf;
@@ -16,6 +18,7 @@ use function update_post_meta;
 use function wp_insert_post;
 use function wp_insert_term;
 use function wp_strip_all_tags;
+use function wp_parse_args;
 
 /**
  * Rutinas de activación del plugin.
@@ -30,7 +33,9 @@ class Activator {
 
         $this->maybe_create_pages();
         $this->maybe_insert_terms();
-        $this->maybe_create_slides();
+        if ( $this->is_feature_enabled( 'enable_slider', true ) ) {
+            $this->maybe_create_slides();
+        }
 
         flush_rewrite_rules();
     }
@@ -158,6 +163,19 @@ class Activator {
                 update_post_meta( $slide_id, 'anima_slide_placeholder', sprintf( 'https://picsum.photos/1600/900?random=%d', $i ) );
             }
         }
+    }
+
+    /**
+     * Determina si una característica está habilitada.
+     */
+    protected function is_feature_enabled( string $flag, bool $default = true ): bool {
+        $options = wp_parse_args( get_option( 'anima_engine_options', [] ), [ $flag => $default ] );
+
+        if ( array_key_exists( $flag, $options ) ) {
+            return (bool) $options[ $flag ];
+        }
+
+        return $default;
     }
 
     /**

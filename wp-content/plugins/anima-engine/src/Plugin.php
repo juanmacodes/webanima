@@ -3,9 +3,11 @@ namespace Anima\Engine;
 
 use Anima\Engine\Admin\OptionsPage;
 use Anima\Engine\Api\RestApi;
+use Anima\Engine\Cache\CacheManager;
 use Anima\Engine\Metaboxes\RegisterMetaboxes;
 use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Services\CacheInvalidator;
+use Anima\Engine\Services\Cli\SeedCommand;
 use Anima\Engine\Services\ElementorTokens;
 use Anima\Engine\Services\ServiceInterface;
 use Anima\Engine\Seo\SchemaService;
@@ -37,6 +39,8 @@ class Plugin {
             new CacheInvalidator(),
             new ElementorTokens(),
             new SchemaService(),
+            new CacheManager(),
+            new SeedCommand(),
         ];
 
         foreach ( $this->services as $service ) {

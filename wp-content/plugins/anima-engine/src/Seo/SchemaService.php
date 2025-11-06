@@ -6,6 +6,7 @@ use WP_Post;
 use WC_Product;
 
 use function add_action;
+use function apply_filters;
 use function get_bloginfo;
 use function get_option;
 use function get_page_by_path;
@@ -42,12 +43,14 @@ use function is_tax;
 use function is_wp_error;
 use function get_theme_mod;
 use function set_transient;
+use function wp_parse_args;
 use function wp_get_attachment_image_url;
 use function wp_get_post_terms;
 use function wp_strip_all_tags;
 use function wp_trim_words;
 use function wc_get_product;
 use function wc_get_products;
+use function array_key_exists;
 
 /**
  * Servicio encargado de inyectar los esquemas JSON-LD.
@@ -68,13 +71,19 @@ class SchemaService implements ServiceInterface {
             return;
         }
 
+        if ( ! $this->is_schema_enabled() ) {
+            return;
+        }
+
         $organization = $this->prepare_organization_schema();
+        $organization = apply_filters( 'anima_engine_schema_data', $organization, 'organization' );
         if ( ! empty( $organization ) ) {
             Schema::print( 'organization', $organization );
         }
 
         if ( is_singular( 'avatar' ) ) {
             $product = $this->prepare_avatar_schema( get_queried_object_id() );
+            $product = apply_filters( 'anima_engine_schema_data', $product, 'avatar' );
             if ( ! empty( $product ) ) {
                 Schema::print( 'product', $product );
             }
@@ -82,6 +91,7 @@ class SchemaService implements ServiceInterface {
 
         if ( is_singular( 'curso' ) ) {
             $course = $this->prepare_course_schema( get_queried_object_id() );
+            $course = apply_filters( 'anima_engine_schema_data', $course, 'curso' );
             if ( ! empty( $course ) ) {
                 Schema::print( 'course', $course );
             }
@@ -89,6 +99,7 @@ class SchemaService implements ServiceInterface {
 
         if ( $this->is_live_page() ) {
             $software = $this->prepare_software_schema();
+            $software = apply_filters( 'anima_engine_schema_data', $software, 'software' );
             if ( ! empty( $software ) ) {
                 Schema::print( 'software', $software );
             }
@@ -96,6 +107,7 @@ class SchemaService implements ServiceInterface {
 
         if ( is_singular() || is_archive() ) {
             $breadcrumb = $this->prepare_breadcrumb_schema();
+            $breadcrumb = apply_filters( 'anima_engine_schema_data', $breadcrumb, 'breadcrumb' );
             if ( ! empty( $breadcrumb ) ) {
                 Schema::print( 'breadcrumb', $breadcrumb );
             }
@@ -483,5 +495,18 @@ class SchemaService implements ServiceInterface {
         }
 
         return null;
+    }
+
+    /**
+     * Comprueba si el esquema está activo.
+     */
+    protected function is_schema_enabled(): bool {
+        $options = wp_parse_args( get_option( 'anima_engine_options', [] ), [ 'enable_schema' => true ] );
+
+        if ( array_key_exists( 'enable_schema', $options ) ) {
+            return (bool) $options['enable_schema'];
+        }
+
+        return true;
     }
 }

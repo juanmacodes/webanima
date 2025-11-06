@@ -34,18 +34,31 @@ use function wp_enqueue_script;
 use function wp_trim_words;
 use function wp_unslash;
 use function wp_json_encode;
+use function wp_parse_args;
 
 /**
  * Gestión de shortcodes del plugin.
  */
 class Shortcodes implements ServiceInterface {
     /**
+     * Opciones almacenadas del plugin.
+     *
+     * @var array<string, mixed>
+     */
+    protected array $options = [];
+
+    /**
      * {@inheritDoc}
      */
     public function register(): void {
+        $this->options = $this->get_options();
+
         add_shortcode( 'anima_gallery', [ $this, 'render_gallery' ] );
-        add_shortcode( 'anima_model', [ $this, 'render_model' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
+
+        if ( $this->is_feature_enabled( 'enable_model_viewer' ) ) {
+            add_shortcode( 'anima_model', [ $this, 'render_model' ] );
+            add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
+        }
     }
 
     /**
@@ -216,6 +229,10 @@ class Shortcodes implements ServiceInterface {
      * Renderiza el shortcode del visor de modelos.
      */
     public function render_model( array $atts ): string {
+        if ( ! $this->is_feature_enabled( 'enable_model_viewer' ) ) {
+            return '';
+        }
+
         $atts = shortcode_atts(
             [
                 'src'              => '',
@@ -346,5 +363,34 @@ class Shortcodes implements ServiceInterface {
         }
 
         return '<div class="anima-gallery-pagination">' . implode( '', $links ) . '</div>';
+    }
+
+    /**
+     * Recupera las opciones del plugin con valores por defecto.
+     */
+    protected function get_options(): array {
+        if ( empty( $this->options ) ) {
+            $defaults      = [
+                'enable_slider'       => true,
+                'enable_model_viewer' => true,
+                'enable_cache'        => true,
+            ];
+            $this->options = wp_parse_args( get_option( 'anima_engine_options', [] ), $defaults );
+        }
+
+        return $this->options;
+    }
+
+    /**
+     * Comprueba si una característica está habilitada.
+     */
+    protected function is_feature_enabled( string $feature, bool $default = true ): bool {
+        $options = $this->get_options();
+
+        if ( array_key_exists( $feature, $options ) ) {
+            return (bool) $options[ $feature ];
+        }
+
+        return $default;
     }
 }
