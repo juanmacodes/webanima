@@ -231,9 +231,19 @@
                     el: '.swiper-pagination',
                     clickable: true
                 },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false
+                },
+                a11y: {
+                    enabled: true,
+                    prevSlideMessage: document.documentElement.lang === 'es' ? 'Diapositiva anterior' : 'Previous slide',
+                    nextSlideMessage: document.documentElement.lang === 'es' ? 'Diapositiva siguiente' : 'Next slide',
+                    slideRole: 'group'
                 },
                 breakpoints: {
                     768: {
@@ -242,6 +252,143 @@
                     1024: {
                         slidesPerView: 3
                     }
+                }
+            });
+        }
+
+        var avatarModal = document.querySelector('[data-avatar-modal]');
+        if (avatarModal) {
+            avatarModal.setAttribute('aria-hidden', 'true');
+            var modalDialog = avatarModal.querySelector('[data-avatar-dialog]');
+            var modalContent = avatarModal.querySelector('[data-avatar-content]');
+            var openButtons = document.querySelectorAll('[data-avatar-modal-open]');
+            var focusableSelectors = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+            var focusableElements = [];
+            var previousFocus = null;
+
+            if (modalDialog) {
+                modalDialog.setAttribute('tabindex', '-1');
+            }
+
+            var setFocusableElements = function () {
+                if (!modalDialog) {
+                    focusableElements = [];
+                    return;
+                }
+
+                focusableElements = Array.prototype.slice.call(modalDialog.querySelectorAll(focusableSelectors)).filter(function (element) {
+                    return !element.hasAttribute('disabled') && element.getAttribute('aria-hidden') !== 'true';
+                });
+            };
+
+            avatarModal.addEventListener('anima-model-mounted', function () {
+                setFocusableElements();
+            });
+
+            var closeModal = function () {
+                if (avatarModal.hasAttribute('hidden')) {
+                    return;
+                }
+
+                avatarModal.setAttribute('hidden', 'hidden');
+                avatarModal.setAttribute('aria-hidden', 'true');
+                avatarModal.removeAttribute('data-open');
+                document.body.classList.remove('modal-open');
+
+                if (modalContent) {
+                    modalContent.innerHTML = '';
+                }
+
+                document.removeEventListener('keydown', trapKeyDown);
+
+                if (previousFocus) {
+                    previousFocus.focus();
+                    previousFocus = null;
+                }
+            };
+
+            var trapKeyDown = function (event) {
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeModal();
+                    return;
+                }
+
+                if (event.key !== 'Tab') {
+                    return;
+                }
+
+                if (!focusableElements.length) {
+                    event.preventDefault();
+                    return;
+                }
+
+                var firstFocusable = focusableElements[0];
+                var lastFocusable = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey) {
+                    if (document.activeElement === firstFocusable || !modalDialog.contains(document.activeElement)) {
+                        event.preventDefault();
+                        lastFocusable.focus();
+                    }
+                } else if (document.activeElement === lastFocusable) {
+                    event.preventDefault();
+                    firstFocusable.focus();
+                }
+            };
+
+            var openModal = function (templateId) {
+                if (!modalDialog || !modalContent) {
+                    return;
+                }
+
+                var template = document.getElementById(templateId);
+                if (!template || !('content' in template)) {
+                    return;
+                }
+
+                modalContent.innerHTML = '';
+                modalContent.appendChild(template.content.cloneNode(true));
+
+                avatarModal.removeAttribute('hidden');
+                avatarModal.setAttribute('data-open', 'true');
+                avatarModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                previousFocus = document.activeElement;
+
+                if (window.AnimaModelViewer && typeof window.AnimaModelViewer.mountAll === 'function') {
+                    window.AnimaModelViewer.mountAll(modalDialog);
+                }
+
+                setFocusableElements();
+
+                document.addEventListener('keydown', trapKeyDown);
+
+                if (focusableElements.length) {
+                    focusableElements[0].focus();
+                } else {
+                    modalDialog.focus();
+                }
+            };
+
+            openButtons.forEach(function (button) {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var templateId = button.getAttribute('data-avatar-modal-open');
+                    openModal(templateId);
+                });
+            });
+
+            avatarModal.addEventListener('click', function (event) {
+                if (event.target === avatarModal) {
+                    closeModal();
+                }
+            });
+
+            avatarModal.addEventListener('click', function (event) {
+                if (event.target && event.target.matches('[data-avatar-modal-close]')) {
+                    event.preventDefault();
+                    closeModal();
                 }
             });
         }

@@ -12,6 +12,7 @@ use function esc_attr;
 use function esc_html;
 use function esc_html__;
 use function esc_url;
+use function esc_url_raw;
 use function get_option;
 use function get_query_var;
 use function get_the_excerpt;
@@ -22,6 +23,8 @@ use function get_transient;
 use function post_type_exists;
 use function set_transient;
 use function shortcode_atts;
+use function sanitize_text_field;
+use function sanitize_html_class;
 use function wp_kses_post;
 use function wp_list_pluck;
 use function wp_reset_postdata;
@@ -57,6 +60,57 @@ class Shortcodes implements ServiceInterface {
             true
         );
         wp_script_add_data( 'anima-model-viewer', 'defer', true );
+        wp_script_add_data( 'anima-model-viewer', 'type', 'module' );
+
+        $script_path = ANIMA_ENGINE_PATH . 'assets/js/model-viewer.js';
+        $script_url  = ANIMA_ENGINE_URL . 'assets/js/model-viewer.js';
+
+        wp_register_script(
+            'anima-model-viewer-enhancements',
+            $script_url,
+            [],
+            file_exists( $script_path ) ? (string) filemtime( $script_path ) : ANIMA_ENGINE_VERSION,
+            true
+        );
+        wp_script_add_data( 'anima-model-viewer-enhancements', 'defer', true );
+    }
+
+    /**
+     * Recupera un valor de la cache aplicando filtros.
+     */
+    protected function cache_get( string $key, string $group = 'default' ) {
+        $cached = apply_filters( 'anima_engine_cache_get', null, $key, $group );
+
+        if ( null !== $cached ) {
+            return $cached;
+        }
+
+        return get_transient( $key );
+    }
+
+    /**
+     * Almacena un valor en cache permitiendo extensiones.
+     */
+    protected function cache_set( string $key, $value, int $expiration, string $group = 'default' ): void {
+        $handled = apply_filters( 'anima_engine_cache_set', false, $key, $value, $expiration, $group );
+
+        if ( true === $handled ) {
+            return;
+        }
+
+        set_transient( $key, $value, $expiration );
+    }
+
+    /**
+     * Genera una clave de cache consistente para el contexto dado.
+     */
+    protected function build_cache_key( string $context, array $arguments ): string {
+        $hash = md5( wp_json_encode( $arguments ) );
+
+        /**
+         * Permite modificar la clave de cache generada para un contexto.
+         */
+        return apply_filters( 'anima_engine_cache_key', 'anima_engine_' . $context . '_' . $hash, $context, $arguments );
     }
 
     /**
@@ -107,8 +161,8 @@ class Shortcodes implements ServiceInterface {
          */
         $query_args = apply_filters( 'anima_engine_gallery_query_args', $query_args, $atts );
 
-        $cache_key = 'anima_engine_gallery_' . md5( wp_json_encode( $query_args ) );
-        $posts     = get_transient( $cache_key );
+        $cache_key = $this->build_cache_key( 'gallery', $query_args );
+        $posts     = $this->cache_get( $cache_key, 'gallery' );
 
         if ( false === $posts ) {
             $query = new \WP_Query( $query_args );
@@ -116,7 +170,7 @@ class Shortcodes implements ServiceInterface {
                 'ids'        => wp_list_pluck( $query->posts, 'ID' ),
                 'max_pages'  => $query->max_num_pages,
             ];
-            set_transient( $cache_key, $posts, MINUTE_IN_SECONDS * 10 );
+            $this->cache_set( $cache_key, $posts, MINUTE_IN_SECONDS * 10, 'gallery' );
             wp_reset_postdata();
         }
 
@@ -166,11 +220,20 @@ class Shortcodes implements ServiceInterface {
             [
                 'src'              => '',
                 'alt'              => __( 'Avatar 3D', 'anima-engine' ),
+                'poster'           => '',
+                'video'            => '',
                 'ar'               => 'true',
                 'auto_rotate'      => 'true',
                 'camera_controls'  => 'true',
                 'exposure'         => '1',
                 'shadow_intensity' => '0.6',
+                'reveal'           => 'interaction',
+                'loading'          => 'lazy',
+                'ios_src'          => '',
+                'draco_decoder'    => '',
+                'ktx2_transcoder'  => '',
+                'height'           => '480px',
+                'class'            => '',
             ],
             $atts,
             'anima_model'
@@ -181,24 +244,94 @@ class Shortcodes implements ServiceInterface {
         }
 
         wp_enqueue_script( 'anima-model-viewer' );
+        wp_enqueue_script( 'anima-model-viewer-enhancements' );
 
         $bool_attrs = [ 'ar', 'auto_rotate', 'camera_controls' ];
         foreach ( $bool_attrs as $attr ) {
             $atts[ $attr ] = filter_var( $atts[ $attr ], \FILTER_VALIDATE_BOOLEAN ) ? 'true' : 'false';
         }
 
-        $html  = '<model-viewer';
-        $html .= ' src="' . esc_url( $atts['src'] ) . '"';
-        $html .= ' alt="' . esc_attr( $atts['alt'] ) . '"';
-        $html .= ' ar="' . esc_attr( $atts['ar'] ) . '"';
-        $html .= ' auto-rotate="' . esc_attr( $atts['auto_rotate'] ) . '"';
-        $html .= ' camera-controls="' . esc_attr( $atts['camera_controls'] ) . '"';
-        $html .= ' exposure="' . esc_attr( $atts['exposure'] ) . '"';
-        $html .= ' shadow-intensity="' . esc_attr( $atts['shadow_intensity'] ) . '"';
-        $html .= ' style="width:100%;height:480px;border-radius:18px;background:radial-gradient(circle,#0f0f20,#04040a);"';
-        $html .= '></model-viewer>';
+        $height = trim( sanitize_text_field( $atts['height'] ) );
+        if ( '' === $height ) {
+            $height = '480px';
+        }
 
-        return $html;
+        $ios_src = $atts['ios_src'] ?: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz';
+
+        $attributes = [
+            'src'              => esc_url( $atts['src'] ),
+            'alt'              => esc_attr( $atts['alt'] ),
+            'ar'               => esc_attr( $atts['ar'] ),
+            'ar-modes'         => 'scene-viewer quick-look webxr',
+            'ios-src'          => esc_url( $ios_src ),
+            'auto-rotate'      => esc_attr( $atts['auto_rotate'] ),
+            'camera-controls'  => esc_attr( $atts['camera_controls'] ),
+            'exposure'         => esc_attr( $atts['exposure'] ),
+            'shadow-intensity' => esc_attr( $atts['shadow_intensity'] ),
+            'reveal'           => esc_attr( sanitize_text_field( $atts['reveal'] ) ),
+            'loading'          => esc_attr( sanitize_text_field( $atts['loading'] ) ),
+        ];
+
+        if ( ! empty( $atts['poster'] ) ) {
+            $attributes['poster'] = esc_url( $atts['poster'] );
+        }
+
+        if ( ! empty( $atts['draco_decoder'] ) ) {
+            $attributes['draco-decoder'] = esc_url_raw( $atts['draco_decoder'] );
+        }
+
+        if ( ! empty( $atts['ktx2_transcoder'] ) ) {
+            $attributes['ktx2-transcoder'] = esc_url_raw( $atts['ktx2_transcoder'] );
+        }
+
+        $viewer_classes = [ 'anima-model-viewer__element' ];
+        if ( ! empty( $atts['class'] ) ) {
+            $viewer_classes[] = sanitize_html_class( $atts['class'] );
+        }
+
+        $config = [
+            'attributes' => $attributes,
+            'classes'    => $viewer_classes,
+            'style'      => sprintf(
+                'width:100%%;height:%s;border-radius:18px;background:radial-gradient(circle,#0f0f20,#04040a);',
+                esc_attr( $height )
+            ),
+        ];
+
+        $wrapper_classes = [ 'anima-model-viewer' ];
+        if ( ! empty( $atts['video'] ) ) {
+            $wrapper_classes[] = 'anima-model-viewer--has-fallback';
+        }
+
+        $fallback = '';
+        if ( ! empty( $atts['video'] ) ) {
+            $fallback  = '<div class="anima-model-viewer__fallback" data-model-fallback>';
+            $fallback .= '<video loop muted playsinline preload="metadata"';
+            if ( ! empty( $atts['poster'] ) ) {
+                $fallback .= ' poster="' . esc_url( $atts['poster'] ) . '"';
+            }
+            $fallback .= '>';
+            $fallback .= '<source src="' . esc_url( $atts['video'] ) . '" type="video/mp4" />';
+            $fallback .= '</video>';
+            $fallback .= '<button type="button" class="button button--ghost" data-activate-model>' . esc_html__( 'Activar 3D', 'anima-engine' ) . '</button>';
+            $fallback .= '</div>';
+        }
+
+        $html  = '<div class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '" data-anima-model="true" data-model-config="' . esc_attr( wp_json_encode( $config ) ) . '">';
+        if ( $fallback ) {
+            $html .= $fallback;
+        }
+        $html .= '<div class="anima-model-viewer__stage" data-model-stage></div>';
+        $html .= '</div>';
+
+        if ( ! empty( $atts['poster'] ) ) {
+            $html .= '<noscript><img src="' . esc_url( $atts['poster'] ) . '" alt="' . esc_attr( $atts['alt'] ) . '" /></noscript>';
+        }
+
+        /**
+         * Permite modificar el marcado final del visor 3D.
+         */
+        return apply_filters( 'anima_engine_model_viewer_markup', $html, $atts, $config );
     }
 
     /**

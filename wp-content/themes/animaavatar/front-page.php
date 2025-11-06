@@ -73,7 +73,7 @@ if ( false === $avatar_ids ) {
         <p class="muted"><?php esc_html_e( 'Explora nuestros proyectos inmersivos destacados.', 'animaavatar' ); ?></p>
     </div>
     <div class="swiper-container overflow-hidden animate-on-scroll">
-        <div class="swiper" aria-live="polite">
+        <div class="swiper" id="home-slider" aria-live="polite" aria-label="<?php esc_attr_e( 'Slider de experiencias recientes', 'animaavatar' ); ?>">
             <div class="swiper-wrapper">
                 <?php
                 $slides = new WP_Query( [
@@ -85,22 +85,37 @@ if ( false === $avatar_ids ) {
                 ] );
 
                 if ( $slides->have_posts() ) :
+                    $slide_index = 0;
                     while ( $slides->have_posts() ) :
                         $slides->the_post();
+                        $slide_index++;
+                        $is_first = 1 === $slide_index;
                         $slide_url = get_post_meta( get_the_ID(), 'anima_slide_url', true );
                         ?>
                         <article class="swiper-slide card">
                             <figure>
                                 <?php
                                 if ( has_post_thumbnail() ) {
-                                    echo get_the_post_thumbnail( get_the_ID(), 'large', [
-                                        'loading' => 'lazy',
-                                        'class'   => 'slide-image',
-                                    ] );
+                                    $thumb_args = [
+                                        'loading'       => $is_first ? 'eager' : 'lazy',
+                                        'class'         => 'slide-image',
+                                        'fetchpriority' => $is_first ? 'high' : 'auto',
+                                    ];
+
+                                    echo wp_get_attachment_image( get_post_thumbnail_id(), 'large', false, $thumb_args );
                                 } else {
                                     $placeholder = get_post_meta( get_the_ID(), 'anima_slide_placeholder', true );
                                     if ( $placeholder ) {
-                                        echo '<img class="slide-image" loading="lazy" src="' . esc_url( $placeholder ) . '" alt="' . esc_attr( get_the_title() ) . '" />';
+                                        $dimensions = wp_getimagesize( $placeholder );
+                                        $width      = $dimensions ? (int) $dimensions[0] : '';
+                                        $height     = $dimensions ? (int) $dimensions[1] : '';
+                                        $size_attr  = '';
+
+                                        if ( $width && $height ) {
+                                            $size_attr = ' width="' . esc_attr( (string) $width ) . '" height="' . esc_attr( (string) $height ) . '"';
+                                        }
+
+                                        echo '<img class="slide-image" loading="' . ( $is_first ? 'eager' : 'lazy' ) . '"' . ( $is_first ? ' fetchpriority="high"' : '' ) . ' src="' . esc_url( $placeholder ) . '" alt="' . esc_attr( get_the_title() ) . '"' . $size_attr . ' />';
                                     }
                                 }
                                 ?>
@@ -126,6 +141,14 @@ if ( false === $avatar_ids ) {
                 ?>
             </div>
             <div class="swiper-pagination" aria-hidden="true"></div>
+            <div class="swiper-navigation" aria-controls="home-slider">
+                <button type="button" class="swiper-button-prev" aria-label="<?php esc_attr_e( 'Ver diapositiva anterior', 'animaavatar' ); ?>" aria-controls="home-slider">
+                    <span class="screen-reader-text"><?php esc_html_e( 'Anterior', 'animaavatar' ); ?></span>
+                </button>
+                <button type="button" class="swiper-button-next" aria-label="<?php esc_attr_e( 'Ver diapositiva siguiente', 'animaavatar' ); ?>" aria-controls="home-slider">
+                    <span class="screen-reader-text"><?php esc_html_e( 'Siguiente', 'animaavatar' ); ?></span>
+                </button>
+            </div>
         </div>
     </div>
 </section>
