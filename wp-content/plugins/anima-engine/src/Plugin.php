@@ -6,6 +6,7 @@ use Anima\Engine\Api\RestApi;
 use Anima\Engine\Metaboxes\RegisterMetaboxes;
 use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Services\CacheInvalidator;
+use Anima\Engine\Services\ElementorTokens;
 use Anima\Engine\Services\ServiceInterface;
 use Anima\Engine\Shortcodes\Shortcodes;
 use Anima\Engine\Taxonomies\RegisterTaxonomies;
@@ -33,6 +34,7 @@ class Plugin {
             new RestApi(),
             new OptionsPage(),
             new CacheInvalidator(),
+            new ElementorTokens(),
         ];
 
         foreach ( $this->services as $service ) {

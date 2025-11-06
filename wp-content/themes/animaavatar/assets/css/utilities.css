@@ -1,3 +1,71 @@
+.token-color-primary {
+    color: var(--token-color-primary);
+}
+
+.token-color-secondary {
+    color: var(--token-color-secondary);
+}
+
+.token-color-muted {
+    color: var(--token-color-muted);
+}
+
+.token-bg-surface {
+    background-color: var(--token-color-surface);
+}
+
+.token-bg-surface-strong {
+    background-color: var(--token-color-surface-strong);
+}
+
+.token-shadow-soft {
+    box-shadow: var(--token-shadow-soft);
+}
+
+.token-shadow-glow {
+    box-shadow: var(--token-shadow-glow);
+}
+
+.token-radius-sm {
+    border-radius: var(--token-radius-sm);
+}
+
+.token-radius-md {
+    border-radius: var(--token-radius-md);
+}
+
+.token-radius-pill {
+    border-radius: var(--token-radius-pill);
+}
+
+.token-pad-sm {
+    padding: var(--token-space-sm);
+}
+
+.token-pad-md {
+    padding: var(--token-space-md);
+}
+
+.token-pad-lg {
+    padding: var(--token-space-lg);
+}
+
+.token-mt-lg {
+    margin-top: var(--token-space-lg);
+}
+
+.token-gap-sm {
+    gap: var(--token-space-sm);
+}
+
+.token-gap-md {
+    gap: var(--token-space-md);
+}
+
+.token-gap-lg {
+    gap: var(--token-space-lg);
+}
+
 .container {
     width: min(1200px, 92%);
     margin: 0 auto;

@@ -17,6 +17,8 @@ function action_hook_setup() {
     add_action( 'wp_head', 'animaavatar_preload_fonts', 1 );
     add_action( 'wp_head', 'animaavatar_print_critical_css', 5 );
     add_filter( 'nav_menu_link_attributes', 'animaavatar_aria_current', 10, 3 );
+    add_filter( 'nav_menu_css_class', 'animaavatar_add_mega_menu_class', 10, 4 );
+    add_filter( 'walker_nav_menu_start_el', 'animaavatar_render_mega_menu', 10, 4 );
 }
 
 /**
@@ -131,7 +133,7 @@ function animaavatar_print_critical_css() {
     ?>
     <style>
         body {background:#050510;color:#f5f7ff;margin:0;font-family:'Inter','Segoe UI',sans-serif;}
-        .site-header {position:sticky;top:0;backdrop-filter:blur(12px);}
+        .site-header {position:sticky;top:0;background-color:rgba(5,5,16,0.78);backdrop-filter:blur(18px);}
         a:focus-visible {outline:3px solid #2fd4ff;outline-offset:4px;}
     </style>
     <?php
@@ -146,6 +148,133 @@ function animaavatar_aria_current( $atts, $item, $args ) {
     }
 
     return $atts;
+}
+
+/**
+ * Añade la clase del mega menú al elemento correspondiente.
+ */
+function animaavatar_add_mega_menu_class( $classes, $item, $args, $depth ) {
+    if ( isset( $args->theme_location ) && 'main-menu' === $args->theme_location && 0 === $depth ) {
+        if ( 'servicios' === sanitize_title( $item->title ) ) {
+            $classes[] = 'menu-item--mega';
+        }
+    }
+
+    return $classes;
+}
+
+/**
+ * Sobrescribe la salida del elemento "Servicios" para incluir el mega menú.
+ */
+function animaavatar_render_mega_menu( $item_output, $item, $depth, $args ) {
+    if ( ! isset( $args->theme_location ) || 'main-menu' !== $args->theme_location || 0 !== $depth ) {
+        return $item_output;
+    }
+
+    if ( 'servicios' !== sanitize_title( $item->title ) ) {
+        return $item_output;
+    }
+
+    $panel_id = 'mega-servicios';
+    $columns  = [
+        [
+            'heading' => __( 'Streaming', 'animaavatar' ),
+            'links'   => [
+                [
+                    'label' => __( 'Ver todos los servicios', 'animaavatar' ),
+                    'url'   => home_url( '/servicios' ),
+                ],
+                [
+                    'label' => __( 'Producción multicámara 360º', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/streaming-360' ),
+                ],
+                [
+                    'label' => __( 'Eventos híbridos interactivos', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/eventos-hibridos' ),
+                ],
+                [
+                    'label' => __( 'Monetización y analítica en vivo', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/streaming-analytics' ),
+                ],
+            ],
+        ],
+        [
+            'heading' => __( 'Holográficos', 'animaavatar' ),
+            'links'   => [
+                [
+                    'label' => __( 'Escenarios volumétricos', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/holograficos-volumetricos' ),
+                ],
+                [
+                    'label' => __( 'Telepresencia XR', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/telepresencia-xr' ),
+                ],
+                [
+                    'label' => __( 'Instalaciones permanentes', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/instalaciones-holograficas' ),
+                ],
+            ],
+        ],
+        [
+            'heading' => __( 'IA', 'animaavatar' ),
+            'links'   => [
+                [
+                    'label' => __( 'Gemelos digitales con IA', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/gemelos-digitales' ),
+                ],
+                [
+                    'label' => __( 'Asistentes virtuales conversacionales', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/asistentes-virtuales' ),
+                ],
+                [
+                    'label' => __( 'Optimización de contenido generativo', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/optimizacion-ia' ),
+                ],
+            ],
+        ],
+        [
+            'heading' => __( 'VR', 'animaavatar' ),
+            'links'   => [
+                [
+                    'label' => __( 'Formación inmersiva', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/formacion-vr' ),
+                ],
+                [
+                    'label' => __( 'Metaversos de marca', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/metaversos' ),
+                ],
+                [
+                    'label' => __( 'Experiencias retail virtuales', 'animaavatar' ),
+                    'url'   => home_url( '/servicios/retail-vr' ),
+                ],
+            ],
+        ],
+    ];
+
+    ob_start();
+    ?>
+    <button type="button" class="menu-link menu-link--mega" aria-expanded="false" aria-haspopup="true" aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+        <?php echo esc_html( $item->title ); ?>
+    </button>
+    <div id="<?php echo esc_attr( $panel_id ); ?>" class="mega-menu" role="region" aria-label="<?php esc_attr_e( 'Servicios destacados de Anima', 'animaavatar' ); ?>" aria-hidden="true">
+        <div class="mega-menu__grid">
+            <?php foreach ( $columns as $column ) : ?>
+                <div class="mega-menu__column">
+                    <h3><?php echo esc_html( $column['heading'] ); ?></h3>
+                    <ul>
+                        <?php foreach ( $column['links'] as $link ) : ?>
+                            <li><a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <a class="mega-menu__cta" href="<?php echo esc_url( home_url( '/contacto' ) ); ?>">
+            <?php esc_html_e( 'Agenda una demo inmersiva', 'animaavatar' ); ?>
+        </a>
+    </div>
+    <?php
+    return ob_get_clean();
 }
 
 
