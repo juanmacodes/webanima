@@ -1,148 +1,661 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
     xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:wp="http://wordpress.org/export/1.2/"
->
-<channel>
-    <title>Anima</title>
-    <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
+    xmlns:wp="http://wordpress.org/export/1.2/">
+  <channel>
+    <title>Anima Demo</title>
+    <link>https://anima.local</link>
+    <description>Contenido demostración para Avatares + Cursos + Actualidad</description>
+    <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
     <language>es</language>
     <wp:wxr_version>1.2</wp:wxr_version>
-    <wp:base_site_url>https://anima.localhost</wp:base_site_url>
-    <wp:base_blog_url>https://anima.localhost</wp:base_blog_url>
+    <wp:base_site_url>https://anima.local</wp:base_site_url>
+    <wp:base_blog_url>https://anima.local</wp:base_blog_url>
 
     <wp:author>
-        <wp:author_login>anima</wp:author_login>
-        <wp:author_email>team@anima.world</wp:author_email>
-        <wp:author_display_name><![CDATA[Equipo Anima]]></wp:author_display_name>
-        <wp:author_first_name><![CDATA[Equipo]]></wp:author_first_name>
-        <wp:author_last_name><![CDATA[Anima]]></wp:author_last_name>
+      <wp:author_id>1</wp:author_id>
+      <wp:author_login><![CDATA[anima]]></wp:author_login>
+      <wp:author_email><![CDATA[demo@anima.world]]></wp:author_email>
+      <wp:author_display_name><![CDATA[Equipo Anima]]></wp:author_display_name>
+      <wp:author_first_name><![CDATA[Equipo]]></wp:author_first_name>
+      <wp:author_last_name><![CDATA[Anima]]></wp:author_last_name>
     </wp:author>
 
+    <!-- Avatar categorías -->
+    <wp:term>
+      <wp:term_id>100</wp:term_id>
+      <wp:term_taxonomy>avatar_categoria</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[humanos]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Humanos]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>101</wp:term_id>
+      <wp:term_taxonomy>avatar_categoria</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[cartoon]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Cartoon]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>102</wp:term_id>
+      <wp:term_taxonomy>avatar_categoria</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[stylized]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Stylized]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>103</wp:term_id>
+      <wp:term_taxonomy>avatar_categoria</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[animales]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Animales]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>104</wp:term_id>
+      <wp:term_taxonomy>avatar_categoria</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[aliens]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Aliens]]></wp:term_name>
+    </wp:term>
+
+    <!-- Cursos taxonomías -->
+    <wp:term>
+      <wp:term_id>200</wp:term_id>
+      <wp:term_taxonomy>nivel</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[inicial]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Inicial]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>201</wp:term_id>
+      <wp:term_taxonomy>nivel</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[intermedio]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Intermedio]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>202</wp:term_id>
+      <wp:term_taxonomy>nivel</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[avanzado]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Avanzado]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>210</wp:term_id>
+      <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[grabado]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Grabado]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>211</wp:term_id>
+      <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[directo]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Directo]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>212</wp:term_id>
+      <wp:term_taxonomy>modalidad</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[blended]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Blended]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>220</wp:term_id>
+      <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[ia]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[IA]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>221</wp:term_id>
+      <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[vr]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[VR]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>222</wp:term_id>
+      <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[holograficos]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Holográficos]]></wp:term_name>
+    </wp:term>
+    <wp:term>
+      <wp:term_id>223</wp:term_id>
+      <wp:term_taxonomy>tecnologia</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[streaming]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Streaming]]></wp:term_name>
+    </wp:term>
+
+    <!-- Categoría blog -->
+    <wp:term>
+      <wp:term_id>300</wp:term_id>
+      <wp:term_taxonomy>category</wp:term_taxonomy>
+      <wp:term_slug><![CDATA[avatares-y-tecnologia]]></wp:term_slug>
+      <wp:term_parent></wp:term_parent>
+      <wp:term_name><![CDATA[Avatares y Tecnología]]></wp:term_name>
+    </wp:term>
+
+    <!-- Página Explora -->
     <item>
-        <title>Portal Holográfico para Metaversos</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-05-01 12:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>portal-holografico</wp:post_name>
-        <content:encoded><![CDATA[<p>Experiencia inmersiva con renderizado WebGL y streaming volumétrico.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Experiencia inmersiva WebGL.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Orbital Labs]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Mayo 2024]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[Metaverso, Streaming volumétrico]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[+140% engagement, 2.3M sesiones]]></wp:meta_value>
-        </wp:postmeta>
-        <category domain="stack" nicename="threejs"><![CDATA[Three.js]]></category>
-        <category domain="stack" nicename="webrtc"><![CDATA[WebRTC]]></category>
+      <title>Explora</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>400</wp:post_id>
+      <wp:post_type>page</wp:post_type>
+      <wp:post_date>2024-02-01 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>explora</wp:post_name>
+      <wp:page_template>elementor_canvas</wp:page_template>
+      <content:encoded><![CDATA[[elementor-template id="page-avatares-cursos-actualidad"]]]></content:encoded>
+      <wp:postmeta>
+        <wp:meta_key>_elementor_edit_mode</wp:meta_key>
+        <wp:meta_value><![CDATA[builder]]></wp:meta_value>
+      </wp:postmeta>
     </item>
 
+    <!-- Avatares (10) -->
+    <!-- For brevity using same attachment id pattern -->
+    <!-- Avatares attachments -->
     <item>
-        <title>Gemelo Digital Ciudad Anima</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-04-01 10:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>gemelo-digital-ciudad</wp:post_name>
-        <content:encoded><![CDATA[<p>Gemelo digital urbano con sensores IoT y dashboards en tiempo real.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[IoT + gemelo digital.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Ciudad Futura]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Abril 2024]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[IoT, Visualización 3D, Analítica]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[-22% consumo energético, +18% movilidad]]></wp:meta_value>
-        </wp:postmeta>
-        <category domain="stack" nicename="iot"><![CDATA[IoT]]></category>
-        <category domain="stack" nicename="aws"><![CDATA[AWS]]></category>
+      <title>avatar-lia-neon.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5001</wp:post_id>
+      <wp:post_date>2024-01-01 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-01 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6001</wp:post_parent>
+      <wp:post_name>avatar-lia-neon</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
     </item>
-
     <item>
-        <title>AI Studio para marcas visionarias</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>project</wp:post_type>
-        <wp:post_date>2024-03-15 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>ai-studio</wp:post_name>
-        <content:encoded><![CDATA[<p>Plataforma de co-creación asistida por IA con pipelines meshopt y render real-time.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[IA creativa en tiempo real.]]></excerpt:encoded>
-        <wp:postmeta>
-            <wp:meta_key>anima_client</wp:meta_key>
-            <wp:meta_value><![CDATA[Neon Collective]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_date</wp:meta_key>
-            <wp:meta_value><![CDATA[Marzo 2024]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_services</wp:meta_key>
-            <wp:meta_value><![CDATA[Inteligencia artificial, Pipelines meshopt]]></wp:meta_value>
-        </wp:postmeta>
-        <wp:postmeta>
-            <wp:meta_key>anima_kpis</wp:meta_key>
-            <wp:meta_value><![CDATA[98% satisfacción creativa]]></wp:meta_value>
-        </wp:postmeta>
-        <category domain="stack" nicename="ai"><![CDATA[Inteligencia Artificial]]></category>
-        <category domain="stack" nicename="meshopt"><![CDATA[meshopt]]></category>
+      <title>avatar-rift.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5002</wp:post_id>
+      <wp:post_date>2024-01-02 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-02 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6002</wp:post_parent>
+      <wp:post_name>avatar-rift</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
     </item>
-
     <item>
-        <title>Diseño conversacional para mundos virtuales</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-03-10 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>diseno-conversacional</wp:post_name>
-        <content:encoded><![CDATA[<p>Cómo diseñar experiencias conversacionales dentro de entornos inmersivos.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Conversaciones en XR.]]></excerpt:encoded>
-        <category domain="category" nicename="innovacion"><![CDATA[Innovación]]></category>
+      <title>avatar-aurora.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5003</wp:post_id>
+      <wp:post_date>2024-01-03 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-03 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6003</wp:post_parent>
+      <wp:post_name>avatar-aurora</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
     </item>
-
     <item>
-        <title>KPIs para medir mundos 3D</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-02-05 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>kpis-mundos-3d</wp:post_name>
-        <content:encoded><![CDATA[<p>Guía para medir engagement, retención y conversión en experiencias 3D.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Métricas para 3D.]]></excerpt:encoded>
-        <category domain="category" nicename="datos"><![CDATA[Datos]]></category>
+      <title>avatar-pixelcat.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5004</wp:post_id>
+      <wp:post_date>2024-01-04 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-04 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6004</wp:post_parent>
+      <wp:post_name>avatar-pixelcat</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
     </item>
-
     <item>
-        <title>Workflow WebP + AVIF para equipos distribuidos</title>
-        <dc:creator>anima</dc:creator>
-        <wp:post_type>post</wp:post_type>
-        <wp:post_date>2024-01-12 09:00:00</wp:post_date>
-        <wp:post_status>publish</wp:post_status>
-        <wp:post_name>workflow-imagenes-nextgen</wp:post_name>
-        <content:encoded><![CDATA[<p>Implementa un pipeline híbrido de optimización de imágenes con WebP y AVIF.</p>]]></content:encoded>
-        <excerpt:encoded><![CDATA[Pipeline WebP/AVIF.]]></excerpt:encoded>
-        <category domain="category" nicename="rendimiento"><![CDATA[Rendimiento]]></category>
+      <title>avatar-zenbot.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5005</wp:post_id>
+      <wp:post_date>2024-01-05 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-05 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6005</wp:post_parent>
+      <wp:post_name>avatar-zenbot</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
     </item>
-</channel>
+    <item>
+      <title>avatar-holofox.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5006</wp:post_id>
+      <wp:post_date>2024-01-06 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-06 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6006</wp:post_parent>
+      <wp:post_name>avatar-holofox</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
+    </item>
+    <item>
+      <title>avatar-coral.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5007</wp:post_id>
+      <wp:post_date>2024-01-07 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-07 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6007</wp:post_parent>
+      <wp:post_name>avatar-coral</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
+    </item>
+    <item>
+      <title>avatar-astro.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5008</wp:post_id>
+      <wp:post_date>2024-01-08 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-08 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6008</wp:post_parent>
+      <wp:post_name>avatar-astro</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
+    </item>
+    <item>
+      <title>avatar-quantum.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5009</wp:post_id>
+      <wp:post_date>2024-01-09 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-09 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6009</wp:post_parent>
+      <wp:post_name>avatar-quantum</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
+    </item>
+    <item>
+      <title>avatar-orb.jpg</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>5010</wp:post_id>
+      <wp:post_date>2024-01-10 08:00:00</wp:post_date>
+      <wp:post_date_gmt>2024-01-10 08:00:00</wp:post_date_gmt>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_status>inherit</wp:post_status>
+      <wp:post_parent>6010</wp:post_parent>
+      <wp:post_name>avatar-orb</wp:post_name>
+      <wp:post_mime_type>image/jpeg</wp:post_mime_type>
+      <wp:attachment_url>https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</wp:attachment_url>
+    </item>
+    <!-- Avatares -->
+    <item>
+      <title>Lía Neon</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6001</wp:post_id>
+      <wp:post_date>2024-01-01 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>lia-neon</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Avatar humano volumétrico con texturas neon y rig listo para live-streaming.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Avatar humano futurista.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="humanos"><![CDATA[Humanos]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5001</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[humano]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5001</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/lia-neon]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Rift Cypher</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6002</wp:post_id>
+      <wp:post_date>2024-01-02 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>rift-cypher</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Operador táctico con captura facial en tiempo real para eventos de eSports.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Avatar táctico en tiempo real.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="humanos"><![CDATA[Humanos]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5002</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[humano]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5002</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/rift-cypher]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Aurora Flux</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6003</wp:post_id>
+      <wp:post_date>2024-01-03 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>aurora-flux</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Avatar stylized con acabado painterly perfecto para experiencias educativas.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Avatar stylized.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="stylized"><![CDATA[Stylized]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5003</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[stylized]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5003</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/aurora-flux]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Pixel Cat</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6004</wp:post_id>
+      <wp:post_date>2024-01-04 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>pixel-cat</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Mascota cartoon animada lista para eventos corporativos y activaciones retail.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Mascota cartoon.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="cartoon"><![CDATA[Cartoon]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5004</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[cartoon]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5004</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/pixel-cat]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Zen Bot</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6005</wp:post_id>
+      <wp:post_date>2024-01-05 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>zen-bot</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Robot asistente con expresiones faciales y voice-over dinámico.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Robot asistente.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="aliens"><![CDATA[Aliens]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5005</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[alien]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5005</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/zen-bot]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Holo Fox</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6006</wp:post_id>
+      <wp:post_date>2024-01-06 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>holo-fox</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Avatar animal con shaders volumétricos y animaciones loop.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Zorro volumétrico.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="animales"><![CDATA[Animales]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5006</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[animal]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5006</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/holo-fox]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Coral Diva</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6007</wp:post_id>
+      <wp:post_date>2024-01-07 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>coral-diva</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Avatar cantante con dinámicas de cabello y vestuario en tiempo real.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Cantante volumétrica.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="humanos"><![CDATA[Humanos]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5007</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[humano]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5007</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/coral-diva]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Astro Kid</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6008</wp:post_id>
+      <wp:post_date>2024-01-08 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>astro-kid</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Astronauta cartoon perfecto para talleres STEAM.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Astronauta cartoon.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="cartoon"><![CDATA[Cartoon]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5008</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[cartoon]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5008</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/astro-kid]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Quantum Twin</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6009</wp:post_id>
+      <wp:post_date>2024-01-09 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>quantum-twin</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Gemelo digital de ejecutiva para keynotes en streaming holográfico.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Gemelo digital corporativo.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="humanos"><![CDATA[Humanos]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5009</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[humano]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5009</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/quantum-twin]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Orb Dancer</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>6010</wp:post_id>
+      <wp:post_date>2024-01-10 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>orb-dancer</wp:post_name>
+      <wp:post_type>avatar</wp:post_type>
+      <content:encoded><![CDATA[<p>Bailarina holográfica optimizada para performances en directo.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Bailarina holográfica.]]></excerpt:encoded>
+      <category domain="avatar_categoria" nicename="stylized"><![CDATA[Stylized]]></category>
+      <wp:postmeta><wp:meta_key>_thumbnail_id</wp:meta_key><wp:meta_value>5010</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_type</wp:meta_key><wp:meta_value><![CDATA[stylized]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_thumb</wp:meta_key><wp:meta_value>5010</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_avatar_webgl</wp:meta_key><wp:meta_value><![CDATA[https://demo.anima.world/viewer/orb-dancer]]></wp:meta_value></wp:postmeta>
+    </item>
+    <!-- Cursos -->
+    <item>
+      <title>Producción VR en Directo</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7001</wp:post_id>
+      <wp:post_date>2024-02-10 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>produccion-vr-directo</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Aprende a diseñar y emitir experiencias VR en directo con flujos multicámara y volumetría en vivo.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Dominio completo de hardware y software para eventos VR en directo.]]></excerpt:encoded>
+      <category domain="nivel" nicename="intermedio"><![CDATA[Intermedio]]></category>
+      <category domain="modalidad" nicename="directo"><![CDATA[Directo]]></category>
+      <category domain="tecnologia" nicename="vr"><![CDATA[VR]]></category>
+      <category domain="tecnologia" nicename="streaming"><![CDATA[Streaming]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>890</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>24</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<ul><li>Experiencia básica en realización audiovisual</li><li>Portátil con GPU dedicada</li></ul>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-09-12","2024-11-21"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Planificación de emisión","lessons":["Storyboard inmersivo","Checklist técnico"]},{"title":"Operativa en directo","lessons":["Sincronización cámaras volumétricas","Failsafe y redundancia"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Marcos Vega","bio":"Director técnico en eventos XR internacionales.","avatar_url":"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=200&q=60"},{"name":"Lucía Ríos","bio":"Productora ejecutiva especialista en volumetría en vivo.","avatar_url":"https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[waitlist]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Avatar Design Lab</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7002</wp:post_id>
+      <wp:post_date>2024-02-15 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>avatar-design-lab</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Taller intensivo para crear avatares estilizados listos para WebGL y plataformas volumétricas.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Pipeline completo de modelado, texturizado y retargeting.]]></excerpt:encoded>
+      <category domain="nivel" nicename="intermedio"><![CDATA[Intermedio]]></category>
+      <category domain="modalidad" nicename="blended"><![CDATA[Blended]]></category>
+      <category domain="tecnologia" nicename="ia"><![CDATA[IA]]></category>
+      <category domain="tecnologia" nicename="holograficos"><![CDATA[Holográficos]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>720</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>30</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<p>Manejo básico de Blender o Maya.</p>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-10-05"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Fundamentos de diseño","lessons":["Briefing narrativo","Paleta y silueta"]},{"title":"Retargeting","lessons":["Rig IK/FK","Blendshapes expresivos"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Sara León","bio":"Artista técnica en Anima Studio.","avatar_url":"https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[contact]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Streaming volumétrico 101</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7003</wp:post_id>
+      <wp:post_date>2024-02-20 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>streaming-volumetrico-101</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Curso introductorio al streaming volumétrico para conciertos y keynotes híbridos.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Aprende a planificar, comprimir y distribuir experiencias volumétricas.]]></excerpt:encoded>
+      <category domain="nivel" nicename="inicial"><![CDATA[Inicial]]></category>
+      <category domain="modalidad" nicename="grabado"><![CDATA[Grabado]]></category>
+      <category domain="tecnologia" nicename="streaming"><![CDATA[Streaming]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>290</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>8</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<p>No se requieren conocimientos previos.</p>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-08-22"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Captura volumétrica","lessons":["Hardware y set","Buenas prácticas de iluminación"]},{"title":"Entrega","lessons":["Codificación","Integración con plataformas"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Diego Ramos","bio":"Ing. de streaming en Anima Lab.","avatar_url":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[url]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_url</wp:meta_key><wp:meta_value><![CDATA[https://anima.world/inscripcion-streaming]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Operador volumétrico avanzado</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7004</wp:post_id>
+      <wp:post_date>2024-02-25 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>operador-volumetrico-avanzado</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Programa avanzado para operar estudios volumétricos de alta demanda.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Procesos, redundancias y automatización para estudios volumétricos.]]></excerpt:encoded>
+      <category domain="nivel" nicename="avanzado"><![CDATA[Avanzado]]></category>
+      <category domain="modalidad" nicename="blended"><![CDATA[Blended]]></category>
+      <category domain="tecnologia" nicename="holograficos"><![CDATA[Holográficos]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>1250</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>40</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<p>Experiencia previa en estudios XR.</p>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-12-02"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Pipeline avanzado","lessons":["Optimización de assets","QA volumétrica"]},{"title":"Operativa","lessons":["Contingencia","Monitorización"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Irene Soto","bio":"Supervisora de estudios volumétricos.","avatar_url":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=60"},{"name":"Alex Pardo","bio":"Especialista en automatización de pipelines XR.","avatar_url":"https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[waitlist]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>Experiencias híbridas con avatares</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7005</wp:post_id>
+      <wp:post_date>2024-03-01 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>experiencias-hibridas-avatares</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Diseña experiencias híbridas donde avatares volumétricos interactúan con asistentes físicos.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Estrategias y producción para eventos híbridos con avatares.]]></excerpt:encoded>
+      <category domain="nivel" nicename="intermedio"><![CDATA[Intermedio]]></category>
+      <category domain="modalidad" nicename="directo"><![CDATA[Directo]]></category>
+      <category domain="tecnologia" nicename="holograficos"><![CDATA[Holográficos]]></category>
+      <category domain="tecnologia" nicename="streaming"><![CDATA[Streaming]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>640</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>16</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<p>Conocimiento intermedio de producción de eventos.</p>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-09-30"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Narrativa híbrida","lessons":["Diseño de recorridos","Integración de avatares"]},{"title":"Producción","lessons":["Coordinación de equipos","Medición de impacto"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Noa Prieto","bio":"Creative technologist en experiencias híbridas.","avatar_url":"https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[contact]]></wp:meta_value></wp:postmeta>
+    </item>
+    <item>
+      <title>AI Avatars Bootcamp</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>7006</wp:post_id>
+      <wp:post_date>2024-03-05 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>ai-avatars-bootcamp</wp:post_name>
+      <wp:post_type>curso</wp:post_type>
+      <content:encoded><![CDATA[<p>Bootcamp intensivo para crear avatares generativos con modelos IA y despliegue WebXR.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[De prompts a producción con IA y herramientas XR.]]></excerpt:encoded>
+      <category domain="nivel" nicename="inicial"><![CDATA[Inicial]]></category>
+      <category domain="modalidad" nicename="grabado"><![CDATA[Grabado]]></category>
+      <category domain="tecnologia" nicename="ia"><![CDATA[IA]]></category>
+      <wp:postmeta><wp:meta_key>anima_price</wp:meta_key><wp:meta_value>420</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_duration_hours</wp:meta_key><wp:meta_value>12</wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_requirements</wp:meta_key><wp:meta_value><![CDATA[<p>Cuenta en plataformas de IA generativa.</p>]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_upcoming_dates</wp:meta_key><wp:meta_value><![CDATA[["2024-08-18","2024-10-28"]]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_syllabus</wp:meta_key><wp:meta_value><![CDATA[[{"title":"Fundamentos IA","lessons":["Selección de modelos","Control de estilos"]},{"title":"Deploy XR","lessons":["Optimización","Publicación"]}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_instructors</wp:meta_key><wp:meta_value><![CDATA[[{"name":"Leo Ferrer","bio":"Lead AI engineer en Anima Engine.","avatar_url":"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=60"}]]></wp:meta_value></wp:postmeta>
+      <wp:postmeta><wp:meta_key>anima_enroll_target</wp:meta_key><wp:meta_value><![CDATA[waitlist]]></wp:meta_value></wp:postmeta>
+    </item>
+    <!-- Posts Actualidad -->
+    <item>
+      <title>Avatares volumétricos en educación STEM</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8001</wp:post_id>
+      <wp:post_date>2024-03-12 08:30:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>avatares-volumetricos-educacion</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Los avatares volumétricos permiten crear aulas inmersivas donde el alumnado interactúa con docentes y contenidos en 3D tiempo real. Analizamos casos de éxito y recomendaciones técnicas.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Cómo usar avatares volumétricos para potenciar experiencias educativas.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+    <item>
+      <title>Checklist para producir un streaming holográfico</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8002</wp:post_id>
+      <wp:post_date>2024-03-26 10:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>checklist-streaming-holografico</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Repasamos los elementos críticos para un streaming holográfico sin sobresaltos: planificación, redundancias, encoding y experiencia de usuario.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Pasos clave para tu próximo streaming holográfico.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+    <item>
+      <title>El futuro de los avatares generativos</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8003</wp:post_id>
+      <wp:post_date>2024-04-04 09:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>futuro-avatares-generativos</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Modelos IA generativos están redefiniendo la forma en la que prototipamos avatares. Exploramos flujos de trabajo y retos éticos.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Nuevas tendencias en avatares generativos.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+    <item>
+      <title>5 métricas para evaluar experiencias híbridas</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8004</wp:post_id>
+      <wp:post_date>2024-04-18 08:00:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>metricas-experiencias-hibridas</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Desde el tiempo medio de permanencia hasta la interacción avatar-humano, estas son las métricas que recomendamos monitorizar.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Qué medir en tus eventos híbridos con avatares.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+    <item>
+      <title>Workflow de captura volumétrica portátil</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8005</wp:post_id>
+      <wp:post_date>2024-05-02 09:30:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>workflow-captura-volumetrica-portatil</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Cómo montamos estudios volumétricos portátiles para activaciones pop-up con montaje en menos de 90 minutos.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Estrategias portátiles de captura volumétrica.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+    <item>
+      <title>Consejos de accesibilidad para experiencias XR</title>
+      <dc:creator>anima</dc:creator>
+      <wp:post_id>8006</wp:post_id>
+      <wp:post_date>2024-05-16 09:15:00</wp:post_date>
+      <wp:post_status>publish</wp:post_status>
+      <wp:post_name>accesibilidad-experiencias-xr</wp:post_name>
+      <wp:post_type>post</wp:post_type>
+      <content:encoded><![CDATA[<p>Checklist con buenas prácticas de accesibilidad aplicadas a experiencias XR y volumétricas.</p>]]></content:encoded>
+      <excerpt:encoded><![CDATA[Accesibilidad aplicada a XR.]]></excerpt:encoded>
+      <category domain="category" nicename="avatares-y-tecnologia"><![CDATA[Avatares y Tecnología]]></category>
+    </item>
+  </channel>
 </rss>

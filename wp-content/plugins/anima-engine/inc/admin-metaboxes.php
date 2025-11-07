@@ -20,6 +20,8 @@ add_action(
                 $dates        = get_post_meta( $post->ID, 'anima_upcoming_dates', true );
                 $syllabus     = get_post_meta( $post->ID, 'anima_syllabus', true );
                 $instructors  = get_post_meta( $post->ID, 'anima_instructors', true );
+                $enroll_target = get_post_meta( $post->ID, 'anima_enroll_target', true );
+                $enroll_url    = get_post_meta( $post->ID, 'anima_enroll_url', true );
 
                 $dates_json       = is_array( $dates ) ? wp_json_encode( $dates, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ) : (string) $dates;
                 $syllabus_json    = is_array( $syllabus ) ? wp_json_encode( $syllabus, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE ) : (string) $syllabus;
@@ -53,6 +55,26 @@ add_action(
                     <textarea id="anima_instructors" name="anima_instructors" class="widefat code" rows="5"><?php echo esc_textarea( $instructors_json ); ?></textarea>
                     <span class="description"><?php esc_html_e( 'Ejemplo: [{"name":"Ana","bio":"Productora XR","avatar_url":"https://..."}]', 'anima-engine' ); ?></span>
                 </p>
+                <p>
+                    <label for="anima_enroll_target"><strong><?php esc_html_e( 'Destino del botón de inscripción', 'anima-engine' ); ?></strong></label><br />
+                    <select id="anima_enroll_target" name="anima_enroll_target" class="widefat">
+                        <?php
+                        $options = [
+                            'waitlist' => __( 'Lista de espera (REST)', 'anima-engine' ),
+                            'contact'  => __( 'Contacto (email al administrador)', 'anima-engine' ),
+                            'url'      => __( 'URL externa', 'anima-engine' ),
+                        ];
+                        foreach ( $options as $value => $label ) {
+                            printf( '<option value="%1$s" %3$s>%2$s</option>', esc_attr( $value ), esc_html( $label ), selected( $enroll_target ?: 'waitlist', $value, false ) );
+                        }
+                        ?>
+                    </select>
+                </p>
+                <p>
+                    <label for="anima_enroll_url"><strong><?php esc_html_e( 'URL externa', 'anima-engine' ); ?></strong></label><br />
+                    <input type="url" id="anima_enroll_url" name="anima_enroll_url" value="<?php echo esc_attr( $enroll_url ); ?>" class="widefat" placeholder="https://" />
+                    <span class="description"><?php esc_html_e( 'Se utiliza cuando el destino es "URL externa".', 'anima-engine' ); ?></span>
+                </p>
                 <?php
             },
             'curso',
@@ -83,6 +105,8 @@ add_action(
         $dates  = isset( $_POST['anima_upcoming_dates'] ) ? anima_engine_sanitize_json_array( wp_unslash( $_POST['anima_upcoming_dates'] ), 'date' ) : null;
         $syll   = isset( $_POST['anima_syllabus'] ) ? anima_engine_sanitize_syllabus( wp_unslash( $_POST['anima_syllabus'] ) ) : null;
         $instr  = isset( $_POST['anima_instructors'] ) ? anima_engine_sanitize_instructors( wp_unslash( $_POST['anima_instructors'] ) ) : null;
+        $target = isset( $_POST['anima_enroll_target'] ) ? sanitize_key( wp_unslash( $_POST['anima_enroll_target'] ) ) : null;
+        $enroll_url = isset( $_POST['anima_enroll_url'] ) ? esc_url_raw( wp_unslash( $_POST['anima_enroll_url'] ) ) : null;
 
         anima_engine_update_meta_value( $post_id, 'anima_price', $price );
         anima_engine_update_meta_value( $post_id, 'anima_duration_hours', $hours );
@@ -90,6 +114,12 @@ add_action(
         anima_engine_update_meta_value( $post_id, 'anima_upcoming_dates', $dates );
         anima_engine_update_meta_value( $post_id, 'anima_syllabus', $syll );
         anima_engine_update_meta_value( $post_id, 'anima_instructors', $instr );
+        if ( null !== $target ) {
+            $allowed = [ 'waitlist', 'contact', 'url' ];
+            $target  = in_array( $target, $allowed, true ) ? $target : 'waitlist';
+        }
+        anima_engine_update_meta_value( $post_id, 'anima_enroll_target', $target );
+        anima_engine_update_meta_value( $post_id, 'anima_enroll_url', $enroll_url );
     },
     10,
     2

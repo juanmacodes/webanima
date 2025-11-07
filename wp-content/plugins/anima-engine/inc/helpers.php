@@ -29,34 +29,40 @@ if ( ! function_exists( 'anima_format_hours' ) ) {
 
 if ( ! function_exists( 'anima_get_course_meta' ) ) {
     function anima_get_course_meta( int $post_id ): array {
-        $meta = get_post_meta( $post_id );
-
-        $price = isset( $meta['anima_price'][0] ) ? $meta['anima_price'][0] : '';
-        $hours = isset( $meta['anima_duration_hours'][0] ) ? $meta['anima_duration_hours'][0] : '';
+        $price = get_post_meta( $post_id, 'anima_price', true );
+        $hours = get_post_meta( $post_id, 'anima_duration_hours', true );
+        $requirements = get_post_meta( $post_id, 'anima_requirements', true );
+        $syllabus = get_post_meta( $post_id, 'anima_syllabus', true );
+        $instructors = get_post_meta( $post_id, 'anima_instructors', true );
+        $dates = get_post_meta( $post_id, 'anima_upcoming_dates', true );
+        $target = get_post_meta( $post_id, 'anima_enroll_target', true );
+        $url = get_post_meta( $post_id, 'anima_enroll_url', true );
 
         return [
-            'price' => '' === $price ? '' : anima_format_price( $price ),
-            'hours' => '' === $hours ? '' : anima_format_hours( $hours ),
+            'price'        => '' === $price ? '' : anima_format_price( $price ),
+            'raw_price'    => $price,
+            'hours'        => '' === $hours ? '' : anima_format_hours( $hours ),
+            'raw_hours'    => $hours,
+            'requirements' => wp_kses_post( (string) $requirements ),
+            'syllabus'     => is_array( $syllabus ) ? $syllabus : [],
+            'instructors'  => is_array( $instructors ) ? $instructors : [],
+            'dates'        => is_array( $dates ) ? $dates : [],
+            'target'       => $target ?: 'waitlist',
+            'enroll_url'   => esc_url( (string) $url ),
         ];
     }
 }
 
 if ( ! function_exists( 'anima_get_avatar_meta' ) ) {
     function anima_get_avatar_meta( int $post_id ): array {
-        $meta = get_post_meta( $post_id );
-
-        $rig    = isset( $meta['anima_avatar_rig'][0] ) ? (bool) $meta['anima_avatar_rig'][0] : false;
-        $engine = isset( $meta['anima_avatar_engine'][0] ) ? $meta['anima_avatar_engine'][0] : '';
-        $tags   = isset( $meta['anima_avatar_tags'][0] ) ? maybe_unserialize( $meta['anima_avatar_tags'][0] ) : [];
-
-        if ( ! is_array( $tags ) ) {
-            $tags = array_filter( array_map( 'trim', explode( ',', (string) $tags ) ) );
-        }
+        $type      = get_post_meta( $post_id, 'anima_avatar_type', true );
+        $thumb_id  = absint( get_post_meta( $post_id, 'anima_avatar_thumb', true ) );
+        $webgl_url = esc_url( (string) get_post_meta( $post_id, 'anima_avatar_webgl', true ) );
 
         return [
-            'rig'    => $rig,
-            'engine' => $engine,
-            'tags'   => $tags,
+            'type'      => $type ?: 'humano',
+            'thumb_id'  => $thumb_id,
+            'webgl_url' => $webgl_url,
         ];
     }
 }
@@ -121,5 +127,22 @@ if ( ! function_exists( 'anima_parse_csv_slugs' ) ) {
                 )
             )
         );
+    }
+}
+
+if ( ! function_exists( 'anima_normalize_terms' ) ) {
+    function anima_normalize_terms( array $terms ): array {
+        $normalized = [];
+
+        foreach ( $terms as $term ) {
+            if ( $term instanceof \WP_Term ) {
+                $normalized[] = [
+                    'name' => $term->name,
+                    'slug' => $term->slug,
+                ];
+            }
+        }
+
+        return $normalized;
     }
 }

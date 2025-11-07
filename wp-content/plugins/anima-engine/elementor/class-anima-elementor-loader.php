@@ -37,19 +37,32 @@ class Loader {
      * Registra los widgets personalizados.
      */
     public function register_widgets( Widgets_Manager $widgets_manager ): void {
-        require_once __DIR__ . '/widget-cursos-grid.php';
-        require_once __DIR__ . '/widget-curso-card.php';
-        require_once __DIR__ . '/widget-curso-meta.php';
-        require_once __DIR__ . '/widget-curso-syllabus.php';
-        require_once __DIR__ . '/widget-avatares-grid.php';
-        require_once __DIR__ . '/widgets/widget-proyectos-tabs.php';
+        $widget_files = [
+            'widget-avatars-grid.php',
+            'widget-courses-grid.php',
+            'widget-posts-grid.php',
+            'widget-course-hero.php',
+            'widget-course-meta.php',
+            'widget-course-syllabus.php',
+            'widget-course-instructors.php',
+            'widget-course-enroll.php',
+        ];
 
-        $widgets_manager->register( new Widget_Cursos_Grid() );
-        $widgets_manager->register( new Widget_Curso_Card() );
-        $widgets_manager->register( new Widget_Curso_Meta() );
-        $widgets_manager->register( new Widget_Curso_Syllabus() );
-        $widgets_manager->register( new Widget_Avatares_Grid() );
-        $widgets_manager->register( new Widget_Proyectos_Tabs() );
+        foreach ( $widget_files as $file ) {
+            $path = __DIR__ . '/widgets/' . $file;
+            if ( file_exists( $path ) ) {
+                require_once $path;
+            }
+        }
+
+        $widgets_manager->register( new Widgets\Widget_Avatars_Grid() );
+        $widgets_manager->register( new Widgets\Widget_Courses_Grid() );
+        $widgets_manager->register( new Widgets\Widget_Posts_Grid() );
+        $widgets_manager->register( new Widgets\Widget_Course_Hero() );
+        $widgets_manager->register( new Widgets\Widget_Course_Meta() );
+        $widgets_manager->register( new Widgets\Widget_Course_Syllabus() );
+        $widgets_manager->register( new Widgets\Widget_Course_Instructors() );
+        $widgets_manager->register( new Widgets\Widget_Course_Enroll() );
     }
 }
 

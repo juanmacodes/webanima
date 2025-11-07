@@ -46,6 +46,9 @@ function animaavatar_setup() {
     ] );
     add_theme_support( 'woocommerce' );
 
+    add_image_size( 'an_card_16x10', 1200, 750, true );
+    add_image_size( 'an_square', 1000, 1000, true );
+
     register_nav_menus( [
         'main-menu' => __( 'Menú principal', 'animaavatar' ),
     ] );

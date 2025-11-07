@@ -28,14 +28,15 @@ require_once __DIR__ . '/inc/cpt-curso.php';
 require_once __DIR__ . '/inc/taxonomias-curso.php';
 require_once __DIR__ . '/inc/cpt-avatar.php';
 require_once __DIR__ . '/inc/admin-metaboxes.php';
+require_once __DIR__ . '/inc/rest-waitlist.php';
 require_once __DIR__ . '/inc/shortcodes.php';
 require_once __DIR__ . '/elementor/class-anima-elementor-loader.php';
 
 add_action(
     'after_setup_theme',
     static function () {
-        add_image_size( 'anima_course_card', 800, 520, true );
-        add_image_size( 'anima_avatar_square', 640, 640, true );
+        add_image_size( 'an_card_16x10', 1200, 750, true );
+        add_image_size( 'an_square', 1000, 1000, true );
     }
 );
 
@@ -55,6 +56,22 @@ add_action(
             [],
             ANIMA_ENGINE_VERSION,
             true
+        );
+
+        wp_localize_script(
+            'anima-engine-ui',
+            'animaEngineSettings',
+            [
+                'restWaitlist'   => rest_url( 'anima/v' . ANIMA_ENGINE_API_VERSION . '/waitlist' ),
+                'nonce'          => wp_create_nonce( 'wp_rest' ),
+                'errorGeneric'   => __( 'No se pudo completar tu solicitud. Inténtalo más tarde.', 'anima-engine' ),
+                'errorName'      => __( 'Introduce tu nombre.', 'anima-engine' ),
+                'errorEmail'     => __( 'Introduce un email válido.', 'anima-engine' ),
+                'errorConsent'   => __( 'Debes aceptar la política de privacidad.', 'anima-engine' ),
+                'successWaitlist'=> __( '¡Gracias! Te avisaremos en cuanto haya plaza.', 'anima-engine' ),
+                'successRedirect'=> __( 'Te hemos llevado a la página de inscripción.', 'anima-engine' ),
+                'lightboxLabel'  => __( 'Visor 3D del avatar', 'anima-engine' ),
+            ]
         );
 
         wp_register_script(
