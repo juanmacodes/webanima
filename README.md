@@ -13,7 +13,7 @@ Este repositorio contiene la infraestructura como código, el tema hijo y los pl
 ```
 wp-content/
 ├── plugins/
-│   ├── anima-core/           # CPT Proyectos, taxonomía "stack" y metacampos
+│   ├── anima-engine/         # Motor principal (CPT cursos, APIs, widgets Elementor)
 │   ├── anima-swiper-slider/  # Shortcode [anima_slider]
 │   └── anima-world/          # Shortcode [anima_world] con three.js
 └── themes/

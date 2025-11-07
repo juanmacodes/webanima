@@ -1,0 +1,41 @@
+# WordPress core and uploads should not be committed
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backups/
+wp-content/ai1wm-backups/
+wp-content/languages/
+wp-content/debug.log
+wp-content/*.log
+
+# Environment files
+.env
+.env.local
+*.local
+*.log
+
+# OS/Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Node/composer artifacts
+node_modules/
+vendor/
+
+# Composer/Node lock files generated during builds
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+
+# Misc
+*.sql
+*.sqlite
+*.zip
+*.tar
+*.tar.gz
+*.tgz

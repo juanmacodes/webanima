@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       Anima Engine
  * Plugin URI:        https://example.com/anima-engine
- * Description:       Motor para gestionar contenidos inmersivos, avatares y experiencias XR.
- * Version:           1.0.0
+ * Description:       Motor para gestionar contenidos, cursos y experiencias Anima con widgets de Elementor.
+ * Version:           1.1.0
  * Author:            Equipo Anima
  * Author URI:        https://example.com
  * Text Domain:       anima-engine
@@ -16,12 +16,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ANIMA_ENGINE_VERSION', '1.0.0' );
+define( 'ANIMA_ENGINE_VERSION', '1.1.0' );
 define( 'ANIMA_ENGINE_DB_VERSION', '1.0.0' );
 define( 'ANIMA_ENGINE_API_VERSION', '1' );
 define( 'ANIMA_ENGINE_PLUGIN_FILE', __FILE__ );
 define( 'ANIMA_ENGINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ANIMA_ENGINE_URL', plugin_dir_url( __FILE__ ) );
+
+require_once __DIR__ . '/inc/cpt-curso.php';
+require_once __DIR__ . '/inc/taxonomias-curso.php';
+require_once __DIR__ . '/inc/admin-metaboxes.php';
+require_once __DIR__ . '/elementor/class-anima-elementor-loader.php';
 
 spl_autoload_register(
     static function ( $class ) {
