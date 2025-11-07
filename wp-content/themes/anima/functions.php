@@ -118,6 +118,124 @@ if ( ! function_exists( 'anima_print_open_graph_tags' ) ) {
     }
 }
 
+if ( ! function_exists( 'anima_register_custom_post_types' ) ) {
+    /**
+     * Registra los tipos de contenido personalizados requeridos por el proyecto.
+     */
+    function anima_register_custom_post_types(): void {
+        $avatar_labels = [
+            'name'                  => __( 'Avatares', 'anima' ),
+            'singular_name'         => __( 'Avatar', 'anima' ),
+            'menu_name'             => __( 'Avatares', 'anima' ),
+            'name_admin_bar'        => __( 'Avatar', 'anima' ),
+            'add_new'               => __( 'Añadir nuevo', 'anima' ),
+            'add_new_item'          => __( 'Añadir nuevo avatar', 'anima' ),
+            'edit_item'             => __( 'Editar avatar', 'anima' ),
+            'new_item'              => __( 'Nuevo avatar', 'anima' ),
+            'view_item'             => __( 'Ver avatar', 'anima' ),
+            'search_items'          => __( 'Buscar avatares', 'anima' ),
+            'not_found'             => __( 'No se encontraron avatares.', 'anima' ),
+            'not_found_in_trash'    => __( 'No hay avatares en la papelera.', 'anima' ),
+            'all_items'             => __( 'Todos los avatares', 'anima' ),
+            'archives'              => __( 'Archivo de avatares', 'anima' ),
+            'attributes'            => __( 'Atributos de avatar', 'anima' ),
+            'featured_image'        => __( 'Imagen destacada', 'anima' ),
+            'set_featured_image'    => __( 'Establecer imagen destacada', 'anima' ),
+            'remove_featured_image' => __( 'Eliminar imagen destacada', 'anima' ),
+            'use_featured_image'    => __( 'Usar como imagen destacada', 'anima' ),
+        ];
+
+        register_taxonomy(
+            'avatar_tech',
+            [ 'avatar' ],
+            [
+                'labels'            => [
+                    'name'              => __( 'Tecnologías', 'anima' ),
+                    'singular_name'     => __( 'Tecnología', 'anima' ),
+                    'search_items'      => __( 'Buscar tecnologías', 'anima' ),
+                    'all_items'         => __( 'Todas las tecnologías', 'anima' ),
+                    'parent_item'       => __( 'Tecnología superior', 'anima' ),
+                    'parent_item_colon' => __( 'Tecnología superior:', 'anima' ),
+                    'edit_item'         => __( 'Editar tecnología', 'anima' ),
+                    'update_item'       => __( 'Actualizar tecnología', 'anima' ),
+                    'add_new_item'      => __( 'Añadir nueva tecnología', 'anima' ),
+                    'new_item_name'     => __( 'Nombre de la nueva tecnología', 'anima' ),
+                    'menu_name'         => __( 'Tecnologías', 'anima' ),
+                ],
+                'hierarchical'      => true,
+                'show_ui'           => true,
+                'show_admin_column' => true,
+                'show_in_rest'      => true,
+                'rewrite'           => [
+                    'slug'       => 'tecnologia-avatar',
+                    'with_front' => false,
+                ],
+            ]
+        );
+
+        register_post_type(
+            'avatar',
+            [
+                'label'               => __( 'Avatar', 'anima' ),
+                'labels'              => $avatar_labels,
+                'public'              => true,
+                'publicly_queryable'  => true,
+                'show_ui'             => true,
+                'show_in_menu'        => true,
+                'menu_icon'           => 'dashicons-id',
+                'show_in_rest'        => true,
+                'has_archive'         => true,
+                'rewrite'             => [
+                    'slug'       => 'avatares',
+                    'with_front' => false,
+                ],
+                'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt' ],
+                'taxonomies'          => [ 'avatar_tech' ],
+            ]
+        );
+
+        if ( ! post_type_exists( 'curso' ) ) {
+            $curso_labels = [
+                'name'               => __( 'Cursos', 'anima' ),
+                'singular_name'      => __( 'Curso', 'anima' ),
+                'menu_name'          => __( 'Cursos', 'anima' ),
+                'name_admin_bar'     => __( 'Curso', 'anima' ),
+                'add_new'            => __( 'Añadir nuevo', 'anima' ),
+                'add_new_item'       => __( 'Añadir nuevo curso', 'anima' ),
+                'edit_item'          => __( 'Editar curso', 'anima' ),
+                'new_item'           => __( 'Nuevo curso', 'anima' ),
+                'view_item'          => __( 'Ver curso', 'anima' ),
+                'search_items'       => __( 'Buscar cursos', 'anima' ),
+                'not_found'          => __( 'No se encontraron cursos.', 'anima' ),
+                'not_found_in_trash' => __( 'No hay cursos en la papelera.', 'anima' ),
+                'all_items'          => __( 'Todos los cursos', 'anima' ),
+                'archives'           => __( 'Archivo de cursos', 'anima' ),
+            ];
+
+            register_post_type(
+                'curso',
+                [
+                    'label'              => __( 'Curso', 'anima' ),
+                    'labels'             => $curso_labels,
+                    'public'             => true,
+                    'publicly_queryable' => true,
+                    'show_ui'            => true,
+                    'show_in_menu'       => true,
+                    'menu_icon'          => 'dashicons-welcome-learn-more',
+                    'show_in_rest'       => true,
+                    'has_archive'        => true,
+                    'rewrite'            => [
+                        'slug'       => 'cursos',
+                        'with_front' => false,
+                    ],
+                    'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt' ],
+                ]
+            );
+        }
+    }
+}
+add_action( 'init', 'anima_register_custom_post_types' );
+
 if ( ! function_exists( 'anima_collect_social_meta' ) ) {
     /**
      * Prepara los valores de las etiquetas sociales.
