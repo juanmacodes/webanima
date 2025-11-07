@@ -29,7 +29,7 @@ void ARoadGenerator::GenerateNetwork()
         return;
     }
     DestroyGeneratedActors();
-    URoadNetworkSubsystem* Subsystem = World->GetSubsystem<URoadNetworkSubsystem>();
+    ARoadNetworkSubsystem* Network = NetworkActor.Get();
     FRandomStream RandomStream(Seed);
     TArray<ARoadNode*> Nodes;
     const int32 NodeTarget = FMath::Max(MaxRoads + 1, 2);
@@ -58,9 +58,9 @@ void ARoadGenerator::GenerateNetwork()
             }
             Nodes.Add(Node);
             GeneratedNodes.Add(Node);
-            if (Subsystem)
+            if (Network)
             {
-                Subsystem->RegisterNode(Node);
+                Network->RegisterRoadNode(Node);
             }
             bSpawned = true;
         }
@@ -114,6 +114,10 @@ void ARoadGenerator::GenerateNetwork()
             {
                 continue;
             }
+            if (Network)
+            {
+                Network->RegisterRoadSegment(Segment);
+            }
             ++RoadsCreated;
         }
     }
@@ -126,7 +130,7 @@ void ARoadGenerator::ConnectPlacedNodes()
     {
         return;
     }
-    URoadNetworkSubsystem* Subsystem = World->GetSubsystem<URoadNetworkSubsystem>();
+    ARoadNetworkSubsystem* Network = NetworkActor.Get();
     TArray<ARoadNode*> Nodes;
     for (TActorIterator<ARoadNode> It(World); It; ++It)
     {
@@ -172,13 +176,13 @@ void ARoadGenerator::ConnectPlacedNodes()
         return LocationA.X < LocationB.X;
     });
     const float MinDistanceSq = FMath::Max(MinIntersectionSpacing, 0.f) * FMath::Max(MinIntersectionSpacing, 0.f);
-    if (Subsystem)
+    if (Network)
     {
         for (ARoadNode* Node : Nodes)
         {
             if (Node)
             {
-                Subsystem->RegisterNode(Node);
+                Network->RegisterRoadNode(Node);
             }
         }
     }
@@ -215,6 +219,10 @@ void ARoadGenerator::ConnectPlacedNodes()
             continue;
         }
         ARoadSegment* Segment = SpawnRoadBetween(NodeA, NodeB);
+        if (Segment && Network)
+        {
+            Network->RegisterRoadSegment(Segment);
+        }
     }
 }
 
@@ -243,11 +251,26 @@ ARoadSegment* ARoadGenerator::SpawnRoadBetween(ARoadNode* A, ARoadNode* B)
     }
     Segment->InitializeSegment(A, B);
     GeneratedSegments.AddUnique(Segment);
-    if (URoadNetworkSubsystem* Subsystem = World->GetSubsystem<URoadNetworkSubsystem>())
+    if (ARoadNetworkSubsystem* Network = NetworkActor.Get())
     {
-        Subsystem->RegisterSegment(Segment);
+        Network->RegisterRoadSegment(Segment);
     }
     return Segment;
+}
+
+void ARoadGenerator::ClearGeneratedNetwork()
+{
+    DestroyGeneratedActors();
+}
+
+void ARoadGenerator::SetSeed(int32 InSeed)
+{
+    Seed = InSeed;
+}
+
+void ARoadGenerator::SetNetworkActor(ARoadNetworkSubsystem* InNetwork)
+{
+    NetworkActor = InNetwork;
 }
 
 bool ARoadGenerator::IsValidNodeLocation(const FVector& Location, const TArray<ARoadNode*>& Nodes) const
@@ -270,17 +293,11 @@ bool ARoadGenerator::IsValidNodeLocation(const FVector& Location, const TArray<A
 
 void ARoadGenerator::DestroyGeneratedActors()
 {
-    UWorld* World = GetWorld();
-    URoadNetworkSubsystem* Subsystem = World ? World->GetSubsystem<URoadNetworkSubsystem>() : nullptr;
     for (TWeakObjectPtr<ARoadSegment>& SegmentPtr : GeneratedSegments)
     {
         if (!SegmentPtr.IsValid())
         {
             continue;
-        }
-        if (Subsystem)
-        {
-            Subsystem->UnregisterSegment(SegmentPtr.Get());
         }
         SegmentPtr->Destroy();
     }
@@ -290,10 +307,6 @@ void ARoadGenerator::DestroyGeneratedActors()
         if (!NodePtr.IsValid())
         {
             continue;
-        }
-        if (Subsystem)
-        {
-            Subsystem->UnregisterNode(NodePtr.Get());
         }
         if (NodePtr->GetOwner() == this)
         {

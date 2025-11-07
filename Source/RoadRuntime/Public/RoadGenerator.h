@@ -6,7 +6,7 @@
 
 class ARoadNode;
 class ARoadSegment;
-class URoadNetworkSubsystem;
+class ARoadNetworkSubsystem;
 
 UCLASS()
 class ARoadGenerator : public AActor
@@ -24,6 +24,12 @@ public:
 
     UFUNCTION(BlueprintCallable, Category="Road Generation")
     ARoadSegment* SpawnRoadBetween(ARoadNode* A, ARoadNode* B);
+
+    UFUNCTION(BlueprintCallable, Category="Road Generation")
+    void ClearGeneratedNetwork();
+
+    void SetSeed(int32 InSeed);
+    void SetNetworkActor(ARoadNetworkSubsystem* InNetwork);
 
 protected:
     virtual void BeginPlay() override;
@@ -55,4 +61,6 @@ private:
 
     UPROPERTY(Transient)
     TArray<TWeakObjectPtr<ARoadSegment>> GeneratedSegments;
+
+    TWeakObjectPtr<ARoadNetworkSubsystem> NetworkActor;
 };
