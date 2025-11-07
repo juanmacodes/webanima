@@ -1,0 +1,162 @@
+{
+  "version": "0.4",
+  "title": "Página Avatares + Cursos + Actualidad",
+  "type": "wp-page",
+  "author": "Anima Engine",
+  "content": [
+    {
+      "id": "section-hero",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "padding": {"top": "80", "bottom": "60", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0c0f14"
+      },
+      "elements": [
+        {
+          "id": "hero-heading",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Explora Avatares y Cursos",
+            "title_tag": "h1",
+            "title_size": "xxl"
+          }
+        },
+        {
+          "id": "hero-text",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "Descubre la colección de avatares hiperrealistas, los cursos inmersivos y las últimas noticias sobre tecnología volumétrica."
+          }
+        }
+      ]
+    },
+    {
+      "id": "section-avatars",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "padding": {"top": "40", "bottom": "40", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0b0e15"
+      },
+      "elements": [
+        {
+          "id": "avatars-heading",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Galería de Avatares",
+            "title_tag": "h2"
+          }
+        },
+        {
+          "id": "avatars-widget",
+          "elType": "widget",
+          "widgetType": "anima-avatars-grid",
+          "settings": {
+            "posts_per_page": 8,
+            "columns": 4,
+            "columns_tablet": 2,
+            "columns_mobile": 1,
+            "show_filters": "yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "section-courses",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "padding": {"top": "60", "bottom": "60", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0c101b"
+      },
+      "elements": [
+        {
+          "id": "courses-heading",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Cursos destacados",
+            "title_tag": "h2"
+          }
+        },
+        {
+          "id": "courses-text",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "Formaciones en directo, grabadas y blended sobre producción virtual, volumetría y avatares digitales."
+          }
+        },
+        {
+          "id": "courses-widget",
+          "elType": "widget",
+          "widgetType": "anima-courses-grid",
+          "settings": {
+            "posts_per_page": 6,
+            "columns": 3,
+            "columns_tablet": 2,
+            "columns_mobile": 1,
+            "show_excerpt": "yes",
+            "excerpt_length": 24,
+            "button_text": "Ver curso"
+          }
+        }
+      ]
+    },
+    {
+      "id": "section-posts",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "padding": {"top": "60", "bottom": "80", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0b0e15"
+      },
+      "elements": [
+        {
+          "id": "posts-heading",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Actualidad",
+            "title_tag": "h2"
+          }
+        },
+        {
+          "id": "posts-widget",
+          "elType": "widget",
+          "widgetType": "anima-posts-grid",
+          "settings": {
+            "posts_per_page": 6,
+            "categories": "avatares-y-tecnologia"
+          }
+        },
+        {
+          "id": "posts-button",
+          "elType": "widget",
+          "widgetType": "button",
+          "settings": {
+            "text": "Ver blog",
+            "link": {
+              "url": "/blog",
+              "is_external": false
+            },
+            "size": "lg",
+            "align": "center"
+          }
+        }
+      ]
+    }
+  ]
+}
