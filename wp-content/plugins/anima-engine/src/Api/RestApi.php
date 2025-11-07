@@ -2,10 +2,12 @@
 namespace Anima\Engine\Api;
 
 use Anima\Engine\Services\ServiceInterface;
+use Anima\Engine\Elementor\Projects\ProjectCardRenderer;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
+use WP_Query;
 
 use const MINUTE_IN_SECONDS;
 
@@ -27,6 +29,7 @@ use function is_wp_error;
 use function register_rest_route;
 use function sanitize_email;
 use function sanitize_text_field;
+use function sanitize_key;
 use function sanitize_textarea_field;
 use function set_transient;
 use function wp_mail;
@@ -40,6 +43,7 @@ use function wp_verify_nonce;
 use function wp_json_encode;
 use function wp_list_pluck;
 use function sprintf;
+use function json_decode;
 
 /**
  * Endpoints REST personalizados del plugin.
@@ -131,6 +135,52 @@ class RestApi implements ServiceInterface {
                 ],
             ]
         );
+
+        register_rest_route(
+            'anima/v' . ANIMA_ENGINE_API_VERSION,
+            '/proyectos',
+            [
+                'methods'             => WP_REST_Server::READABLE,
+                'callback'            => [ $this, 'handle_projects' ],
+                'permission_callback' => '__return_true',
+                'args'                => [
+                    'servicio' => [
+                        'sanitize_callback' => 'sanitize_key',
+                        'required'          => true,
+                    ],
+                    'per_page' => [
+                        'sanitize_callback' => 'absint',
+                    ],
+                    'orderby'  => [
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'order'    => [
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'year_min' => [
+                        'sanitize_callback' => 'absint',
+                    ],
+                    'year_max' => [
+                        'sanitize_callback' => 'absint',
+                    ],
+                    'search'   => [
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'layout'   => [
+                        'sanitize_callback' => 'sanitize_text_field',
+                    ],
+                    'card'     => [
+                        'required' => false,
+                    ],
+                    'columns'  => [
+                        'required' => false,
+                    ],
+                    'carousel' => [
+                        'required' => false,
+                    ],
+                ],
+            ]
+        );
     }
 
     /**
@@ -214,6 +264,122 @@ class RestApi implements ServiceInterface {
     }
 
     /**
+     * Devuelve proyectos filtrados por servicio para el widget de tabs.
+     */
+    public function handle_projects( WP_REST_Request $request ): WP_REST_Response {
+        $servicio = sanitize_key( (string) $request->get_param( 'servicio' ) );
+
+        if ( '' === $servicio ) {
+            return new WP_REST_Response(
+                [ 'error' => __( 'Debe especificar un servicio válido.', 'anima-engine' ) ],
+                400
+            );
+        }
+
+        $per_page = (int) $request->get_param( 'per_page' );
+        if ( $per_page <= 0 ) {
+            $per_page = 6;
+        }
+        $per_page = max( 1, min( 24, $per_page ) );
+
+        $layout  = $this->sanitize_layout( (string) $request->get_param( 'layout' ) );
+        $orderby = $this->sanitize_orderby( (string) $request->get_param( 'orderby' ) );
+        $order   = $this->sanitize_order( (string) $request->get_param( 'order' ) );
+
+        $year_min = absint( $request->get_param( 'year_min' ) );
+        $year_max = absint( $request->get_param( 'year_max' ) );
+        $search   = sanitize_text_field( (string) $request->get_param( 'search' ) );
+
+        $card_settings = ProjectCardRenderer::normalize_settings( $this->parse_json_param( $request, 'card' ) );
+        $columns       = $this->parse_json_param( $request, 'columns' );
+        $carousel      = $this->parse_json_param( $request, 'carousel' );
+
+        $query_args = [
+            'post_type'           => 'proyecto',
+            'post_status'         => 'publish',
+            'posts_per_page'      => $per_page,
+            'orderby'             => $orderby,
+            'order'               => $order,
+            'ignore_sticky_posts' => true,
+            'tax_query'           => [
+                [
+                    'taxonomy' => 'servicio',
+                    'field'    => 'slug',
+                    'terms'    => $servicio,
+                ],
+            ],
+        ];
+
+        if ( 'meta_value' === $orderby ) {
+            $query_args['meta_key'] = 'anima_anio';
+        }
+
+        $meta_query = [];
+        if ( $year_min && $year_max && $year_max >= $year_min ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => [ $year_min, $year_max ],
+                'compare' => 'BETWEEN',
+                'type'    => 'NUMERIC',
+            ];
+        } elseif ( $year_min ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => $year_min,
+                'compare' => '>=',
+                'type'    => 'NUMERIC',
+            ];
+        } elseif ( $year_max ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => $year_max,
+                'compare' => '<=',
+                'type'    => 'NUMERIC',
+            ];
+        }
+
+        if ( ! empty( $meta_query ) ) {
+            $query_args['meta_query'] = $meta_query;
+        }
+
+        if ( '' !== $search ) {
+            $query_args['s'] = $search;
+        }
+
+        $query = new WP_Query( $query_args );
+
+        if ( ! $query->have_posts() ) {
+            wp_reset_postdata();
+
+            return new WP_REST_Response(
+                [
+                    'html'    => '<div class="an-empty" role="status">' . esc_html__( 'No hay proyectos disponibles en este servicio.', 'anima-engine' ) . '</div>',
+                    'layout'  => $layout,
+                    'found'   => 0,
+                    'service' => $servicio,
+                ],
+                200
+            );
+        }
+
+        $posts      = $query->posts;
+        $cards_html = ProjectCardRenderer::render_cards( $posts, $card_settings );
+        $html       = ProjectCardRenderer::wrap_with_layout( $layout, $cards_html, $columns, $carousel );
+
+        wp_reset_postdata();
+
+        return new WP_REST_Response(
+            [
+                'html'    => $html,
+                'layout'  => $layout,
+                'found'   => (int) $query->found_posts,
+                'service' => $servicio,
+            ],
+            200
+        );
+    }
+
+    /**
      * Devuelve una lista de avatares con paginación.
      */
     public function handle_avatars( WP_REST_Request $request ): WP_REST_Response {
@@ -277,6 +443,51 @@ class RestApi implements ServiceInterface {
         }
 
         return new WP_REST_Response( $cached, 200 );
+    }
+
+    /**
+     * Obtiene un parámetro JSON y lo transforma en array.
+     */
+    protected function parse_json_param( WP_REST_Request $request, string $param ): array {
+        $value = $request->get_param( $param );
+
+        if ( is_string( $value ) ) {
+            $decoded = json_decode( $value, true );
+            if ( is_array( $decoded ) ) {
+                return $decoded;
+            }
+        }
+
+        return is_array( $value ) ? $value : [];
+    }
+
+    /**
+     * Normaliza el layout solicitado.
+     */
+    protected function sanitize_layout( string $layout ): string {
+        $allowed = [ 'grid', 'masonry', 'carousel' ];
+        $layout  = sanitize_text_field( $layout );
+
+        return in_array( $layout, $allowed, true ) ? $layout : 'grid';
+    }
+
+    /**
+     * Valida el campo orderby permitido.
+     */
+    protected function sanitize_orderby( string $orderby ): string {
+        $allowed = [ 'date', 'title', 'meta_value', 'rand' ];
+        $value   = sanitize_text_field( $orderby );
+
+        return in_array( $value, $allowed, true ) ? $value : 'date';
+    }
+
+    /**
+     * Normaliza la dirección del ordenamiento.
+     */
+    protected function sanitize_order( string $order ): string {
+        $value = strtoupper( sanitize_text_field( $order ) );
+
+        return in_array( $value, [ 'ASC', 'DESC' ], true ) ? $value : 'DESC';
     }
 
     /**
