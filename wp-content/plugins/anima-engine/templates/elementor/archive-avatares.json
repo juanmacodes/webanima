@@ -1,0 +1,93 @@
+{
+  "version": "0.4",
+  "title": "Archivo Avatares Anima",
+  "type": "wp-archive",
+  "subtype": "avatar",
+  "author": "Anima Engine",
+  "content": [
+    {
+      "id": "archive-hero",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "structure": "40",
+        "padding": {"top": "100", "right": "40", "bottom": "80", "left": "40", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0c0f14",
+        "background_overlay": "gradient",
+        "background_overlay_color": "rgba(18,23,34,0.75)",
+        "background_overlay_gradient_color": "rgba(12,15,20,0.65)",
+        "background_overlay_gradient_location": 40,
+        "background_overlay_opacity": 1
+      },
+      "elements": [
+        {
+          "id": "archive-heading",
+          "elType": "widget",
+          "widgetType": "heading",
+          "settings": {
+            "title": "Galería de Avatares",
+            "title_tag": "h1",
+            "title_size": "xxl"
+          }
+        },
+        {
+          "id": "archive-description",
+          "elType": "widget",
+          "widgetType": "text-editor",
+          "settings": {
+            "editor": "Explora los avatares disponibles filtrando por tipo o etiquetas."
+          }
+        }
+      ]
+    },
+    {
+      "id": "archive-grid",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": "boxed",
+        "structure": "20",
+        "padding": {"top": "40", "bottom": "40", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0c0f14"
+      },
+      "elements": [
+        {
+          "id": "filters-column",
+          "elType": "column",
+          "settings": {"_column_size": 100},
+          "elements": [
+            {
+              "id": "filters-note",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "Utiliza widgets de formulario o filtros para ofrecer búsqueda por tipo de avatar (taxonomía avatar_tipo)."
+              }
+            },
+            {
+              "id": "avatars-shortcode",
+              "elType": "widget",
+              "widgetType": "shortcode",
+              "settings": {
+                "shortcode": "[anima_avatares_grid posts_per_page=12 pagination=\"true\" layout=\"grid\"]"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "template_conditions": [
+      {
+        "type": "include",
+        "sub_type": "post_type_archive",
+        "sub_id": "avatar"
+      }
+    ],
+    "instructions": "Asignar desde Elementor > Theme Builder > Archivo > Seleccionar Avatares y aplicar esta plantilla."
+  }
+}

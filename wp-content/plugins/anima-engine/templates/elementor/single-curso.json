@@ -1,0 +1,290 @@
+{
+  "version": "0.4",
+  "title": "Single Curso Anima",
+  "type": "wp-single",
+  "subtype": "curso",
+  "author": "Anima Engine",
+  "content": [
+    {
+      "id": "hero-section",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": "boxed",
+        "structure": "40",
+        "padding": {"top": "80", "right": "40", "bottom": "80", "left": "40", "unit": "px"},
+        "background_background": "classic",
+        "background_color": "#0c0f14",
+        "background_overlay": "gradient",
+        "background_overlay_color": "rgba(12,15,20,0.35)",
+        "background_overlay_gradient_color": "rgba(18,23,34,0.85)",
+        "background_overlay_gradient_location": 60,
+        "background_overlay_opacity": 1
+      },
+      "elements": [
+        {
+          "id": "hero-column-left",
+          "elType": "column",
+          "settings": {
+            "_column_size": 60,
+            "padding": {"top": "20", "right": "20", "bottom": "20", "left": "20", "unit": "px"}
+          },
+          "elements": [
+            {
+              "id": "hero-badges",
+              "elType": "widget",
+              "widgetType": "post-info",
+              "settings": {
+                "skin": "default",
+                "layout": "horizontal",
+                "post_info_items": [
+                  {"item_type": "terms", "taxonomy": "nivel", "text_prefix": "Nivel"},
+                  {"item_type": "terms", "taxonomy": "modalidad", "text_prefix": "Modalidad"},
+                  {"item_type": "terms", "taxonomy": "tecnologia", "text_prefix": "Tecnología"}
+                ],
+                "alignment": "left",
+                "post_info_separator_between": "|",
+                "typography_typography": "custom",
+                "typography_font_size": {"unit": "px", "size": 14}
+              }
+            },
+            {
+              "id": "hero-title",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "",
+                "title_size": "xxl",
+                "title_tag": "h1",
+                "dynamic": {
+                  "title": {"active": true, "tag": "post-title"}
+                }
+              }
+            },
+            {
+              "id": "hero-excerpt",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "",
+                "dynamic": {
+                  "editor": {"active": true, "tag": "post-excerpt"}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "hero-column-right",
+          "elType": "column",
+          "settings": {
+            "_column_size": 40,
+            "padding": {"top": "20", "right": "20", "bottom": "20", "left": "20", "unit": "px"}
+          },
+          "elements": [
+            {
+              "id": "hero-image",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {"url": ""},
+                "image_size": "anima_course_card",
+                "border_radius": {"unit": "px", "top": "20", "right": "20", "bottom": "20", "left": "20"},
+                "dynamic": {
+                  "image": {"active": true, "tag": "featured-image"}
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "content-section",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": "boxed",
+        "structure": "60",
+        "background_background": "classic",
+        "background_color": "#0c0f14",
+        "padding": {"top": "40", "bottom": "40", "unit": "px"}
+      },
+      "elements": [
+        {
+          "id": "content-column",
+          "elType": "column",
+          "settings": {"_column_size": 66},
+          "elements": [
+            {
+              "id": "desc-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Descripción",
+                "title_tag": "h2"
+              }
+            },
+            {
+              "id": "desc-content",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "",
+                "dynamic": {
+                  "editor": {"active": true, "tag": "post-content"}
+                }
+              }
+            },
+            {
+              "id": "syllabus-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Temario",
+                "title_tag": "h2"
+              }
+            },
+            {
+              "id": "syllabus-toggle",
+              "elType": "widget",
+              "widgetType": "toggle",
+              "settings": {
+                "toggle_items": [
+                  {
+                    "toggle_title": "Temario del curso",
+                    "toggle_content": "",
+                    "dynamic": {
+                      "toggle_content": {"active": true, "tag": "custom-field", "custom-field": "anima_syllabus"}
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dates-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Próximas fechas",
+                "title_tag": "h2"
+              }
+            },
+            {
+              "id": "dates-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "",
+                "dynamic": {
+                  "editor": {"active": true, "tag": "custom-field", "custom-field": "anima_upcoming_dates"}
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "sidebar-column",
+          "elType": "column",
+          "settings": {"_column_size": 34},
+          "elements": [
+            {
+              "id": "sidebar-box",
+              "elType": "section",
+              "settings": {
+                "isInner": true,
+                "layout": "boxed",
+                "padding": {"top": "24", "right": "24", "bottom": "24", "left": "24", "unit": "px"},
+                "background_background": "classic",
+                "background_color": "#121722",
+                "border_radius": {"unit": "px", "top": "16", "right": "16", "bottom": "16", "left": "16"},
+                "box_shadow_box_shadow_type": "yes",
+                "box_shadow_box_shadow": {"horizontal": 0, "vertical": 20, "blur": 40, "spread": -10, "color": "rgba(0,0,0,0.45)"}
+              },
+              "elements": [
+                {
+                  "id": "sidebar-column-inner",
+                  "elType": "column",
+                  "settings": {"_column_size": 100},
+                  "elements": [
+                    {
+                      "id": "details-heading",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Detalles del curso",
+                        "title_tag": "h3"
+                      }
+                    },
+                    {
+                      "id": "price-label",
+                      "elType": "widget",
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<span class=\"an-chip\">Precio</span>"
+                      }
+                    },
+                    {
+                      "id": "price-value",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "",
+                        "title_tag": "h2",
+                        "dynamic": {
+                          "title": {"active": true, "tag": "custom-field", "custom-field": "anima_price"}
+                        }
+                      }
+                    },
+                    {
+                      "id": "hours-label",
+                      "elType": "widget",
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<span class=\"an-chip an-chip--hours\">Horas</span>"
+                      }
+                    },
+                    {
+                      "id": "hours-value",
+                      "elType": "widget",
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "",
+                        "title_tag": "h4",
+                        "dynamic": {
+                          "title": {"active": true, "tag": "custom-field", "custom-field": "anima_duration_hours"}
+                        }
+                      }
+                    },
+                    {
+                      "id": "cta-button",
+                      "elType": "widget",
+                      "widgetType": "button",
+                      "settings": {
+                        "text": "Inscribirme",
+                        "size": "lg",
+                        "button_type": "success",
+                        "link": {"url": "#"},
+                        "custom_attributes": "aria-label=\"Inscribirme al curso\""
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "template_conditions": [
+      {
+        "type": "include",
+        "sub_type": "post_type",
+        "sub_id": "curso"
+      }
+    ],
+    "instructions": "Asignar desde Elementor > Theme Builder > Single > Agregar nuevo > Curso > Importar esta plantilla y establecer como predeterminada."
+  }
+}
