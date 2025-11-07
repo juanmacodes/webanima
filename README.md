@@ -20,6 +20,41 @@ wp-content/
     └── anima-child/          # Tema hijo TT4 con diseño oscuro futurista
 ```
 
+## Widget "Proyectos — Tabs"
+
+El plugin **anima-engine** incorpora el widget de Elementor "Proyectos — Tabs" dentro de la categoría **Anima**. Permite pintar una pestaña por cada servicio (taxonomía `servicio`) y mostrar los proyectos relacionados en formato **Grid**, **Masonry** o **Carrusel** reutilizando las tarjetas `.an-card` del diseño.
+
+Características destacadas:
+
+- Filtros por servicios, orden, rango de años y búsqueda.
+- Controles para el contenido de la tarjeta (imagen, cliente, año, excerpt, chips de stack, KPIs y CTA "Ver caso").
+- Ajustes de diseño de pestañas (posición, alineación, tipografía, colores e indicador) y del layout (columnas, gap, autoplay/loop en carrusel, etc.).
+- Modo **AJAX** opcional con precarga y caché en `sessionStorage` (TTL configurable) que consulta `GET /anima/v1/proyectos`.
+- Accesible mediante roles ARIA (`tab`/`tabpanel`) y navegación por teclado.
+
+El JS asociado (`assets/js/anima-projects-tabs.js`) gestiona el cambio de pestañas, las animaciones y la inicialización de Swiper para el carrusel. El CSS se extiende en `assets/css/anima-ui.css` para tablist, skeletons y KPIs.
+
+### Shortcode equivalente
+
+Para usarlo fuera de Elementor existe el shortcode:
+
+```text
+[anima_proyectos_tabs servicios="Streaming,IA" layout="grid" per_page="6" ajax="1" cache_ttl="900"]
+```
+
+Parámetros disponibles:
+
+- `servicios`: lista separada por comas de slugs o nombres de servicio. Vacío = todos.
+- `layout`: `grid`, `masonry` o `carousel` (por defecto `grid`).
+- `per_page`: número de proyectos por pestaña (máx. 24).
+- `orderby` / `order`: `date`, `title`, `meta_value`, `rand` y dirección `ASC|DESC`.
+- `year_min`, `year_max`, `search`: filtros adicionales opcionales.
+- `columns_desktop`, `columns_tablet`, `columns_mobile`, `gap`: ajustes del grid.
+- `show_image`, `show_client`, `show_year`, `show_excerpt`, `show_stack`, `show_kpis`, `excerpt_length`, `kpi_limit`, `button_text`.
+- `ajax`: `1` para cargar pestañas por REST; `prefetch` y `cache_ttl` controlan precarga y TTL de caché (segundos).
+
+El shortcode reutiliza el helper `ProjectCardRenderer` para las tarjetas y comparte la misma estructura HTML/JS que el widget, por lo que hereda la experiencia responsiva y accesible.
+
 ## Puesta en marcha local (staging)
 
 1. Copia `.env.example` a `.env` y ajusta credenciales.

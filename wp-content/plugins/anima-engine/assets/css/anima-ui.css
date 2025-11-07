@@ -18,12 +18,169 @@
 
 .an-grid {
   display: grid;
-  gap: 1.75rem;
+  gap: var(--an-grid-gap, 1.75rem);
 }
 
+.an-grid--masonry,
 .an-grid[data-layout="masonry"] {
   grid-auto-flow: dense;
   grid-auto-rows: auto;
+}
+
+.an-grid--skeleton {
+  opacity: 0.65;
+}
+
+.anima-projects-tabs {
+  --an-tabs-gap: 0.75rem;
+  --an-tabs-color: var(--an-muted);
+  --an-tabs-active: var(--an-accent);
+  --an-tabs-hover: var(--an-text);
+  --an-tabs-indicator: 1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.anima-projects-tabs[data-tabs-position="left"] {
+  grid-template-columns: minmax(0, 220px) 1fr;
+  align-items: flex-start;
+}
+
+.anima-tabs {
+  display: flex;
+  gap: var(--an-tabs-gap);
+  flex-wrap: nowrap;
+  justify-content: var(--an-tabs-align, flex-start);
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.anima-projects-tabs[data-tabs-position="left"] .anima-tabs {
+  flex-direction: column;
+  max-height: 100%;
+  overflow-y: auto;
+  padding-right: 0.75rem;
+}
+
+.anima-tabs__button {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--an-tabs-color);
+  font-weight: 600;
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.anima-tabs__button:hover,
+.anima-tabs__button:focus {
+  color: var(--an-tabs-hover);
+  background: rgba(61, 214, 255, 0.08);
+}
+
+.anima-tabs__button.is-active {
+  color: var(--an-tabs-active);
+}
+
+.anima-tabs__button::after {
+  content: '';
+  position: absolute;
+  inset-inline: 1.1rem;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--an-tabs-active);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+  opacity: calc(var(--an-tabs-indicator));
+}
+
+.anima-tabs__button.is-active::after {
+  transform: scaleX(1);
+}
+
+.anima-tabs__panel {
+  margin: 0;
+}
+
+.anima-tabs__panel[hidden] {
+  display: none;
+}
+
+.anima-tabs__panel-inner.is-loading {
+  opacity: 0.65;
+}
+
+.an-card--skeleton {
+  pointer-events: none;
+}
+
+.an-skeleton {
+  display: block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  background-size: 200% 100%;
+  animation: an-skeleton 1.6s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+.an-skeleton--title {
+  height: 18px;
+  width: 70%;
+  margin-bottom: 0.85rem;
+}
+
+.an-skeleton--text {
+  height: 14px;
+  margin-bottom: 0.6rem;
+  width: 100%;
+}
+
+.an-card--skeleton .an-card__media {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.an-card__kpis {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.an-kpi {
+  padding: 0.65rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(30, 36, 48, 0.72);
+  border: 1px solid rgba(232, 237, 247, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.an-kpi dt {
+  margin: 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--an-muted);
+}
+
+.an-kpi dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--an-text);
+}
+
+@keyframes an-skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -162,6 +319,37 @@
   gap: 0.5rem;
 }
 
+.an-card__meta {
+  margin: 0;
+  color: var(--an-muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.an-card__cta {
+  margin: 0;
+}
+
+.an-card__cta .an-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: var(--an-accent);
+  color: #020205;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.an-card__cta .an-button:hover,
+.an-card__cta .an-button:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(61, 214, 255, 0.45);
+}
+
 .an-chip {
   display: inline-flex;
   align-items: center;
@@ -173,13 +361,18 @@
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--an-accent);
+  color: var(--an-chip-custom, var(--an-accent));
 }
 
 .an-chip--hours {
   background: rgba(159, 176, 201, 0.15);
   border-color: rgba(159, 176, 201, 0.35);
   color: var(--an-muted);
+}
+
+.an-chip--stack {
+  background: rgba(61, 214, 255, 0.1);
+  border-color: rgba(61, 214, 255, 0.35);
 }
 
 .an-badge {
