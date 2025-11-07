@@ -7,13 +7,298 @@
 
 defined( 'ABSPATH' ) || exit;
 
+use Anima\Engine\Elementor\Projects\ProjectCardRenderer;
+
 add_action(
     'init',
     static function () {
         add_shortcode( 'anima_cursos_grid', 'anima_engine_shortcode_cursos_grid' );
         add_shortcode( 'anima_avatares_grid', 'anima_engine_shortcode_avatares_grid' );
+        add_shortcode( 'anima_proyectos_tabs', 'anima_engine_shortcode_proyectos_tabs' );
     }
 );
+
+function anima_engine_shortcode_proyectos_tabs( array $atts = [], ?string $content = null ): string { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
+    wp_enqueue_script( 'anima-projects-tabs' );
+
+    $atts = shortcode_atts(
+        [
+            'servicios'       => '',
+            'layout'          => 'grid',
+            'per_page'        => 6,
+            'orderby'         => 'date',
+            'order'           => 'DESC',
+            'year_min'        => '',
+            'year_max'        => '',
+            'search'          => '',
+            'columns_desktop' => 3,
+            'columns_tablet'  => 2,
+            'columns_mobile'  => 1,
+            'gap'             => '28px',
+            'show_image'      => 'yes',
+            'show_client'     => 'yes',
+            'show_year'       => 'yes',
+            'show_excerpt'    => 'yes',
+            'show_stack'      => 'yes',
+            'show_kpis'       => 'yes',
+            'excerpt_length'  => 26,
+            'kpi_limit'       => 3,
+            'button_text'     => __( 'Ver caso', 'anima-engine' ),
+            'ajax'            => '0',
+            'prefetch'        => '0',
+            'cache_ttl'       => 0,
+        ],
+        $atts,
+        'anima_proyectos_tabs'
+    );
+
+    $layout  = in_array( strtolower( $atts['layout'] ), [ 'grid', 'masonry', 'carousel' ], true ) ? strtolower( $atts['layout'] ) : 'grid';
+    $orderby = in_array( strtolower( $atts['orderby'] ), [ 'date', 'title', 'meta_value', 'rand' ], true ) ? strtolower( $atts['orderby'] ) : 'date';
+    $order   = 'ASC' === strtoupper( $atts['order'] ) ? 'ASC' : 'DESC';
+
+    $per_page = max( 1, min( 24, (int) $atts['per_page'] ) );
+
+    $year_min = '' === $atts['year_min'] ? 0 : absint( $atts['year_min'] );
+    $year_max = '' === $atts['year_max'] ? 0 : absint( $atts['year_max'] );
+    $search   = sanitize_text_field( $atts['search'] );
+
+    $servicios = anima_parse_csv_slugs( $atts['servicios'] );
+
+    $term_args = [
+        'taxonomy'   => 'servicio',
+        'hide_empty' => true,
+    ];
+
+    if ( ! empty( $servicios ) ) {
+        $term_args['slug'] = $servicios;
+    }
+
+    $terms = get_terms( $term_args );
+
+    if ( empty( $terms ) || is_wp_error( $terms ) ) {
+        return '<div class="an-empty" role="status">' . esc_html__( 'No hay servicios configurados.', 'anima-engine' ) . '</div>';
+    }
+
+    $card_settings = [
+        'show_image'     => $atts['show_image'],
+        'show_client'    => $atts['show_client'],
+        'show_year'      => $atts['show_year'],
+        'show_excerpt'   => $atts['show_excerpt'],
+        'show_stack'     => $atts['show_stack'],
+        'show_kpis'      => $atts['show_kpis'],
+        'excerpt_length' => absint( $atts['excerpt_length'] ),
+        'kpi_limit'      => absint( $atts['kpi_limit'] ),
+        'button_text'    => $atts['button_text'],
+    ];
+
+    $columns = [
+        'desktop' => max( 1, (int) $atts['columns_desktop'] ),
+        'tablet'  => max( 1, (int) $atts['columns_tablet'] ),
+        'mobile'  => max( 1, (int) $atts['columns_mobile'] ),
+        'gap'     => $atts['gap'],
+    ];
+
+    $carousel = [
+        'desktop'   => max( 1, (int) $atts['columns_desktop'] ),
+        'tablet'    => max( 1, (int) $atts['columns_tablet'] ),
+        'mobile'    => max( 1, (int) $atts['columns_mobile'] ),
+        'autoplay'  => false,
+        'loop'      => false,
+        'speed'     => 600,
+        'navigation'=> 'arrows-dots',
+    ];
+
+    $ajax_enabled = in_array( strtolower( $atts['ajax'] ), [ '1', 'true', 'yes', 'on' ], true );
+    $prefetch     = in_array( strtolower( $atts['prefetch'] ), [ '1', 'true', 'yes', 'on' ], true );
+    $cache_ttl    = $ajax_enabled ? absint( $atts['cache_ttl'] ) : 0;
+
+    $container_attrs = [
+        'class'             => 'anima-projects-tabs',
+        'data-layout'       => $layout,
+        'data-ajax'         => $ajax_enabled ? '1' : '0',
+        'data-tabs-position'=> 'top',
+        'data-tabs-align'   => 'flex-start',
+        'data-columns'      => wp_json_encode( $columns ),
+        'data-carousel'     => wp_json_encode( $carousel ),
+        'data-cache-ttl'    => (string) $cache_ttl,
+        'data-prefetch'     => $prefetch ? '1' : '0',
+    ];
+
+    if ( $ajax_enabled ) {
+        $container_attrs['data-endpoint'] = rest_url( 'anima/v' . ANIMA_ENGINE_API_VERSION . '/proyectos' );
+    }
+
+    $tablist = '';
+    $panels  = '';
+
+    foreach ( $terms as $index => $term ) {
+        $tab_id   = 'anima-tabs-' . $term->slug;
+        $panel_id = 'anima-panel-' . $term->slug;
+        $selected = 0 === $index;
+
+        $tablist .= sprintf(
+            '<button class="anima-tabs__button%1$s" id="%2$s" role="tab" aria-controls="%3$s" aria-selected="%4$s" tabindex="%5$d">%6$s</button>',
+            $selected ? ' is-active' : '',
+            esc_attr( $tab_id ),
+            esc_attr( $panel_id ),
+            $selected ? 'true' : 'false',
+            $selected ? 0 : -1,
+            esc_html( $term->name )
+        );
+
+        $query_args = [
+            'post_type'      => 'proyecto',
+            'post_status'    => 'publish',
+            'posts_per_page' => $per_page,
+            'orderby'        => $orderby,
+            'order'          => $order,
+            'tax_query'      => [
+                [
+                    'taxonomy' => 'servicio',
+                    'field'    => 'slug',
+                    'terms'    => $term->slug,
+                ],
+            ],
+        ];
+
+        if ( 'meta_value' === $orderby ) {
+            $query_args['meta_key'] = 'anima_anio';
+        }
+
+        $meta_query = [];
+        if ( $year_min && $year_max && $year_max >= $year_min ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => [ $year_min, $year_max ],
+                'compare' => 'BETWEEN',
+                'type'    => 'NUMERIC',
+            ];
+        } elseif ( $year_min ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => $year_min,
+                'compare' => '>=',
+                'type'    => 'NUMERIC',
+            ];
+        } elseif ( $year_max ) {
+            $meta_query[] = [
+                'key'     => 'anima_anio',
+                'value'   => $year_max,
+                'compare' => '<=',
+                'type'    => 'NUMERIC',
+            ];
+        }
+
+        if ( ! empty( $meta_query ) ) {
+            $query_args['meta_query'] = $meta_query;
+        }
+
+        if ( '' !== $search ) {
+            $query_args['s'] = $search;
+        }
+
+        $panel_html = '';
+
+        if ( ! $ajax_enabled || 0 === $index ) {
+            $query = new WP_Query( $query_args );
+
+            if ( $query->have_posts() ) {
+                $panel_html = ProjectCardRenderer::wrap_with_layout(
+                    $layout,
+                    ProjectCardRenderer::render_cards( $query->posts, $card_settings ),
+                    $columns,
+                    $carousel
+                );
+            } else {
+                $panel_html = '<div class="an-empty" role="status">' . esc_html__( 'No hay proyectos disponibles en este servicio.', 'anima-engine' ) . '</div>';
+            }
+
+            wp_reset_postdata();
+        } else {
+            $panel_html = anima_engine_projects_placeholder( $layout, $columns, $carousel, $per_page );
+        }
+
+        $panel_attrs = [
+            'id'             => $panel_id,
+            'class'          => 'anima-tabs__panel',
+            'role'           => 'tabpanel',
+            'aria-labelledby'=> $tab_id,
+            'data-layout'    => $layout,
+            'data-columns'   => wp_json_encode( $columns ),
+            'data-carousel'  => wp_json_encode( $carousel ),
+            'data-card'      => wp_json_encode( $card_settings ),
+            'data-query'     => wp_json_encode(
+                [
+                    'servicio'    => $term->slug,
+                    'per_page'    => $per_page,
+                    'layout'      => $layout,
+                    'orderby'     => $orderby,
+                    'order'       => $order,
+                    'year_min'    => $year_min,
+                    'year_max'    => $year_max,
+                    'search'      => $search,
+                    'card'        => $card_settings,
+                    'columns'     => $columns,
+                    'carousel'    => $carousel,
+                ]
+            ),
+        ];
+
+        if ( ! $selected ) {
+            $panel_attrs['hidden'] = 'hidden';
+        }
+
+        $panel  = '<div ' . anima_engine_build_attributes( $panel_attrs ) . '>';
+        $panel .= '<div class="anima-tabs__panel-inner" data-layout="' . esc_attr( $layout ) . '">' . $panel_html . '</div>';
+        $panel .= '</div>';
+
+        $panels .= $panel;
+    }
+
+    $output  = '<div ' . anima_engine_build_attributes( $container_attrs ) . '>';
+    $output .= '<div class="anima-tabs" role="tablist" aria-orientation="horizontal">' . $tablist . '</div>';
+    $output .= '<div class="anima-tabs__panels">' . $panels . '</div>';
+    $output .= '</div>';
+
+    return $output;
+}
+
+function anima_engine_build_attributes( array $attributes ): string {
+    $pairs = [];
+    foreach ( $attributes as $key => $value ) {
+        if ( null === $value || '' === $value ) {
+            continue;
+        }
+
+        if ( true === $value ) {
+            $pairs[] = esc_attr( $key );
+            continue;
+        }
+
+        $pairs[] = sprintf( '%s="%s"', esc_attr( $key ), esc_attr( (string) $value ) );
+    }
+
+    return implode( ' ', $pairs );
+}
+
+function anima_engine_projects_placeholder( string $layout, array $columns, array $carousel, int $count ): string {
+    $count = max( 1, min( 6, $count ) );
+    $items = [];
+
+    for ( $i = 0; $i < $count; $i++ ) {
+        $items[] = '<div class="an-card an-card--skeleton"><div class="an-card__media"></div><div class="an-card__body"><span class="an-skeleton an-skeleton--title"></span><span class="an-skeleton an-skeleton--text"></span><span class="an-skeleton an-skeleton--text"></span></div></div>';
+    }
+
+    $content = implode( '', $items );
+
+    $output = ProjectCardRenderer::wrap_with_layout( $layout, $content, $columns, $carousel );
+
+    if ( 'carousel' === $layout ) {
+        return str_replace( 'anima-carousel swiper', 'anima-carousel swiper is-loading', $output );
+    }
+
+    return preg_replace( '/class="([^"]*an-grid[^"]*)"/', 'class="$1 an-grid--skeleton"', (string) $output, 1 ) ?: $output;
+}
 
 function anima_engine_shortcode_cursos_grid( array $atts = [], ?string $content = null ): string {
     unset( $content );

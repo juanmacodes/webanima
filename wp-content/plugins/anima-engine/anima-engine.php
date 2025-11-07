@@ -56,6 +56,14 @@ add_action(
             ANIMA_ENGINE_VERSION,
             true
         );
+
+        wp_register_script(
+            'anima-projects-tabs',
+            ANIMA_ENGINE_URL . 'assets/js/anima-projects-tabs.js',
+            [ 'elementor-frontend' ],
+            ANIMA_ENGINE_VERSION,
+            true
+        );
     }
 );
 

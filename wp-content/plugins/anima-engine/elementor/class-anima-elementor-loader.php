@@ -42,12 +42,14 @@ class Loader {
         require_once __DIR__ . '/widget-curso-meta.php';
         require_once __DIR__ . '/widget-curso-syllabus.php';
         require_once __DIR__ . '/widget-avatares-grid.php';
+        require_once __DIR__ . '/widgets/widget-proyectos-tabs.php';
 
         $widgets_manager->register( new Widget_Cursos_Grid() );
         $widgets_manager->register( new Widget_Curso_Card() );
         $widgets_manager->register( new Widget_Curso_Meta() );
         $widgets_manager->register( new Widget_Curso_Syllabus() );
         $widgets_manager->register( new Widget_Avatares_Grid() );
+        $widgets_manager->register( new Widget_Proyectos_Tabs() );
     }
 }
 
