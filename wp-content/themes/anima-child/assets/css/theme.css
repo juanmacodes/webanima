@@ -199,6 +199,229 @@ a:focus-visible,
   gap: 1.25rem;
 }
 
+.container {
+  width: min(100% - 3rem, var(--anima-container));
+  margin-inline: auto;
+}
+
+.section-hero {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.section-hero .section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.section-hero .section-subtitle {
+  margin: 0 auto;
+  color: var(--anima-text-muted);
+}
+
+.grid-layout,
+.courses-grid {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+.card {
+  background: var(--anima-surface);
+  border: 1px solid var(--anima-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--anima-shadow-soft);
+  transition: transform var(--anima-transition), box-shadow var(--anima-transition), border-color var(--anima-transition);
+}
+
+.card-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--anima-shadow-hover);
+  border-color: var(--anima-outline);
+}
+
+.card-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.card-excerpt {
+  margin: 0;
+  color: var(--anima-text-muted);
+}
+
+.cta-link {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--anima-accent);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips a,
+.chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(102, 247, 255, 0.1);
+  color: var(--anima-accent);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  transition: background var(--anima-transition), color var(--anima-transition), box-shadow var(--anima-transition);
+}
+
+.chips a:hover,
+.chips a:focus {
+  background: rgba(159, 123, 255, 0.22);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(159, 123, 255, 0.35);
+}
+
+.avatar-hero,
+.course-hero {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+@media (min-width: 992px) {
+  .avatar-hero,
+  .course-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--anima-shadow-strong);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
+}
+
+.lead {
+  margin: 0;
+  color: var(--anima-text-muted);
+  font-size: 1.1rem;
+}
+
+.course-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.course-meta li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  color: var(--anima-text);
+}
+
+.course-meta strong {
+  color: var(--anima-accent);
+}
+
+.course-cta {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--anima-outline);
+  border-radius: 16px;
+  background: rgba(102, 247, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(4, 10, 22, 0.45);
+}
+
+.course-body {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.course-body h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0;
+}
+
+.prose {
+  display: grid;
+  gap: 1rem;
+  color: var(--anima-text-muted);
+  line-height: 1.7;
+}
+
+.empty-state {
+  padding-block: 3rem;
+  color: var(--anima-text-muted);
+  text-align: center;
+}
+
+.pagination-wrapper {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  justify-content: center;
+}
+
 .site-header .wp-block-site-logo img,
 .site-header .custom-logo {
   max-height: 42px;

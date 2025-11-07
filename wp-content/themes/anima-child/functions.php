@@ -16,6 +16,8 @@ add_action( 'wp_enqueue_scripts', function () {
 }, 20 );
 
 add_action( 'after_setup_theme', function () {
+    add_theme_support( 'post-thumbnails' );
+
     register_nav_menus(
         [
             'primary' => __( 'Primary Menu', 'anima-child' ),
@@ -57,3 +59,7 @@ add_action( 'wp_head', function () {
         }
     }
 }, 20 );
+
+add_filter( 'anima_child_curso_form_shortcode', function ( $shortcode, $post_id ) {
+    return $shortcode;
+}, 10, 2 );
