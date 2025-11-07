@@ -35,7 +35,7 @@ class RegisterMetaboxes implements ServiceInterface {
      * Añade las cajas meta.
      */
     public function register_boxes( string $post_type ): void {
-        $general_post_types = [ 'curso', 'avatar', 'proyecto', 'experiencia' ];
+        $general_post_types = [ 'avatar', 'proyecto', 'experiencia' ];
 
         if ( in_array( $post_type, $general_post_types, true ) ) {
             add_meta_box(

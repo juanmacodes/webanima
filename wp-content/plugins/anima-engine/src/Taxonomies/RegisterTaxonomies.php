@@ -7,11 +7,13 @@ use function __;
 use function apply_filters;
 use function class_exists;
 use function preg_replace;
+use function register_taxonomy_for_object_type;
 use function sprintf;
 use function strtolower;
 use function str_replace;
 use function ucwords;
 use function remove_accents;
+use function taxonomy_exists;
 
 /**
  * Registro de taxonomías personalizadas.
@@ -61,6 +63,13 @@ class RegisterTaxonomies implements ServiceInterface {
         $graphql_enabled = class_exists( '\\WPGraphQL' );
 
         foreach ( $this->taxonomies as $taxonomy => $settings ) {
+            if ( taxonomy_exists( $taxonomy ) ) {
+                foreach ( $settings['objects'] as $object_type ) {
+                    register_taxonomy_for_object_type( $taxonomy, $object_type );
+                }
+                continue;
+            }
+
             $labels = [
                 'name'              => $settings['plural'],
                 'singular_name'     => $settings['singular'],

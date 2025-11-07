@@ -9,6 +9,7 @@ use Anima\Engine\PostTypes\RegisterPostTypes;
 use Anima\Engine\Commerce\Orders;
 use Anima\Engine\Commerce\SubscriptionService;
 use Anima\Engine\Services\CacheInvalidator;
+use Anima\Engine\Services\Cli\MigrateCoursesMetaCommand;
 use Anima\Engine\Services\Cli\SeedCommand;
 use Anima\Engine\Services\ElementorTokens;
 use Anima\Engine\Services\ServiceInterface;
@@ -47,6 +48,7 @@ class Plugin {
             new SubscriptionService(),
             new Settings(),
             new SeedCommand(),
+            new MigrateCoursesMetaCommand(),
         ];
 
         foreach ( $this->services as $service ) {

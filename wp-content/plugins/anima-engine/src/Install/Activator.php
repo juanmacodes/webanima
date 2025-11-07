@@ -36,7 +36,16 @@ class Activator {
     public function activate(): void {
         $this->maybe_create_tables();
 
+        if ( function_exists( 'anima_engine_register_curso_post_type' ) ) {
+            anima_engine_register_curso_post_type();
+        }
+
         ( new RegisterPostTypes() )->register_post_types();
+
+        if ( function_exists( 'anima_engine_register_curso_taxonomies' ) ) {
+            anima_engine_register_curso_taxonomies();
+        }
+
         ( new RegisterTaxonomies() )->register_taxonomies();
 
         $this->maybe_create_pages();

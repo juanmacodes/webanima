@@ -33,15 +33,6 @@ class RegisterPostTypes implements ServiceInterface {
 
     public function __construct() {
         $this->post_types = [
-            'curso'      => [
-                'singular' => __( 'Curso', 'anima-engine' ),
-                'plural'   => __( 'Cursos', 'anima-engine' ),
-                'args'     => [
-                    'menu_icon' => 'dashicons-welcome-learn-more',
-                    'rewrite'   => [ 'slug' => 'cursos' ],
-                    'taxonomies'=> [ 'nivel', 'modalidad', 'tecnologia' ],
-                ],
-            ],
             'avatar'     => [
                 'singular' => __( 'Avatar', 'anima-engine' ),
                 'plural'   => __( 'Avatares', 'anima-engine' ),
