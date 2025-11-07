@@ -1,0 +1,136 @@
+.token-color-primary {
+    color: var(--token-color-primary);
+}
+
+.token-color-secondary {
+    color: var(--token-color-secondary);
+}
+
+.token-color-muted {
+    color: var(--token-color-muted);
+}
+
+.token-bg-surface {
+    background-color: var(--token-color-surface);
+}
+
+.token-bg-surface-strong {
+    background-color: var(--token-color-surface-strong);
+}
+
+.token-shadow-soft {
+    box-shadow: var(--token-shadow-soft);
+}
+
+.token-shadow-glow {
+    box-shadow: var(--token-shadow-glow);
+}
+
+.token-radius-sm {
+    border-radius: var(--token-radius-sm);
+}
+
+.token-radius-md {
+    border-radius: var(--token-radius-md);
+}
+
+.token-radius-pill {
+    border-radius: var(--token-radius-pill);
+}
+
+.token-pad-sm {
+    padding: var(--token-space-sm);
+}
+
+.token-pad-md {
+    padding: var(--token-space-md);
+}
+
+.token-pad-lg {
+    padding: var(--token-space-lg);
+}
+
+.token-mt-lg {
+    margin-top: var(--token-space-lg);
+}
+
+.token-gap-sm {
+    gap: var(--token-space-sm);
+}
+
+.token-gap-md {
+    gap: var(--token-space-md);
+}
+
+.token-gap-lg {
+    gap: var(--token-space-lg);
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+}
+
+.container-wide {
+    width: min(1400px, 95%);
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.shadow-lg {
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    .flex-between {
+        align-items: flex-start;
+    }
+}

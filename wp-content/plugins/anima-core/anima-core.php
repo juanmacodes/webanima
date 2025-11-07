@@ -1,41 +1,38 @@
 <?php
 /**
  * Plugin Name:       Anima Core
- * Description:       Core functionality for Anima headless WordPress.
+ * Description:       CPTs, GraphQL, REST y funciones core para el ecosistema Anima.
  * Version:           1.0.0
- * Requires PHP:      8.2
- * Requires at least: 6.0
- * Author:            Anima Avatar Agency
+ * Author:            Equipo Anima
+ * Requires PHP:      8.0
  * Text Domain:       anima-core
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-define( 'ANIMA_CORE_VERSION', '1.0.0' );
-define( 'ANIMA_CORE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+// Define constante de versión
+define('ANIMA_CORE_VERSION', '1.0.0');
 
-/**
- * Load plugin textdomain.
- */
-function anima_core_load_textdomain(): void {
-    load_plugin_textdomain( 'anima-core', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+// Cargar módulos solo si no estamos en línea de comandos WP CLI
+if ( ! defined('WP_CLI') || ! WP_CLI ) {
+    add_action('plugins_loaded', 'anima_core_load_modules', 1);
 }
-add_action( 'init', 'anima_core_load_textdomain' );
 
-// Activation logic.
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/activate.php';
-register_activation_hook( __FILE__, 'anima_core_activate' );
+function anima_core_load_modules() {
+    $base = plugin_dir_path(__FILE__);
 
-// Utility functions.
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/utilities.php';
+    // Seguridad: todos los includes dentro de bloque try
+    try {
+        require_once $base . 'cpt.php';
+        require_once $base . 'meta.php';
+        require_once $base . 'rest.php';
+        require_once $base . 'graphql.php';
+        require_once $base . 'admin-demo-importer.php';
+        require_once $base . 'activate.php';
+    } catch (Throwable $e) {
+        error_log('[Anima Core] Error al cargar módulos: ' . $e->getMessage());
+    }
+}
 
-// Custom post types and taxonomies.
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/cpt-proyecto.php';
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/cpt-curso.php';
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/taxonomias.php';
-
-// REST API endpoint.
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/rest-waitlist.php';
-
-// GraphQL integration.
-require_once ANIMA_CORE_PLUGIN_DIR . 'inc/graphql.php';
+// Ejecutar hook de activación
+register_activation_hook(__FILE__, 'anima_core_activate');

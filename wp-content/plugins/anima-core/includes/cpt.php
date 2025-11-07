@@ -1,39 +1,27 @@
 <?php
-add_action( 'init', function () {
-    $labels = [
-        'name'               => __( 'Proyectos', 'anima-core' ),
-        'singular_name'      => __( 'Proyecto', 'anima-core' ),
-        'add_new_item'       => __( 'Añadir nuevo proyecto', 'anima-core' ),
-        'edit_item'          => __( 'Editar proyecto', 'anima-core' ),
-        'new_item'           => __( 'Nuevo proyecto', 'anima-core' ),
-        'view_item'          => __( 'Ver proyecto', 'anima-core' ),
-        'search_items'       => __( 'Buscar proyectos', 'anima-core' ),
-        'not_found'          => __( 'No se encontraron proyectos', 'anima-core' ),
-        'not_found_in_trash' => __( 'No hay proyectos en la papelera', 'anima-core' ),
-        'all_items'          => __( 'Todos los proyectos', 'anima-core' ),
-    ];
+if (!defined('ABSPATH')) exit;
 
-    $args = [
-        'labels'             => $labels,
-        'public'             => true,
-        'has_archive'        => true,
-        'hierarchical'       => false,
-        'menu_icon'          => 'dashicons-portfolio',
-        'supports'           => [ 'title', 'editor', 'excerpt', 'thumbnail', 'revisions' ],
-        'show_in_rest'       => true,
-        'rewrite'            => [ 'slug' => 'proyectos' ],
-    ];
+function anima_register_cpt($slug, $singular, $plural, $supports = ['title','editor','thumbnail']) {
+  $labels = [
+    'name' => $plural,
+    'singular_name' => $singular,
+    'add_new_item' => "Añadir $singular",
+    'edit_item' => "Editar $singular",
+    'new_item' => "$singular nuevo",
+    'view_item' => "Ver $singular",
+    'search_items' => "Buscar $plural",
+    'not_found' => "No se encontraron $plural",
+  ];
 
-    register_post_type( 'project', $args );
-
-    register_taxonomy(
-        'stack',
-        [ 'project' ],
-        [
-            'label'        => __( 'Stack tecnológico', 'anima-core' ),
-            'rewrite'      => [ 'slug' => 'stack' ],
-            'show_in_rest' => true,
-            'hierarchical' => false,
-        ]
-    );
-} );
+  register_post_type($slug, [
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'show_in_rest' => true,          // Para Gutenberg/REST
+    'has_archive' => true,
+    'rewrite' => ['slug' => $slug],
+    'supports' => $supports,
+    'menu_icon' => 'dashicons-layout',
+  ]);
+}
