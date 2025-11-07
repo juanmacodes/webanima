@@ -27,7 +27,7 @@ class Loader {
             'anima',
             [
                 'title' => __( 'Anima', 'anima-engine' ),
-                'icon'  => 'fa fa-play-circle',
+                'icon'  => 'fa fa-bolt',
             ],
             1
         );
@@ -38,12 +38,16 @@ class Loader {
      */
     public function register_widgets( Widgets_Manager $widgets_manager ): void {
         require_once __DIR__ . '/widget-cursos-grid.php';
+        require_once __DIR__ . '/widget-curso-card.php';
         require_once __DIR__ . '/widget-curso-meta.php';
         require_once __DIR__ . '/widget-curso-syllabus.php';
+        require_once __DIR__ . '/widget-avatares-grid.php';
 
         $widgets_manager->register( new Widget_Cursos_Grid() );
+        $widgets_manager->register( new Widget_Curso_Card() );
         $widgets_manager->register( new Widget_Curso_Meta() );
         $widgets_manager->register( new Widget_Curso_Syllabus() );
+        $widgets_manager->register( new Widget_Avatares_Grid() );
     }
 }
 

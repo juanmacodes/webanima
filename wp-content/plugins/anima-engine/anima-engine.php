@@ -23,10 +23,41 @@ define( 'ANIMA_ENGINE_PLUGIN_FILE', __FILE__ );
 define( 'ANIMA_ENGINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ANIMA_ENGINE_URL', plugin_dir_url( __FILE__ ) );
 
+require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/cpt-curso.php';
 require_once __DIR__ . '/inc/taxonomias-curso.php';
+require_once __DIR__ . '/inc/cpt-avatar.php';
 require_once __DIR__ . '/inc/admin-metaboxes.php';
+require_once __DIR__ . '/inc/shortcodes.php';
 require_once __DIR__ . '/elementor/class-anima-elementor-loader.php';
+
+add_action(
+    'after_setup_theme',
+    static function () {
+        add_image_size( 'anima_course_card', 800, 520, true );
+        add_image_size( 'anima_avatar_square', 640, 640, true );
+    }
+);
+
+add_action(
+    'wp_enqueue_scripts',
+    static function () {
+        wp_enqueue_style(
+            'anima-engine-ui',
+            ANIMA_ENGINE_URL . 'assets/css/anima-ui.css',
+            [],
+            ANIMA_ENGINE_VERSION
+        );
+
+        wp_enqueue_script(
+            'anima-engine-ui',
+            ANIMA_ENGINE_URL . 'assets/js/anima-ui.js',
+            [],
+            ANIMA_ENGINE_VERSION,
+            true
+        );
+    }
+);
 
 spl_autoload_register(
     static function ( $class ) {
