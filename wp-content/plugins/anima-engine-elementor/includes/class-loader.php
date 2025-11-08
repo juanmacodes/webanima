@@ -26,6 +26,7 @@ class Loader {
     require_once ANIMA_EW_PATH.'includes/widgets/class-widget-author-card.php';
     require_once ANIMA_EW_PATH.'includes/widgets/class-widget-share.php';
     require_once ANIMA_EW_PATH.'includes/widgets/class-widget-related-stories.php';
+    require_once ANIMA_EW_PATH.'includes/widgets/class-widget-avatars-grid.php';
 
     $widgets_manager->register( new Widgets\Chips_Tax() );
     $widgets_manager->register( new Widgets\KPI_Bar() );
@@ -36,6 +37,7 @@ class Loader {
     $widgets_manager->register( new Widgets\Author_Card() );
     $widgets_manager->register( new Widgets\Share() );
     $widgets_manager->register( new Widgets\Related_Stories() );
+    $widgets_manager->register( new Widgets\Avatares_Grid() );
   }
 }
 

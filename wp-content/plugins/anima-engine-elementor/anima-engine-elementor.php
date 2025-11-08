@@ -24,6 +24,8 @@ add_action('plugins_loaded', function () {
 /** Carga estilos y model-viewer (para el widget 3D) */
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('anima-ew', ANIMA_EW_URL.'assets/css/anima-elementor-widgets.css', [], ANIMA_EW_VER);
+  wp_register_style('anima-avatars-modal', ANIMA_EW_URL.'assets/css/anima-avatars-modal.css', [], ANIMA_EW_VER);
+  wp_register_script('anima-avatars-modal', ANIMA_EW_URL.'assets/js/anima-avatars-modal.js', [], ANIMA_EW_VER, true);
   // model-viewer (solo si no existe)
   if ( ! wp_script_is('model-viewer', 'registered') ) {
     wp_register_script('model-viewer', 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js', [], null, true);
