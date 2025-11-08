@@ -13,6 +13,11 @@ add_action('wp_enqueue_scripts', function(){
   wp_enqueue_script('anima-app', get_template_directory_uri().'/assets/js/app.js', [], '2.0.0', true);
   // Model Viewer (para GLB/GLTF sin plugins)
   wp_enqueue_script('model-viewer','https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js',[], null, true);
+
+  if (is_page('galeria-de-avatares')) {
+    wp_enqueue_style('avatars-modal', get_template_directory_uri() . '/assets/css/avatars-modal.css', [], '1.0.0');
+    wp_enqueue_script('avatars-modal', get_template_directory_uri() . '/assets/js/avatars-modal.js', [], '1.0.0', true);
+  }
 });
 
 // === Customizer (panel de personalización) ===
