@@ -1,13 +1,15 @@
 <?php
 namespace AnimaEngine\Elementor\Widgets;
 
-use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Plugin;
 use Elementor\Repeater;
+use Elementor\Widget_Base;
 
 if ( ! defined('ABSPATH') ) exit;
 
-class Avatares_Grid extends Widget_Base {
+if ( ! class_exists('Anima_Avatares_Grid') ) {
+class Anima_Avatares_Grid extends Widget_Base {
   public function get_name(){ return 'anima_avatars_grid'; }
   public function get_title(){ return __('Avatares — Grid', 'anima-engine'); }
   public function get_icon(){ return 'eicon-person'; }
@@ -81,9 +83,9 @@ class Avatares_Grid extends Widget_Base {
     echo '<div class="avatar-grid">';
 
     foreach ( $avatars as $item ) {
-      $title   = isset($item['name']) ? $item['name'] : '';
+      $title   = isset($item['name']) ? wp_strip_all_tags($item['name']) : '';
       $image   = ! empty($item['image']['url']) ? $item['image']['url'] : '';
-      $desc    = isset($item['desc']) ? $item['desc'] : '';
+      $desc    = isset($item['desc']) ? wp_strip_all_tags($item['desc']) : '';
       $twitter = ! empty($item['twitter']['url']) ? $item['twitter']['url'] : '';
       $instagram = ! empty($item['instagram']['url']) ? $item['instagram']['url'] : '';
       $tiktok = ! empty($item['tiktok']['url']) ? $item['tiktok']['url'] : '';
@@ -111,10 +113,16 @@ class Avatares_Grid extends Widget_Base {
 
     echo '</div>';
 
-    if ( ! $modal_rendered ) {
+    $is_editor_mode = false;
+
+    if ( class_exists('\\Elementor\\Plugin') && isset(Plugin::$instance->editor) ) {
+      $is_editor_mode = Plugin::$instance->editor->is_edit_mode();
+    }
+
+    if ( ! $modal_rendered && ! $is_editor_mode ) {
       echo '<div id="avatar-modal" class="avatar-modal" aria-hidden="true">';
       echo '  <div class="avatar-modal__backdrop" data-close></div>';
-      echo '  <div class="avatar-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="am-title">';
+      echo '  <div class="avatar-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="am-title" aria-describedby="am-desc">';
       echo '    <button type="button" class="avatar-modal__close" data-close aria-label="' . esc_attr__('Cerrar', 'anima-engine') . '">&times;</button>';
       echo '    <div class="avatar-modal__content">';
       echo '      <img id="am-img" src="" alt="">';
@@ -127,4 +135,5 @@ class Avatares_Grid extends Widget_Base {
       $modal_rendered = true;
     }
   }
+}
 }
